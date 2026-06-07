@@ -171,6 +171,71 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 .f-links{display:flex;gap:2rem}
 .f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
 .f-links a:hover{color:rgba(255,255,255,.8)}
+@media(max-width:900px){
+
+nav{
+  padding:.9rem 1.5rem;
+}
+
+.nav-tag{
+  display:none;
+}
+
+.wrap{
+  padding:0 1.5rem;
+}
+
+.sec,
+.sec-dark,
+.sec-tinted{
+  padding:4.5rem 0;
+}
+
+.g2,
+.g3,
+.g4,
+.sketches,
+.detail-row,
+.reflects,
+.data-row{
+  grid-template-columns:1fr;
+  gap:1.25rem;
+}
+
+.stat-bar{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.feature-bar{
+  display:flex;
+  flex-direction:column;
+}
+
+.feature-item{
+  border-right:none;
+  border-bottom:1px solid var(--rule);
+}
+
+.feature-item:last-child{
+  border-bottom:none;
+}
+
+.hero-content{
+  padding:3rem 1.5rem;
+}
+
+.hero-meta{
+  gap:1rem;
+}
+
+footer{
+  padding:2rem 1.5rem;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:1rem;
+}
+
+}
 </style>
 </head>
 <body>
