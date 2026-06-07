@@ -260,6 +260,25 @@ footer {
   object-fit: cover;
   display: block;
 }
+.hero-tagline-large {
+  margin-left: 9rem;
+}
+
+@media (max-width: 600px) {
+  .hero-bottom-bar {
+    align-items: flex-start;
+  }
+
+  .hero-tagline-large {
+    margin-left: 0;
+    max-width: 85%;
+    line-height: 1.1;
+  }
+
+  .hero-scroll-hint {
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -288,7 +307,7 @@ footer {
   </div>
 
   <div class="hero-bottom-bar" >
-<p class="hero-tagline-large" style="margin-left:9rem;">I turn barriers into better beginnings.</p>
+<p class="hero-tagline-large">I turn barriers into better beginnings.</p>
     <span class="hero-scroll-hint">Scroll to explore</span>
 </div>
 </section>
