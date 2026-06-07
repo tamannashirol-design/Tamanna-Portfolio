@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Center Photocatalytic Wall  — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#999;
+  --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
+  --card:#F3F0EA;--white:#fff;
+  --sage:#6B7040;--moss:#4A5C1A;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.88) 0%,rgba(20,20,20,.55) 55%,rgba(20,20,20,.18) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:620px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.how-step{padding:2.2rem 1.8rem;border-right:1px solid var(--rule)}
+.how-step:last-child{border-right:none}
+.step-num{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;color:var(--olive);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.8rem}
+.step-title{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.step-desc{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* SCIENCE STAT */
+.science-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.science-stat{background:var(--navy);border-radius:12px;padding:3rem;text-align:center}
+.science-n{font-family:'Fraunces',serif;font-size:4rem;font-weight:300;color:#fff;display:block;line-height:1}
+.science-l{font-size:.85rem;color:rgba(255,255,255,.55);margin-top:.6rem;display:block;line-height:1.5}
+.science-src{font-family:'Space Mono',monospace;font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.05em;margin-top:.8rem;display:block}
+
+/* DATA ROW */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* SKETCHES */
+.sketches{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.sketch-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/3}
+.sketch-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* RENDER GALLERY */
+.render-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.render-gallery .frame{aspect-ratio:4/3;overflow:hidden}
+.render-gallery .frame img{width:100%;height:100%;object-fit:cover}
+
+/* ITER */
+.iter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1.5rem}
+.iter-half{padding:2.2rem}
+.iter-half+.iter-half{border-left:1px solid var(--rule)}
+.iter-tag{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.9rem}
+.tag-b{background:#FDECEA;color:#9B2335}
+.tag-a{background:#EAF3EA;color:#266226}
+.iter-half p{font-size:.86rem;color:var(--mid);line-height:1.75;margin-bottom:.8rem}
+.iter-half .frame{margin-top:1rem}
+
+/* REFLECTS */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* NEXTS */
+.nexts{list-style:none;margin-top:2rem}
+.nexts li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--mid);line-height:1.6}
+.nexts li span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.08em;flex-shrink:0;font-weight:700}
+
+/* DS NOTE */
+.ds-note{padding:1.2rem 1.5rem;border-left:2px solid var(--rule)}
+.ds-note strong{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.ds-note span{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* PROTO GRID */
+.proto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.proto-card{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.proto-card-img{aspect-ratio:4/3;overflow:hidden;background:var(--card)}
+.proto-card-img img{width:100%;height:100%;object-fit:cover}
+.proto-card-info{padding:1rem 1.2rem}
+.proto-card-info h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;color:var(--ink);margin-bottom:.3rem}
+.proto-card-info p{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* UV TEST ROW */
+.uv-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.uv-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:3/4}
+.uv-frame img{width:100%;height:100%;object-fit:cover}
+
+/* BEFORE / AFTER SPLIT */
+.split-frame{border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.split-frame img{width:100%;display:block}
+
+/* MAP PAIR */
+.map-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.map-cell .frame{aspect-ratio:3/4;overflow:hidden}
+.map-cell .frame img{width:100%;height:100%;object-fit:cover;object-position:top}
+.map-label{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-top:.5rem}
+
+/* PROJECT LINK */
+.project-link{display:inline-flex;align-items:center;gap:.6rem;font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:var(--olive);text-decoration:none;border:1px solid var(--olive);padding:.55rem 1.1rem;border-radius:4px;transition:all .2s;margin-top:1.5rem}
+.project-link:hover{background:var(--olive);color:#fff}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.8)}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
+  .g2,.g3,.g4,.iter,.reflects,.data-row,.how-steps,.sketches,.render-gallery,.proto-grid,.uv-row,.map-pair,.science-row{grid-template-columns:1fr;gap:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .iter-half+.iter-half{border-left:none;border-top:1px solid var(--rule)}
+  .how-step{border-right:none;border-bottom:1px solid var(--rule)}
+  .how-step:last-child{border-bottom:none}
+  footer{padding:2rem 1.5rem}
+}
+/* PROCESS PHOTOS */
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+  margin-top:2rem;
+}
+
+.process-grid .frame{
+  aspect-ratio:1/1;
+  overflow:hidden;
+}
+
+.process-grid .frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>  
+  <span class="nav-tag">Data Center Photocatalytic Wall &nbsp;/&nbsp; Industrial Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="panel rendering 1.png" alt="AI Data Center photocatalytic panel system on building facade">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1>What if a building's skin<br><em>could clean the air?</em></h1>
+    <p class="hero-hmw">How might we design a photocatalytic facade system that actively breaks down NOₓ pollution from AI data centers, turning harmful emissions into harmless byproducts?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>Industrial Designer</span></div>
+      <div class="hero-meta-item"><label>Team</label><span>Collaborative project</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Rhino &middot; Blender &middot; 3D Printing</span></div>
+      <div class="hero-meta-item"><label>Site</label><span>Bessemer, Alabama</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">TiO₂</span><span class="stat-l">Photocatalytic coating</span></div>
+  <div class="stat-cell"><span class="stat-n">NOₓ</span><span class="stat-l">Primary pollutant target</span></div>
+  <div class="stat-cell"><span class="stat-n">0</span><span class="stat-l">Filter replacements needed</span></div>
+  <div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">Panel layers</span></div>
+</div>
+
+<!-- 01 CONTEXT -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev top">
+    <div>
+      <span class="lbl">01 &mdash; Context</span>
+      <h2 class="h2">Bessemer sits at the center<br><em>of Alabama's pollution crisis.</em></h2>
+      <p class="body">Bessemer, Alabama is surrounded by a growing cluster of AI data centers, all of which continuously emit nitrogen oxides (NOₓ) and volatile organic compounds. The community bears this burden disproportionately.</p>
+      <p class="body mt2">Traditional air filtration is reactive. It traps pollutants and eventually fills up, requiring constant maintenance and replacement. The question this project asked was different: what if the building itself could break pollution down?</p>
+      <div class="q mt2">
+        <p>&ldquo;Black people are exposed to greater-than-average concentrations of PM 2.5 from every source — construction, power plants, industrial, residential, cars.&rdquo;</p>
+        <cite>Tessum et al., Science Advances &mdash; Current Pollution Disparities</cite>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div class="frame" style="border-radius:12px;">
+          <img src="unnamed.png" alt="Current pollution disparities — PM 2.5 exposure by race">
+        </div>
+        <p class="cap">Exposure disparities by race</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt4 rev">
+    <div class="frame" style="border-radius:12px;">
+      <img src="6pillars_centered.jpg" alt="The Six Pillars of Climate Justice">
+    </div>
+    <p class="cap">Research framework &mdash; The Six Pillars of Climate Justice grounded the project's equity lens  Source:
+      <a href="https://centerclimatejustice.universityofcalifornia.edu/what-is-climate-justice/" target="_blank">
+        UC Center for Climate Justice
+      </a></p>
+  </div>
+</div>
+</section>
+
+<!-- 02 THE SCIENCE -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 &mdash; The Science</span>
+    <h2 class="h2">Photocatalysis doesn't filter pollution.<br><em>It destroys it.</em></h2>
+    <p class="body">Traditional air filtration accumulates pollutants until the filter is saturated. Photocatalysis works differently, titanium dioxide (TiO₂) coating activates under UV-A light, generating electron-hole pairs that react with moisture and oxygen to produce hydroxyl radicals. Those radicals attack NOₓ molecules directly, breaking them down into nitrate (NO₃⁻), which washes away in rain, and ultimately into nitrogen gas, oxygen, and water.</p>
+  </div>
+
+  <div class="how-steps mt4 rev">
+    <div class="how-step">
+      <span class="step-num">01 &mdash; Activate</span>
+      <p class="step-title">UV-A hits TiO₂ coating</p>
+      <p class="step-desc">Sunlight activates the titanium dioxide on the panel, generating electron-hole pairs in the photocatalytic reaction.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">02 &mdash; React</span>
+      <p class="step-title">Hydroxyl radicals form</p>
+      <p class="step-desc">The activated TiO₂ reacts with the air, producing highly reactive radicals that target pollutant molecules.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">03 &mdash; Break down</span>
+      <p class="step-title">NOₓ converts to nitrate</p>
+      <p class="step-desc">NO oxidises to reduce it to nitrogen gas and water through both oxidation and reduction pathways.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">04 &mdash; Release</span>
+      <p class="step-title">N₂, O₂, H₂O remain</p>
+      <p class="step-desc">The outputs are nitrogen gas, oxygen, and water — harmless to the surrounding community.</p>
+    </div>
+  </div>
+
+  <div class="mt4 rev">
+    <div>
+      <div class="frame"><img src="Chemistry.png" alt="Photocatalytic chemistry process diagram"></div>
+      <p class="cap">Chemistry diagram &mdash; full NOₓ breakdown pathways through TiO₂ activation</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 03 RESEARCH & IDEATION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">03 &mdash; Research &amp; Ideation</span>
+    <h2 class="h2">Seven concepts before<br><em>the right one emerged.</em></h2>
+    <p class="body">The initial ideation phase explored a wide range of applications for photocatalytic chemistry  walls. Each concept was evaluated against: could it intercept pollution at the source, could it scale to meaningful impact, and could it serve the community?</p>
+    <p class="body mt2">The facade panel won on all three. Data centers are among Bessemer's largest NOₓ emitters, their external walls are vast and sun-exposed, and a facade intervention makes the remediation visible.</p>
+  </div>
+
+  <div class="mt3 rev">
+    <div class="frame" style="border-radius:12px;">
+      <img src="IMG_6815.jpg" alt="Early ideation sketches — road material, brick mechanism, bus shelter, green wall, face mask">
+    </div>
+    <p class="cap">Early ideation &mdash; seven directions explored including road materials, TiO₂ bricks, moss walls, personal masks, and bus shelters</p>
+  </div>
+</div>
+</section>
+
+<!-- 04 DESIGN DIRECTION -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">04 &mdash; Design Direction</span>
+    <h2 class="h2">Version 1 was functional.<br><em>Version 2 became architecture.</em></h2>
+  </div>
+
+  <div class="iter mt3 rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Version 1</span>
+      <p>Diamond-grid perforated tile pattern. Maximised surface exposure but read as mechanical and industrial. Tiling across a large facade produced a repetitive, warehouse-like appearance with no relationship to the living biointegration layer.</p>
+      <div class="frame"><img src="panel 1.png" alt="Version 1 panel sketch — diamond perforated tile"></div>
+    </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Version 2 — Selected</span>
+      <p>Organic spiral channels cut into a vertical slat face with moss and algae growing through the curves. The biointegration becomes the visible language of the panel — functional and architectural at the same time. Scales naturally across a building facade.</p>
+      <div class="frame"><img src="final panel.png" alt="Version 2 panel sketch — organic spiral with moss"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 05 THE SYSTEM -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 &mdash; The System</span>
+    <h2 class="h2">Three layers.<br><em>One working facade.</em></h2>
+    <p class="body">The panel is a layered system designed to mount directly onto existing building facades using rail brackets with a mandatory 1-inch air gap between the panel and the wall. The gap prevents moisture buildup and mold growth while allowing air to circulate through. Each layer has a distinct function, and together they handle photocatalytic decomposition and passive pre-filtration.</p>
+  </div>
+
+  <div class="mt3 rev" style="border-radius:12px;overflow:hidden;border:1px solid var(--rule);box-shadow:0 16px 60px rgba(0,0,0,.08)">
+    <img src="exploded panel.png" alt="Exploded panel view — all three layers" style="width:100%;display:block;">
+  </div>
+  <p class="cap" style="margin-top:.7rem">Exploded view &mdash; passive carbon pre-filter, aluminum honeycomb substrate, and moss/algae facade layer</p>
+
+  <div class="g4 mt4 rev">
+    <div class="card">
+      <h4>Textured aluminum honeycomb</h4>
+      <p>Honeycomb geometry coated with nano-particle TiO2 maximises surface area exposed to UV light and polluted airflow.</p>
+    </div>
+    <div class="card">
+      <h4>Passive carbon filter</h4>
+      <p>Secondary filtration layer that absorbs NOₓ particles, reducing the concentration load on the TiO₂ coating.</p>
+    </div>
+    <div class="card">
+      <h4>Moss &amp; algae facade</h4>
+      <p>Living biointegration layer provides additional air filtration, protects the TiO₂ coating from UV degradation.</p>
+    </div>
+    <div class="card">
+      <h4>Mounting rail system</h4>
+      <p>Adjustable brackets attach to existing building facades with a 1-inch mandatory air gap.</p>
+    </div>
+  </div>
+
+  <div class="mt4 rev">
+    <div>
+      <div class="frame"><img src="storyboard.png" alt="System deployment storyboard — installation to clean air impact"></div>
+      <p class="cap">Tradeoff storyboard</p>
+    </div>
+  </div>
+
+  <div class="mt4 rev">
+    <div class="frame" style="border-radius:12px;">
+      <img src="Final version.png" alt="Annotated system diagram — data center, panel layers, NOx pathways, outputs">
+    </div>
+    <p class="cap">System diagram &mdash; data center → NOₓ emitted → panel intercepts → TiO₂ + UV-A → N₂ + O₂ + H₂O released</p>
+  </div>
+</div>
+</section>
+
+<!-- 06 PROTOTYPE & TESTING -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">06 &mdash; Prototype &amp; Testing</span>
+    <h2 class="h2 h2-w">Built and tested.<br><em>Photocatalytic activation confirmed.</em></h2>
+    <p class="body body-w">Two physical prototypes: a 3D-printed PLA structure with Titanium Dioxide paste and one without. The honeycomb section was then tested with a UV-A torch and photosensitive test strips to verify UV absorption with the TiO₂-coated surface.</p>
+  </div>
+
+  <!-- UV testing -->
+  <div class="mt4 rev">
+    <span class="lbl lbl-dark">UV-A Testing</span>
+    <h2 class="h2 h2-w" style="font-size:1.5rem;">UV-A passes through.<br><em>TiO₂ activates.</em></h2>
+    <p class="body body-w">A UV-A torch was shone through the 3D-printed honeycomb to verify that the Titanium Dioxide does absorb UV and the geometry allows sufficient UV-A light to reach the TiO₂ coating behind it. The test compared a TiO₂-coated panel against an uncoated. The coated strip showed a lighter reading. Because TiO₂ requires UV-A activation to initiate photocatalytic reactions, confirming UV absorption was a critical proof-of-concept step.</p>
+  </div>
+
+  <div class="uv-row rev">
+    <div>
+      <div class="uv-frame frame-dark"><img src="coated.png" alt="UV torch shining through honeycomb — blue glow visible"></div>
+      <p class="cap cap-dark">UV-A torch through TiO2 coated honeycomb </p>
+    </div>
+    <div>
+      <div class="uv-frame frame-dark"><img src="uv coated.png" alt="Close-up UV blue glow through honeycomb prototype"></div>
+      <p class="cap cap-dark">Light UV-A test strip - Confirming TiO2 absorbs UV </p>
+    </div>
+    <div>
+      <div class="uv-frame frame-dark"><img src="no coat.png" alt="UV test card showing UV letters appearing — confirming UV-A present"></div>
+      <p class="cap cap-dark">UV-A torch through TiO2 uncoated honeycomb</p>
+    </div>
+    <div>
+      <div class="uv-frame frame-dark"><img src="uv no coa.png" alt="Two test strips compared — TiO2 coated vs uncoated, darker reading confirms absorption"></div>
+      <p class="cap cap-dark">Dark UV-A test strip - Confirming without TiO2, less/no absorption of UV </p>
+    </div>
+  </div>
+
+    <!-- prototype photos -->
+    <div class="mt4 rev">
+      <span class="lbl lbl-dark">Process Photos</span>
+    </div>
+  
+    <div class="process-grid rev">
+      <div>
+        <div class="frame frame-dark"><img src="research.heic" alt="Both prototype components side by side — honeycomb and moss panel"></div>
+      </div>
+      <div>
+        <div class="frame frame-dark"><img src="printing.heic" alt="Close-up of moss being placed into spiral channels by hand"></div>
+      </div>
+      <div>
+        <div class="frame frame-dark"><img src="pasting 2.heic" alt="Prototype held showing honeycomb and panel together with UV test card"></div>
+      </div>
+      <div>
+        <div class="frame frame-dark"><img src="moss.png" alt="Final prototype assembled"></div>
+      </div>
+      <div>
+        <div class="frame frame-dark"><img src="pasting.heic" alt="Final prototype assembled"></div>
+      </div>
+      <div>
+        <div class="frame frame-dark"><img src="supporting.heic" alt="Final prototype assembled"></div>
+      </div>
+      <div>
+        <div class="frame frame-dark"><img src="final 1.heic" alt="Final prototype assembled"></div>
+      </div>
+      <div>
+        <div class="frame frame-dark"><img src="final 2.heic" alt="Final prototype assembled"></div>
+      </div>
+    </div>
+</div>
+</div>
+
+<!-- 07 FINAL DESIGN -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">07 &mdash; Final Design</span>
+    <h2 class="h2">A facade that cleans the air<br><em>it stands in front of.</em></h2>
+    <p class="body">At full scale, the panel system wraps an entire data center facade — transforming a blank industrial wall into a living, active remediation surface. The spiral moss channels scale naturally across multiple panels, each one slightly different as the biointegration grows and changes over time. The brushed aluminum slats catch and direct sunlight into the channels, ensuring the TiO₂ coating behind the moss receives consistent UV-A activation throughout the day.</p>
+  </div>
+
+  <div class="mt3 rev" style="border-radius:12px;overflow:hidden;border:1px solid var(--rule);box-shadow:0 16px 60px rgba(0,0,0,.08)">
+    <img src="Final building rendering.png" alt="Final panel close-up rendering" style="width:100%;display:block;">
+  </div>
+  <p class="cap" style="margin-top:.7rem">Final panel close-up &mdash; aluminum slat structure with moss spiral channels and TiO₂ honeycomb behind</p>
+</div>
+</section>
+
+<!-- 08 BEFORE / AFTER -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">08 &mdash; Impact</span>
+    <h2 class="h2 h2-w">The same building.<br><em>Different air.</em></h2>
+    <p class="body body-w">The before/after render shows the same data center site: on the left, exposed brick under a smoke-filled sky, a building that takes from the surrounding air. On the right, the photocatalytic facade in place — the building now actively giving back, breaking down the NOₓ it and neighboring infrastructure produce.</p>
+  </div>
+
+  <div class="split-frame rev">
+    <img src="air difference panel building.png" alt="Before and after split render — exposed brick under polluted sky vs photocatalytic facade under clean sky">
+  </div>
+  <p class="cap cap-dark" style="margin-top:.7rem">Before / After &mdash; exposed brick under polluted sky (left) vs photocatalytic facade system (right)</p>
+  
+  <div class="map-pair mt4 rev">
+    <div class="map-cell">
+      <div class="frame frame-dark">
+        <img src="4d8f78d4-3cfb-4a06-9a4b-323fbc08e8b3.png" alt="Conceptual current pollution condition map">
+      </div>
+      <p class="map-label cap-dark">Current Conditions</p>
+    </div>
+  
+    <div class="map-cell">
+      <div class="frame frame-dark">
+        <img src="f9b18866-65cc-4fb4-801d-8b5783bc37eb.png" alt="Conceptual projected improvement map">
+      </div>
+      <p class="map-label cap-dark">Conceptual Future Scenario</p>
+    </div>
+  </div>
+  <div class="data-row mt4 rev">
+    <div class="data-card">
+      <span class="data-n">NOₓ</span>
+      <span class="data-l">Broken down at molecular level — not trapped, not stored, eliminated</span>
+    </div>
+    <div class="data-card">
+      <span class="data-n">Rain</span>
+      <span class="data-l">Self-cleaning mechanism — nitrate residue washes from panel surface naturally</span>
+    </div>
+    <div class="data-card">
+      <span class="data-n">N₂ + O₂</span>
+      <span class="data-l">Final outputs are nitrogen gas, oxygen, and water &mdash; harmless to community</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 09 REFLECTION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">09 &mdash; Reflection</span>
+    <h2 class="h2">What this project taught me.</h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card"><span class="r-n">01</span><h4>Design can be a form of advocacy</h4><p>Starting from who actually breathes this air, changed every decision. The project wasn't about making a cool panel. It was about making one that served people who had no say in where the data center was built.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Surface area is a design variable</h4><p>Photocatalytic efficiency scales directly with the surface area exposed to UV light. Every geometric decision: the spiral channels, the honeycomb substrate, the slat spacing, was also a chemistry decision. Form and function were inseparable.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>Biointegration is not decoration</h4><p>Moss and algae aren't aesthetic add-ons. They filter, they protect the TiO₂ coating, and they signal to the community that something is growing. Living materials change over time in ways industrial materials don't.</p></div>
+    <div class="r-card"><span class="r-n">04</span><h4>Testing the science changes the work</h4><p>Watching the test card activate was the moment the project stopped being theoretical. While UV activation was successfully demonstrated, future work would require laboratory testing to quantify NOₓ decomposition rates under real environmental conditions.</p></div>
+    <div class="r-card"><span class="r-n">05</span><h4>Passive systems scale</h4><p>No power input, no maintenance cycle, no moving parts. Rain cleans it. Sun activates it. The panel only works because the data center is already there producing both the pollution and the infrastructure to mount the solution on.</p></div>
+    <div class="r-card"><span class="r-n">06</span><h4>The building is the product</h4><p>Industrial design usually means a discrete object. This project was about transforming an existing structure into an entirely different kind of artifact. The design intervention had to work at architectural scale.</p></div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">&larr; Portfolio</a>
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

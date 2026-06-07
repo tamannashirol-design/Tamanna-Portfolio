@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydrip — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#FAF8F4;
+  --ink:#141414;
+  --mid:#555;
+  --dim:#999;
+  --rule:#E4E0D8;
+  --olive:#6B7040;
+  --navy:#2C3E6B;
+  --card:#F3F0EA;
+  --white:#fff;
+}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.12) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+.full-img{width:100%;display:block;border-radius:12px;box-shadow:0 16px 60px rgba(0,0,0,.1)}
+
+/* SKETCHES */
+.sketches{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem}
+.sketch-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/3}
+.sketch-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* FULL-WIDTH FRAME */
+.full-frame{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.full-frame img{width:100%;display:block}
+
+/* COLORWAY GALLERY */
+.color-gallery{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.color-gallery img{width:100%;display:block}
+
+/* DETAIL ROW */
+.detail-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem}
+.detail-row .frame{aspect-ratio:1/1;overflow:hidden}
+.detail-row .frame img{width:100%;height:100%;object-fit:cover}
+
+/* FEATURE BAR */
+.feature-bar{display:flex;gap:0;margin-top:2.5rem;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.feature-item{flex:1;padding:1.8rem 1.5rem;border-right:1px solid var(--rule);background:var(--card)}
+.feature-item:last-child{border-right:none}
+.feature-n{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;color:var(--olive);display:block;line-height:1;margin-bottom:.4rem}
+.feature-l{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.feature-item p{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* MATERIALS BOARD */
+.materials-full{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.materials-full img{width:100%;display:block}
+
+/* FINAL RENDERING */
+.final-hero{width:100%;border-radius:12px;overflow:hidden;margin-bottom:1.25rem;border:1px solid var(--rule)}
+.final-hero img{width:100%;display:block;max-height:80vh;object-fit:cover;object-position:center}
+
+/* DATA ROW */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* REFLECTS */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* NEXTS */
+.nexts{list-style:none;margin-top:2rem}
+.nexts li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--mid);line-height:1.6}
+.nexts li span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.08em;flex-shrink:0;font-weight:700}
+
+/* MARKET */
+.market-full{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.market-full img{width:100%;display:block}
+
+/* FOOTER */
+footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.4);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+.f-links a:hover{color:#fff}
+
+/* VIDEO */
+.video-frame{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#000;box-shadow:0 20px 60px rgba(0,0,0,.25);margin-top:2.5rem}
+.video-frame video{display:block;width:100%;height:auto}
+
+/* SCROLL REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+</style>
+</head>
+<body id="top">
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">Hydrip / Industrial Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="WaterFilter_Hero(edit).png" alt="Hydrip water filter on dorm desk">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1>Hydrip<br><em>Clean water, in your dorm.</em></h1>
+    <p class="hero-hmw">How might we simplify refilling and transporting filtered water in college dorms?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>Industrial Designer</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Rhino &middot; Blender</span></div>
+      <div class="hero-meta-item"><label>Team</label><span>Individual</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">4</span><span class="stat-l">Colorways</span></div>
+  <div class="stat-cell"><span class="stat-n">15″</span><span class="stat-l">Total Height</span></div>
+  <div class="stat-cell"><span class="stat-n">GAC</span><span class="stat-l">Filter Technology</span></div>
+  <div class="stat-cell"><span class="stat-n">0</span><span class="stat-l">Heavy Lifting Required</span></div>
+</div>
+
+<!-- 01 BRIEF -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev top">
+    <div>
+      <span class="lbl">01 &mdash; Brief</span>
+      <h2 class="h2">Design for a dorm.<br><em>Not a kitchen.</em></h2>
+      <p class="body">College dorm rooms don't have their own kitchen or bathroom, and students are left hauling heavy britas back and forth. The goal was a water filter that actually fits dorm life: portable, compact, and something you'd actually want to look at on a desk. The mechanism ensures no lifting - an essential problem space.</p>
+    </div>
+    <div class="frame rev">
+      <img src="hero.png" alt="Hydrip in dorm room context rendering">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 RESEARCH -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 &mdash; Research &amp; Market Analysis</span>
+    <h2 class="h2">The gap nobody filled.<br><em>Portable and filtered.</em></h2>
+    <p class="body">Mapping the existing market revealed a clear opportunity. Portable solutions lacked filtration. Filtered solutions were stationary and bulky. Nothing sat in the top-left — portable <em>and</em> technologically capable. That was the target.</p>
+  </div>
+
+  <div class="market-full rev">
+    <img src="market analysis.png" alt="Competitive landscape map — portability vs technology axis">
+  </div>
+  <p class="cap rev mt1">Competitive landscape — portability vs. technology. Gap identified: portable + filtered.</p>
+
+  <div class="full-frame rev" style="margin-top:3rem">
+    <img src="inspiration.png" alt="Inspiration board — luggage, Stanley tumblers, portable coolers, pastel swatches">
+  </div>
+  <p class="cap rev mt1">Inspiration — rolling luggage, portable coolers, Stanley colour culture, pastel consumer trends</p>
+</div>
+</section>
+
+<!-- 03 IDEATION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">03 &mdash; Ideation</span>
+    <h2 class="h2">Every filter form.<br><em>Then throw most of them out.</em></h2>
+    <p class="body">The first round of sketches explored the full space — pitchers, countertop units, backpack filters, modular dispensers. The recurring thread that kept appearing: a trolley format. Something with wheels. Something you roll, not carry.</p>
+  </div>
+
+  <div class="sketches rev">
+    <div class="sketch-frame">
+      <img src="IMG_4984.png" alt="Initial ideation sketches — wide exploration of water filter forms">
+    </div>
+    <div class="sketch-frame">
+      <img src="IMG_4985.png" alt="Specific ideation sketch">
+    </div>
+  </div>
+  <div class="full-frame rev" style="margin-top:3rem">
+    <img src="refined.png" alt="Final direction">
+  </div>
+  <p class="cap rev mt1">Final design direction</p>
+</div>
+</section>
+
+<!-- 04 DESIGN DEVELOPMENT -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">04 &mdash; Design Development</span>
+    <h2 class="h2">Luggage logic.<br><em>Applied to hydration.</em></h2>
+    <p class="body">The trolley format borrowed directly from carry-on luggage — extendable aluminium handle, rubber-coated wheels, a compact upright footprint. The extendable silicone pipe solves the refill problem: hook it to any sink tap, fill without lifting, detach and roll back.</p>
+  </div>
+
+  <div class="feature-bar rev">
+    <div class="feature-item">
+      <span class="feature-n">Trolley Handle</span>
+      <span class="feature-l">Mobility System</span>
+      <p>Extendable aluminium handle with T-grip lets you roll Hydrip to the bathroom and back without carrying it.</p>
+    </div>
+    <div class="feature-item">
+      <span class="feature-n">Silicone Pipe</span>
+      <span class="feature-l">Refill Mechanism</span>
+      <p>Coiled extendable pipe connects directly to a bathroom tap. Stretch, fill, coil back. No pouring, no lifting.</p>
+    </div>
+    <div class="feature-item">
+      <span class="feature-n">GAC Filter</span>
+      <span class="feature-l">Filtration</span>
+      <p>Granular activated carbon removes chlorine, odour, and common contaminants. Filter status indicated by LED dot on body.</p>
+    </div>
+    <div class="feature-item">
+      <span class="feature-n">Spigot Tap</span>
+      <span class="feature-l">Dispensing</span>
+      <p>Front-mounted spigot for clean, no-pour dispensing at desk height. No tipping the unit required.</p>
+    </div>
+  </div>
+
+  <div class="detail-row rev">
+    <div class="frame">
+      <img src="pipe close up.png" alt="Close-up of extendable silicone coil pipe and aluminium handle detail">
+    </div>
+    <div class="frame">
+      <img src="water filter.png" alt="Filter cartridge close-up — granular activated carbon filter pods">
+    </div>
+  </div>
+  <p class="cap rev mt1">Left: Extendable silicone pipe and handle detail &nbsp;/&nbsp; Right: GAC filter cartridge</p>
+</div>
+</div>
+
+<!-- 05 COLORWAYS -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">05 &mdash; Colorways</span>
+    <h2 class="h2 h2-w">Four colours.<br><em>One for every dorm personality.</em></h2>
+    <p class="body body-w">Hydrip comes in four pastel colourways — Baby Pink, Sage Green, Ice Blue, and Soft Lavender. Inspired by Stanley's colour-culture approach: a product people choose not just for function, but because it feels like theirs.</p>
+  </div>
+
+  <div class="color-gallery rev" style="margin-top:2.5rem;border-color:rgba(255,255,255,.08)">
+    <img src="ProductColors.png" alt="All four Hydrip colorways — pink, green, blue, lavender">
+  </div>
+  <p class="cap cap-dark rev mt1">Baby Pink &nbsp;/&nbsp; Sage Green &nbsp;/&nbsp; Ice Blue &nbsp;/&nbsp; Soft Lavender</p>
+</div>
+
+</div>
+
+<!-- 06 IN CONTEXT -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">06 &mdash; In Context</span>
+    <h2 class="h2 h2-w">At a desk.<br><em>Not an appliance store.</em></h2>
+    <p class="body body-w">Hydrip was designed to belong on a desk, not disappear under a sink. The in-context rendering shows it in a student setup — at home between a gaming chair and a monitor, as quiet and considered as everything else on the desk.</p>
+  </div>
+
+  <div style="margin-top:2.5rem;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)" class="rev">
+    <img src="Final Rendering.png" alt="Hydrip in dorm room context — desk with gaming setup" style="width:100%;display:block;">
+  </div>
+  <p class="cap cap-dark rev mt1">In-context render — Hydrip Ice Blue, student desk environment</p>
+</div>
+</div>
+
+<!-- 07 ANIMATION -->
+<div class="sec-tinted">
+  <div class="wrap">
+    <div class="rev">
+      <span class="lbl">07 &mdash; Animation</span>
+      <h2 class="h2">The design in motion.</h2>
+      <p class="body">An animation walkthrough of the Hydrip design — showing the product form.</p>
+    </div>
+  
+    <div class="video-frame rev">
+      <video controls>
+        <source src="Tamanna_Animation.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="cap cap-dark rev mt1">Hydrip — product animation</p>
+  </div>
+  </div>
+
+<!-- 09 REFLECTION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">08 &mdash; Reflection</span>
+    <h2 class="h2">What this project taught me.</h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card"><span class="r-n">01</span><h4>Designing for a specific person changes everything</h4><p>The moment I committed to a college student as the user, half the decisions made themselves. </p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Borrow from adjacent categories</h4><p>The trolley mechanic came from luggage, not water filtration. The best solution often lives in a completely different product category.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>Colour is a feature, not decoration</h4><p>Offering four colourways isn't cosmetic — it's the difference between a utility product and a product people choose. Stanley proved that. Hydrip borrows the same logic.</p></div>
+  </div>
+
+</div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">&larr; Portfolio</a>
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evergreen Connection — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#999;
+  --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
+  --card:#F3F0EA;--white:#fff;
+  --rose:#B5726A;--gold:#C9956A;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(14,10,10,.88) 0%,rgba(14,10,10,.55) 55%,rgba(14,10,10,.18) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.55)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:620px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+.full-img{width:100%;display:block;border-radius:12px;box-shadow:0 16px 60px rgba(0,0,0,.1)}
+
+/* SKETCHES */
+.sketches{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem}
+.sketch-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/3}
+.sketch-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* ITERATIONS GRID */
+.iter-proto{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.iter-proto img{width:100%;display:block}
+
+/* BEFORE/AFTER ITER */
+.iter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1.5rem}
+.iter-half{padding:2.2rem}
+.iter-half+.iter-half{border-left:1px solid var(--rule)}
+.iter-tag{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.9rem}
+.tag-b{background:#FDECEA;color:#9B2335}
+.tag-a{background:#EAF3EA;color:#266226}
+.iter-half p{font-size:.86rem;color:var(--mid);line-height:1.75;margin-bottom:.8rem}
+.iter-half .frame{margin-top:1rem}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.how-step{padding:2.2rem 1.8rem;border-right:1px solid var(--rule)}
+.how-step:last-child{border-right:none}
+.step-num{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;color:var(--olive);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.8rem}
+.step-title{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.step-desc{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* DIMENSION PANELS */
+.dim-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem}
+.dim-panel{border-radius:12px;overflow:hidden;border:1px solid var(--rule)}
+.dim-panel img{width:100%;display:block}
+
+/* FINAL GALLERY */
+.final-hero{width:100%;border-radius:12px;overflow:hidden;margin-bottom:1.25rem;border:1px solid var(--rule)}
+.final-hero img{width:100%;display:block;max-height:72vh;object-fit:cover;object-position:center}
+.final-pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.final-pair .frame{aspect-ratio:16/9;overflow:hidden}
+.final-pair .frame img{width:100%;height:100%;object-fit:cover}
+
+/* MARKETING AD */
+.ad-full{width:100%;border-radius:12px;overflow:hidden;margin-top:2.5rem;border:1px solid var(--rule)}
+.ad-full img{width:100%;display:block}
+
+/* DATA ROW */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* DESIGN LANGUAGE */
+.design-bar{display:flex;gap:0;margin-top:2.5rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.design-item{flex:1;padding:2rem 1.6rem;border-right:1px solid var(--rule);background:var(--card)}
+.design-item:last-child{border-right:none}
+.design-n{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:.35rem;display:block}
+.design-l{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.design-item p{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* REFLECTS */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* NEXTS */
+.nexts{list-style:none;margin-top:2rem}
+.nexts li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--mid);line-height:1.6}
+.nexts li span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.08em;flex-shrink:0;font-weight:700}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.8)}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
+  .g2,.g3,.g4,.iter,.reflects,.data-row,.how-steps,.sketches,.dim-row,.final-pair,.design-bar{grid-template-columns:1fr;gap:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .iter-half+.iter-half{border-left:none;border-top:1px solid var(--rule)}
+  .how-step{border-right:none;border-bottom:1px solid var(--rule)}
+  .how-step:last-child{border-bottom:none}
+  footer{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">Evergreen Connection &nbsp;/&nbsp; Industrial Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="ring main rendering edited.png" alt="Evergreen Connection engagement ring set">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1>Designing rings that carry<br><em>meaning beyond the moment.</em></h1>
+    <p class="hero-hmw">How might we design a his &amp; hers engagement ring set that enhances  symbolism and individuality — using nature as a shared visual language?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>Industrial Designer</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Rhino &middot; Blender &middot; Bambu Studio</span></div>
+      <div class="hero-meta-item"><label>Team</label><span>Individual</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">2</span><span class="stat-l">Rings in the set</span></div>
+  <div class="stat-cell"><span class="stat-n">8+</span><span class="stat-l">3D-printed prototypes</span></div>
+  <div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">Design motifs</span></div>
+  <div class="stat-cell"><span class="stat-n">SLA</span><span class="stat-l">Final print method</span></div>
+</div>
+
+<!-- 01 CHALLENGE -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev">
+    <div>
+      <span class="lbl">01 &mdash; The Challenge</span>
+      <h2 class="h2">Simple ring sets are often <em>familiar but forgettable.</em></h2>
+      <p class="body">Many couples choose rings that look alike but lack thoughtful decisions that enhance symbolism and individuality. The goal was to create a his &amp; hers ring set where both visually communicate and are connected to each other, while remaining wearable as everyday objects — not just ceremonial ones.</p>
+      <div class="q mt2">
+        <p>&ldquo;Rings should feel like they belong to you, not just to an occasion.&rdquo;</p>
+        <cite>Design brief &mdash; Des 421</cite>
+      </div>
+    </div>
+    <div>
+      <div class="frame"><img src="Ring on Hand Rendering.png" alt="Rings worn in context on hands"></div>
+      <p class="cap">In-context rendering &mdash; both rings worn together</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 CONCEPT -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 &mdash; Concept</span>
+    <h2 class="h2">Love, Bridge, Bloom.</h2>
+    <p class="body">The design language draws from nature. It brings together blooming leaves and gentle waves with a subtle bridge design that shows two lives meeting in the middle and growing as one.</p>
+  </div>
+
+  <div class="rev mt3">
+    <div class="frame frame-dark"><img src="ring rendering solid back.png" alt="Well lit rendering of the rings"></div>
+  </div>
+
+  </div>
+</div>
+</div>
+
+<!-- 03 IDEATION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">03 &mdash; Ideation</span>
+    <h2 class="h2">Over 30 concepts<br><em>before a direction emerged.</em></h2>
+    <p class="body">Initial sketches explored a wide range of gem cuts — radiant, trillion, kite, oval, asscher, and marquise — and ring forms spanning minimalist bands to ornate floral structures. The two directions (hers and his) were sketched independently and then reconciled into a unified aesthetic system.</p>
+  </div>
+
+  <div class="sketches rev">
+    <div class="sketch-frame">
+      <img src="IDeation.png" alt="Initial ideation sketches — hers and his concepts">
+    </div>
+    <div class="sketch-frame">
+      <img src="refined sketch.png" alt="Refined sketch with annotated gem cuts">
+    </div>
+  </div>
+  <p class="cap rev mt1">Left: Initial ideation &mdash; 30+ sketches exploring gem cuts and forms &nbsp;/&nbsp; Right: Refined sketch with final cut selection annotated</p>
+
+</div>
+</section>
+
+<!-- 04 PROTOTYPING -->
+<section class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">04 &mdash; Prototyping</span>
+    <h2 class="h2 h2-w">Eight prints.<br><em>Each one teaching something new.</em></h2>
+    <p class="body body-w">3D printing in PLA first allowed fast iteration on scale, proportion, and form, but the material could not capture fine surface detail. Switching to SLA resin in the final round resolved the intricate leaf prongs and baguette channels that PLA had blurred.</p>
+  </div>
+
+  <div class="rev mt3">
+    <div class="frame frame-dark"><img src="iterations.png" alt="All 3D printed prototype iterations with annotations"></div>
+    <p class="cap cap-dark mt1">PLA and SLA printed prototypes &mdash; annotated with issues resolved across rounds</p>
+  </div>
+
+  <div class="data-row rev mt4">
+    <div class="data-card">
+      <span class="data-n">PLA</span>
+      <span class="data-l">First material — fast but low on fine detail</span>
+    </div>
+    <div class="data-card">
+      <span class="data-n">SLA</span>
+      <span class="data-l">Final material — preserved intricate details</span>
+    </div>
+    <div class="data-card">
+      <span class="data-n">8+</span>
+      <span class="data-l">Prototype iterations</span>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- 05 DESIGN DECISIONS -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 &mdash; Design Decisions</span>
+    <h2 class="h2">Every detail<br><em>was intentional.</em></h2>
+    <p class="body">The final design resolved four key tensions: scale vs. delicacy, his vs. hers, ornamentation vs. wearability, and traditional vs. contemporary. Each decision has a rationale rooted in either function or meaning.</p>
+  </div>
+
+  <div class="design-bar rev mt3">
+    <div class="design-item">
+      <span class="design-l">Stone</span>
+      <span class="design-n">Marquise Cut</span>
+      <p>The pointed ends read as leaves, reinforcing the floral motif.</p>
+    </div>
+    <div class="design-item">
+      <span class="design-l">Setting</span>
+      <span class="design-n">Leaf Prongs</span>
+      <p>Marquise-shaped prongs add a botanical detail at the crown.</p>
+    </div>
+    <div class="design-item">
+      <span class="design-l">Band (Hers)</span>
+      <span class="design-n">Split Arch</span>
+      <p>The arch tapers into a slim shank running along the split.</p>
+    </div>
+    <div class="design-item">
+      <span class="design-l">Band (His)</span>
+      <span class="design-n">Diamond Scatter</span>
+      <p>A diagonal pattern of diamonds. Masculine complement to "hers".</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 06 DIMENSIONS -->
+<section class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">06 &mdash; Technical Specifications</span>
+    <h2 class="h2">Sized for real hands.<br><em>Built at true scale.</em></h2>
+    <p class="body">Both rings were designed to standard US ring sizes and validated through physical prototypes. </p>
+  </div>
+
+  <div class="dim-row rev">
+    <div class="dim-panel">
+      <img src="ring dimensions-01.png" alt="Women's ring dimensional drawings — size 8.5">
+    </div>
+    <div class="dim-panel">
+      <img src="ring dimensions-02.png" alt="Men's ring dimensional drawings — size 11.5">
+    </div>
+  </div>
+  <p class="cap rev mt1">Left: Women's ring &mdash; US Size 8.5 &nbsp;/&nbsp; Right: Men's ring &mdash; US Size 11.5</p>
+</div>
+</section>
+
+<!-- 07 FINAL DESIGN -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">07 &mdash; Final Design</span>
+    <h2 class="h2">Rose gold. Warm.<br><em>Grounded in nature.</em></h2>
+    <p class="body">The final visual language pairs the warmth of rose gold with botanical form. The pair reads as a set: distinct individuals, same world.</p>
+  </div>
+
+  <div class="final-hero rev mt3">
+    <img src="Marketing Ring ad.png" alt="Final rendering — in a spotlight with a call out">
+  </div>
+  <p class="cap rev">Hero render &mdash; Evergreen Connection set, rose gold with marquise diamond</p>
+
+</div>
+</section>
+
+
+<!-- 09 REFLECTION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">08 &mdash; Reflection</span>
+    <h2 class="h2">What this project taught me.</h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card"><span class="r-n">01</span><h4>Pairs are harder than singles</h4><p>Designing two objects as a set introduced a constraint that shaped every decision — each element had to work in isolation and in dialogue with the other ring.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Symbolism must be legible</h4><p>If the &ldquo;bridge&rdquo; arch needs explaining, it has failed as a design choice. The motif has to read immediately in the form, not in a caption.</p></div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">&larr; Portfolio</a>
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cultivar — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#999;
+  --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
+  --card:#F3F0EA;--white:#fff;
+  --sage:#6B7040;--brown:#5C3D2E;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:600px;
+  overflow:hidden;
+  margin-top:0;
+  padding-top:0;
+}.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.85) 0%,rgba(20,20,20,.5) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:620px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.frame-none{border:none;border-radius:0}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+
+/* FULL BLEED */
+.full-img{width:100%;display:block;border-radius:12px;box-shadow:0 16px 60px rgba(0,0,0,.1)}
+
+/* SKETCHES */
+.sketches{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.sketch-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/3}
+.sketch-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.how-step{padding:2.2rem 1.8rem;border-right:1px solid var(--rule)}
+.how-step:last-child{border-right:none}
+.step-num{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;color:var(--olive);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.8rem}
+.step-title{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.step-desc{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* APP SCREENS */
+.app-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;align-items:end}
+.app-screen{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/19;background:#111;border:1.5px solid rgba(0,0,0,.1);box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.app-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.flow-hint{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-top:.4rem;border-bottom:1px solid var(--rule);padding-bottom:.2rem}
+
+
+/* DATA ROW */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* REFLECTS */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* ITER */
+.iter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1.5rem}
+.iter-half{padding:2.2rem}
+.iter-half+.iter-half{border-left:1px solid var(--rule)}
+.iter-tag{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.9rem}
+.tag-b{background:#FDECEA;color:#9B2335}
+.tag-a{background:#EAF3EA;color:#266226}
+.iter-half p{font-size:.86rem;color:var(--mid);line-height:1.75;margin-bottom:.8rem}
+.iter-half .frame{margin-top:1rem}
+
+/* NEXTS */
+.nexts{list-style:none;margin-top:2rem}
+.nexts li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--mid);line-height:1.6}
+.nexts li span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.08em;flex-shrink:0;font-weight:700}
+
+/* DS NOTE */
+.ds-note{padding:1.2rem 1.5rem;border-left:2px solid var(--rule)}
+.ds-note strong{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.ds-note span{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* RENDER GALLERY */
+.render-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.render-gallery .frame{aspect-ratio:4/3;overflow:hidden}
+.render-gallery .frame img{width:100%;height:100%;object-fit:cover}
+
+/* METHOD BAR */
+.method-bar{display:flex;gap:0;margin-top:2rem;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.method-item{flex:1;padding:1.5rem;border-right:1px solid var(--rule);background:var(--card)}
+.method-item:last-child{border-right:none}
+.method-n{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;color:var(--olive);display:block;line-height:1}
+.method-l{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* PROTO FEATURED */
+.proto-featured{display:grid;grid-template-columns:.7fr 1.3fr;gap:1.5rem;align-items:stretch}
+.proto-card{display:flex;flex-direction:column;border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.proto-card-img{overflow:hidden;background:var(--card)}
+.proto-card-img img{width:100%;height:100%;object-fit:cover}
+.proto-card-info{padding:1.2rem}
+.proto-card-info h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;color:var(--ink);margin-bottom:.3rem}
+.proto-card-info p{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* SPATIAL */
+.spatial-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.spatial-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:3/4}
+.spatial-frame img{width:100%;height:100%;object-fit:cover}
+
+/* ORTHO VIEWS */
+.ortho-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.ortho-cell .frame{aspect-ratio:1/1;overflow:hidden}
+.ortho-cell .frame img{width:100%;height:100%;object-fit:cover}
+.ortho-label{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-top:.4rem}
+
+/* PROJECT LINK */
+.project-link{display:inline-flex;align-items:center;gap:.6rem;font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:var(--olive);text-decoration:none;border:1px solid var(--olive);padding:.55rem 1.1rem;border-radius:4px;transition:all .2s;margin-top:1.5rem}
+.project-link:hover{background:var(--olive);color:#fff}
+.project-link::before{content:"→";font-size:.65rem}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.8)}
+
+/* LOGO HERO */
+.logo-hero{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
+.logo-hero img{width:52px;height:52px;object-fit:contain;filter:brightness(0) invert(1)}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
+  .g2,.g3,.g4,.iter,.reflects,.data-row,.how-steps,.sketches,.app-row,.render-gallery,.proto-featured,.spatial-row,.ortho-row,.method-bar{grid-template-columns:1fr;gap:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .iter-half+.iter-half{border-left:none;border-top:1px solid var(--rule)}
+  .how-step{border-right:none;border-bottom:1px solid var(--rule)}
+  .how-step:last-child{border-bottom:none}
+  footer{padding:2rem 1.5rem}
+}
+.ortho-row{
+  display:grid;
+  grid-template-columns:180px 1fr 1fr 180px;
+  gap:1rem;
+  align-items:start;
+}
+
+.ortho-cell{
+  width:100%;
+}
+
+.ortho-cell .frame{
+  width:100%;
+  height:260px;
+  overflow:hidden;
+}
+
+.ortho-cell .frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+/* SCIENCE STAT */
+.science-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.science-stat{
+  background:var(--navy);
+  border-radius:12px;
+  padding:3rem;
+  text-align:center;
+}
+.science-n{font-family:'Fraunces',serif;font-size:4rem;font-weight:300;color:#fff;display:block;line-height:1}
+.science-l{font-size:.85rem;color:rgba(255,255,255,.55);margin-top:.6rem;display:block;line-height:1.5}
+.science-src{font-family:'Space Mono',monospace;font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.05em;margin-top:.8rem;display:block}
+.app-screen{
+  position:relative;
+  cursor:pointer;
+  border-radius:20px;
+  overflow:hidden;
+  aspect-ratio:9/19;
+  background:#111;
+  border:1.5px solid rgba(0,0,0,.1);
+  box-shadow:0 6px 24px rgba(0,0,0,.11);
+  transition:transform .3s, box-shadow .3s;
+}
+
+.app-screen:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 48px rgba(0,0,0,.18);
+}
+
+.app-screen img,
+.app-screen video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.app-screen video{
+  opacity:0;
+  transition:opacity .3s;
+}
+
+.app-screen:hover video{
+  opacity:1;
+}
+.state-row{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:.8rem;
+  margin-top:2.5rem;
+  align-items:start;
+}
+
+.state-row .app-screen{
+  max-width:200px;
+  margin:0 auto;
+  transform:none;
+  cursor:default;
+}
+
+.state-row .app-screen:hover{
+  transform:none;
+  box-shadow:0 6px 24px rgba(0,0,0,.11);
+}
+
+.state-row .app-screen img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+@media(max-width:900px){
+  .state-row{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+.iter-img{
+  text-align:center;
+  padding:20px 0;
+}
+
+.iter-img img{
+  width:300px;
+  display:block;
+}
+.iter-img{
+  display:flex;
+  justify-content:center;
+  margin-top:1rem;
+}
+.iter-img img{
+  border-radius:24px;
+}
+
+.iter-img{
+  overflow:hidden;
+  border-radius:17px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">Cultivar &nbsp;/&nbsp; IoT Product Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="contest different scene.png" alt="Cultivar system in context">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="logo-hero">
+      <img src="logo.png" alt="Cultivar logomark">
+    </div>
+    <h1>What if rare ingredients<br><em>could grow at home?</em></h1>
+    <p class="hero-hmw">How might we design an end-to-end growing system that helps users cultivate rare, high-value ingredients at home through an automated experience?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>Industrial &amp; UX Designer</span></div>
+      <div class="hero-meta-item"><label>Context</label><span>Senior Capstone Project</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Rhino &middot; Blender &middot; Figma &middot; Procreate</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">6</span><span class="stat-l">High-value ingredients</span></div>
+  <div class="stat-cell"><span class="stat-n">18</span><span class="stat-l">Users surveyed</span></div>
+  <div class="stat-cell"><span class="stat-n">2</span><span class="stat-l">Testing rounds</span></div>
+  <div class="stat-cell"><span class="stat-n">54&Prime;</span><span class="stat-l">Final system height</span></div>
+</div>
+
+<!-- 01 PROBLEM -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev">
+    <div>
+      <span class="lbl">01 &mdash; Problem</span>
+      <h2 class="h2">Rare ingredients are a luxury.<br><em>They shouldn&rsquo;t be.</em></h2>
+      <p class="body">Many rare or high-value ingredients are either difficult to find or sold at premium prices, limiting people&rsquo;s ability to explore different kinds of cooking. Growing food at home is increasingly popular, but existing systems require time, space, and expertise that most apartment dwellers don&rsquo;t have.</p>
+      <div class="q mt2">
+        <p>&ldquo;I don&rsquo;t have time to maintain plants every day.&rdquo;</p>
+        <cite>Survey respondent &mdash; college student</cite>
+      </div>
+      <div class="q mt2">
+        <p>&ldquo;I want to grow things I actually use in cooking.&rdquo;</p>
+        <cite>Survey respondent &mdash; college student</cite>
+      </div>
+    </div>
+    <div>
+      <div class="frame"><img src="problem graphic.png" alt="Research and problem overview"></div>
+      <p class="cap">Research summary &mdash; problem framing and user insights</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 04 THE SYSTEM -->
+<div class="sec-tinted">
+  <div class="wrap">
+    <div class="rev">
+      <span class="lbl">02 &mdash; Overview</span>
+      <h2 class="h2">Cultivar. Designed to disappear<br><em>into the home.</em></h2>
+      <p class="body">A horizontal hydroponic growing system with 4 individual plant pods and 2 enclosed mushroom pods, all on a 54&Prime; powder-coated aluminium frame. LED lighting, water circulation, and nutrient delivery are automated. The polycarbonate panels keep the interior clean and the growing environment controlled, reducing maintenance to an occasional top-up.</p>
+    </div>
+  
+    <div class="mt3 rev" style="border-radius:12px;overflow:hidden;box-shadow:0 16px 60px rgba(0,0,0,.08)">
+      <img src="in context.png" alt="Cultivar hero rendering" style="width:100%;display:block;">
+    </div>
+  
+    <div class="how-steps mt4 rev">
+      <div class="how-step">
+        <span class="step-num">01 &mdash; Grow</span>
+        <p class="step-title">Kratky passive hydroponics</p>
+        <p class="step-desc">Roots sit above a nutrient-rich water reservoir. As the plant grows, the water level drops, creating a natural air gap. No pumps or timers required for the plant pots.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">02 &mdash; Light</span>
+        <p class="step-title">35W integrated LED</p>
+        <p class="step-desc">A full-spectrum LED bar under the top panel provides consistent artificial daylight. Controlled through the app, it runs on a timed cycle without user input.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">03 &mdash; Harvest</span>
+        <p class="step-title">App-guided picking</p>
+        <p class="step-desc">The app tracks each plant&rsquo;s growth cycle and notifies when it&rsquo;s ready to harvest. An integrated ruler on the frame provides a quick visual reference.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">04 &mdash; Cook</span>
+        <p class="step-title">Recipe suggestions follow</p>
+        <p class="step-desc">After logging a harvest, the app surfaces contextual recipes that use the exact ingredient just picked &mdash; closing the loop between growing and cooking.</p>
+      </div>
+    </div>
+  
+    <div class="g2 mt4 rev top">
+      <div>
+        <h2 class="h2" style="font-size:1.5rem;">Starter foods offered.</h2>
+        <p class="body">Each crop was selected for being either hard to find in regular stores, sold at premium prices, or both. The system grows what actually changes what&rsquo;s on the plate.</p>
+        <div class="mt2">
+          <div class="ds-note"><strong>Hydroponic pots</strong><span>Ají Charapita (pepper) &middot; Ground cherry (physalis) &middot; Thai basil &middot; Vietnamese coriander</span></div>
+          <div class="ds-note mt2"><strong>Mushroom pods</strong><span>Pink oyster mushroom &middot; Lion&rsquo;s mane mushroom</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="frame"><img src="plants rendered in.png" alt="Materials and food options exploded view"></div>
+        <p class="cap"> Concept rendering showing selected crops</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<!-- 02 RESEARCH -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">03 &mdash; Research</span>
+    <h2 class="h2">The issue wasn&rsquo;t growing food.<br><em>It was growing the right food.</em></h2>
+    <p class="body">18 college students were surveyed. As low-to-middle income individuals balancing busy schedules and small apartments, they reflected the real barriers to home growing. The findings reframed the problem entirely &mdash; away from food insecurity, toward food quality and access to ingredients that actually matter in the kitchen.</p>
+  </div>
+  <div class="science-row" style="margin-top:2.5rem;">
+    <div class="science-stat">
+      <span class="science-n">94%</span>
+      <span class="science-l">Said fresh, healthy food is unaffordable or only sometimes affordable</span>
+    </div>
+  
+    <div class="science-stat">
+      <span class="science-n">78%</span>
+      <span class="science-l">Have no access to outdoor growing space</span>
+    </div>
+  
+    <div class="science-stat">
+      <span class="science-n">72%</span>
+      <span class="science-l">Said frequent cleaning would make them quit a home-growing system</span>
+    </div>
+  </div>
+
+
+  <div class="mt3 rev">
+    <div class="frame" style="border-radius:12px;">
+      <img src="IMG_0204.jpeg" alt="Research mind map">
+    </div>
+    <p class="cap">Initial research mind map &mdash; foods to grow, materials, dimensions, farming methods</p>
+  </div>
+</div>
+</div>
+
+<!-- 03 DESIGN DIRECTION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">04 &mdash; Design Direction</span>
+    <h2 class="h2">Horizontal beats vertical<br><em>for small spaces.</em></h2>
+    <p class="body">Three layout directions were explored: vertical, horizontal, and compact/stackable. Vertical maximised plant density but required height that doesn&rsquo;t fit apartments. Compact/stackable added complexity users would abandon. Horizontal &mdash; low, surface-based, accessible &mdash; won. It looks like furniture, not farm equipment.</p>
+  </div>
+
+  <div class="sketches rev">
+    <div>
+      <div class="sketch-frame"><img src="vertical.png" alt="Vertical layout sketches"></div>
+      <p class="cap">Vertical concepts &mdash; height became the deal-breaker</p>
+    </div>
+    <div>
+      <div class="sketch-frame"><img src="horizontal.png" alt="Horizontal layout sketches"></div>
+      <p class="cap">Horizontal concepts &mdash; selected direction</p>
+    </div>
+    <div>
+      <div class="sketch-frame"><img src="Compant.png" alt="Compact stackable sketches"></div>
+      <p class="cap">Compact/stackable &mdash; flexible but too complex</p>
+    </div>
+  </div>
+
+  <div class="g2 mt4 rev top">
+    <div>
+      <h2 class="h2" style="font-size:1.5rem;">The mushroom problem.</h2>
+      <p class="body">Different plants need radically different environments. Thai basil, specialty peppers, and heirloom tomatoes grow under one set of conditions. Lion&rsquo;s mane and pink oyster mushrooms need high humidity, lower light, and controlled airflow &mdash; the opposite of everything else.</p>
+      <p class="body mt2">Solution: a <strong>separate, enclosed mushroom pod</strong> at the base of the system. Each environment is independently optimised. Neither crop is compromised.</p>
+    </div>
+    <div>
+      <div class="frame"><img src="refined.png" alt="Refined concept sketch showing pod system and mushroom chamber"></div>
+      <p class="cap">Refined concept &mdash; modular pods + separate mushroom chamber</p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<!-- 05 INDUSTRIAL DESIGN PROCESS -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 &mdash; Industrial Design Process</span>
+    <h2 class="h2">Research-led, sketch-first,<br><em>tested by making.</em></h2>
+    <p class="body">The design evolved across four expert check-ins, two CAD iterations, full-scale spatial testing, and a 1:4 scale 3D-printed prototype. Every decision was grounded in one question: does this make the system easier to live with?</p>
+  </div>
+
+  <!-- CAD iterations -->
+  <div class="g2 mt3 rev top">
+    <div>
+      <div class="frame"><img src="System rendering 1.png" alt="CAD iteration 1 angled view"></div>
+      <p class="cap">CAD iteration 1 &mdash; first digital model, however there was issues with open structure allowing dirt ingress</p>
+    </div>
+    <div>
+      <div class="frame"><img src="remodel rendering.png" alt="CAD iteration 2 with enclosed panels"></div>
+      <p class="cap">CAD iteration 2 &mdash; enclosed polycarbonate panels added, though additional features were needed for water protection and measurement. </p>
+    </div>
+  </div>
+
+  <!-- Spatial testing -->
+  <div class="mt4 rev">
+    <span class="lbl">Spatial Testing</span>
+    <h2 class="h2" style="font-size:1.5rem;">Full-scale before committing to form.</h2>
+    <p class="body">A full-scale mockup was taped directly onto a wall to test how the system fits in a real apartment environment. An average-sized user (5&prime;10&Prime;) tested standing, sitting, and reaching to harvest. This confirmed 54&Prime; as the right height &mdash; comfortable reach without back strain, low enough to feel like furniture rather than a machine.</p>
+  </div>
+
+  <div class="spatial-row rev">
+    <div>
+      <div class="spatial-frame"><img src="standing.jpeg" alt="Spatial testing standing"></div>
+      <p class="cap">Standing &mdash; comfortable reach confirmed</p>
+    </div>
+    <div>
+      <div class="spatial-frame"><img src="sitting.jpeg" alt="Spatial testing sitting"></div>
+      <p class="cap">Sitting &mdash; no forward lean required</p>
+    </div>
+    <div>
+      <div class="spatial-frame"><img src="harvesting.jpeg" alt="Spatial testing harvesting"></div>
+      <p class="cap">Harvesting &mdash; natural reach, no strain</p>
+    </div>
+  </div>
+
+  <!-- 1:4 prototype -->
+  <div class="mt4 rev">
+    <span class="lbl">1:4 Scale Prototype</span>
+    <h2 class="h2" style="font-size:1.5rem;">Three versions.<br><em>Each one closer to the final form.</em></h2>
+    <p class="body">A 1:4 scale prototype was 3D-printed to evaluate proportions, spacing between pods, and component assembly. It validated the structural logic and revealed that clear polycarbonate panels were critical &mdash; the open version felt unfinished and let in debris. Due to unavailability of clear PLA filament at the time, the outside panels were not printed in the prototype.</p>
+  </div>
+
+  <div class="proto-featured rev" style="margin-top:2rem;">
+    <div class="proto-card">
+      <div class="proto-card-img" style="height:320px;"><img src="side proto.png" alt="1:4 prototype side view"></div>
+      <div class="proto-card-info">
+        <h4>Side View</h4>
+        <p>LED canopy clearance and depth proportions evaluated from this angle.</p>
+      </div>
+    </div>
+    <div class="proto-card">
+      <div class="proto-card-img" style="height:320px;"><img src="pots removed.png" alt="1:4 prototype angled view with parts"></div>
+      <div class="proto-card-info">
+        <h4>Angled View &mdash; Components Out</h4>
+        <p>Pots removed to test how easily components slot in and out. Pod spacing and upper tray clearance were refined based on this.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="render-gallery rev" style="margin-top:1.5rem;">
+    <div class="frame"><img src="front.png" alt="1:4 prototype front"></div>
+    <div class="frame"><img src="no pots.png" alt="Pots removed shot"></div>
+    <div class="frame"><img src="angled.png" alt="Angled shot"></div>
+  </div>
+  <p class="cap" style="margin-top:.7rem">1:4 scale prototype &mdash; front view, assembled, and pot collar detail</p>
+</div>
+</section>
+
+<!-- 06 FINAL RENDERINGS -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">06 &mdash; Final Design</span>
+    <h2 class="h2 h2-w">At home everywhere<br><em>it needs to be.</em></h2>
+    <p class="body body-w">Cultivar was designed to integrate into any living space without announcing itself. The dark powder-coated aluminium frame, warm wood reed backdrop, and white HDPE pods read as considered objects &mdash; something that belongs in a kitchen or living room, not a greenhouse.</p>
+  </div>
+
+  <div class="rev" style="margin-top:2.5rem;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
+    <img src="w person plants rendered in.png" alt="Cultivar in living room context" style="width:100%;display:block;">
+  </div>
+  <p class="cap cap-dark" style="margin-top:.7rem">Cultivar in a living room environment</p>
+
+  <!-- Orthographic -->
+  <div class="mt3 rev">
+    <div class="ortho-row">
+      <div class="ortho-cell">
+        <div class="frame frame-dark"><img src="right rendering .png" alt="Right view" style="width:100%;display:block;"></div>
+        <p class="ortho-label">Right</p>
+      </div>
+      <div class="ortho-cell">
+        <div class="frame frame-dark"><img src="back rendering .png" alt="Back view" style="width:100%;display:block;"></div>
+        <p class="ortho-label">Back</p>
+      </div>
+      <div class="ortho-cell">
+        <div class="frame frame-dark"><img src="front rendering 1.png" alt="Front view" style="width:100%;display:block;"></div>
+        <p class="ortho-label">Front</p>
+      </div>
+      <div class="ortho-cell">
+        <div class="frame frame-dark"><img src="left rendering .png" alt="Left view" style="width:100%;display:block;"></div>
+        <p class="ortho-label">Left</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Materials exploded -->
+  <div class="mt3 rev">
+    <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
+      <img src="exploded.png" alt="Final materials exploded rendering" style="width:100%;display:block;">
+    </div>
+    <p class="cap cap-dark" style="margin-top:.7rem">Exploded view &mdash; all materials and components labelled</p>
+  </div>
+
+  <div class="mt3 rev">
+    <div class="g4">
+      <div class="card card-dark"><h4>Powder-coated aluminium</h4><p>Structural frame. Lightweight, durable, and moisture-resistant for a hydroponic environment.</p></div>
+      <div class="card card-dark"><h4>Opaque HDPE</h4><p>Plant pots and mushroom pod drawers. Food-safe, blocks light to prevent algae growth in the water reservoir.</p></div>
+      <div class="card card-dark"><h4>Polycarbonate panels</h4><p>Side and front enclosure. Transparent for visibility, impact-resistant, and easier to wipe clean than glass.</p></div>
+      <div class="card card-dark"><h4>Wood + PLA reed backdrop</h4><p>The scalloped wood reed panel diffuses light upward and adds warmth that prevents the system from feeling clinical.</p></div>
+    </div>
+  </div>
+
+  <div class="g2 mt3 rev">
+  
+    <div>
+      <div class="frame frame-dark">
+        <img src="pods.pots rendering.png" alt="HDPE hydroponic pots and pods">
+      </div>
+      <p class="cap cap-dark" style="margin-top:.5rem">
+        Individual components &mdash; HDPE hydroponic pot and mushroom pod drawer
+      </p>
+    </div>
+  
+    <div>
+      <div class="frame frame-dark">
+        <img src="close up.png" alt="Pots close up">
+      </div>
+      <p class="cap cap-dark" style="margin-top:.5rem">
+        Pots close up
+      </p>
+    </div>
+  
+  </div>
+</div>
+</div>
+
+<!-- 07 UX DESIGN -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">07 &mdash; UX Design</span>
+    <h2 class="h2">Control without complexity.<br><em>The app completes the system.</em></h2>
+    <p class="body">Growing rare ingredients requires knowledge most users don&rsquo;t have. The companion app removes that barrier entirely &mdash; translating what&rsquo;s happening inside the system into plain language, and connecting each harvest to a recipe. The goal: users are only prompted when something actually needs their attention.</p>
+  </div>
+
+  <!-- Feature mapping -->
+  <div class="mt3 rev">
+    <div class="frame"><img src="table.png" alt="Feature mapping table: system capability to user need to app feature"></div>
+    <p class="cap">Feature mapping &mdash; system capability → user need → app feature</p>
+  </div>
+
+  <!-- IA -->
+  <div class="mt4 rev">
+    <span class="lbl">Information Architecture</span>
+    <h2 class="h2" style="font-size:1.5rem;">Five sections. One clear path.</h2>
+    <p class="body">The app is organised around what users actually need to do: check the system, track their harvest, manage tasks, find recipes, and adjust settings. History and harvest logging are nested within their parent sections to reduce top-level clutter.</p>
+  </div>
+  <div class="mt2 rev">
+    <div class="frame"><img src="IA Food growing.png" alt="Information architecture diagram"></div>
+    <p class="cap">Information architecture &mdash; Home, Harvest, Tasks, Recipes, Profile</p>
+  </div>
+
+  <!-- User flow -->
+  <div class="mt4 rev">
+    <div class="frame"><img src="User flow food growing.png" alt="User flow diagram"></div>
+    <p class="cap">User flow &mdash; home → tasks → harvest log → recipes</p>
+  </div>
+
+  <!-- Low-fi -->
+  <div class="mt4 rev">
+    <span class="lbl">Sketches &amp; Wireframes</span>
+    <h2 class="h2" style="font-size:1.5rem;">Low-fi first. Decisions before pixels.</h2>
+    <p class="body">Hand sketches explored layout directions and interaction patterns across all five screens. Selected elements (highlighted in red in the annotated wireframes) were carried forward based on how clearly they organised information and guided users through tasks. This process resolved structure before any visual design work began.</p>
+  </div>
+
+  <div class="g2 mt3 rev top">
+    <div>
+      <div class="frame"><img src="wireframes.png" alt="Hand-drawn wireframe sketches"></div>
+      <p class="cap">Initial wireframe sketches &mdash; homepage, harvest, tasks, recipes</p>
+    </div>
+    <div>
+      <div class="frame"><img src="low fidelity.png" alt="Low fidelity digital wireframes"></div>
+      <p class="cap">Low-fi digital wireframes</p>
+    </div>
+  </div>
+
+  <!-- Testing Round 1 -->
+  <div class="mt4 rev">
+    <span class="lbl">Testing Round 1</span>
+    <h2 class="h2" style="font-size:1.5rem;">Icons without labels<br><em>caused confusion.</em></h2>
+    <p class="body">3 moderated think-aloud tests with the mid-fidelity prototype revealed two core issues.</p>
+  </div>
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Before</span>
+      <p>No icon labels in the bottom navigation bar. Users had to guess what each icon represented &mdash; the harvest icon and history icon were visually similar enough to cause consistent confusion in all three tests.</p>
+  
+      <div class="frame iter-img">
+        <img src="HomePage.png" alt="Before: icons without labels">
+      </div>
+    </div>
+  
+    <div class="iter-half">
+      <span class="iter-tag tag-a">After</span>
+      <p>Labels added to all navigation icons. Harvest icon redesigned to a plant/leaf motif, clearly distinguishing it from the clock-based history icon. Navigation confidence improved across all users.</p>
+  
+      <div class="frame iter-img">
+        <img src="HomePage hifi.png" alt="After: labeled navigation icons">
+      </div>
+    </div>
+  </div>
+
+  <!-- Testing Round 2 -->
+  <div class="mt4 rev">
+    <span class="lbl">Testing Round 2</span>
+    <h2 class="h2" style="font-size:1.5rem;">All tasks at once<br><em>felt overwhelming.</em></h2>
+    <p class="body">4 unmoderated tests with the high-fidelity prototype found one persistent pain point.</p>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Before</span>
+      <p>Single-page task list showing every task from today through the coming weeks in one scrollable view. Users felt that the visual weight of the list triggered anxiety rather than clarity.</p>
+  
+      <div class="frame iter-img">
+        <img src="Tasks.png" alt="Before: overwhelming task list">
+      </div>
+    </div>
+  
+    <div class="iter-half">
+      <span class="iter-tag tag-a">After</span>
+      <p>Filter tabs &mdash; Today, This Week, Next Week, and No Action Yet &mdash; break the task list into digestible views. Users can focus on what actually needs attention now and ignore everything else until it becomes relevant.</p>
+  
+      <div class="frame iter-img">
+        <img src="Tasks hifi.png" alt="After: filtered task tabs">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 HIGH FIDELITY -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">08 &mdash; Final App</span>
+    <h2 class="h2">Sage green. Calm.<br><em>Only ask when it matters.</em></h2>
+    <p class="body">The visual language was built around the idea that Cultivar should feel calming and close to nature. </p>
+  </div>
+
+  <div class="g2 mt3 rev top">
+    <div>
+      <div class="frame"><img src="style tile.png" alt="App style tile"></div>
+    </div>
+    <div>
+      <div class="frame"><img src="ux rendering.png" alt="Floating phones"></div>
+    </div>
+  </div>
+
+  
+
+
+<!-- App screens grid / Hover Videos -->
+<div class="mt4 rev">
+  <h2 class="h2" style="font-size:1.5rem;">Final Experience</em></h2>
+</div>
+<span class="flow-hint">Hover over each screen to see the flow in motion</span>
+<div class="app-row rev mt3">
+  <div class="app-screen">
+    <img src="flowHomePage.png" alt="App homepage screen">
+    <video src="log harvest.mp4" muted loop playsinline></video>
+  </div>
+
+  <div class="app-screen">
+    <img src="Recipe Page.png" alt="App harvest screen">
+    <video src="view reciped.mp4" muted loop playsinline></video>
+  </div>
+
+  <div class="app-screen">
+    <img src="new Tasks.png" alt="App tasks screen">
+    <video src="clear task.mp4" muted loop playsinline></video>
+  </div>
+
+  <div class="app-screen">
+    <img src="HomePage-1.png" alt="App recipes screen">
+    <video src="review changes.mp4" muted loop playsinline></video>
+  </div>
+</div>
+
+<!-- State Screens --> 
+<div class="mt4 rev">
+  <h2 class="h2" style="font-size:1.5rem;">State Designs</h2>
+    <p class="body">These were introduced to reduce uncertainty and minimize the need for constant user involvement.</p>
+</div>
+<div class="state-row rev mt3">
+  <div> 
+    <div class="app-screen">
+      <img src="Something needs attention.png" alt="System Down"> 
+    </div> 
+    <p class="cap" style="margin-top:.5rem">System Down</p> 
+  </div> 
+
+  <div> 
+    <div class="app-screen">
+      <img src="Empty Tasks.png" alt="No tasks"> 
+    </div> 
+    <p class="cap" style="margin-top:.5rem">No Tasks</p> 
+  </div> 
+
+  <div> 
+    <div class="app-screen"> 
+      <img src="Nothin to harvest.png" alt="Nothing is ready to harvest"> 
+    </div>
+    <p class="cap" style="margin-top:.5rem">Nothing to Harvest</p> 
+  </div> 
+
+  <div> 
+    <div class="app-screen">
+      <img src="Logged Success.png" alt="Harvest logged">
+    </div> 
+    <p class="cap" style="margin-top:.5rem">Harvest Logged</p> 
+  </div> 
+  <div> 
+    <div class="app-screen"> 
+      <img src="Notifications.png" alt="Notification"> 
+    </div>
+    <p class="cap" style="margin-top:.5rem">Harvest Notification</p> 
+  </div>
+</div>
+
+</div>
+</div>
+<!-- 09 REFLECTION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">09 &mdash; Reflection</span>
+    <h2 class="h2">What this project taught me.</h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card"><span class="r-n">01</span><h4>Reframing the problem changed everything</h4><p>Shifting to &ldquo;food quality&rdquo; opened up a real user: the food-curious person in a small apartment who wants to cook with better ingredients.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Physical constraints are permanent</h4><p>A screen can be updated after launch. A physical form cannot. Every material choice, structural decision, and dimension felt more consequential than any UI choice.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>Maintenance is a design decision</h4><p>Enclosure wasn&rsquo;t a nice-to-have &mdash; it was a retention mechanism. The design has to respect the real constraints of people&rsquo;s lives.</p></div>
+    <div class="r-card"><span class="r-n">04</span><h4>The physical and digital are one product</h4><p>The hardware grows the food. The app makes it usable. Designing both as a single connected system changed how I thought about the boundaries of a &ldquo;product.&rdquo;</p></div>
+    <div class="r-card"><span class="r-n">05</span><h4>Perception is a design material</h4><p>Making Cultivar look like furniture instead of farm equipment was the difference between adoption and abandonment. How a product looks in a home determines whether it stays there.</p></div>
+    <div class="r-card"><span class="r-n">06</span><h4>Testing at scale, not at screen</h4><p>Taping a full-scale mockup to a wall to test ergonomics before building anything was one of the most useful things I did. It caught a height problem early.</p></div>
+  </div>
+
+  <!-- Next steps -->
+  <div class="mt4 rev">
+    <span class="lbl">Next Steps</span>
+    <h2 class="h2" style="font-size:1.5rem;">What comes next.</h2>
+  </div>
+  <ul class="nexts rev">
+    <li><span>Next &rarr;</span>Build and test a full-scale functional prototype over 4&ndash;6 weeks in a real apartment environment to validate the growing system end-to-end.</li>
+    <li><span>Next &rarr;</span>Conduct manufacturing cost analysis to establish a realistic retail price target accessible to the target user (students, young professionals).</li>
+    <li><span>Next &rarr;</span>Expand the ingredient library beyond the initial 6 crops &mdash; particularly more mushroom varieties and herbs from South and Southeast Asian cuisines.</li>
+    <li><span>Next &rarr;</span>Develop a cleaner onboarding flow within the app to reduce the knowledge barrier for first-time users setting up their initial plant profiles.</li>
+    <li><span>Next &rarr;</span>Explore increased automation &mdash; nutrient dosing sensors and automated top-up to push maintenance time below 15 minutes per week.</li>
+  </ul>
+</div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">&larr; Portfolio</a>
+
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+document.querySelectorAll('.app-screen').forEach(screen => {
+  const v = screen.querySelector('video');
+  if(!v) return;
+
+  screen.addEventListener('mouseenter', () => {
+    v.play();
+  });
+
+  screen.addEventListener('mouseleave', () => {
+    v.pause();
+    v.currentTime = 0;
+  });
+});
+</script>
+</body>
+</html>

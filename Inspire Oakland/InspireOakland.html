@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspire Oakland — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#FAF8F4;
+  --ink:#141414;
+  --mid:#555;
+  --dim:#999;
+  --rule:#E4E0D8;
+  --olive:#6B7040;
+  --navy:#2C3E6B;
+  --card:#F3F0EA;
+  --white:#fff;
+  /* Project accent colors from the artwork palette */
+  --orange:#F15E22;
+  --purple:#4E3996;
+  --deep-navy:#1F1A56;
+}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.88) 0%,rgba(20,20,20,.55) 55%,rgba(20,20,20,.18) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.lbl-orange{color:#F18D1A}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+.q-orange{border-color:var(--orange)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.frame-none{border:none;border-radius:0}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+.full-img{width:100%;display:block;border-radius:12px}
+
+/* COLOR PALETTE DISPLAY */
+.palette{display:flex;gap:0;margin-top:2.5rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.palette-swatch{flex:1;aspect-ratio:1/1.4;position:relative}
+.palette-swatch-inner{width:100%;height:100%}
+.palette-hex{position:absolute;bottom:0;left:0;right:0;padding:.5rem .4rem;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.04em;text-align:center;background:rgba(0,0,0,.35);color:rgba(255,255,255,.7)}
+
+/* MOODBOARD */
+.moodboard-frame{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.moodboard-frame img{width:100%;display:block}
+
+/* ITERATION VERSIONS */
+.iter-versions{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.iter-v{border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.iter-v-img{overflow:hidden;background:var(--card)}
+.iter-v-img img{width:100%;display:block}
+.iter-v-info{padding:1.4rem 1.6rem}
+.iter-v-tag{font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.6rem}
+.tag-v1{background:#F3F0EA;color:var(--olive)}
+.tag-v2{background:#EFF0F8;color:var(--navy)}
+.tag-selected{background:#EAF3EA;color:#266226}
+.iter-v-info h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;color:var(--ink);margin-bottom:.35rem}
+.iter-v-info p{font-size:.8rem;color:var(--mid);line-height:1.7}
+
+/* RESIZES GRID */
+.resize-grid {
+  display: grid;
+  grid-template-columns: 250px 800px;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  align-items: center;
+}
+
+.resize-grid .resize-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.resize-grid .frame {
+  width: 100%;
+  overflow: hidden;
+}
+
+.resize-grid .frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.resize-grid .cap {
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* OUTCOME / PHOTO COLLAGE */
+.photo-collage{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.photo-collage .frame{aspect-ratio:4/3;overflow:hidden}
+.photo-collage .frame img{width:100%;height:100%;object-fit:cover}
+.photo-collage .frame-tall{aspect-ratio:3/4;overflow:hidden}
+.photo-collage .frame-tall img{width:100%;height:100%;object-fit:cover}
+
+/* AWARD BLOCK */
+.award-block{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;margin-top:3rem}
+.award-img .frame{overflow:hidden;border-radius:8px}
+.award-img .frame img{width:100%;display:block}
+.award-text{padding:2rem;background:var(--card);border:1px solid var(--rule);border-radius:8px}
+.award-text .lbl{margin-bottom:1rem}
+.award-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;line-height:1.2;color:var(--ink);margin-bottom:.6rem}
+.award-title em{font-style:italic;color:var(--mid)}
+.award-body{font-size:.85rem;color:var(--mid);line-height:1.8}
+.award-sig{margin-top:1.2rem;display:flex;gap:2rem;flex-wrap:wrap}
+.award-sig-item label{display:block;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:.15rem}
+.award-sig-item span{font-size:.8rem;color:var(--ink);font-weight:500}
+
+/* DATA ROW */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* REFLECTS */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* BILLBOARD FULL */
+.billboard-full{width:100%;border-radius:12px;overflow:hidden;margin-top:2.5rem;border:1px solid var(--rule)}
+.billboard-full img{width:100%;display:block}
+
+/* BRIDGEGOOD TAG */
+.bg-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .9rem;border-radius:4px;background:#1F1A56;color:#F18D1A;margin-bottom:1.5rem}
+
+/* FOOTER */
+footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.4);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+.f-links a:hover{color:#fff}
+
+/* SCROLL REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
+  .g2,.g3,.g4,.iter-versions,.resize-grid,.award-block,.reflects,.data-row,.photo-collage{grid-template-columns:1fr;gap:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .palette{flex-wrap:wrap}
+  .palette-swatch{flex:0 0 calc(33.33% - 4px)}
+  footer{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body id="top">
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">Inspire Oakland / Visual Communication Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="billboard mockup.png" alt="Inspire Oakland billboard at dusk">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1>Inspire Oakland<br><em>The Foreigner's Perspective.</em></h1>
+    <p class="hero-hmw">Design a billboard that celebrates Oakland's creative spirit — through the eyes of someone who arrived here and found a city unlike any other.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>Visual Designer, Illustrator</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Procreate · Adobe Illustrator</span></div>
+      <div class="hero-meta-item"><label>Team</label><span>Individual</span></div>
+      <div class="hero-meta-item"><label>Funded By</label><span>BRIDGEGOOD</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">Top 20</span><span class="stat-l">Designer out of 800+ students</span></div>
+  <div class="stat-cell"><span class="stat-n">1st</span><span class="stat-l"> Place out of 20 designers</span></div>
+  <div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">Deliverable formats — Billboard, LED, In-App</span></div>
+  <div class="stat-cell"><span class="stat-n">Live</span><span class="stat-l">Printed on a real Oakland billboard</span></div>
+</div>
+
+<!-- 01 BRIEF -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev top">
+    <div>
+      <span class="lbl">01 — Brief</span>
+      <h2 class="h2">Design a billboard<br><em>that speaks for Oakland.</em></h2>
+      <p class="body">BRIDGEGOOD's annual Inspire Oakland challenge invites student designers across the Bay Area to create a campaign celebrating the city's culture.</p>
+      <p class="body mt2">My angle was personal. As someone who came to Oakland from somewhere else, the city hit differently. The energy, the BART train, the graffiti walls, the jazz, the bridge at sunset — none of it was what I expected. That became the concept: <em>the foreigner's perspective</em>.</p>
+      <div class="q mt3">
+        <p>"What about Oakland inspires you?"</p>
+        <cite>BRIDGEGOOD design prompt</cite>
+      </div>
+    </div>
+    <div>
+      <div class="frame">
+        <img src="led2.PNG" alt="Inspire Oakland billboard on OUTFRONT display">
+      </div>
+      <p class="cap">Final LED — displayed in Oakland, CA</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 RESEARCH + MOODBOARD -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 — Research &amp; Moodboard</span>
+    <h2 class="h2">What makes Oakland,<br><em>Oakland?</em></h2>
+    <p class="body">Before touching a brush, I researched what outsiders and locals both associate with Oakland: the Bay Bridge, BART, graffiti culture, jazz roots, a wildly diverse community of artists and workers. </p>
+  </div>
+
+  <div class="moodboard-frame rev">
+    <img src="moodboard.png" alt="Research moodboard — Oakland imagery including BART, Bay Bridge, graffiti, jazz musicians, sunsets">
+  </div>
+  <p class="cap rev" style="margin-top:.7rem">Research moodboard — Oakland skyline, BART, Bay Bridge, graffiti murals, jazz musicians</p>
+
+  <div class="g3 mt4 rev">
+    <div class="card">
+      <h4>Transit as Identity</h4>
+      <p>BART isn't just transport — it's the connective tissue of the Bay. The train appears in the final artwork as a symbol of movement and access.</p>
+    </div>
+    <div class="card">
+      <h4>Graffiti as Voice</h4>
+      <p>Oakland's street art tradition is documentation, not vandalism. The graffiti wall in the composition sits at ground level — where the city actually lives.</p>
+    </div>
+    <div class="card">
+      <h4>Music as Community</h4>
+      <p>From jazz to hip-hop to classical, Oakland's musicians represent the city's multiculturalism. The illustration puts performers of every genre side by side.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 03 COLOR PALETTE -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">03 — Color Palette</span>
+    <h2 class="h2">A sunset that<br><em>refuses to be subtle.</em></h2>
+    <p class="body">The palette came directly from Oakland's sky at golden hour — deep oranges bleeding into magenta, the purple of the Bay Bridge silhouette at dusk, the navy of BART station shadows. Every color had a source in the city.</p>
+  </div>
+
+  <div class="palette rev mt3">
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#F18D1A"></div>
+      <span class="palette-hex">#F18D1A</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#F15E22"></div>
+      <span class="palette-hex">#F15E22</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#F04B23"></div>
+      <span class="palette-hex">#F04B23</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#ED1C24"></div>
+      <span class="palette-hex">#ED1C24</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#ED2487"></div>
+      <span class="palette-hex">#ED2487</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#A562A8"></div>
+      <span class="palette-hex">#A562A8</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#4E3996"></div>
+      <span class="palette-hex">#4E3996</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#1F1A56"></div>
+      <span class="palette-hex">#1F1A56</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#E2AE7A"></div>
+      <span class="palette-hex">#E2AE7A</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#F3B55E"></div>
+      <span class="palette-hex">#F3B55E</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#D68154"></div>
+      <span class="palette-hex">#D68154</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#85381E"></div>
+      <span class="palette-hex">#85381E</span>
+    </div>
+  </div>
+  <p class="cap rev" style="margin-top:.7rem">12-color palette derived from Oakland's golden hour sky and BART station palette</p>
+</div>
+</section>
+
+<!-- 04 IDEATION -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">04 — Ideation</span>
+    <h2 class="h2 h2-w">One concept.<br><em>Everything Oakland at once.</em></h2>
+    <p class="body body-w">The constraint of a billboard is brutal: you have about three seconds of attention from a moving car. The composition had to read instantly — a bold typographic anchor, a warm explosive sky, and a cast of characters that represents the actual diversity of Oakland's creative community.</p>
+  </div>
+
+  <div class="g2 mt3 rev top">
+    <div>
+      <div class="frame frame-dark">
+        <img src="sketch.png" alt="Initial concept sketches for Inspire Oakland">
+      </div>
+      <p class="cap cap-dark">Initial concept sketches — figuring out the composition</p>
+    </div>
+    <div>
+      <div class="q q-dark" style="margin-top:0">
+        <p>"A billboard has three seconds. Every element either earns its place or it goes."</p>
+        <cite>Process note, early ideation</cite>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 05 ITERATIONS -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 — Design Iterations</span>
+    <h2 class="h2">Two versions.<br><em>Each one teaching the next.</em></h2>
+    <p class="body">The design went through two main billboard iterations. The biggest shift was learning that more people didn't mean more representation — it meant visual noise. The final composition is more selective and more powerful for it.</p>
+  </div>
+
+  <div class="iter-versions rev">
+    <div class="iter-v">
+      <div class="iter-v-img"><img src="Billboard idea 1.png" alt="Version 1 — original billboard design with Bay Bridge"></div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-v1">Version 1</span>
+        <h4>Bay Bridge + Full Cast</h4>
+        <p>The first version included the full Bay Bridge and a larger cast of characters. Visually ambitious but crowded — the Bay Bridge competed with the typography for attention, and the composition didn't have a clear focal point for a fast read.</p>
+      </div>
+    </div>
+    <div class="iter-v">
+      <div class="iter-v-img"><img src="Final Billbaord.jpeg" alt="Version 2 — final selected billboard design"></div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-selected">Final — Selected</span>
+        <h4>Tighter Cast, Stronger Read</h4>
+        <p>The bridge was removed to let the sky breathe. The cast was refined to key characters — the sax player, the singer, the cellist and Shaun Tai (Executive Director of BRIDGEGOOD) — each representing a distinct thread of Oakland's culture. The result reads clearly at distance and rewards a closer look.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="billboard-full rev">
+    <img src="vis.png" alt="Final Inspire Oakland billboard design — full horizontal">
+  </div>
+  <p class="cap rev" style="margin-top:.7rem">Final billboard artwork — horizontal format</p>
+</div>
+</section>
+
+<!-- 06 RESIZES -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">06 — Format Adaptations</span>
+    <h2 class="h2">One artwork.<br><em>Three different lives.</em></h2>
+    <p class="body">The final illustration was adapted for three formats: the primary billboard, an LED digital display, and a square in-app social media format.</p>
+  </div>
+
+  <div class="resize-grid rev">
+    <div class="resize-item">
+      <div class="frame">
+        <img src="Tamanna_Shirol_InApp 1.jpg" alt="In-app square format">
+      </div>
+      <p class="cap">In-App / Social Square — recomposed for vertical read</p>
+    </div>
+    <div class="resize-item">
+      <div class="frame">
+        <img src="Final LED.jpeg" alt="LED display version of Inspire Oakland">
+      </div>
+      <p class="cap">LED Digital Display — higher contrast, dark border</p>
+    </div>
+
+   
+  </div>
+</div>
+</div>
+
+<!-- 07 OUTCOME -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">07 — Outcome</span>
+    <h2 class="h2 h2-w">Top 20 Finalist.<br><em>800+ students.</em></h2>
+    <p class="body body-w">BRIDGEGOOD's 15th annual Inspire Oakland challenge drew participants from 40 schools across the Bay Area. Being selected as the best design meant the work was printed on a real billboard — and receiving the Certificate of Achievement from BRIDGEGOOD's Executive Director and Board President, co-signed by Adobe, was the kind of recognition that makes it real.</p>
+  </div>
+
+  <div class="g3 mt4 rev">
+    <div class="frame frame-dark" style="aspect-ratio:4/3;overflow:hidden">
+      <img src="win1.png" alt="Shaun giving tamanna the certificate" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+    </div>
+    <div class="frame frame-dark" style="aspect-ratio:4/3;overflow:hidden">
+      <img src="win3.png" alt="Shaund and tamanna taking a photo with the certificate" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <div class="frame frame-dark" style="aspect-ratio:4/3;overflow:hidden">
+      <img src="win2.png" alt="certificate" style="width:100%;height:100%;object-fit:cover">
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 08 LIVE BILLBOARD -->
+<section class="sec">
+  <div class="wrap">
+    <div class="rev">
+      <span class="lbl">08 — Live Billboard</span>
+      <h2 class="h2">Printed. Posted.<br><em>Up on Oakland's streets.</em></h2>
+      <p class="body">My design from was printed at full scale and displayed on a billboard in Oakland, California. Seeing your illustration — designed on a screen, in a studio — printed twelve feet tall on a street you can drive past is a different kind of experience than any screen can replicate. This design was also displayed year round at the Oakland International Airport. </p>
+    </div>
+  
+    <div class="g2 mt3 rev top">
+      <div>
+        <div class="frame" style="aspect-ratio:4/3;overflow:hidden">
+          <img src="billboard1.png" alt="Inspire Oakland live billboard on OUTFRONT Media display" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <p class="cap">Live billboard — Oakland, CA · OUTFRONT Media</p>
+      </div>
+      <div>
+        <div class="frame" style="aspect-ratio:4/3;overflow:hidden">
+          <img src="billboard2.png" alt="Team photo in front of the live billboard" style="width:100%;height:100%;object-fit:cover">
+        </div>
+      </div>
+    </div>
+
+    <div class="g2 mt3 rev top">
+      <div>
+        <div class="frame" style="aspect-ratio:4/3;overflow:hidden">
+          <img src="led1.png" alt="Inspire Oakland live billboard on OUTFRONT Media display" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <p class="cap">Live LED Display — Oakland, CA · OUTFRONT Media</p>
+      </div>
+      <div>
+        <div class="frame" style="aspect-ratio:4/3;overflow:hidden">
+          <img src="led3.PNG" alt="Team photo in front of the live billboard" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <p class="cap">Team photo — finalist designers</p>
+      </div>
+    </div>
+
+    <div class="g2 mt3 rev top">
+      <div>
+        <div class="frame" style="aspect-ratio:4/3;overflow:hidden">
+          <img src="oak2.png" alt="Inspire Oakland live billboard on OUTFRONT Media display" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <p class="cap">Live LED — Oakland International Airport, CA </p>
+      </div>
+      <div>
+        <div class="frame" style="aspect-ratio:4/3;overflow:hidden">
+          <img src="oak1.png" alt="Team photo in front of the live billboard" style="width:100%;height:100%;object-fit:cover">
+
+    </div>
+
+  </section>
+
+<!-- 09 REFLECTION -->
+<section class="sec" style="border-top:1px solid var(--rule)">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">09 — Reflection</span>
+    <h2 class="h2">What visual communication design taught me<br><em>that product design didn't.</em></h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card">
+      <span class="r-n">01</span>
+      <h4>Your perspective is the differentiator</h4>
+      <p>There were 800+ entries celebrating Oakland. The ones that stood out had a specific point of view. "The Foreigner's Perspective" wasn't a gimmick, it was the only honest angle I had.</p>
+    </div>
+    <div class="r-card">
+      <span class="r-n">02</span>
+      <h4>Color carries meaning </h4>
+      <p>The warm orange-to-purple gradient reads "Oakland sunset" before you've seen a single face or read a single word. In graphic design, atmosphere arrives before information.</p>
+    </div>
+    <div class="r-card">
+      <span class="r-n">03</span>
+      <h4>Seeing it printed changes everything</h4>
+      <p>You don't truly understand scale until your illustration is twelve feet tall on a street. What works on screen isn't always what works at that size — and vice versa.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">← Portfolio</a>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

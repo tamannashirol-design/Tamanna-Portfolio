@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Root — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#999;
+  --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
+  --card:#F3F0EA;--white:#fff;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:600px;
+  overflow:hidden;
+  margin-top:0;
+  padding-top:0;
+}.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.12) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:620px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.frame-none{border:none;border-radius:0}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+
+/* FULL BLEED IMG */
+.full-img{width:100%;display:block;border-radius:12px;box-shadow:0 16px 60px rgba(0,0,0,.1)}
+
+/* RENDERING GALLERY */
+.render-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.render-gallery .frame{aspect-ratio:4/3;overflow:hidden}
+.render-gallery .frame img{width:100%;height:100%;object-fit:cover}
+.render-hero{width:100%;border-radius:12px;overflow:hidden;margin-bottom:1rem}
+.render-hero img{width:100%;display:block}
+
+/* SKETCHES */
+.sketches{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.sketch-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/3}
+.sketch-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* PROTOTYPE VERSIONS */
+.proto-versions{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.proto-card{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.proto-card-img{aspect-ratio:1/1;overflow:hidden;background:var(--card)}
+.proto-card-img img{width:100%;height:100%;object-fit:cover}
+.proto-card-info{padding:1.2rem}
+.proto-card-info h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;color:var(--ink);margin-bottom:.3rem}
+.proto-card-info p{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* APP SCREENS */
+.app-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;align-items:end}
+.app-screen{border-radius:20px;overflow:hidden;border:1.5px solid rgba(0,0,0,.08);box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.app-screen img{width:100%;display:block}
+.app-screen-ph{aspect-ratio:9/19;background:var(--card);border:1px dashed var(--rule);border-radius:20px;display:flex;align-items:center;justify-content:center}
+.app-screen-ph span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:1rem}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.how-step{padding:2.2rem 1.8rem;border-right:1px solid var(--rule)}
+.how-step:last-child{border-right:none}
+.step-num{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;color:var(--olive);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.8rem}
+.step-title{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.step-desc{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* METHOD BAR */
+.method-bar{display:flex;gap:0;margin-top:2rem;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.method-item{flex:1;padding:1.5rem;border-right:1px solid var(--rule);background:var(--card)}
+.method-item:last-child{border-right:none}
+.method-n{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;color:var(--olive);display:block;line-height:1}
+.method-l{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* SCIENCE STAT */
+.science-stat{background:var(--navy);border-radius:12px;padding:3rem;text-align:center;margin-top:2rem}
+.science-n{font-family:'Fraunces',serif;font-size:4rem;font-weight:300;color:#fff;display:block;line-height:1}
+.science-l{font-size:.85rem;color:rgba(255,255,255,.55);margin-top:.6rem;display:block;line-height:1.5}
+.science-src{font-family:'Space Mono',monospace;font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.05em;margin-top:.8rem;display:block}
+
+/* DATA ROW */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* REFLECT */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* ITER */
+.iter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1.5rem}
+.iter-half{padding:2.2rem}
+.iter-half+.iter-half{border-left:1px solid var(--rule)}
+.iter-tag{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.9rem}
+.tag-b{background:#FDECEA;color:#9B2335}
+.tag-a{background:#EAF3EA;color:#266226}
+.iter-half p{font-size:.86rem;color:var(--mid);line-height:1.75;margin-bottom:.8rem}
+.iter-half .frame{margin-top:1rem}
+
+/* NEXTS */
+.nexts{list-style:none;margin-top:2rem}
+.nexts li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--mid);line-height:1.6}
+.nexts li span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.08em;flex-shrink:0;font-weight:700}
+
+/* DS NOTE */
+.ds-note{padding:1.2rem 1.5rem;border-left:2px solid var(--rule)}
+.ds-note strong{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.ds-note span{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* STORYBOARD */
+.storyboard{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.storyboard img{width:100%;display:block}
+
+/* JOURNEY */
+.journeys{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.j-card{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.j-label{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1rem}
+.j-b{background:#FDECEA;color:#9B2335}
+.j-a{background:#EAF3EA;color:#266226}
+.j-card img{width:100%;display:block}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.8)}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
+  .g2,.g3,.g4,.iter,.journeys,.reflects,.data-row,.how-steps,.sketches,.method-bar,.app-row,.render-gallery,.proto-versions{grid-template-columns:1fr;gap:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .iter-half+.iter-half{border-left:none;border-top:1px solid var(--rule)}
+  .how-step{border-right:none;border-bottom:1px solid var(--rule)}
+  .how-step:last-child{border-bottom:none}
+  footer{padding:2rem 1.5rem}
+}
+.device-grid{
+  grid-template-columns:1.35fr .65fr;
+  gap:2.5rem;
+}
+.flow-hint{
+  font-family:'Space Mono',monospace;
+  font-size:.62rem;
+  color:var(--dim);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  display:inline-block;
+  margin-top:.4rem;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:.2rem;
+}
+
+.app-screen{
+  position:relative;
+  cursor:pointer;
+  border-radius:20px;
+  overflow:hidden;
+  aspect-ratio:8.8/19;
+  background:#111;
+  border:1.5px solid rgba(0,0,0,.1);
+  box-shadow:0 6px 24px rgba(0,0,0,.11);
+  transition:transform .3s, box-shadow .3s;
+}
+
+.app-screen:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 48px rgba(0,0,0,.18);
+}
+
+.app-screen img,
+.app-screen video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.app-screen video{
+  opacity:0;
+  transition:opacity .3s;
+}
+
+.app-screen:hover video{
+  opacity:1;
+  transition:opacity .3s;
+  object-fit:contain;
+  transform:none;
+}
+.process-collage{
+  margin-top:3rem;
+}
+
+.process-kicker{
+  font-family:'Space Mono',monospace;
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--olive);
+  margin-bottom:.75rem;
+}
+
+.process-collage-frame{
+  width:100%;
+  max-height:420px;
+  overflow:hidden;
+}
+
+.process-collage-frame img{
+  width:100%;
+  height:100%;
+  max-height:420px;
+  object-fit:cover;
+  display:block;
+}
+.proto-featured{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+    gap:1.5rem;
+    align-items:stretch;
+}
+
+.proto-card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.proto-card-img{
+    height:420px;
+    overflow:hidden;
+}
+
+.proto-card-img img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+.project-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;
+  font-weight:700;
+  color:var(--olive);
+  text-decoration:none;
+  border:1px solid var(--olive);
+  padding:.55rem 1.1rem;
+  border-radius:4px;
+  transition:all .2s;
+  margin-top:1.5rem;
+}
+
+.project-link:hover{
+  background:var(--olive);
+  color:#fff;
+}
+
+.project-link::before{
+  content:"→";
+  font-size:.65rem;
+}
+.project-link{
+  display:inline-flex;
+}
+
+.flow-hint{
+  display:block;
+  width:max-content;
+  margin-top:.75rem;
+  margin-bottom:2rem;
+  padding-bottom:.55rem;
+  font-family:'Space Mono',monospace;
+  font-size:.6rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--dim);
+  border-bottom:1px solid var(--rule);
+}
+/* LOGO HERO */
+.logo-hero{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
+.logo-hero img{width:100px;height:100px;object-fit:contain;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">Root &nbsp;/&nbsp; IoT Product Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="Root.jpg" alt="Root diffuser">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="logo-hero">
+      <img src="root logo.png" alt="Root logomark">
+    </div>
+    <h1>What if aroma could bring back<br><em>lost memories?</em></h1>
+    <p class="hero-hmw">How might we design a home care device that uses olfactory stimulation to reduce anxiety and support memory retention in early-stage Alzheimer&rsquo;s patients?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>Industrial &amp; UX Designer</span></div>
+      <div class="hero-meta-item"><label>Team</label><span>Collaborative project</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Rhino &middot; Blender &middot; Figma &middot; Procreate</span></div>    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">+226%</span><span class="stat-l">Memory improvement via olfactory enrichment</span></div>
+  <div class="stat-cell"><span class="stat-n">4</span><span class="stat-l">Team members</span></div>
+  <div class="stat-cell"><span class="stat-n">55M</span><span class="stat-l">People living with Alzheimer&rsquo;s worldwide</span></div>
+  <div class="stat-cell"><span class="stat-n">5</span><span class="stat-l">Personalised scent profiles</span></div>
+</div>
+
+<!-- 01 PROBLEM -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev">
+    <div>
+      <span class="lbl">01 &mdash; Problem</span>
+      <h2 class="h2">Memory fades.<br><em>But the senses remember.</em></h2>
+      <p class="body">About 1 in 9 people over 65 has Alzheimer&rsquo;s disease. By 2025, approximately 55 million people worldwide are living with it &mdash; a number expected to reach 155 million by 2050. There is no cure.</p>
+      <div class="q mt2">
+        <p>&ldquo;Even though we&rsquo;re far apart, I want him to feel like I&rsquo;m right there with him.&rdquo;</p>
+        <cite>Bertha Smith &mdash; user persona</cite>
+      </div>
+      <p class="body">Existing care tools focus on what&rsquo;s lost. Root focuses on what&rsquo;s still there: emotional memory, sensory response, and the deeply personal link between smell and self.</p>
+    </div>
+    <div>
+      <div class="frame"><img src="open diffuser in living room.png" alt="Root in living room"></div>
+      <p class="cap">Root diffuser active in a home environment</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 THE SCIENCE -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 &mdash; The Science</span>
+    <h2 class="h2">Why smell works when<br><em>other cues fail.</em></h2>
+    <p class="body">The olfactory bulb has a direct neural pathway to the hippocampus and amygdala &mdash; the brain regions responsible for memory formation and emotional response. Unlike visual or auditory cues, smell bypasses the thalamus entirely, making it uniquely powerful for patients whose other memory pathways have weakened.</p>
+  </div>
+
+  <div class="g2 mt3 rev top">
+    <div>
+      <div class="frame"><img src="Group 70.png" alt="Olfactory pathway diagram"></div>
+      <p class="cap">Overview</p>
+    </div>
+    <div>
+      <div class="science-stat">
+        <span class="science-n">+226%</span>
+        <span class="science-l">Memory improvement through overnight olfactory enrichment in older adults</span>
+        <span class="science-src">Woo, Leon &amp; Yassa &mdash; UC Irvine Olfactory Enrichment Study, 2023</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="g4 mt3">
+      <div class="card">
+        <h4>What&rsquo;s Lost First</h4>
+        <p>Hippocampus weakens. Short-term working memory fades. Recent events become inaccessible.</p>
+      </div>
+  
+      <div class="card">
+        <h4>What Stays Longer</h4>
+        <p>Cortex stores episodic memory. Older, practiced memories — especially emotional ones — survive far longer.</p>
+      </div>
+  
+      <div class="card">
+        <h4>Emotional Core</h4>
+        <p>The amygdala endures. Feelings outlast details. Familiar scents can resurface emotional memories directly.</p>
+      </div>
+  
+      <div class="card">
+        <h4>Sensory Pathways</h4>
+        <p>The olfactory bulb has a direct link to memory centres. Smell and music are the most powerful recall triggers.</p>
+      </div>
+  </div>
+
+  <div class="full-img rev" style="margin-top:2.5rem; border-radius:12px; overflow:hidden; border:1px solid var(--rule);">
+    <img src="research1.png" alt="Alzheimer's progression overview" style="width:100%;display:block;">
+  </div>
+  <p class="cap">Alzheimer&rsquo;s progression &mdash; four stages and where Root intervenes</p>
+</div>
+</div>
+
+<!-- 03 PERSONA -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">03 &mdash; Who We&rsquo;re Designing For</span>
+    <h2 class="h2 h2-w">Meet Bertha Smith.</h2>
+    <p class="body body-w">Bertha is an 80-year-old retired teacher living in San Francisco. She spent her life gardening, teaching children, and enjoying the beach. Since developing early Alzheimer&rsquo;s, she sometimes feels disoriented and anxious when her environment changes. She finds comfort in sensory cues &mdash; soft light, warmth, and anything that reminds her of life and her memories.</p>
+  </div>
+
+  <div class="g2 mt3 rev">
+    <div class="frame frame-dark">
+      <img src="bertha persona.jpg" alt="Bertha Smith persona">
+    </div>
+    <div>
+      <div class="q q-dark" style="margin-top:0">
+        <p>&ldquo;Traditional memory aids like alarms or notes feel cold and impersonal.&rdquo;</p>
+        <cite>Bertha &mdash; pain point synthesis</cite>
+      </div>
+      <div class="g2 mt2" style="gap:1rem">
+        <div class="card card-dark"><h4>Goal</h4><p>A daily routine that reinforces memory and independence through familiar sensory experiences.</p></div>
+        <div class="card card-dark"><h4>Need</h4><p>Preserve her sense of identity through familiar experiences. Enjoy peaceful moments of comfort.</p></div>
+        <div class="card card-dark"><h4>Pain</h4><p>Becomes anxious when she forgets where she is. Strong artificial scents confuse or irritate her.</p></div>
+        <div class="card card-dark"><h4>Dislikes</h4><p>Complicated controls, digital screens that are too flashy, and sudden unexpected noises.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 04 THE GAP -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">04 &mdash; The Gap</span>
+    <h2 class="h2">Existing products weren&rsquo;t<br><em>designed for Bertha.</em></h2>
+    <p class="body">We surveyed the olfactory and memory therapy product landscape. Every existing solution had critical limitations: too small and easy to lose, only one scent, no personalisation, or designed purely for general wellness rather than therapeutic memory support.</p>
+  </div>
+
+  <div class="mt3 rev">
+    <div class="frame" style="border-radius:12px;">
+      <img src="gap.jpg" alt="Gap analysis of existing products">
+    </div>
+    <p class="cap">Existing product analysis &mdash; key gaps identified</p>
+  </div>
+
+  <div class="g3 mt3 rev">
+    <div class="card">
+      <h4>Too Small &amp; Easily Lost</h4>
+      <p>Wearable scent lockets and portable inhalers are impractical for patients with memory impairment who regularly misplace items.</p>
+    </div>
+    <div class="card">
+      <h4>Only One Scent</h4>
+      <p>Generic diffusers and plug-in products offer a single fragrance with no ability to personalise to a patient&rsquo;s specific memory associations.</p>
+    </div>
+    <div class="card">
+      <h4>No Therapeutic Intent</h4>
+      <p>Smart diffusers like Aromatech are designed for ambience, not memory therapy. They lack scheduling tied to personal memory profiles.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 05 THE SOLUTION -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 &mdash; Solution Overview</span>
+    <h2 class="h2">Root. A companion for memory,<br><em>not just a reminder of loss.</em></h2>
+    <p class="body">Root is a smart olfactory diffuser and companion app designed for Alzheimer&rsquo;s patients and their caregivers. It uses personalised scent profiles scheduled through a mobile app to gently stimulate memory recall during overnight sleep &mdash; the time when olfactory enrichment is most effective.</p>
+  </div>
+
+  <div class="mt3 rev" style="border-radius:12px;overflow:hidden;box-shadow:0 16px 60px rgba(0,0,0,.08)">
+    <img src="bud form.jpg" alt="Root refined sketch" style="width:100%;display:block;">
+  </div>
+
+  <div class="how-steps mt4 rev">
+    <div class="how-step">
+      <span class="step-num">01 &mdash; Personalise</span>
+      <p class="step-title">Set scent memories in the app</p>
+      <p class="step-desc">Caregivers or family members map specific scents to personal memories &mdash; grandmother&rsquo;s garden, the sea, Sunday baking &mdash; through the companion app.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">02 &mdash; Schedule</span>
+      <p class="step-title">Program overnight diffusion</p>
+      <p class="step-desc">Scent release is timed to overnight windows when olfactory enrichment shows greatest memory improvement. The device runs silently and automatically.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">03 &mdash; Mix &amp; Release</span>
+      <p class="step-title">Gel cartridges blend custom scents</p>
+      <p class="step-desc">Up to 5 gel cartridges (citrus, floral, herbal, woody, vanilla) mix in the internal chamber. The detachable lotus bud can be worn or carried during the day.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">04 &mdash; Monitor</span>
+      <p class="step-title">Track response and adjust</p>
+      <p class="step-desc">Caregivers track which scents prompted calm or recall. The app surfaces patterns over time and suggests adjustments to the memory profile.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 06 HOW ROOT WORKS — DEVICE -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">06 &mdash; The Device</span>
+    <h2 class="h2">Designed to disappear<br><em>into the home.</em></h2>
+    <p class="body">Root was designed to feel like a beautiful object, not a medical device. The lotus-inspired form opens when active, closes when dormant. A warm wood base with LED ring provides ambient light cues without screens or complexity.</p>
+  </div>
+
+  <div class="g2 mt3 rev device-grid">
+    <div>
+      <div class="frame"><img src="exploded.png" alt="Root exploded view"></div>
+      <p class="cap">Exploded view &mdash; all components</p>
+    </div>
+    <div>
+      <div class="ds-note mt2"><strong>Lotus petals</strong><span>Open during active scent release, closed at rest.</span></div>
+      <div class="ds-note mt2"><strong>Gel cartridge carousel</strong><span>Up to 5 cartridges (citrus, floral, herbal, woody, vanilla) sit in a rotating internal platform. Mixed by a fan into the central chamber.</span></div>
+      <div class="ds-note mt2"><strong>Detachable bud</strong><span>The lotus bud detaches from the base and can be carried or worn during the day, extending the therapeutic benefit beyond overnight use.</span></div>
+      <div class="ds-note mt2"><strong>LED ring</strong><span>Colour-coded to scent category. Provides a gentle ambient cue.</span></div>
+      <div class="ds-note mt2"><strong>IoT connectivity</strong><span>Connects to the companion app via Wi-Fi. Device managed remotely by caregivers.</span></div>
+    </div>
+  </div>
+
+  <div class="mt3 rev">
+    <div class="frame" style="border-radius:12px;overflow:hidden">
+      <img src="bud mechanism.png" alt="Detailed mechanical sketch of Root">
+    </div>
+    <p class="cap">Detailed mechanical sketch &mdash; scent airflow and mixing mechanism</p>
+  </div>
+
+  <div class="mt3 rev">
+    <div class="frame" style="border-radius:12px;overflow:hidden">
+      <img src="IoT.png" alt="IoT connection diagram">
+    </div>
+    <p class="cap">IoT connection diagram &mdash; device to app ecosystem</p>
+  </div>
+</div>
+</section>
+
+<!-- 07 THE APP -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">07 &mdash; Companion App</span>
+    <h2 class="h2">Control for caregivers.<br><em>Calm for patients.</em></h2>
+    <p class="body">The companion app was designed for caregivers and family members, not the patient. Bertha never needs to interact with a screen. The app allows scheduling, memory profile building, and response tracking &mdash; all in a calm, low-jargon interface.</p>
+    <a class="project-link" href="https://www.figma.com/proto/79Uasvw77M4s8mBErzJZxx/Diffuser-App?node-id=1-2&p=f&viewport=174%2C192%2C0.25&t=bHLIewVIX4UtdK2g-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2&show-proto-sidebar=1&page-id=0%3A1" target="_blank">View companion app prototype</a>
+    <p class="flow-hint">Hover over each screen to see the flow in motion</p>
+  </div>
+
+  <div class="app-row rev">
+    <div>
+      <div class="app-screen">
+        <img src="Landing Page.png" alt="Onboarding">
+        <video src="onboarding.mp4" muted loop playsinline></video>
+      </div>
+      <p class="cap" style="margin-top:.5rem">Onboarding</p>
+    </div>
+  
+    <div>
+      <div class="app-screen">
+        <img src="Connect Diffuser.png" alt="Memory profile">
+        <video src="scents.mp4" muted loop playsinline></video>
+      </div>
+      <p class="cap" style="margin-top:.5rem">Selecting Scents</p>
+    </div>
+  
+    <div>
+      <div class="app-screen">
+        <img src="schedul.png" alt="Scent library">
+        <video src="schedule.mp4" muted loop playsinline></video>
+      </div>
+      <p class="cap" style="margin-top:.5rem">Scheduling</p>
+    </div>
+  
+    <div>
+      <div class="app-screen">
+        <img src="Homepage.png" alt="Response tracking">
+        <video src="homepage.mp4" muted loop playsinline></video>
+      </div>
+      <p class="cap" style="margin-top:.5rem">Tracking</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 08 DESIGN PROCESS -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">08 &mdash; Design Process</span>
+    <h2 class="h2">Sketch to model</em></h2>
+    <p class="body">The team began with secondary research into home care devices, Alzheimer&rsquo;s progression, and olfactory science before moving into ideation. Every design decision was grounded in Bertha&rsquo;s specific needs: no complex controls, no digital screens for the patient, nothing cold or clinical.</p>
+  </div>
+
+  <div class="sketches rev">
+    <div>
+      <div class="sketch-frame"><img src="IMG_4926.png" alt="Initial ideation sketches"></div>
+      <p class="cap">Initial ideation sketches - Standalone</p>
+    </div>
+    <div>
+      <div class="sketch-frame"><img src="IMG_4927.png" alt="Initial ideation sketches"></div>
+      <p class="cap">Initial ideation sketches - Wearable</p>
+    </div>
+    <div>
+      <div class="sketch-frame"><img src="IMG_5370.png" alt="Direction ideation sketches"></div>
+      <p class="cap">Mechanical detail - Plant form</p>
+    </div>
+  </div>
+
+  <!-- Process photos -->
+<div class="process-collage rev">
+  <div class="process-kicker">Process Photos</div>
+
+  <div class="frame process-collage-frame">
+    <img src="photos.png" alt="Team building, ideating, and testing Root">
+  </div>
+
+  <p class="cap">Team photos of ideation, prototyping, and research</p>
+</div>
+</section>
+
+<!-- 09 PROTOTYPE ITERATIONS -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">09 &mdash; Prototype Iterations</span>
+    <h2 class="h2">Three versions.<br><em>Each one closer to Bertha.</em></h2>
+    <p class="body">I built two physical prototype iterations, each testing a different aspects of the form. Moving from rough proof-of-concept to a refined model changed how we understood the device.</p>
+  </div>
+
+  <div class="proto-versions rev proto-featured">
+    <div class="proto-card proto-small">
+      <div class="proto-card-img"><img src="mid prototype.png" alt="Prototype version 1" style="width:100%;height:100%;object-fit:cover"></div>
+      <div class="proto-card-info">
+        <h4>Version 01 &mdash; Proof of Concept</h4>
+        <p>First physical model made with clay and cardboard established the core form language.</p>
+      </div>
+    </div>
+    <div class="proto-card proto-large">
+      <div class="proto-card-img"><img src="PROTOTYPE_V2.png" alt="Prototype version 2" style="width:100%;height:100%;object-fit:cover"></div>
+      <div class="proto-card-info">
+        <h4>Version 02 &mdash; Final Form Prototype</h4>
+        <p>This high-fidelity prototype represented the intended final form of Root. Through 3D printing and finishing, I was able to evaluate the product's proportions, visual language, and emotional presence within the home.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 10 RENDERINGS IN CONTEXT -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">10 &mdash; Root in Context</span>
+    <h2 class="h2">At home everywhere<br><em>it needs to be.</em></h2>
+    <p class="body">Root was designed to disappear into any home environment &mdash; a kitchen counter, a bedside table, a living room. Beautiful enough to belong. Quiet enough to go unnoticed.</p>
+  </div>
+
+  <div class="render-hero rev">
+    <img src="Diffuser Rendering in room w smokepng.png" alt="Root in living room" style="width:100%;display:block;border-radius:12px">
+  </div>
+
+  <div class="render-gallery rev">
+    <div class="frame"><img src="open diffuser.png" alt="Root open in kitchen"></div>
+    <div class="frame"><img src="closed in bedroom.png" alt="Root in bedroom"></div>
+    <div class="frame"><img src="beachside diffuser rendering.png" alt="Root on beach"></div>
+  </div>
+</div>
+</section>
+
+<!-- 11 STORYBOARD / IMPACT -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">11 &mdash; Impact Story</span>
+    <h2 class="h2 h2-w">Bertha meets Root.</h2>
+    <p class="body body-w">A day with Root isn&rsquo;t marked by a medical intervention or a reminder of what&rsquo;s been lost. It&rsquo;s marked by a quiet moment of recognition &mdash; the smell of the sea, the garden, something familiar that feels like home.</p>
+  </div>
+
+  <div class="rev" style="margin-top:2.5rem;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
+    <img src="impact 1.png" alt="Storyboard: Bertha using Root" style="width:100%;display:block;">
+  </div>
+  <p class="cap cap-dark" style="margin-top:.7rem">Storyboard &mdash; a day in Bertha&rsquo;s life with Root</p>
+
+  <div class="data-row rev">
+    <div class="data-card"><span class="data-n">+226%</span><span class="data-l">Memory improvement with overnight olfactory enrichment (UC Irvine, 2023)</span></div>
+    <div class="data-card"><span class="data-n">5</span><span class="data-l">Scent profiles: citrus, floral, herbal, woody, vanilla &mdash; all personally mappable to memories</span></div>
+    <div class="data-card"><span class="data-n">0</span><span class="data-l">Screens or controls for the patient to interact with. Root works silently in the background.</span></div>
+  </div>
+</div>
+</div>
+
+<!-- 12 REFLECTION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">12 &mdash; Reflection</span>
+    <h2 class="h2">What this project taught me.</h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card"><span class="r-n">01</span><h4>Designing for someone who can&rsquo;t advocate for themselves</h4><p>Bertha can&rsquo;t tell us what she needs. Everything had to be inferred from research, caregiver interviews, and behavioural observation. That&rsquo;s a different kind of empathy than working with users who can articulate their pain.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Physical design is a different kind of constraint</h4><p>A screen can be updated. A physical form is permanent. Every material, mechanism, and proportion decision felt more consequential than any UI choice I&rsquo;ve made.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>The caregiver is also a user</h4><p>The companion app isn&rsquo;t for Bertha &mdash; it&rsquo;s for her daughter. Designing for an intermediary user who experiences the product emotionally, not just functionally, was a new challenge.</p></div>
+    <div class="r-card"><span class="r-n">04</span><h4>Science should drive design decisions</h4><p>The +226% stat from UC Irvine didn&rsquo;t just validate the concept &mdash; it shaped the product. Overnight scheduling, passive diffusion, and the bud for daytime use all came directly from the research findings.</p></div>
+    <div class="r-card"><span class="r-n">05</span><h4>Beautiful objects are therapeutic</h4><p>Bertha dislikes cold and clinical. Making Root beautiful wasn&rsquo;t aesthetic indulgence &mdash; it was a design requirement. An object that belongs in a home reduces the stigma and anxiety of needing care.</p></div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">&larr; Portfolio</a>
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+document.querySelectorAll('.app-screen').forEach(screen => {
+  const v = screen.querySelector('video');
+  if(!v) return;
+
+  screen.addEventListener('mouseenter', () => v.play());
+  screen.addEventListener('mouseleave', () => {
+    v.pause();
+    v.currentTime = 0;
+  });
+});
+</script>
+</body>
+</html>

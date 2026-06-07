@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Gallery — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#999;
+  --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
+  --card:#F3F0EA;--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-logo{font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-logo:hover{color:var(--olive)}
+.nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-menu a{font-family:'Space Mono',monospace;font-size:0.68rem;font-weight:400;letter-spacing:0.08em;text-decoration:none;color:var(--dim);transition:color .2s}
+.nav-menu a:hover{color:var(--ink)}
+.nav-menu a.active{color:var(--ink)}
+
+/* ── HERO ── */
+.hero{position:relative;height:38vh;min-height:360px;background:#191B0F;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.hero-glow{position:absolute;top:-10%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(107,112,64,.18) 0%,transparent 65%);pointer-events:none;z-index:0}
+.hero-glow2{position:absolute;bottom:-20%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(44,62,107,.12) 0%,transparent 65%);pointer-events:none;z-index:0}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 3rem;width:100%;padding-bottom:3.5rem;padding-top:120px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;display:block}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:300;color:#fff;line-height:.98;letter-spacing:-.03em;margin-bottom:.8rem}
+.hero-title em{font-style:italic;color:rgba(255,255,255,.4)}
+.hero-sub{font-size:.88rem;color:rgba(255,255,255,.4);line-height:1.75;max-width:480px}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+
+/* ── FILTER BAR ── */
+.filter-section{padding:3rem 0 2rem;border-bottom:1px solid var(--rule)}
+.filter-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.filter-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-right:.5rem}
+.filter-btn{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.4rem 1rem;border-radius:4px;border:1px solid var(--rule);background:transparent;color:var(--mid);cursor:pointer;transition:all .2s}
+.filter-btn:hover{border-color:var(--ink);color:var(--ink)}
+.filter-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.filter-count{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--dim);margin-left:auto;letter-spacing:.06em}
+
+/* ── MASONRY GALLERY ── */
+.gallery-section{padding:3.5rem 0 7rem}
+.masonry{
+  columns:4;
+  column-gap:1rem;
+}
+.masonry-item{
+  break-inside:avoid;
+  margin-bottom:1rem;
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  cursor:pointer;
+  background:var(--card);
+}
+.masonry-item img{
+  width:100%;
+  display:block;
+  border-radius:8px;
+  transition:transform .5s ease;
+}
+.masonry-item:hover img{transform:scale(1.04)}
+.masonry-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(20,20,20,.7) 0%,transparent 50%);
+  opacity:0;
+  transition:opacity .3s ease;
+  border-radius:8px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:1.2rem;
+}
+.masonry-item:hover .masonry-overlay{opacity:1}
+.overlay-title{font-family:'Fraunces',serif;font-size:.95rem;font-weight:300;color:#fff;line-height:1.2;margin-bottom:.3rem}
+.overlay-cat{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+/* hidden state for filtering */
+.masonry-item.hidden{display:none}
+
+/* ── LIGHTBOX ── */
+.lightbox{position:fixed;inset:0;z-index:500;background:rgba(20,20,20,.95);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox-inner{position:relative;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center}
+.lightbox-img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:8px;display:block}
+.lightbox-caption{margin-top:1.2rem;text-align:center}
+.lightbox-caption-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;color:#fff;margin-bottom:.3rem}
+.lightbox-caption-cat{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.lightbox-close{position:fixed;top:2rem;right:2rem;background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.08em;padding:.5rem 1rem;border-radius:4px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.lightbox-close:hover{border-color:#fff;color:#fff}
+.lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.lightbox-nav:hover{border-color:#fff;color:#fff}
+.lightbox-prev{left:2rem}
+.lightbox-next{right:2rem}
+
+/* ── CTA ── */
+.cta-band{background:var(--ink);padding:5rem 0;text-align:center}
+.h2{font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+.h2 em{font-style:italic;color:rgba(255,255,255,.4)}
+.cta-band .h2{color:#fff}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.cta-btn{font-family:'Space Mono',monospace;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:.7rem 1.5rem;border-radius:4px;transition:all .2s}
+.cta-btn-primary{background:var(--olive);color:#fff}
+.cta-btn-primary:hover{background:#5a6034}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:center;align-items:center;border-top:1px solid rgba(255,255,255,.05)}
+.footer-copy{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.04em;color:rgba(255,255,255,.35);text-align:center}
+
+/* ── REVEAL ── */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rev.in{opacity:1;transform:none}
+.rev-delay-1{transition-delay:.1s}
+.rev-delay-2{transition-delay:.2s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){.masonry{columns:3}}
+@media(max-width:960px){
+  nav{padding:.9rem 1.5rem}
+  .nav-menu{display:none}
+  .wrap{padding:0 1.5rem}
+  .hero-inner{padding-left:1.5rem;padding-right:1.5rem}
+  .masonry{columns:2}
+}
+@media(max-width:500px){.masonry{columns:1}.lightbox-nav{display:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">Tamanna Shirol</a>
+  <ul class="nav-menu">
+    <li><a href="../index.html">Work</a></li>
+    <li><a href="../index.html">About</a></li>
+    <li><a href="art.html" class="active">Art Gallery</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Creative Practice</span>
+    <h1 class="hero-title">Art &amp; <em>Making.</em></h1>
+    <p class="hero-sub">I didn't become creative through design school. I came to design school because I was already creative.</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-section rev">
+  <div class="wrap">
+    <div class="filter-row">
+      <span class="filter-label">Filter by</span>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="painting">Paintings</button>
+      <button class="filter-btn" data-filter="shoes">Custom Shoes</button>
+      <button class="filter-btn" data-filter="fabric">Fabric</button>
+      <button class="filter-btn" data-filter="digital">Digital</button>
+      <button class="filter-btn" data-filter="3d">3D &amp; Making</button>
+      <span class="filter-count" id="count">50 works</span>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="wrap">
+    <div class="masonry" id="gallery">
+
+      <!-- PAINTINGS -->
+      <div class="masonry-item rev rev-delay-1" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1kjqzG6e6aM1XhTdqTnuo3tvVmQNgWbsR&sz=w800" alt="Painting 6" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1mdTJaFCPF4FC1tXkOegh6rBIe7W1Z_TB&sz=w800" alt="Painting 1" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1kVR8pZPOmOIk-mWefweiSdHgHNwSFJmY&sz=w800" alt="Painting 2" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1bZaPcKySD_5FRn2ny7Le5riTK-PPg_ma&sz=w800" alt="Painting 4" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1CMc-7sdRm0X-YSneLIx3BB857ua3FhI7&sz=w800" alt="Painting 5" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1a2y-Lg_rTPwkgb-PsPevsDoQ8_yX5I8X&sz=w800" alt="Painting 7" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1Q9G6YmikwDoNsIVT10Uh-HFbcRgTXnHU&sz=w800" alt="Painting 8" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1t4coi2DETxiGllStLccZfU23gjAIDvQK&sz=w800" alt="Painting 9" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1x6pwXc-rj10Avim6k6caIWI6nZNf-GMm&sz=w800" alt="Painting 10" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="painting" data-title="Painting Set" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1BqjtkBeemHhvRfNNAk0Tr9xupCfF5rdX&sz=w800" alt="Painting Set" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting Set</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="painting" data-title="Painting" data-label="Painting">
+        <img src="https://drive.google.com/thumbnail?id=1vEQmYPpz_NA6jWSfIO6jH0RHR-boKPJd&sz=w800" alt="Painting" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painting</p><span class="overlay-cat">Painting</span></div>
+      </div>
+
+      <!-- CUSTOM SHOES -->
+      <div class="masonry-item rev rev-delay-2" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=13cJrlfzZBeuDV8YA-6w8MRsKKzgyKlfb&sz=w800" alt="Shoe 1" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1g-k3X59QUtrV7hEsrOR_GwUK0QCy6x0G&sz=w800" alt="Shoe 2" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1KL3JyNOTzD481RJeGw9jS1bDNKS0wuuU&sz=w800" alt="Shoe 3" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1-mhABjkOHrJVb0R2IAZah8CPnyN2O9Bh&sz=w800" alt="Shoe 4" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1n_EFgm5fTp1HEzpPM33um2VY6oIkmzPh&sz=w800" alt="Shoe 5" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1ratXqHLx0ql8B2sUQTM7EGTCpJRFQR-1&sz=w800" alt="Shoe 6" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1EKar-VjiAiozzYsVngL18pIrKZzT5J_b&sz=w800" alt="Shoe 7" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1ct7Tm2Q9TbJ11YW2JvV2UQfUuy1B2CW_&sz=w800" alt="Shoe 8" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1wEfnEhwljrAx5ygmUff0MB2ijMpcN_QQ&sz=w800" alt="Shoe 9" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=1inOoTMCBj1_JKeHY6ncoGHtS7pgy8dp-&sz=w800" alt="Shoe 10" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="shoes" data-title="Custom Air Force 1" data-label="Custom Shoes">
+        <img src="https://drive.google.com/thumbnail?id=16w--eR5OOZyu2BiVeft2thhWSyQS4O1W&sz=w800" alt="Shoe 11" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Air Force 1</p><span class="overlay-cat">Custom Shoes</span></div>
+      </div>
+
+            <!-- DIGITAL --> 
+           
+            <div class="masonry-item rev" data-cat="digital" data-title="Digital Illustration" data-label="Digital Art">
+              <img src="https://drive.google.com/thumbnail?id=13p6Z3hn3_aiHDE3d2mtoJozV8bAqZA57&sz=w800" alt="Digital Art 5" loading="lazy">
+              <div class="masonry-overlay"><p class="overlay-title">Digital Illustration</p><span class="overlay-cat">Digital Art</span></div>
+            </div>
+
+            <div class="masonry-item rev" data-cat="digital" data-title="Digital Illustration" data-label="Digital Art">
+              <img src="https://drive.google.com/thumbnail?id=1mCY3KimvYdqdcjqxt9vGA86aPyB1x0rc&sz=w800" alt="Digital Art 2" loading="lazy">
+              <div class="masonry-overlay"><p class="overlay-title">Digital Illustration</p><span class="overlay-cat">Digital Art</span></div>
+            </div>
+
+            <div class="masonry-item rev rev-delay-2" data-cat="digital" data-title="Digital Illustration" data-label="Digital Art">
+              <img src="https://drive.google.com/thumbnail?id=1LiT3fr1_nw1U39vnZV6kl9rS5O35ozQM&sz=w800" alt="Digital Art 4" loading="lazy">
+              <div class="masonry-overlay"><p class="overlay-title">Digital Illustration</p><span class="overlay-cat">Digital Art</span></div>
+            </div>
+
+            <div class="masonry-item rev rev-delay-1" data-cat="digital" data-title="Digital Illustration" data-label="Digital Art">
+              <img src="https://drive.google.com/thumbnail?id=1rg-pEN0RzAJCCnxvbYBTxoLiHLgeHDOv&sz=w800" alt="Digital Art 6" loading="lazy">
+              <div class="masonry-overlay"><p class="overlay-title">Digital Illustration</p><span class="overlay-cat">Digital Art</span></div>
+            </div>  
+
+            <div class="masonry-item rev rev-delay-2" data-cat="digital" data-title="Digital Illustration" data-label="Digital Art">
+              <img src="https://drive.google.com/thumbnail?id=1LA9VNRsWGCv4-cduDjbRzxp5zYC6VQwD&sz=w800" alt="Digital Art 1" loading="lazy">
+              <div class="masonry-overlay"><p class="overlay-title">Digital Illustration</p><span class="overlay-cat">Digital Art</span></div>
+            </div>
+    
+      
+            <div class="masonry-item rev rev-delay-1" data-cat="digital" data-title="Digital Illustration" data-label="Digital Art">
+              <img src="https://drive.google.com/thumbnail?id=1lcQ0L9meEAfJsb7e288CQTnk_FDHNrxv&sz=w800" alt="Digital Art 3" loading="lazy">
+              <div class="masonry-overlay"><p class="overlay-title">Digital Illustration</p><span class="overlay-cat">Digital Art</span></div>
+            </div>
+
+      
+            <div class="masonry-item rev rev-delay-2" data-cat="digital" data-title="Digital Illustration" data-label="Digital Art">
+              <img src="https://drive.google.com/thumbnail?id=1_dHyBrhvc7JJikXwtLcTrUV9YrNPlp0q&sz=w800" alt="Digital Art 7" loading="lazy">
+              <div class="masonry-overlay"><p class="overlay-title">Digital Illustration</p><span class="overlay-cat">Digital Art</span></div>
+            </div>
+      
+            <div class="masonry-item rev" data-cat="digital" data-title="Story Art" data-label="Digital Art">
+              <img src="https://drive.google.com/thumbnail?id=1WGjKUjVTm955qo5YE4zQLW0DpC5PepRb&sz=w800" alt="Story Art" loading="lazy">
+              <div class="masonry-overlay"><p class="overlay-title">Story Art</p><span class="overlay-cat">Digital Art</span></div>
+            </div>
+      
+      <!-- WEARABLE / FABRIC -->
+      <div class="masonry-item rev rev-delay-1" data-cat="fabric" data-title="Custom Denim Jacket" data-label="Wearable Art">
+        <img src="https://drive.google.com/thumbnail?id=1DWYjCljFTrAQ4LFUeiQxG_1EmnRNOZRU&sz=w800" alt="Jacket 1" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Denim Jacket</p><span class="overlay-cat">Wearable Art</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="fabric" data-title="Custom Jacket" data-label="Wearable Art">
+        <img src="https://drive.google.com/thumbnail?id=1RMXibIxjlYlHtBmrZxPQjznhGDdv-1_-&sz=w800" alt="Jacket 2" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Jacket</p><span class="overlay-cat">Wearable Art</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="fabric" data-title="Custom Jacket" data-label="Wearable Art">
+        <img src="https://drive.google.com/thumbnail?id=1y7Ee_PzxMxS9nC3ieuJCCEq6XeQaGYCY&sz=w800" alt="Jacket 3" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Jacket</p><span class="overlay-cat">Wearable Art</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="fabric" data-title="Custom Jeans" data-label="Wearable Art">
+        <img src="https://drive.google.com/thumbnail?id=1ryzzRPUT0zBjEYwpXmzO8PYJgSbcTI3W&sz=w800" alt="Jeans 1" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Custom Jeans</p><span class="overlay-cat">Wearable Art</span></div>
+      </div>
+
+
+      <!-- 3D & MAKING -->
+      <div class="masonry-item rev rev-delay-1" data-cat="3d" data-title="3D Printed Chess Set" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1qKNrWydcNY1Tj2qK0BR_e4jPmbPaJt13&sz=w800" alt="3D Printed Chess" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">3D Printed Chess Set</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="3d" data-title="3D Printed Ring Holder" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1-v85tYIwA-h1njUyeGkgSk8L77_KTxP7&sz=w800" alt="3D Printed Ring Holder" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">3D Printed Ring Holder</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="3d" data-title="3D Printed Chopsticks" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1XYFQM1q6oLlxYZ8alhu8zl6Xszc1MpwK&sz=w800" alt="3D Printed Chopsticks" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">3D Printed Chopsticks</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="3d" data-title="3D Printed Grad Cap" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=13fChzKcffy-tRt_q5NCKFAlE64uPV1MC&sz=w800" alt="3D Printed Grad Cap" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">3D Printed Grad Cap</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="3d" data-title="Stool — Wood &amp; Clay" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1zkWcEA3YHO-5lN8sPulfDTbexwkY_0rM&sz=w800" alt="Stool Wood Clay" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Stool — Wood &amp; Clay</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="3d" data-title="3D Printed Shooter" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1voGWXFECtxTkYqGFaHh_PNM0nSJDVlFc&sz=w800" alt="3D Printed Shooter" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">3D Printed Shooter</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="3d" data-title="Painted Grad Cap" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1xvSYZBS8C4gNHsrGEWYaw8j1DEYnlfQF&sz=w800" alt="Painted Grad Cap" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Painted Grad Cap</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="3d" data-title="Clay Photo Frame" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1VRVj0DoKpbY5llL0KvUqKKz82Jtb7WMA&sz=w800" alt="Clay Photo Frame" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Clay Photo Frame</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="3d" data-title="Clay Jewelry Organizer" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1zRgplaDFTaJ3j3GAbygFfwawzrgc_pwu&sz=w800" alt="Clay Jewelry Organizer" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Clay Jewelry Organizer</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="3d" data-title="Lion's Face Clay Carving" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=12w1M9pe8Ddg5JnWo0AdTzwf10NVwYUHo&sz=w800" alt="Lion's Face Clay Carving" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Lion's Face Clay Carving</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+
+
+      <div class="masonry-item rev rev-delay-2" data-cat="3d" data-title="Stool" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1MndQbM81U1U-0X147wCvC9nxZRqyLgs5&sz=w800" alt="Stool 1" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Stool</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="3d" data-title="Stool" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=16WhYaE3a8iEIXkiGoa8qG_AnSuHsCAJu&sz=w800" alt="Stool 2" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Stool</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="3d" data-title="Stool" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1kT_u4E_wB1cOqdiFTkFgW_j4YbSewfjk&sz=w800" alt="Stool 3" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Stool</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-2" data-cat="3d" data-title="Stool" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1TGrJwyuQcdsgnsyOr9FBz8Z_V9NhkMMm&sz=w800" alt="Stool 4" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Stool</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev" data-cat="3d" data-title="Wood Carving" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=1j5OMW5Za3hzF-aMhsadZqJY0lZij219f&sz=w800" alt="Wood Carving" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Wood Carving</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+      <div class="masonry-item rev rev-delay-1" data-cat="3d" data-title="Acrylic Laser Cut Lamp" data-label="3D &amp; Making">
+        <img src="https://drive.google.com/thumbnail?id=13IVdUMiCMPEtIN_jl-cIx5jYJpj7pfpw&sz=w800" alt="Acrylic Laser Cut Lamp" loading="lazy">
+        <div class="masonry-overlay"><p class="overlay-title">Acrylic Laser Cut Lamp</p><span class="overlay-cat">3D &amp; Making</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lb-close">✕ Close</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lb-next">›</button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lb-img" src="" alt="">
+    <div class="lightbox-caption">
+      <p class="lightbox-caption-title" id="lb-title"></p>
+      <span class="lightbox-caption-cat" id="lb-cat"></span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band rev">
+  <div class="wrap" style="text-align:center">
+    <span class="lbl" style="justify-content:center;display:block;color:#7d8f4a">Let's work together</span>
+    <h2 class="h2" style="color:#fff;text-align:center">Have a project in mind?<br><em>I'd love to hear about it.</em></h2>
+    <div class="cta-actions">
+      <a href="mailto:tamanna.shirol@gmail.com" class="cta-btn cta-btn-primary">Get in touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Tamanna Shirol. All rights reserved.</div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+// ── FILTER ──
+const btns = document.querySelectorAll('.filter-btn');
+const items = document.querySelectorAll('.masonry-item');
+const countEl = document.getElementById('count');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    let visible = 0;
+    items.forEach(item => {
+      const show = f === 'all' || item.dataset.cat === f;
+      item.classList.toggle('hidden', !show);
+      if(show) visible++;
+    });
+    countEl.textContent = visible + ' work' + (visible !== 1 ? 's' : '');
+  });
+});
+
+// ── LIGHTBOX ──
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbTitle = document.getElementById('lb-title');
+const lbCat = document.getElementById('lb-cat');
+let visibleItems = [];
+let currentIdx = 0;
+
+function getVisible(){
+  return Array.from(items).filter(i => !i.classList.contains('hidden'));
+}
+
+function openLightbox(item){
+  visibleItems = getVisible();
+  currentIdx = visibleItems.indexOf(item);
+  showSlide(currentIdx);
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showSlide(idx){
+  const item = visibleItems[idx];
+  const img = item.querySelector('img');
+  lbImg.src = img.src.replace('sz=w800','sz=w1600');
+  lbTitle.textContent = item.dataset.title;
+  lbCat.textContent = item.dataset.label;
+}
+
+items.forEach(item => {
+  item.addEventListener('click', () => openLightbox(item));
+});
+
+document.getElementById('lb-close').addEventListener('click', () => {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+});
+
+document.getElementById('lb-prev').addEventListener('click', () => {
+  currentIdx = (currentIdx - 1 + visibleItems.length) % visibleItems.length;
+  showSlide(currentIdx);
+});
+
+document.getElementById('lb-next').addEventListener('click', () => {
+  currentIdx = (currentIdx + 1) % visibleItems.length;
+  showSlide(currentIdx);
+});
+
+lb.addEventListener('click', e => {
+  if(e.target === lb){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+});
+
+document.addEventListener('keydown', e => {
+  if(!lb.classList.contains('open')) return;
+  if(e.key === 'Escape'){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  if(e.key === 'ArrowLeft'){ currentIdx = (currentIdx-1+visibleItems.length)%visibleItems.length; showSlide(currentIdx); }
+  if(e.key === 'ArrowRight'){ currentIdx = (currentIdx+1)%visibleItems.length; showSlide(currentIdx); }
+});
+</script>
+</body>
+</html>

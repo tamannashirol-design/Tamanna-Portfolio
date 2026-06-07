@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Media Magazine — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#FAF8F4;
+  --ink:#141414;
+  --mid:#555;
+  --dim:#999;
+  --rule:#E4E0D8;
+  --olive:#6B7040;
+  --navy:#2C3E6B;
+  --card:#F3F0EA;
+  --white:#fff;
+  /* Project accent colors — pulled from the magazine palette */
+  --orange:#F5A623;
+  --orange-deep:#D4621A;
+  --green-mid:#5BBB2F;
+  --green-dark:#1A6B2A;
+  --silver:#C8CCBE;
+}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.90) 0%,rgba(20,20,20,.60) 55%,rgba(20,20,20,.20) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.lbl-orange{color:var(--orange)}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+.q-orange{border-color:var(--orange)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+
+/* COVER BREAKDOWN VERSIONS */
+.cover-versions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+  margin-top:2.5rem;
+}
+.cover-v{
+  border:1px solid var(--rule);
+  border-radius:8px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.cover-v-img{
+  height:690px;
+  overflow:hidden;
+  background:var(--card);
+}
+.cover-v-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+.cover-v-info{
+  padding:1.4rem 1.6rem;
+  flex:1;
+}
+.cover-v-tag{font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.6rem}
+.tag-flat{background:#FFF3E0;color:var(--orange-deep)}
+.tag-final{background:#EAF3EA;color:#266226}
+.cover-v-info h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;color:var(--ink);margin-bottom:.35rem}
+.cover-v-info p{font-size:.8rem;color:var(--mid);line-height:1.7}
+
+/* PALETTE */
+.palette{display:flex;gap:0;margin-top:2.5rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.palette-swatch{flex:1;aspect-ratio:1/1.4;position:relative}
+.palette-swatch-inner{width:100%;height:100%}
+.palette-hex{position:absolute;bottom:0;left:0;right:0;padding:.5rem .4rem;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.04em;text-align:center;background:rgba(0,0,0,.32);color:rgba(255,255,255,.75)}
+
+/* FULL BLEED */
+.billboard-full{width:100%;border-radius:12px;overflow:hidden;margin-top:2.5rem;border:1px solid var(--rule)}
+.billboard-full img{width:100%;display:block}
+
+/* MOCKUP PAIR */
+.mockup-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.mockup-pair .frame{overflow:hidden}
+.mockup-pair .frame img{width:100%;display:block}
+
+/* REFLECTS */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.93rem;font-weight:400;color:var(--ink);margin-bottom:.35rem}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* SCROLL REVEAL */
+.rev{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.8)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">Visual Media Alliance Magazine / Graphic Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <img class="hero-img" src="magazine mockeup 2.png" alt="Connected magazine flat lay on rattan tray">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1>Connected.<br><em>Visual Media Alliance.</em></h1>
+    <p class="hero-hmw">How do you communicate the urgency of a circular economy in print through a single magazine cover — in a way that feels bold and unmistakably print?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <label>Client</label>
+        <span>Visual Media Alliance</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Role</label>
+        <span>Visual Designer, Illustrator</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Tools</label>
+        <span>Procreate, InDesign, Photoshop</span>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell">
+    <span class="stat-n">2</span>
+    <span class="stat-l">Days to complete</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-n">1</span>
+    <span class="stat-l">Cover designed</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-n">5</span>
+    <span class="stat-l">Colors in palette</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-n">3R</span>
+    <span class="stat-l">Reduce · Reuse · Recycle</span>
+  </div>
+</div>
+
+<!-- 01 CONTEXT -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 top">
+    <div class="rev">
+      <span class="lbl">01 — Context</span>
+      <h2 class="h2">A cover brief tied<br><em>to Earth Day.</em></h2>
+      <p class="body">Visual Media Alliance is a non-profit supporting printers, design agencies, and small business owners across the industry. Their quarterly publication, <em>Connected</em>, goes out to their entire member network, they wanted a cover that aligned with Earth Day's theme: Sustainable Print & the Planet.</p>
+      <p class="body mt2">The brief was to design a cover that promoted awareness of the circular economy — specifically how the print industry sits within it. Educational enough to mean something. Striking enough to be picked up.</p>
+      <div class="q q-orange mt2">
+        <p>Sustainable Print & the Planet: Embracing the Circular Economy.</p>
+        <cite>— VMA Connected, Spring 2025 brief</cite>
+      </div>
+    </div>
+    <div class="rev">
+      <div class="frame">
+        <img src="magazinemock.png" alt="Connected magazine front cover — flat design">
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 03 COLOR PALETTE -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 — Color Palette</span>
+    <h2 class="h2">Five colors.<br><em>One unmistakable world.</em></h2>
+    <p class="body">The palette was built around tension: the warmth of orange against the urgency of green. Neither color could exist without the other, orange without green reads as energy; green without orange reads as nature. Together they read as action.</p>
+    <p class="body mt2">Silver was added as a neutral to represent the industrial and mechanical side of print production.</p>
+  </div>
+
+  <div class="palette rev">
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#F5A623"></div>
+      <span class="palette-hex">#F5A623</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#D4621A"></div>
+      <span class="palette-hex">#D4621A</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#5BBB2F"></div>
+      <span class="palette-hex">#5BBB2F</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#1A6B2A"></div>
+      <span class="palette-hex">#1A6B2A</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#C8CCBE"></div>
+      <span class="palette-hex">#C8CCBE</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- 04 COVER BREAKDOWN -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">03 — Cover Design Breakdown</span>
+    <h2 class="h2 h2-w">Everything on the cover<br><em>is doing work.</em></h2>
+    <p class="body body-w">The cover has four distinct visual zones that each carry a part of the story. The masthead positions the publication; the illustration carries the concept; the arc delivers the message; the contents bar grounds the reader in the issue.</p>
+  </div>
+
+  <div class="cover-versions rev">
+    <div class="cover-v">
+      <div class="cover-v-img">
+        <img src="illustration.png" alt="Connected flat cover design">
+      </div>
+      <div class="cover-v-info">
+        <span class="cover-v-tag tag-flat">Flat Layout</span>
+        <h4>Type & Grid Structure</h4>
+      </div>
+    </div>
+    <div class="cover-v">
+      <div class="cover-v-img">
+        <img src="magazine front page design.png" alt="Connected cover final illustration centered">
+      </div>
+      <div class="cover-v-info">
+        <span class="cover-v-tag tag-final">Final Cover</span>
+        <h4>The Circular Economy Scene</h4>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- 05 MOCKUPS / FINAL -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">04 — Final Mockups</span>
+    <h2 class="h2">Designed for print.<br><em>Made to be held.</em></h2>
+  </div>
+
+  <div class="billboard-full rev">
+    <img src="Mockup magazine 3.png" alt="Connected magazine stacked print run mockup">
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">← Portfolio</a>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

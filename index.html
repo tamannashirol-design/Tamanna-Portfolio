@@ -1,304 +1,649 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamanna Shirol — UX &amp; Industrial Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#999;
+  --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
+  --card:#F3F0EA;--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-logo{
+  font-family:'Space Mono', monospace;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-decoration:none;
+  color:var(--ink);
+  transition:color .2s;
+}.nav-logo:hover{color:var(--olive)}
+.nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-menu a{
+  font-family:'Space Mono', monospace;
+  font-size:0.68rem;
+  font-weight:400;
+  letter-spacing:0.08em;
+  text-decoration:none;
+  color:var(--dim);
+  transition:color .2s;
+}.nav-menu a:hover{color:var(--ink)}
+.nav-cta{font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--olive);border:1px solid var(--olive);padding:.4rem .9rem;border-radius:4px;transition:all .2s}
+.nav-cta:hover{background:var(--olive);color:#fff}
+
+/* ── HERO ── */
+.hero{position:relative;height:30vh;min-height:550px;background:#191B0F;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-tagline-large{font-family:'Fraunces',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.20);letter-spacing:-.02em;line-height:1;}
+/* Subtle grain texture */
+.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+
+/* Ambient glow */
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 3rem;width:100%}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem;display:block}
+.hero-name{font-family:'Fraunces',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:300;color:#fff;line-height:.98;letter-spacing:-.03em;margin-bottom:.5rem}
+.hero-name em{font-style:italic;color:rgba(255,255,255,.45)}
+.hero-role{font-family:'Space Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.08em;margin-bottom:2.5rem}
+.hero-desc{font-size:.93rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:480px;margin-bottom:3rem}
+
+.hero-actions{display:flex;gap:1.5rem;align-items:center;margin-bottom:4rem}
+.hero-btn{font-family:'Space Mono',monospace;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:.65rem 1.4rem;border-radius:4px;transition:all .2s}
+.hero-btn-primary{background:var(--olive);color:#fff;border:1px solid var(--olive)}
+.hero-btn-primary:hover{background:#5a6034}
+.hero-btn-ghost{color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15)}
+.hero-btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+
+/* Scroll hint bar */
+.hero-bottom-bar{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;max-width:100%}
+.hero-scroll-hint{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);display:flex;align-items:center;gap:.6rem}
+.hero-scroll-hint::before{content:'';display:block;width:18px;height:1px;background:rgba(255,255,255,.2)}
+.hero-stat-row{display:flex;gap:3rem}
+.hero-stat label{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);display:block;margin-bottom:.2rem}
+.hero-stat span{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.4)}
+
+/* Projects peek — partially visible below fold */
+.projects-peek{position:relative;z-index:2;padding:0 3rem;margin-bottom:-2.5rem}
+.projects-peek-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:1rem;display:block}
+.peek-strip{display:flex;gap:1rem;overflow:hidden}
+.peek-card{flex:0 0 220px;height:110px;border-radius:8px;overflow:hidden;opacity:.35;position:relative}
+.peek-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(40%)}
+.peek-card-label{position:absolute;bottom:.6rem;left:.8rem;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.06em;color:#fff;text-transform:uppercase}
+.peek-card:last-child{opacity:.15}
+
+/* ── LAYOUT UTILITIES ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:7rem 0}
+.sec-tinted{background:#F0EFE7;padding:7rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:540px}
+.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* ── SELECTED PROJECTS ── */
+.selected-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem}
+.view-all{font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--olive);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:.2rem;transition:border-color .2s}
+.view-all:hover{border-color:var(--olive)}
+
+/* Project cards */
+.proj-list{display:flex;flex-direction:column;gap:0}
+.proj-item{display:grid;grid-template-columns:1fr 1.1fr;gap:0;border-top:1px solid var(--rule);overflow:hidden;transition:background .25s}
+.proj-item:last-child{border-bottom:1px solid var(--rule)}
+.proj-item:hover{background:var(--card)}
+.proj-info{
+  padding:2.5rem;
+  display:block;
+}.proj-meta-top{display:flex;gap:1rem;align-items:center;margin-bottom:1.2rem}
+.proj-tag{font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.proj-year{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.06em}
+.proj-title{font-family:'Fraunces',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:300;letter-spacing:-.02em;color:var(--ink);line-height:1.1;margin-bottom:.8rem}
+.proj-title em{font-style:italic;color:var(--mid)}
+.proj-desc{font-size:.88rem;color:var(--mid);line-height:1.75;max-width:450px;margin-bottom:1rem}
+.proj-stats{display:flex;gap:2rem;margin-bottom:1rem}
+.proj-stat span{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:300;color:var(--ink);display:block;line-height:1}
+.proj-stat label{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem;display:block}
+.proj-link{font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-decoration:none;color:var(--olive);display:inline-flex;align-items:center;gap:.5rem;transition:gap .2s}
+.proj-link:hover{gap:.9rem}
+.proj-link::after{content:'→'}
+.proj-img{overflow:hidden;position:relative}
+.proj-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.proj-item:hover .proj-img img{transform:scale(1.03)}
+.proj-item{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  align-items:start;
+  gap:0;
+  border-top:1px solid var(--rule);
+  overflow:hidden;
+  transition:background .25s;
+  text-decoration:none;
+  color:inherit;
+}
+
+.proj-info{
+  padding:2.5rem;
+}
+
+.proj-img{
+  height:100%;
+  max-height:340px;
+  overflow:hidden;
+  position:relative;
+}
+
+.proj-img-inner{
+  width:100%;
+  height:100%;
+}
+
+.proj-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+/* LOCKED project card */
+.proj-item.locked{cursor:default}
+.proj-item.locked:hover{background:transparent}
+.proj-item.locked .proj-img-inner{background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem}
+.lock-icon{width:40px;height:40px;border:1.5px solid rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.lock-icon svg{opacity:.3}
+.locked-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.locked-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border:1px solid var(--rule);padding:.3rem .7rem;border-radius:4px;margin-top:.5rem}
+.locked-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--olive);opacity:.5;display:inline-block}
+
+/* ── OTHER PROJECTS GRID ── */
+.other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-top:3rem}
+.other-card{background:var(--bg);padding:2.2rem;display:flex;flex-direction:column;gap:1.2rem;transition:background .2s;text-decoration:none;color:inherit}
+.other-card:hover{background:var(--card)}
+.other-img{aspect-ratio:16/11;overflow:hidden;border-radius:6px;background:var(--card)}
+.other-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.other-card:hover .other-img img{transform:scale(1.04)}
+.other-tag{font-family:'Space Mono',monospace;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.other-title{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--ink);line-height:1.3}
+.other-desc{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* Locked other card */
+.other-card.locked-other{cursor:default}
+.other-card.locked-other:hover{background:var(--bg)}
+.other-img.locked-img{background:var(--ink);display:flex;align-items:center;justify-content:center}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.about-intro{font-family:'Fraunces',serif;font-size:clamp(1.3rem,2vw,1.7rem);font-weight:300;line-height:1.4;letter-spacing:-.01em;color:var(--ink);margin-bottom:2rem}
+.about-intro em{font-style:italic;color:var(--mid)}
+.about-body{font-size:.9rem;color:var(--mid);line-height:1.85;margin-bottom:1.4rem}
+.skill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.skill{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);border:1px solid var(--rule);padding:.35rem .75rem;border-radius:4px}
+
+/* Currently reading / etc. */
+.aside-block{border-top:1px solid var(--rule);padding-top:2rem;margin-top:2rem}
+.aside-block .lbl{margin-bottom:1.2rem}
+.aside-item{display:flex;justify-content:space-between;align-items:baseline;padding:.7rem 0;border-bottom:1px solid var(--rule);font-size:.85rem;color:var(--mid)}
+.aside-item:last-child{border-bottom:none}
+.aside-item strong{color:var(--ink);font-weight:500}
+.aside-item span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.04em}
+
+/* ── CTA ── */
+.cta-band{background:var(--ink);padding:5rem 0;text-align:center}
+.cta-band .h2{color:#fff}
+.cta-band .h2 em{color:rgba(255,255,255,.4)}
+.cta-body{font-size:.91rem;color:rgba(255,255,255,.4);line-height:1.8;max-width:480px;margin:1rem auto 2.5rem}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-btn{font-family:'Space Mono',monospace;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:.7rem 1.5rem;border-radius:4px;transition:all .2s}
+.cta-btn-primary{background:var(--olive);color:#fff}
+.cta-btn-primary:hover{background:#5a6034}
+.cta-btn-ghost{color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15)}
+.cta-btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+
+/* ── FOOTER ── */
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 2.5rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.footer-copy {
+  font-family: 'Space Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.35);
+  text-align: center;
+}
+/* ── REVEAL ── */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rev.in{opacity:1;transform:none}
+.rev-delay-1{transition-delay:.1s}
+.rev-delay-2{transition-delay:.2s}
+.rev-delay-3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:.9rem 1.5rem}
+  .nav-menu{display:none}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:5rem 0}
+  .hero-inner,.hero-bottom-bar,.projects-peek{padding-left:1.5rem;padding-right:1.5rem}
+  .hero-stat-row{display:none}
+  .proj-item{grid-template-columns:1fr}
+  .proj-img-inner{min-height:260px}
+  .proj-info{padding:2rem 0 2rem 0}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .other-grid{grid-template-columns:1fr 1fr}
+  footer{padding:2rem 1.5rem}
+}
+@media(max-width:600px){
+  .other-grid{grid-template-columns:1fr}
+  .peek-strip{gap:.6rem}
+  .peek-card{flex:0 0 160px;height:80px}
+}
+.about-photo img {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 3/3;
+  object-fit: cover;
+  display: block;
+}
+</style>
 </head>
 <body>
-  <a class="visually-hidden" href="#main">Skip to content</a>
 
-  <header class="header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>TamDesigns</span>
-      </a>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Tamanna Shirol</a>
+  <ul class="nav-menu">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="art gallery/art.html">Art Gallery</a></li>
+  </ul>
+</nav>
 
-      <input type="checkbox" id="nav-toggle" />
-      <label class="nav-btn" for="nav-toggle" aria-label="Toggle menu"><span class="bars"></span></label>
+<!-- ═══ HERO ═══ -->
+<section class="hero">
 
-      <nav aria-label="Primary">
-        <ul class="nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#work">Projects</a></li>
-          <li><a href="art.html">Art Gallery</a> </li>
-        </ul>
-      </nav>
+
+  <div class="hero-inner" style="margin-bottom:auto;padding-top:140px">
+    <span class="hero-eyebrow">Product Designer</span>
+    <h1 class="hero-name">Tamanna<br><em>Shirol.</em></h1>
+    <div class="hero-actions">
+      <a href="./Tamanna%20Resume_2026.pdf" class="hero-btn hero-btn-ghost" onclick="window.open(this.href, '_blank'); return false;">Resume</a>
+      <a href="mailto:tamanna.shirol@gmail.com" class="hero-btn hero-btn-ghost">Let's Connect!</a>
     </div>
-  </header>
+  </div>
 
-  <main id="main">
-    <section class="section section-hero">
-      <div class="container hero">
+  <div class="hero-bottom-bar" >
+<p class="hero-tagline-large" style="margin-left:9rem;">I turn barriers into better beginnings.</p>
+    <span class="hero-scroll-hint">Scroll to explore</span>
+</div>
+</section>
+
+<!-- ═══ SELECTED PROJECTS ═══ -->
+<section class="sec" id="work">
+<div class="wrap">
+  <div class="selected-intro rev">
+    <div>
+      <h2 class="h2">Selected Projects</em></h2>
+    </div>
+    <a href="#other-work" class="view-all">More projects &nbsp;↓</a>
+  </div>
+
+  <div class="proj-list">
+
+    <!-- 01 ONVERO -->
+    <a href="Onvero/Onvero.html" class="proj-item rev">
+      <div class="proj-info">
         <div>
-          <p class="eyebrow">UX / Product Designer</p>
-          <h1>Tamanna Shirol</h1>
-          <p>I am an Indian-Kenyan designer with a passion for creating thoughtful experiences,
-            from intuitive interfaces to tangible products because who said great design can't be both smart and a little fun?</p>
-          <div class="cta">
-            <a class="btn btn-primary" href="Tamanna_DesignResume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"> Resume</a>
-            <a class="btn btn-primary" href="mailto:tamanna.shirol@gmail.com?subject=Let's%20Connect!"
-            target="_blank">
-            Let's Connect</a>
+          <div class="proj-meta-top">
+            <span class="proj-tag">UX Design</span>
+            <span class="proj-year">2025</span>
+          </div>
+    
+          <h3 class="proj-title">
+            Onvero
+          </h3>
+    
+          <p class="proj-desc">
+            Designing access of verified immigration legal services for undocumented individuals who have good reason not to trust institutions. Community partnerships with a trust framework built from ethnographic research.
+          </p>
+    
+          <div class="proj-stats">
+            <div class="proj-stat">
+              <span>Professional</span>
+              <label>BRIDGEGOOD</label>
+            </div>
           </div>
         </div>
+    
+        <span class="proj-link">View case study</span>
+      </div>
+    
+      <div class="proj-img">
+        <div class="proj-img-inner" style="background:#1a2035">
+          <img src="heromain.png" alt="Onvero">
+        </div>
+      </div>
+    </a>
+
+    <!-- 02 ATLASTAX -->
+    <a href="AtlasTax/atlastax.html" class="proj-item rev">
+      <div class="proj-info">
         <div>
-          <img src="headshot.png" alt="Headshot photo">
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="work">
-      <div class="container">
-        <div class="section-head">
-          <h2>Selected Work</h2>
-        </div>
-
-        <div class="projects">
-          <article class="project-card">
-            <a class="project-link" href="onvero.html">
-              <div class="project-media">
-                <img class="img-default" src="onveromock2.png" >
-                <img class="img-hover"   src="onverocover.png">
-              </div>
-              <div class="project-overlay">
-                <h4 class="project-title">Onvero</h4>
-              </div>
-            </a>
-            <div class="project-body">
-              <p class="project-meta">UX Designer · 2025 · BRIDGEGOOD</p>
-              <p class="project-desc">Helping Undocumented Individuals Access Legal Support. Pitched at Wells Fargo!</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <a class="project-link" href="tax.html">
-              <div class="project-media">
-                <img class="img-default" src="pagesmock.png" >
-                <img class="img-hover"   src="Mobile.png">
-              </div>
-              <div class="project-overlay">
-                <h4 class="project-title">AtlasTax</h4>
-              </div>
-            </a>
-            <div class="project-body">
-              <p class="project-meta"> UX Designer · 2025 · Academic</p>
-              <p class="project-desc">A Guided Tax-filing Tool That Helps International Students File With Confidence. </p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <a class="project-link" href="ai.html">
-              <div class="project-media">
-                <img class="img-default" src="Final rendering.png" >
-                <img class="img-hover"   src="panel rendering 2.png">
-              </div>
-              <div class="project-overlay">
-                <h4 class="project-title">Data Center Photocatalytic Panel System</h4>
-              </div>
-            </a>
-            <div class="project-body">
-              <p class="project-meta">Industrial Designer · 2025 · Academic</p>
-              <p class="project-desc">Integrated Photocatalytic Modular Panel Design To Mitigate Urban NOx Exposure From Data Centers.</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <a class="project-link" href="root.html">
-              <div class="project-media">
-                <img class="img-default" src="rootcover.png" >
-                <img class="img-hover"   src="rootmock.png">
-              </div>
-              <div class="project-overlay">
-                <h4 class="project-title">Root</h4>
-              </div>
-            </a>
-            <div class="project-body">
-              <p class="project-meta">Industrial Designer · 2025 · Academic</p>
-              <p class="project-desc">Triggering Memory Through Scent. An IoT device helping individuals with Alzheimer's reconnect through aroma.</p>
-            </div>
-          </article>
-
-
-
-
-        </div>
-      </div>
-    </section>
-
-    <div class="scroll-arrow">
-      <a href="#more-work" aria-label="Scroll to more projects">
-        ↓  ↓
-      </a>
-    </div>
-
-    <section class="section" id="more-work">
-      <div class="container">
-        <div class="section-head">
-          <h2>More Projects</h2>
-        </div>
-    
-        <div class="shelf-wrap">
-          <button class="shelf-btn prev" aria-label="Scroll previous" disabled>
-            &#10094;
-          </button>
-    
-          <div class="shelf shelf--compact" aria-label="More projects carousel">
-            
-            <article class="project-card project-card--compact">
-              <a class="project-link" href="ring.html">
-                <div class="project-media">
-                  <img class="img-default" src="ringcover.png" >
-                  <img class="img-hover"   src="ringcover2.png">
-                </div>
-                <div class="project-overlay">
-                  <h4 class="project-title">Evergreen Connection</h4>
-                </div>
-              </a>
-               <div class="project-body">
-                <p class="project-meta">Industrial Design · Academic </p>
-                <p class="project-desc">Engagement ring design</p>
-              </div>
-            </article>
-
-            <article class="project-card project-card--compact">
-              <a class="project-link" href="billboard.html">
-                <div class="project-media">
-                  <img class="img-default" src="billboardcover.png" >
-                  <img class="img-hover"   src="me.png">
-                </div>
-                <div class="project-overlay">
-                  <h4 class="project-title">Inspire Oakland Design</h4>
-                </div>
-              </a>
-               <div class="project-body">
-                <p class="project-meta">Visual Design · BRIDGEGOOD </p>
-                <p class="project-desc"> Billboard design </p>
-              </div>
-            </article>
-
-            <article class="project-card project-card--compact">
-              <a class="project-link" href="waterfilter.html">
-                <div class="project-media">
-                  <img class="img-default" src="water.png" >
-                  <img class="img-hover"   src="filtermock.png">
-                </div>
-                <div class="project-overlay">
-                  <h4 class="project-title">HyDrip</h4>
-                </div>
-              </a>
-              <div class="project-body">
-                <p class="project-meta">Industrial Design · Academic </p>
-                <p class="project-desc">Dorm room water filter</p>
-              </div>
-            </article>
- 
-            <article class="project-card project-card--compact">
-              <a class="project-link" href="magazine.html">
-                <div class="project-media">
-                  <img class="img-default" src="magazine mockup.png" >
-                  <img class="img-hover"   src="magazinemock.png">
-                </div>
-                <div class="project-overlay">
-                  <h4 class="project-title">Visual Media Magazine Cover</h4>
-                </div>
-              </a>
-              <div class="project-body">
-                <p class="project-meta">Visual Design • Professional </p>
-                <p class="project-desc">Connected magazine cover</p>
-              </div>
-            </article>
-
-            <article class="project-card project-card--compact">
-              <a class="project-link" href="soda.html">
-                <div class="project-media">
-                  <img class="img-default" src="sodamock2.png" >
-                  <img class="img-hover"   src="sodacover.png">
-                </div>
-                <div class="project-overlay">
-                  <h4 class="project-title">Poppy Soda</h4>
-                </div>
-              </a>
-              <div class="project-body">
-                <p class="project-meta">Visual Design • Academic </p>
-                <p class="project-desc">Soda label design</p>
-              </div>
-            </article>
-
-
+          <div class="proj-meta-top">
+            <span class="proj-tag">UX Design</span>
+            <span class="proj-year">2026</span>
           </div>
-          <button class="shelf-btn next" aria-label="Scroll next">
-            &#10095;
-          </button>
+    
+          <h3 class="proj-title">
+            AtlasTax
+          </h3>
+    
+          <p class="proj-desc">
+            Tax-filing software for international students (F-1, J-1 & M-1) AtlasTax provides the guidance they need to file accurately in a system they have no knowledge about. Won 2nd place at the SFSU LCFoB product pitch.
+          </p>
+    
+          <div class="proj-stats">
+            <div class="proj-stat">
+              <span>Personal</span>
+              <label>Passion Project</label>
+            </div>
+          </div>
+        </div>
+    
+        <span class="proj-link">View case study</span>
+      </div>
+    
+      <div class="proj-img">
+        <div class="proj-img-inner" style="background:#1a2035">
+          <img src="atlastashero.png" alt="AtlasTax">
         </div>
       </div>
-    </section>
-  </main>
+    </a>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> TamDesigns</p>
-      <ul class="nav">
-        <li><a href="https://www.linkedin.com/in/tamanna-shirol/" target="_blank">LinkedIn</a></li>
-        <li><a href="mailto:tamanna.shirol@gmail.com?subject=Let's%20Connect!"
-          target="_blank">Email</a></li>
-      </ul>
+    <!-- 03 CULTIVAR -->
+    <a href="Cultivar/cultivar.html" class="proj-item rev">
+      <div class="proj-info">
+        <div>
+          <div class="proj-meta-top">
+            <span class="proj-tag">Industrial & UX Design</span>
+            <span class="proj-year">2026</span>
+          </div>
+    
+          <h3 class="proj-title">
+            Cultivar
+          </h3>
+    
+          <p class="proj-desc">
+            A modular indoor hydroponic system that makes rare ingredients more accessible. By connecting physical growing equipment with a guided digital experience users can expand their culinary horizons while growing specialty ingredients from home.
+          </p>
+    
+          <div class="proj-stats">
+            <div class="proj-stat">
+              <span>Academic</span>
+              <label>Senior Design Capstone at SFSU</label>
+            </div>
+          </div>
+        </div>
+    
+        <span class="proj-link">View case study</span>
+      </div>
+    
+      <div class="proj-img">
+        <div class="proj-img-inner" style="background:#1a2035">
+          <img src="system + UX final.png" alt="Cultivar">
+        </div>
+      </div>
+    </a> 
+    
+    <!-- 04 LOCKED -->
+
+    <div class="proj-item locked rev rev-delay-3">
+      <div class="proj-info">
+        <div>
+          <div class="proj-meta-top">
+            <span class="proj-tag">UX &amp; Product Design</span>
+            <span class="proj-year">2026</span>
+            <span class="locked-badge">In progress</span>
+          </div>
+          <h3 class="proj-title" style="color:var(--dim)">New project coming soon</em></h3>
+          <p class="proj-desc">I'm currently leading and contributing to design initiatives through my internship. Details and outcomes will be shared in a full case study once the project is ready for publication.</p>
+          <div class="proj-stats">
+            <div class="proj-stat">
+              <span>Professional</span>
+              <label>Product Design intern at Yerba Buena Gardens Conservancy</label>
+            </div>
+          </div>
+        </div>
+        
+        <a href="mailto:tamanna.shirol@gmail.com" class="proj-link" style="color:var(--dim)">Get in touch if you&rsquo;d like to hear more</a>
+      </div>
+      <div class="proj-img">
+        <div class="proj-img-inner locked-img">
+          <div class="lock-icon">
+            <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="8" width="14" height="10" rx="2" stroke="white" stroke-width="1.5"/>
+              <path d="M4 8V5.5C4 3.567 5.79 2 8 2C10.21 2 12 3.567 12 5.5V8" stroke="white" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  </div><!-- /proj-list -->
+</div>
+</section>
+
+<!-- ═══ OTHER PROJECTS ═══ -->
+<div class="sec-tinted" id="other-work">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">Other Work</span>
+    <h2 class="h2">More explorations<br><em>across disciplines.</em></h2>
+  </div>
+
+  <div class="other-grid rev mt3">
+        <!-- Chair -->
+        <a href="chair/cardohex.html" class="other-card">
+          <div class="other-img" style="background:#f5f0e8;display:flex;align-items:center;justify-content:center">
+            <img src="Chair.jpeg" alt="Cardohex chair">
+          </div>
+          <div>
+            <span class="other-tag">Industrial Design &middot; 2026</span>
+            <p class="other-title">CardoHex</p>
+            <p class="other-desc">Carboard internal structure inspired lounge chair. Fully manufactured.</p>
+          </div>
+        </a>
+
+    <!-- Root (industrial) -->
+    <a href="Root/Root.html" class="other-card">
+      <div class="other-img">
+        <img src="BERK contents root.png" alt="Root diffuser">
+      </div>
+      <div>
+        <span class="other-tag">IoT Product Design &middot; 2025</span>
+        <p class="other-title">Root Olfactory Memory Diffuser</p>
+        <p class="other-desc">IoT device using personalised scent profiles to reduce anxiety and support memory retention in early-stage Alzheimer&rsquo;s patients.</p>
+      </div>
+    </a>
+
+
+    <!-- AI Photocatalytic Panel -->
+    <a href="AI Wall/ai-data-center.html" class="other-card">
+      <div class="other-img" class="other-card">
+<img src = "Full building rendering 2.png" alt ="ai data center photocatalytic wall">
+      </div>
+      <div>
+        <span class="other-tag">Industrial Design &middot; 2025</span>
+        <p class="other-title">Data Center Photocatalytic Wall</p>
+        <p class="other-desc">Modular panel system designed to mitigate NOx exposure from data center cooling infrastructure.</p>
+      </div>
+    </a>
+
+    <!-- Evergreen ring -->
+    <a href="Ring/evergreen.html" class="other-card">
+      <div class="other-img" class="other-card">
+        <img src = "ringcover2.png" alt ="Evergreen rings">
+      </div>
+      <div>
+        <span class="other-tag">Industrial Design &middot; 2025</span>
+        <p class="other-title">Evergreen Connection</p>
+        <p class="other-desc">Engagement ring design exploring form, material, and emotional resonance.</p>
+      </div>
+    </a>
+
+    <!-- HyDrip -->
+    <a href="Water filter/hydrip.html" class="other-card">
+      <div class="other-img" class="other-card">
+        <img src = "filtermock.png" alt ="Hydrip dorm room water filter">
+      </div>
+      <div>
+        <span class="other-tag">Industrial Design &middot; 2025</span>
+        <p class="other-title">HyDrip Water Filter</p>
+        <p class="other-desc">Compact dorm-room water filtration system designed around the spatial and behavioural constraints of student housing.</p>
+      </div>
+    </a>
+
+    <!-- Billboard -->
+    <a href="Inspire Oakland/InspireOakland.html" class="other-card">
+      <div class="other-img" class="other-card">
+        <img src = "inspireoakland.png" alt ="Tamanna infront of her winning billboard">
+      </div>
+      <div>
+        <span class="other-tag">Visual Communication Design &middot; 2025</span>
+        <p class="other-title">Inspire Oakland Billboard</p>
+        <p class="other-desc">Grand prize winner featured on a billboard, LED display and OAK international airport screens by BRIDGEGOOD.</p>
+      </div>
+    </a>
+
+    <!-- Magazine -->
+    <a href="Visual Media/Connected.html" class="other-card">
+      <div class="other-img" class="other-card">
+        <img src = "magazine mockup.png" alt ="Visual media magazine cover design">
+      </div>
+      <div>
+        <span class="other-tag">Graphic Design &middot; 2025</span>
+        <p class="other-title">Visual Media Magazine Cover</p>
+        <p class="other-desc">Editorial cover design exploring type-image relationships and visual hierarchy.</p>
+      </div>
+    </a>
+
+
+            <!-- Childrens book -->
+    <a href="Children's book/SeedsOfADream.html" class="other-card">
+      <div class="other-img" class="other-card">
+        <img src = "kids mock 2.png" alt ="Seed of a dream book mockup">
+      </div>
+      <div>
+        <span class="other-tag">Graphic Design &middot; 2025</span>
+        <p class="other-title">Seed of a Dream Children's Book</p>
+        <p class="other-desc">Editorial cover design exploring type-image relationships and visual hierarchy.</p>
+      </div>
+    </a>
+
+            <!-- Book Cover -->
+            <a href="Book Cover/GanstersScholar.html" class="other-card">
+              <div class="other-img" class="other-card">
+          <img src = "bookmock.png" alt ="Gangster's scholar book cover mockup">
+              </div>
+              <div>
+                <span class="other-tag">Graphic Design &middot; 2024</span>
+                <p class="other-title">The Gangster's Scholar Book Cover</p>
+                <p class="other-desc">Editorial cover design exploring type-image relationships and visual hierarchy.</p>
+              </div>
+            </a>
+
+  </div>
+</div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="sec" id="about">
+<div class="wrap">
+  <div class="about-grid">
+    <div class="rev">
+      <span class="lbl">About</span>
+      <p class="about-intro">An Indian-Kenyan designer who works across screens <em>and physical form</em> because good design isn&rsquo;t limited to either.</p>
+      <p class="about-body">I&rsquo;m currently studying at New York University, where I work across UX/product design with emerging technologies. I design to answer the question: who is this actually for, and what do they actually need?</p>
+      <p class="about-body">I&rsquo;m particularly drawn to designing for people who are underserved by existing systems. The projects I have tackled aren&rsquo;t just design problems. They&rsquo;re human ones.</p>
+      <p class="about-body">My undergraduate background in Industrial Design at San Francisco State University shaped the way I approach UX by teaching me to think beyond interfaces and consider the entire user experience from context and behavior to form and function.</p>      <div class="skill-row">
+        <span class="skill">User Research</span>
+        <span class="skill">Marketing</span>
+        <span class="skill">Visual Design</span>
+        <span class="skill">Illustration</span>
+        <span class="skill">Rapid Visualization</span>
+        <span class="skill">Wireframing</span>
+        <span class="skill">Accessibility Design</span>
+        <span class="skill">Prototyping</span>
+        <span class="skill">Computer-Aided Design</span>
+        <span class="skill">3D Rendering</span>
+      </div>
+    </div>
+
+    <div class="rev rev-delay-1">
+      <div class="about-photo">
+        <img src="headshot.png" alt="Tamanna Shirol">
+      </div>
+      <div class="aside-block">
+        <span class="lbl">Currently</span>
+        <div class="aside-item"><strong>Yerba Buena Gardens Conservancy</strong><span>Product Design Intern</span></div>
+        <div class="aside-item"><strong>New York University</strong><span>MS Emerging Technologies in UX Design</span></div>
+      </div>
+      <div class="aside-block">
+        <span class="lbl">Links</span>
+    
+        <div class="aside-item">
+          <a href="https://www.linkedin.com/in/tamanna-shirol/"
+             style="color:var(--ink);text-decoration:none"
+             target="_blank">
+            LinkedIn
+          </a>
+          <span>↗</span>
+        </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-band rev">
+  <div class="wrap" style="text-align:center">
+    <span class="lbl" style="justify-content:center;display:block;color:#7d8f4a">Let&rsquo;s work together</span>
+    <h2 class="h2 " style="color:#fff;text-align:center">Have a project in mind?<br><em>I&rsquo;d love to hear about it.</em></h2>
+    <div class="cta-actions">
+      <a href="mailto:tamanna.shirol@gmail.com" class="cta-btn cta-btn-primary">Get in touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-copy">
+    © 2025 Tamanna Shirol. All rights reserved.
+  </div>
+
+  <div class="footer-spacer"></div>
+</footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', ()=>{
-      const box = document.getElementById('nav-toggle');
-      if (box) box.checked = false;
-    });
-  });
-</script>
-<script>
-  (function(){
-    const wrap = document.querySelector('#more-work .shelf-wrap');
-    if (!wrap) return;
-    const shelf = wrap.querySelector('.shelf');
-    const prev = wrap.querySelector('.shelf-btn.prev');
-    const next = wrap.querySelector('.shelf-btn.next');
-
-    const step = () => Math.min(400, shelf.clientWidth * 0.8); 
-
-    function updateButtons() {
-      const max = shelf.scrollWidth - shelf.clientWidth - 1;
-      prev.disabled = shelf.scrollLeft <= 0;
-      next.disabled = shelf.scrollLeft >= max;
-    }
-
-    function scrollByDelta(dx) {
-      shelf.scrollBy({ left: dx, behavior: 'smooth' });
-      setTimeout(updateButtons, 220);
-    }
-
-    prev.addEventListener('click', () => scrollByDelta(-step()));
-    next.addEventListener('click', () => scrollByDelta(step()));
-
-    shelf.setAttribute('tabindex', '0');
-    shelf.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') { e.preventDefault(); scrollByDelta(step()/1.2); }
-      if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollByDelta(-step()/1.2); }
-    });
-
-    shelf.addEventListener('scroll', updateButtons, { passive: true });
-    window.addEventListener('resize', updateButtons);
-    updateButtons();
-  })();
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AtlasTax — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#FAF8F4;
+  --ink:#141414;
+  --mid:#555;
+  --dim:#999;
+  --rule:#E4E0D8;
+  --olive:#6B7040;
+  --navy:#2C3E6B;
+  --card:#F3F0EA;
+  --white:#fff;
+}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.78) 0%,rgba(20,20,20,.4) 55%,rgba(20,20,20,.12) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+
+/* SKETCH ROW — all same height, cropped from top */
+.sketches{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.sketch-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/3}
+.sketch-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.how-step{padding:2.5rem 2rem;border-right:1px solid var(--rule);position:relative}
+.how-step:last-child{border-right:none}
+.step-num{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;color:var(--olive);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.8rem}
+.step-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.step-desc{font-size:.83rem;color:var(--mid);line-height:1.7}
+.how-screens{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.how-screen-group{display:flex;flex-direction:column;gap:.75rem}
+.how-screen-group .frame{border-radius:20px}
+.how-screen-group .frame img{border-radius:20px}
+
+/* PHONE HOVER ROW */
+.flow-hint{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-top:.4rem;border-bottom:1px solid var(--rule);padding-bottom:.2rem}
+.phones{display:grid;grid-template-columns:repeat(7,1fr);gap:.85rem;margin-top:2.5rem;align-items:end}
+.phone{cursor:pointer;text-align:center}
+.phone-shell{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/19;background:#111;border:1.5px solid rgba(0,0,0,.1);box-shadow:0 6px 24px rgba(0,0,0,.11);transition:transform .3s,box-shadow .3s}
+.phone:hover .phone-shell{transform:translateY(-10px);box-shadow:0 20px 48px rgba(0,0,0,.18)}
+.phone-shell img,.phone-shell video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.phone-shell video{opacity:0;transition:opacity .3s}
+.phone:hover .phone-shell video{opacity:1} 
+.phone-shell video {
+  object-fit: cover;
+  transform: scale(1.04);
+}
+.phone p{font-family:'Space Mono',monospace;font-size:.56rem;color:var(--dim);letter-spacing:.07em;text-transform:uppercase;margin-top:.55rem}
+
+/* STATS DATA POINTS */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* RESEARCH METHOD */
+.method-bar{display:flex;gap:0;margin-top:2rem;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.method-item{flex:1;padding:1.5rem;border-right:1px solid var(--rule);background:var(--card)}
+.method-item:last-child{border-right:none}
+.method-n{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;color:var(--olive);display:block;line-height:1}
+.method-l{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* ITER */
+.iter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1.5rem}
+.iter-half{padding:2.2rem}
+.iter-half+.iter-half{border-left:1px solid var(--rule)}
+.iter-tag{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.9rem}
+.tag-b{background:#FDECEA;color:#9B2335}
+.tag-a{background:#EAF3EA;color:#266226}
+.iter-half p{font-size:.86rem;color:var(--mid);line-height:1.75;margin-bottom:.8rem}
+.iter-half .frame{margin-top:1rem}
+.iter-2up{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
+
+/* FULL BLEED */
+.full{width:100%;display:block}
+
+/* JOURNEY */
+.journeys{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.j-card{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.j-label{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1rem}
+.j-b{background:#FDECEA;color:#9B2335}
+.j-a{background:#EAF3EA;color:#266226}
+.j-card img{width:100%;display:block}
+
+/* REFLECT */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* NEXT */
+.nexts{list-style:none;margin-top:2rem}
+.nexts li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--mid);line-height:1.6}
+.nexts li span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.08em;flex-shrink:0;font-weight:700}
+
+/* COMP TABLE */
+.comp{width:100%;border-collapse:collapse;margin-top:2rem;border-radius:8px;overflow:hidden}
+.comp th{background:var(--ink);color:rgba(255,255,255,.5);padding:.75rem 1rem;text-align:left;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+.comp td{padding:.85rem 1rem;font-size:.83rem;color:var(--mid);border-bottom:1px solid var(--rule);vertical-align:middle}
+.comp tr.at td{background:#F0F3EA;color:var(--olive);font-weight:500}
+.comp tr.at td:first-child{border-left:2px solid var(--olive)}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.68rem;font-family:'Space Mono',monospace;font-weight:700}
+.by{background:#EAF3EA;color:#266226}
+.bn{background:#FDECEA;color:#9B2335}
+
+/* PITCH MOMENT */
+.pitch-block{margin-top:2.5rem;background:var(--navy);border-radius:12px;padding:2.5rem;display:flex;align-items:center;gap:3rem;flex-wrap:wrap}
+.pitch-n{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:#fff;flex:1;min-width:220px}
+.pitch-n span{display:block;font-size:.72rem;color:rgba(255,255,255,.4);font-family:'Space Mono',monospace;letter-spacing:.06em;margin-top:.3rem}
+.pitch-link{font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid rgba(255,255,255,.2);padding:.5rem 1rem;border-radius:4px;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.pitch-link:hover{color:#fff;border-color:rgba(255,255,255,.6)}
+
+/* THINK ALOUD */
+.ta-link{display:inline-flex;align-items:center;gap:.6rem;font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:var(--olive);text-decoration:none;border:1px solid var(--olive);padding:.55rem 1.1rem;border-radius:4px;transition:all .2s;margin-top:1.5rem}
+.ta-link:hover{background:var(--olive);color:#fff}
+.ta-link::before{content:"▶";font-size:.65rem}
+
+/* PRODUCT SHOT */
+.product-shot{width:100%;border-radius:12px;overflow:hidden;margin-top:2.5rem;box-shadow:0 16px 60px rgba(0,0,0,.1)}
+.product-shot img{width:100%;display:block}
+
+/* DESIGN SYSTEM CALLOUTS */
+.ds-row{display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:start;margin-top:2.5rem}
+.ds-notes{display:flex;flex-direction:column;gap:1rem}
+.ds-note{padding:1.2rem 1.5rem;border-left:2px solid var(--rule)}
+.ds-note strong{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.ds-note span{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.8)}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
+  .g2,.g3,.g4,.iter,.journeys,.reflects,.data-row,.how-steps,.how-screens,.sketches,.phones,.method-bar{grid-template-columns:1fr;gap:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .iter-half+.iter-half{border-left:none;border-top:1px solid var(--rule)}
+  .how-step{border-right:none;border-bottom:1px solid var(--rule)}
+  .phones{grid-template-columns:repeat(4,1fr)}
+  footer{padding:2rem 1.5rem}
+  .ds-row{grid-template-columns:1fr}
+}
+/* LOGO HERO */
+.logo-hero{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
+.logo-hero img{width:100px;height:100px;object-fit:contain;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">AtlasTax &nbsp;/&nbsp; UX Case Study</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="Mobile.png" alt="AtlasTax">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="logo-hero">
+      <img src="atlas logo.png" alt="Atlastax logomark">
+    </div>
+
+    <h1>One wrong form could<br><em>cost you your visa.</em></h1>
+    <p class="hero-hmw">How might we help international students understand exactly which documents they need and complete their tax forms accurately without confusion?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>UX Designer</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Figma &middot; Procreate &middot; Illustrator</span></div>
+      <div class="hero-meta-item"><label>Team</label><span>Business Collaboration · In Development</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">90%</span><span class="stat-l">Preferred over competitors</span></div>
+  <div class="stat-cell"><span class="stat-n">94%</span><span class="stat-l">Reported reduced anxiety</span></div>
+  <div class="stat-cell"><span class="stat-n">80%</span><span class="stat-l">Willing to pay $29</span></div>
+  <div class="stat-cell"><span class="stat-n">2nd</span><span class="stat-l">SFSU Business Pitch</span></div>
+</div>
+
+<!-- 01 PROBLEM -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev">
+    <div>
+      <span class="lbl">01 &mdash; Problem</span>
+      <h2 class="h2">Built for citizens.<br><em>Not for students.</em></h2>
+      <p class="body">A U.S. citizen earning under $15,750 doesn&rsquo;t need to file. An 18-year-old international student with zero income still does &mdash; and one mistake can jeopardize their visa, immigration applications, and future employment.</p>
+      <div class="q mt2">
+        <p>&ldquo;The system exists, just not for them. Residents have TurboTax. Non-resident students are left with confusion.&rdquo;</p>
+      </div>
+      <p class="body">1.2 million international students in the U.S. Nearly all carry annual IRS filing obligations. Almost none have a tool built for them.</p>
+    </div>
+    <div>
+      <div class="frame"><img src="image 17.png" alt="Affinity map of pain points"></div>
+      <p class="cap">Pain point clustering &mdash; early interview synthesis</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 RESEARCH -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 &mdash; Research</span>
+    <h2 class="h2">What the research revealed.</h2>
+    <p class="body">Two rounds of research which involved 12 interviews with F-1 and OPT students, followed by 15 usability testing participants evaluating the high-fidelity prototype.</p>
+  </div>
+
+  <div class="method-bar rev mt3">
+    <div class="method-item"><span class="method-n">n=12</span><span class="method-l">F-1 &amp; OPT students interviewed</span></div>
+    <div class="method-item"><span class="method-n">73%</span><span class="method-l">Unaware of Form 1040-NR</span></div>
+    <div class="method-item"><span class="method-n">80%</span><span class="method-l">Not confident in filing accuracy</span></div>
+    <div class="method-item"><span class="method-n">3</span><span class="method-l">Rounds of usability testing</span></div>
+  </div>
+
+  <div class="g2 top mt3 rev">
+    <div>
+      <div class="q" style="margin-top:0">
+        <p>&ldquo;It would be ideal to have a tax-filing experience where they know all the dos and don&rsquo;ts, and we can just click submit.&rdquo;</p>
+        <cite>F-1 student interview</cite>
+      </div>
+      <div class="q">
+        <p>&ldquo;The hardest part of filing taxes is compiling all tax forms.&rdquo;</p>
+        <cite>Survey respondent</cite>
+      </div>
+      <div class="q">
+        <p>&ldquo;Sprintax does not consider my tax treaty. What happens when I graduate?&rdquo;</p>
+        <cite>OPT student interview</cite>
+ </div>
+</div>
+    <div>
+      <div class="frame"><img src="Empathy Map.png" alt="Empathy map">
+      </div>
+      <p class="cap">Empathy map &mdash; synthesized from interviews</p>
+    </div>
+  </div>
+
+  <div class="g3 mt3 rev">
+    <div class="card">
+      <h4>Document Collection</h4>
+      <p>Forms scattered across university portals, employers, and banks. Students spend hours finding documents they didn&rsquo;t know existed.</p>
+    </div>
+    <div class="card">
+      <h4>Visa &amp; Form Confusion</h4>
+      <p>Most don&rsquo;t know their residency status, which form to file, or what a tax treaty means for them.</p>
+    </div>
+    <div class="card">
+      <h4>Emotional Stress</h4>
+      <p>Fear of a mistake that affects visa status causes students to avoid filing entirely or panic through it at the last minute.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 03 OPPORTUNITY -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">03 &mdash; Opportunity</span>
+    <h2 class="h2">No one built this for them.</h2>
+    <p class="body">Two competitors dominate the space. Neither was built for non-resident students.</p>
+  </div>
+
+  <div class="g2 mt3 rev" style="align-items:start">
+    <div class="card">
+      <h4>Sprintax &mdash; Direct Competitor</h4>
+      <p>Supports non-resident tax returns, but the process is long, text-heavy, and prone to manual entry errors. Without a university partnership, the cost can feel high relative to the value provided.</p>
+    </div>
+    <div class="card">
+      <h4>TurboTax &mdash; Indirect Competitor</h4>
+      <p>Doesn&rsquo;t support non-resident returns. Students who use it risk filing the wrong form entirely, which has real immigration consequences. Doesn&rsquo;t let users know the difference between 1040NR and 1040. </p>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto;margin-top:2rem;" class="rev">
+    <table class="comp">
+      <thead>
+        <tr><th>Product</th><th>Non-Resident</th><th>Tax Treaty</th><th>Student-First</th><th>Price</th></tr>
+      </thead>
+      <tbody>
+        <tr class="at"><td>AtlasTax</td><td><span class="badge by">F-1 &middot; J-1 &middot; M-1</span></td><td><span class="badge by">Auto-detected</span></td><td><span class="badge by">Yes</span></td><td>$29</td></tr>
+        <tr><td>Sprintax</td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Manual</span></td><td><span class="badge bn">Text-heavy</span></td><td>$100&ndash;150</td></tr>
+        <tr><td>TurboTax</td><td><span class="badge bn">Residents only</span></td><td><span class="badge bn">No</span></td><td><span class="badge bn">No</span></td><td>$0&ndash;120</td></tr>
+        <tr><td>H&amp;R Block</td><td><span class="badge bn">Primarily residents</span></td><td><span class="badge bn">No</span></td><td><span class="badge bn">No</span></td><td>$35&ndash;85+</td></tr>
+        <tr><td>CPA / VITA</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Manual</span></td><td>$200&ndash;400</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- 04 PERSONA + JOURNEY -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">04 &mdash; Who I&rsquo;m Designing For</span>
+    <h2 class="h2 h2-w">Meet Aditi Sharma.</h2>
+    <p class="body body-w">A proto-persona built from n=12 interviews. She represents the organised, tech-savvy student who just needs someone to make this make sense.</p>
+  </div>
+
+  <div class="g2 mt3 rev">
+    <div class="frame frame-dark">
+      <img src="Project2_Persona.jpg" alt="Aditi Sharma persona">
+    </div>
+    <div>
+      <div class="q q-dark" style="margin-top:0">
+        <p>&ldquo;I don&rsquo;t even know which forms I need. Why is this so complicated?&rdquo;</p>
+        <cite>Aditi &middot; 21 &middot; F-1 &middot; Computer Science</cite>
+      </div>
+      <div class="g2 mt2" style="gap:1rem">
+        <div class="card card-dark"><h4>Goal</h4><p>File U.S. taxes accurately without affecting visa or immigration status.</p></div>
+        <div class="card card-dark"><h4>Pain</h4><p>Doesn&rsquo;t know which forms apply. Tax jargon feels impenetrable.</p></div>
+        <div class="card card-dark"><h4>Need</h4><p>A trustworthy, step-by-step guide built specifically for her situation.</p></div>
+        <div class="card card-dark"><h4>Fear</h4><p>One small mistake affecting her visa, record, or future employment.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="journeys mt4 rev">
+    <div class="j-card">
+      <div class="j-label j-b">Before &mdash; Filing without AtlasTax</div>
+      <img src="User Journey Before.png" alt="User journey before">
+    </div>
+    <div class="j-card">
+      <div class="j-label j-a">After &mdash; Filing with AtlasTax</div>
+      <img src="User Journey After.png" alt="User journey after">
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 05 SOLUTION OVERVIEW -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 &mdash; Solution Overview</span>
+    <h2 class="h2">AtlasTax. File taxes confidently,<br><em>the simple way.</em></h2>
+    <p class="body">A mobile-first platform that enables F-1, J-1 &amp; M-1 students to file IRS-compliant non-resident tax forms in under 20 minutes for $29.</p>
+  </div>
+
+  <div class="product-shot rev">
+    <img src="atlas rendering 2.png" alt="AtlasTax product overview">
+  </div>
+  <div class="rev mt4">
+    <span class="lbl">Information Architecture + User Flow</span>
+    <h3 class="h3">Structuring the flow around clarity and confidence.</h3>
+    <p class="body">Before moving into high-fidelity screens, I mapped the product structure and core filing flow to make sure students could understand where they were, what information was needed, and what step came next.</p>
+  </div>
+
+  <div class="journeys mt3 rev">
+    <div class="j-card">
+      <div class="j-label j-a">Information Architecture</div>
+      <img src="Tax filing Information Architecture.png" alt="AtlasTax information architecture">
+    </div>
+    <div class="j-card">
+      <div class="j-label j-a">User Flow</div>
+      <img src="User Flow.png" alt="AtlasTax user flow">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 06 HOW IT WORKS -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">06 &mdash; How It Works</span>
+    <h2 class="h2">Three steps.<br><em>Under 20 minutes.</em></h2>
+  </div>
+
+  <div class="how-steps rev">
+    <div class="how-step">
+      <span class="step-num">Step 01</span>
+      <p class="step-title">Smart Onboarding</p>
+      <p class="step-desc">Students answer 10&ndash;15 questions to determine their correct filing path. Visa type, income sources, residency status &mdash; all used to personalise the experience.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">Step 02</span>
+      <p class="step-title">Upload Documents</p>
+      <p class="step-desc">A personalized checklist shows exactly which documents are needed. Upload income, education, visa, and supporting forms. OCR extracts data automatically.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">Step 03</span>
+      <p class="step-title">Forms Generated</p>
+      <p class="step-desc">AtlasTax prepares the correct IRS forms automatically. Review, download, sign, and mail &mdash; or e-file directly. No manual data entry, no transcription errors.</p>
+    </div>
+  </div>
+
+  
+  <div class="how-steps rev">
+    <div class="how-step">
+      <div class="iter-2up">
+      <div class="frame"><img src="Visa.png" alt="Visa type question"></div>
+      <div class="frame"><img src="Finance picture.jpg" alt="Follow-up question"></div>
+    </div>
+    </div>
+    <div class="how-step">
+      <div class="iter-2up">
+      <div class="frame"><img src="Document Upload.png" alt="Document checklist expanded"></div>
+      <div class="frame"><img src="Education upload.png" alt="Education forms"></div>
+    </div>
+  </div>
+    <div class="how-step">
+      <div class="iter-2up">
+      <div class="frame"><img src="Document Upload 5.png" alt="All documents complete"></div>
+      <div class="frame"><img src="Document Upload 7.png" alt="Personalised deadlines"></div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- 07 DESIGN PROCESS -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">07 &mdash; Design Process</span>
+    <h2 class="h2">From paper to prototype.</h2>
+    <p class="body">Starting on paper to explore structure without committing to visuals. Three sketch sheets, then digital wireframes, then high-fidelity.</p>
+  </div>
+
+  <div class="sketches rev">
+    <div>
+      <div class="sketch-frame"><img src="wireframe1.jpg" alt="Q&A and checklist sketches"></div>
+      <p class="cap">Onboarding Q&A + checklist</p>
+    </div>
+    <div>
+      <div class="sketch-frame"><img src="wireframe2.jpg" alt="Deadlines sketches"></div>
+      <p class="cap">Deadlines + learn screen</p>
+    </div>
+    <div>
+      <div class="sketch-frame"><img src="wireframe3.jpg" alt="Homepage sketches"></div>
+      <p class="cap">Homepage explorations</p>
+    </div>
+  </div>
+
+  <div class="mt3 rev">
+    <div class="frame"><img src="Group 159.png" alt="Mid-fidelity wireframe user flow"></div>
+    <p class="cap">Mid-fidelity wireframes &mdash; full user flow</p>
+  </div>
+
+  <div class="ds-row rev">
+    <div class="ds-notes">
+      <p class="body" style="margin-bottom:1rem">The design system was built to feel calm and trustworthy &mdash; deliberately opposite to the anxiety students already feel about taxes.</p>
+      <div class="ds-note"><strong>Colour</strong><span>Muted teal and cream &mdash; warm, not clinical. Chosen to reduce the visual stress of financial interfaces.</span></div>
+      <div class="ds-note"><strong>Typography</strong><span>SF Pro throughout &mdash; familiar from iOS, which reduces cognitive load on a mobile-first product.</span></div>
+      <div class="ds-note"><strong>Illustration</strong><span>Hand-drawn style icons soften the intimidation of tax forms and keep the experience feeling human.</span></div>
+    </div>
+    <div>
+      <div class="frame"><img src="Group 119.png" alt="Design system"></div>
+      <p class="cap">Design system &mdash; colour, type, illustration, brand</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 08 ITERATIONS -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">08 &mdash; Iterations</span>
+    <h2 class="h2">Mid-fi to hi-fi &mdash; what users<br><em>forced me to change.</em></h2>
+    <p class="body">Three rounds of think-aloud testing. Each session surfaced something that would have broken the experience in production.</p>
+    <a class="ta-link" href="https://drive.google.com/file/d/1IIafFRjAlFkCamBSrl6cdCtcKHVmu7TF/view?usp=sharing" target="_blank">Watch think-aloud session</a>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Finding 01</span>
+      <p>When users selected scholarship, on-campus job, or freelance, the screen jumped to a new question with no warning &mdash; breaking the expected select &rarr; continue pattern. Users thought it was a bug.</p>
+      <div class="iter-2up">
+      <div class="frame"><img src="Finance picturemid.png" alt="Before: abrupt jump"></div>
+      <div class="frame"><img src="scholarship mid.png" alt="Before: abrupt jump"></div>
+    </div>
+  </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Added a popup heads-up before any additional question appears. The flow now matches the pattern users have built throughout the rest of the onboarding.</p>
+      <div class="iter-2up">
+        <div class="frame"><img src="Finance picture2.jpg" alt="After: abrupt jump"></div>
+        <div class="frame"><img src="job add q.png" alt="On campus job pop up"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Finding 02</span>
+      <p>After uploading documents, users had no clear way to actually file. They also had to open every category individually with no sense of overall progress or completion.</p>
+      <div class="iter-2up">
+      <div class="frame"><img src="Document Uploading mid.png" alt="Before: no file CTA"></div>
+      <div class="frame"><img src="Document Uploaded mid.png" alt="Before: no file CTA"></div>
+    </div>
+  </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Added a &ldquo;FILE 2025 &rarr;&rdquo; button that appears once all documents are uploaded, and a &ldquo;Download Checklist PDF&rdquo; option. Green checkmarks make completion state unambiguous.</p>
+      <div class="iter-2up">
+        <div class="frame"><img src="Document Upload 5.png" alt="Button included"></div>
+        <div class="frame"><img src="Document Upload 7.png" alt="Forms generated"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Finding 03</span>
+      <p>Users questioned why the deadlines section existed &mdash; &ldquo;I can just Google this.&rdquo; The feature needed a reason to exist beyond tax season to justify its place in the app.</p>
+      <div class="iter-2up">
+        <div class="frame"><img src="Homepagemid.png" alt="Before: questioning deadlines"></div>
+        <div class="frame"><img src="Deadlinesmid.png" alt="Before: random deadlines"></div>
+      </div>
+    </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Deadlines are now personalized once documents are uploaded &mdash; including OPT application windows, visa expiry, and I-20 dates. The app becomes useful year-round, not just in April.</p>
+      <div class="iter-2up">
+        <div class="frame"><img src="Homepage docs uploaded.png" alt="After: new homepage"></div>
+        <div class="frame"><img src="Deadlines uploaded.png" alt="After: curated deadlines"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Finding 04</span>
+      <p>Users were unsure what some questions meant and why they were being asked. The flow assumed prior knowledge, causing confusion and making users less confident in their answers.</p>
+      <div class="iter-2up">
+        <div class="frame"><img src="ssn mid.png" alt="Before: no explanation"></div>
+        <div class="frame"><img src="treaty mid.png" alt="Before: no explanation"></div>
+      </div>
+    </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Added a brief explanation for each question and a link to a verified source for additional context. Users can now understand the purpose of each question and answer more accurately.</p>
+      <div class="iter-2up">
+        <div class="frame"><img src="ssn 1.png" alt="After: brief and link"></div>
+        <div class="frame"><img src="treaty.png" alt="After: brief and link"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body mt3 rev" style="color:var(--dim);font-style:italic">Note: this is an ongoing project. These iterations reflect the transition from mid-fidelity to high-fidelity. The experience is still being refined before engineering handoff.</p>
+</div>
+</div>
+
+<!-- 09 FINAL FLOW -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">09 &mdash; Final Flow</span>
+    <h2 class="h2">The experience, end to end.</h2>
+    <span class="flow-hint">Hover over each screen to see the flow in motion</span>
+  </div>
+
+  <div class="phones rev">
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="Homepage.png" alt="Homepage">
+      </div>
+      <p>Homepage</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="Visa.png" alt="Q&A">
+        <video src="1st q.mp4" muted loop playsinline></video>
+      </div>
+      <p>Q&A onboarding</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="Finance picture.jpg" alt="Checklist">
+        <video src="finance.mp4" muted loop playsinline></video>
+      </div>
+      <p>Q&A onboarding 2</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="Document Upload.png" alt="Checklist">
+        <video src="upload.mp4" muted loop playsinline></video>
+      </div>
+      <p>Document checklist</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="Document Upload 5.png" alt="Uploading">
+        <video src="file.mp4" muted loop playsinline></video>
+      </div>
+      <p>Filing</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="Homepage docs uploaded.png" alt="Finance">
+      </div>
+      <p>Deadlines</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="Deadlines uploaded.png" alt="Personalised deadlines">
+      </div>
+      <p>Personalised</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 10 RESULTS -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">10 &mdash; Results &amp; Validation</span>
+    <h2 class="h2 h2-w">The numbers spoke.</h2>
+    <p class="body body-w">Measured through post-testing with 15 F-1 students after completing the high-fidelity prototype task flow. They didn&rsquo;t just find it easier &mdash; they wanted it.</p>
+  </div>
+
+  <div class="data-row rev">
+    <div class="data-card"><span class="data-n">90%</span><span class="data-l">Preferred AtlasTax over their current method</span></div>
+    <div class="data-card"><span class="data-n">94%</span><span class="data-l">Reported reduced filing anxiety</span></div>
+    <div class="data-card"><span class="data-n">80%</span><span class="data-l">Indicated willingness to pay $29</span></div>
+  </div>
+
+  <div class="q q-dark mt3 rev">
+    <p>&ldquo;This is exactly what we needed. It breaks down the complexity in a way I actually understand.&rdquo;</p>
+    <cite>Phase 3 usability testing participant</cite>
+  </div>
+
+  <div class="product-shot rev">
+    <img src="pagesmock.png" alt="Final product spread">
+  </div>
+
+  <div class="pitch-block rev">
+    <div class="pitch-n">
+      2nd Place &mdash; SFSU Business Pitch Competition
+      <span>AtlasTax went from UX prototype to full business pitch in 3 weeks. Covering product, market size, business model, and go-to-market. Also invited as guest speaker at the Epsilon Pi Tau inauguration at SFSU.</span>
+    </div>
+    <a class="pitch-link" href="https://cob.sfsu.edu/initiatives-centers/pitch-contest" target="_blank">View Pitch Contest Details &rarr;</a>
+  </div>
+</div>
+</div>
+
+<!-- 11 REFLECTION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">11 &mdash; Reflection</span>
+    <h2 class="h2">What this taught me.</h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card"><span class="r-n">01</span><h4>Designing with sensitive information is hard</h4><p>This project made me realise how different it is designing for high-stakes, sensitive data. Every interaction carries real anxiety. Tone, clarity, and trust aren&rsquo;t nice-to-haves &mdash; they&rsquo;re functional requirements.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Simplicity in complex domains is earned</h4><p>Taxes feel impossible. But structuring information correctly &mdash; not dumbing it down &mdash; is what turns overwhelming into manageable. That distinction took multiple iterations to understand.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>Small tests reveal big problems fast</h4><p>Three users in phase 1 caught the broken flow interaction. Three more in phase 2 revealed the missing file CTA. You don&rsquo;t need a hundred participants to find what&rsquo;s broken.</p></div>
+    <div class="r-card"><span class="r-n">04</span><h4>Anxiety is a design problem</h4><p>94% reduced anxiety is a product outcome. If users feel scared navigating your interface, the design failed regardless of how clean it looks.</p></div>
+    <div class="r-card"><span class="r-n">05</span><h4>Product-market fit comes from listening</h4><p>The 90% preference rate came from sitting with students and hearing their actual pain &mdash; not from confidence in my design instincts.</p></div>
+    <div class="r-card"><span class="r-n">06</span><h4>This project isn&rsquo;t finished</h4><p>The Learn Taxes module, e-filing integration, and more visa types are next. Taking this to engineering is the goal. This is still being built.</p></div>
+  </div>
+
+  <ul class="nexts mt4 rev">
+    <li><span>Next &rarr;</span> Build the initial MVP with Lovable</li>
+    <li><span>Next &rarr;</span> Partner with a software engineer to develop the product further</li>
+    <li><span>Next &rarr;</span> Validate form generation and compliance logic with a CPA</li>
+    <li><span>Next &rarr;</span> Explore e-filing integration to replace download-and-mail submission</li>
+    <li><span>Next &rarr;</span> Interactive Learn Taxes module &mdash; removed for time constraints, now the priority</li>
+    <li><span>Next &rarr;</span> Expand filing support for J-1, M-1, OPT, and more edge-case scenarios</li>
+  </ul>
+</div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">&larr; Portfolio</a>
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+document.querySelectorAll('.phone').forEach(p => {
+  const v = p.querySelector('video');
+  if(!v) return;
+  p.addEventListener('mouseenter', () => v.play());
+  p.addEventListener('mouseleave', () => { v.pause(); v.currentTime=0; });
+});
+</script>
+</body>
+</html>

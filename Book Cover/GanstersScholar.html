@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gangsters Scholar — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#FAF8F4;
+  --ink:#141414;
+  --mid:#555;
+  --dim:#999;
+  --rule:#E4E0D8;
+  --olive:#6B7040;
+  --navy:#2C3E6B;
+  --card:#F3F0EA;
+  --white:#fff;
+  /* Project accent colors — pulled from the book palette */
+  --gold:#C9A84C;
+  --red:#B8292A;
+  --grey-bars:#6B6B6B;
+}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.92) 0%,rgba(20,20,20,.65) 55%,rgba(20,20,20,.25) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.lbl-gold{color:var(--gold)}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+.q-gold{border-color:var(--gold)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+
+/* COVER ITERATIONS */
+.iter-versions{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:1.5rem;
+  margin-top:2.5rem;
+  align-items:stretch;
+}
+.iter-v{
+  border:1px solid var(--rule);
+  border-radius:8px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.iter-v-img{
+  height:480px;
+  overflow:hidden;
+  background:var(--card);
+}
+
+.iter-v-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.iter-v-info{
+  padding:1.4rem 1.6rem;
+  flex:1;
+}
+.iter-v-tag{font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.6rem}
+.tag-v1{background:#F3F0EA;color:var(--olive)}
+.tag-v2{background:#EFF0F8;color:var(--navy)}
+.tag-selected{background:#EAF3EA;color:#266226}
+.iter-v-info h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;color:var(--ink);margin-bottom:.35rem}
+.iter-v-info p{font-size:.8rem;color:var(--mid);line-height:1.7}
+
+/* BOOKMARK GRID */
+.bookmark-row{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:2.5rem;align-items:end}
+.bookmark-item{display:flex;flex-direction:column;align-items:center}
+.bookmark-shell{border-radius:6px;overflow:hidden;border:1px solid var(--rule);width:100%}
+.bookmark-shell img{width:100%;display:block}
+
+/* PALETTE */
+.palette{display:flex;gap:0;margin-top:2.5rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.palette-swatch{flex:1;aspect-ratio:1/1.4;position:relative}
+.palette-swatch-inner{width:100%;height:100%}
+.palette-hex{position:absolute;bottom:0;left:0;right:0;padding:.5rem .4rem;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.04em;text-align:center;background:rgba(0,0,0,.35);color:rgba(255,255,255,.7)}
+
+/* FULL BLEED */
+.billboard-full{width:100%;border-radius:12px;overflow:hidden;margin-top:2.5rem;border:1px solid var(--rule)}
+.billboard-full img{width:100%;display:block}
+
+/* DATA ROW */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* REFLECTS */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* OUTCOME PHOTO GRID */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem}
+.photo-grid .frame{overflow:hidden}
+.photo-grid .frame img{width:100%;display:block}
+.photo-grid .frame-tall{aspect-ratio:3/4;overflow:hidden}
+.photo-grid .frame-tall img{width:100%;height:100%;object-fit:cover}
+
+/* SCROLL REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.8)}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
+  .g2,.g3,.g4,.iter-versions,.photo-grid,.reflects,.data-row,.bookmark-row{grid-template-columns:1fr;gap:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .palette{flex-wrap:wrap}
+  .palette-swatch{flex:0 0 calc(33.33% - 4px)}
+  footer{padding:2rem 1.5rem}
+  .bookmark-row{grid-template-columns:repeat(3,1fr)}
+}
+
+.iter-2{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:2rem;
+  width:100%;
+}
+
+.iter-2 .iter-v{
+  width:100%;
+}
+
+.iter-2 .iter-v-img-back{
+  height:650px;
+}
+
+.iter-2 .iter-v-img-back img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+@media (max-width:900px){
+  .iter-2{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+<body id="top">
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">The Gangsters Scholar / Graphic Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="Thick_Book_Mockup_OK_8 copy.png" alt="The Gangsters Scholar book mockup">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1>The Gangsters Scholar<br><em>Love Behind Bars.</em></h1>
+    <p class="hero-hmw">Book cover for a memoir about love and surviving incarceration together. Designed without making it look like a crime story.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>Illustrator</span></div>
+      <div class="hero-meta-item"><label>Author</label><span>Dr. Shanice Robinson-Blacknell</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Procreate · Illustrator</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">Live</span><span class="stat-l">Published</span></div>
+  <div class="stat-cell"><span class="stat-n">6</span><span class="stat-l">Bookmark designs across the collection</span></div>
+  <div class="stat-cell"><span class="stat-n">2</span><span class="stat-l">Cover versions explored before final</span></div>
+  <div class="stat-cell"><span class="stat-n">1</span><span class="stat-l">Custom illustration — drawn from scratch</span></div>
+</div>
+
+<!-- 01 BRIEF -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev top">
+    <div>
+      <span class="lbl">01 — Brief</span>
+      <h2 class="h2">A love story that lives<br><em>inside a prison cell.</em></h2>
+      <p class="body">Dr. Shanice Robinson-Blacknell came to me with something personal. She'd written a memoir, part love story, part practical guide, about what it actually means to stand by a partner who is incarcerated. She and Joe had lived it. Now she wanted the book to look like that experience felt: heavy and real, but warm.</p>
+      <p class="body mt2">The challenge wasn't just design. It was tone. A book about incarceration can read like a thriller or a cautionary tale. This one needed to read like a love letter.</p>
+      <div class="q mt3">
+        <p>"More than a memoir — it is a guide for individuals navigating the complex dynamics of supporting incarcerated loved ones."</p>
+        <cite>Dr. Shanice Robinson-Blacknell</cite>
+      </div>
+    </div>
+    <div>
+      <div class="frame">
+        <img src="Thick_Book_Mockup_OK_6.png" alt="mockup">
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 ILLUSTRATION -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 — The Illustration</span>
+    <h2 class="h2">Drawing the couple<br><em>from a photograph.</em></h2>
+    <p class="body">The centrepiece of the entire book package is a digital portrait of Shanice and Joe, drawn by hand in Procreate.</p>
+    <p class="body mt2">The setting is intentional. The cell bars frame them like a portrait. The stack of books in the background signals Joe's journey. The "Life Choices" notepad on the floor is a quiet detail — the kind that rewards a second look.</p>
+  </div>
+
+  <div class="g2 mt3 rev top">
+    <div>
+      <div class="frame">
+        <img src="illustration v1.png" alt="Illustration version 1 — early stage" onerror="this.src='final_illustration.jpg'">
+      </div>
+      <p class="cap">Early illustration — establishing the composition and figures</p>
+    </div>
+    <div>
+      <div class="frame">
+        <img src="final illustration.jpg" alt="Final illustration — Shanice and Joe">
+      </div>
+      <p class="cap">Final illustration — refined detail, warm skin tones, full cell environment</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 03 COVER ITERATIONS -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">03 — Cover Iterations</span>
+    <h2 class="h2">Three directions.<br><em>One very specific feeling to hit.</em></h2>
+    <p class="body">The cover went through multiple rounds of type treatment exploration. The illustration stayed consistent — the typographic system around it was the variable. Each version was testing a different emotional register: bold and graphic, soft and romantic, or raw and street-level.</p>
+  </div>
+
+  <div class="iter-versions rev">
+    <div class="iter-v">
+      <div class="iter-v-img"><img src="Front Cover 1.png" alt="Cover version 1 — gold and bold white"></div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-v1">Version 1</span>
+        <h4>Gold Headline — Graphic &amp; Bold</h4>
+        <p>Gold "GANGSTERS" with bold all-caps white "LOVE BEHIND BARS". High contrast, confident. Reads clearly at distance but didn't feel like a memoir. The gold felt at odds with the raw emotional subject matter.</p>
+      </div>
+    </div>
+    <div class="iter-v">
+      <div class="iter-v-img"><img src="Front Cover 2.png" alt="Cover version 2 — pink and soft"></div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-v2">Version 2</span>
+        <h4>Pink Headline — Soft &amp; Romantic</h4>
+        <p>A softer direction: all-white text throughout, with "LOVE BEHIND BARS" in pink. This pushed the romance more strongly, but the softness created a tonal mismatch, the bars and cell environment read harder.</p>
+      </div>
+    </div>
+
+    <div class="iter-v">
+      <div class="iter-v-img">
+        <img src="Front Cover Final.png" alt="Final published cover — red distressed type">
+      </div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-selected">Final Version</span>
+        <h4>Red Distressed Type — Raw &amp; Authentic</h4>
+        <p>The red distressed type carried the heaviness the story needed. It feels urgent, with a higher contrast. The touch of gold handcuffed arms was an essential to speak on the authenticity of the story.</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</section>
+
+<!-- 04 COLOR PALETTE -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">04 — Color Palette</span>
+    <h2 class="h2 h2-w">A palette pulled from<br><em>bars, skin, and ink.</em></h2>
+    <p class="body body-w">Every colour in this book package has a source. The grey tones come directly from the prison cell environment in the illustration. The gold references the handcuffs used across the bookmark series — precious metal on a tool of restriction. The red is the headline type: loud, urgent, alive.</p>
+  </div>
+
+  <div class="palette rev mt3">
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#B8292A"></div>
+      <span class="palette-hex">#B8292A</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#C9A84C"></div>
+      <span class="palette-hex">#C9A84C</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#141414"></div>
+      <span class="palette-hex">#141414</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#6B6B6B"></div>
+      <span class="palette-hex">#6B6B6B</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#A8A8A8"></div>
+      <span class="palette-hex">#A8A8A8</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#D4A57A"></div>
+      <span class="palette-hex">#D4A57A</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#2E6DA4"></div>
+      <span class="palette-hex">#2E6DA4</span>
+    </div>
+    <div class="palette-swatch">
+      <div class="palette-swatch-inner" style="background:#F5F5F5"></div>
+      <span class="palette-hex">#F5F5F5</span>
+    </div>
+  </div>
+  <p class="cap cap-dark rev" style="margin-top:.7rem">8-color palette — derived from the illustration environment and type treatments</p>
+</div>
+</div>
+
+<!-- 05 BACK COVER -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 — Back Cover</span>
+    <h2 class="h2">The story continues<br><em>on the other side.</em></h2>
+    <p class="body">The back cover uses the same cell-bar illustration as a full-bleed background — but inverted using the original photograph. The visual feels like turning the book over reveals a more private, quieter moment of the same relationship.</p>
+    <p class="body mt2">The back cover copy was set in a bold serif directly over the illustration, legible against the dark bars.</p>
+  </div>
+  <div class="iter-versions iter-2 rev mt3">
+
+    <div class="iter-v">
+      <div class="iter-v-img iter-v-img-back">
+        <img src="Back cover v1 .jpg" alt="Back cover version 1">
+      </div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-v1">Version 1</span>
+        <h4>Separated Layout</h4>
+        <p>The imagery and text felt disconnected, reading as two separate elements rather than a unified composition. It lacked visual cohesion and did not align with the author's vision for the book.</p>
+      </div>
+    </div>
+  
+    <div class="iter-v">
+      <div class="iter-v-img iter-v-img-back">
+        <img src="final back cover.jpg" alt="Final back cover">
+      </div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-selected">Final Version</span>
+        <h4>Integrated Composition</h4>
+        <p>
+        This direction was ultimately selected for publication. The illustration and text work together more cohesively, creating a stronger visual flow while ensuring the book summary remains the primary focal point for readers.
+        </p>      </div>
+    </div>
+  
+  </div>
+  </div>
+</section>
+
+<!-- 06 BOOKMARKS -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">06 — Bookmark Series</span>
+    <h2 class="h2">Six bookmarks.<br><em>One world, six moments.</em></h2>
+    <p class="body">The bookmark series extends the visual language of the cover into something collectible. Each bookmark explores a different facet of the book's. This was used by Dr. Shanice for marketing purposes.</p>
+    <p class="body mt2">The gold handcuffs appear across multiple bookmarks as a recurring symbol, something that binds, but also, in this context, connects.</p>
+  </div>
+
+  <div class="bookmark-row rev">
+    <div class="bookmark-item">
+      <div class="bookmark-shell"><img src="bookmark1.jpeg" alt="Bookmark 1 — couple portrait with gold handcuffs"></div>
+    </div>
+    <div class="bookmark-item">
+      <div class="bookmark-shell"><img src="bookmark2.jpeg" alt="Bookmark 2 — yellow handcuffed hands"></div>
+    </div>
+    <div class="bookmark-item">
+      <div class="bookmark-shell"><img src="bookmark3.jpeg" alt="Bookmark 3 — skin-tone hands, chain"></div>
+    </div>
+    <div class="bookmark-item">
+      <div class="bookmark-shell"><img src="bookmark4.jpeg" alt="Bookmark 4 — Shanice script, vertical"></div>
+    </div>
+    <div class="bookmark-item">
+      <div class="bookmark-shell"><img src="bookmark5.jpeg" alt="Bookmark 5 — portrait framed in gold"></div>
+    </div>
+    <div class="bookmark-item">
+      <div class="bookmark-shell"><img src="bookmark6.jpeg" alt="Bookmark 6 — gold cuffs, script horizontal"></div>
+    </div>
+  </div>
+
+  <div class="g3 mt4 rev">
+    <div class="card">
+      <h4>Gold as the Constant</h4>
+      <p>Gold appears in almost every bookmark. It becomes the series' thread. Precious against cold grey. Love against restriction.</p>
+    </div>
+    <div class="card">
+      <h4>The "Shanice" Script</h4>
+      <p>The hand-lettered signature bookmarks work as an authorship mark, the kind of signature you'd find inside a copy she handed you.</p>
+    </div>
+    <div class="card">
+      <h4>Consistent World-Building</h4>
+      <p>Every bookmark pulls from the same environment as the cover: the grey cell-tile wall, the bar grid, the warm skin tones.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 07 OUTCOME -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">07 — Outcome</span>
+    <h2 class="h2 h2-w">Designed. Printed.<br><em>Published and on sale.</em></h2>
+    <p class="body body-w">The full book package — front cover, back cover, spine, and bookmark series — went to print and is now a real, published, purchasable book. Seeing your illustration printed at book scale, in a reader's hands, is a different kind of finish line. The design lives in the world now.</p>
+  </div>
+
+  <div class="g2 mt4 rev top">
+    <div>
+      <div class="frame frame-dark">
+        <img src="holding book.png" alt="Tamanna holding the published Gangsters Scholar book">
+      </div>
+    </div>
+    <div>
+      <div class="frame frame-dark">
+        <img src="book cover.png" alt="Book mockup — stacked copies">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 08 REFLECTION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">08 — Reflection</span>
+    <h2 class="h2">What this project taught me<br><em>that other work hasn't.</em></h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card">
+      <span class="r-n">01</span>
+      <h4>Tone is a design problem</h4>
+      <p>The cover could have gone harder or softer, both would have been wrong. Finding the exact emotional register took more iteration than any visual decision did.</p>
+    </div>
+    <div class="r-card">
+      <span class="r-n">02</span>
+      <h4>Illustration is storytelling</h4>
+      <p>Every element in the illustration is a choice. Graphic design for a book cover is also a form of visual writing, the image tells the story before the reader opens the cover.</p>
+    </div>
+    <div class="r-card">
+      <span class="r-n">03</span>
+      <h4>System thinking across a package</h4>
+      <p>The cover, back cover, spine, and six bookmarks all had to feel like one world. Building that consistency across formats was the core design challenge of the project.</p>
+    </div>
+    <div class="r-card">
+      <span class="r-n">04</span>
+      <h4>Graphic design informs UX</h4>
+      <p>The decisions I made here: hierarchy, emotional tone, visual world-building, are the same decisions that live inside any well-designed interface. </p>
+    </div>
+    <div class="r-card">
+      <span class="r-n">05</span>
+      <h4>Designing for someone you know</h4>
+      <p>When this is personal, the stakes are different. The design had to honor what Shanice and Joe had been through, that responsibility made every decision more deliberate.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">← Portfolio</a>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

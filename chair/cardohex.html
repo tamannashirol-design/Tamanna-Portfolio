@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CardoHex — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#FAF8F4;
+  --ink:#141414;
+  --mid:#555;
+  --dim:#999;
+  --rule:#E4E0D8;
+  --olive:#6B7040;
+  --navy:#2C3E6B;
+  --card:#F3F0EA;
+  --white:#fff;
+}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
+.nav-back:hover{color:var(--olive)}
+.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.12) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.22)}
+.full-img{width:100%;display:block;border-radius:12px;box-shadow:0 16px 60px rgba(0,0,0,.1)}
+
+/* SKETCHES */
+.sketches{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem}
+.sketch-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/3}
+.sketch-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* PROCESS GRID */
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.process-grid .frame{aspect-ratio:3/4;overflow:hidden}
+.process-grid .frame img{width:100%;height:100%;object-fit:cover}
+
+/* PROCESS 2-COL GRID */
+.process-2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem}
+.process-2 .frame{aspect-ratio:4/3;overflow:hidden}
+.process-2 .frame img{width:100%;height:100%;object-fit:cover}
+
+/* ITER VERSIONS */
+.iter-versions{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:2.5rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.iter-v{border-right:1px solid var(--rule)}
+.iter-v:last-child{border-right:none}
+.iter-v-img{aspect-ratio:3/4;overflow:hidden;background:var(--card)}
+.iter-v-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.iter-v-info{padding:1.2rem 1.4rem}
+.iter-v-tag{font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.6rem}
+.tag-v1{background:#F3F0EA;color:var(--olive)}
+.tag-v2{background:#EFF0F8;color:var(--navy)}
+.tag-v3{background:#F3F0EA;color:var(--olive)}
+.tag-v4{background:#EAF3EA;color:#266226}
+.iter-v-info h4{font-family:'Fraunces',serif;font-size:.9rem;font-weight:400;color:var(--ink);margin-bottom:.3rem}
+.iter-v-info p{font-size:.78rem;color:var(--mid);line-height:1.65}
+
+/* BEFORE/AFTER ITER */
+.iter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1.5rem}
+.iter-half{padding:2.2rem}
+.iter-half+.iter-half{border-left:1px solid var(--rule)}
+.iter-tag{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.9rem}
+.tag-b{background:#FDECEA;color:#9B2335}
+.tag-a{background:#EAF3EA;color:#266226}
+.iter-half p{font-size:.86rem;color:var(--mid);line-height:1.75;margin-bottom:.8rem}
+.iter-half .frame{margin-top:1rem}
+
+/* JOINERY DETAIL */
+.joinery-bar{display:flex;gap:0;margin-top:2.5rem;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.joinery-item{flex:1;padding:1.8rem 1.5rem;border-right:1px solid var(--rule);background:var(--card)}
+.joinery-item:last-child{border-right:none}
+.joinery-n{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;color:var(--olive);display:block;line-height:1;margin-bottom:.4rem}
+.joinery-l{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.joinery-item p{font-size:.8rem;color:var(--mid);line-height:1.65}
+
+/* FINAL GALLERY */
+.final-hero{width:100%;border-radius:12px;overflow:hidden;margin-bottom:1.25rem;border:1px solid var(--rule)}
+.final-hero img{width:100%;display:block;max-height:72vh;object-fit:cover;object-position:center}
+.final-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.final-trio .frame{aspect-ratio:3/4;overflow:hidden}
+.final-trio .frame img{width:100%;height:100%;object-fit:cover}
+
+/* ANNOTATED */
+.annotated-wrap{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.annotated-wrap img{width:100%;display:block}
+
+/* DATA ROW */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.42);margin-top:.4rem;display:block;line-height:1.5}
+
+/* REFLECTS */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* NEXTS */
+.nexts{list-style:none;margin-top:2rem}
+.nexts li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--mid);line-height:1.6}
+.nexts li span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.08em;flex-shrink:0;font-weight:700}
+
+/* CNC FULL BLEED */
+.cnc-full{width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--rule);margin-top:2.5rem}
+.cnc-full img{width:100%;display:block}
+
+/* BUILD COLLAGE */
+.build-collage{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:2.5rem;
+}
+
+.build-collage .frame{
+  aspect-ratio:4/3;
+  overflow:hidden;
+}
+
+.build-collage .frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* FOOTER */
+footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.4);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+.f-links a:hover{color:#fff}
+
+/* SCROLL REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+</style>
+</head>
+<body id="top">
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-back" onclick="history.back(); return false;">
+    ← Tamanna Shirol
+  </a>    <span class="nav-tag">CardoHex / Furniture Industrial Design Case Study</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="hero.png" alt="CardoHex chair on grass">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <h1>CardoHex<br><em>Where structure becomes form.</em></h1>
+    <p class="hero-hmw">A CNC-manufactured plywood chair designed around a single constraint: every joint, angle, and cut must be achievable on a flatbed router in a single sheet pass.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Rols</label><span>Industrial Designer</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Rhino &middot; Fusion360 &middot; Bambu &middot; 3D Print &middot; Woodwork </span></div>
+      <div class="hero-meta-item"><label>Context</label><span>Rapid Prototyping and Manufacturing</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">¾″</span><span class="stat-l">Plywood Thickness</span></div>
+  <div class="stat-cell"><span class="stat-n">−15°</span><span class="stat-l">Back Support Angle</span></div>
+  <div class="stat-cell"><span class="stat-n">4</span><span class="stat-l">Joinery Types</span></div>
+  <div class="stat-cell"><span class="stat-n">1</span><span class="stat-l">Sheet of Plywood</span></div>
+</div>
+
+<!-- 01 BRIEF -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev top">
+    <div>
+    <span class="lbl">01 &mdash; Brief</span>
+    <h2 class="h2">Build a chair.<br><em>Make it manufacturable.</em></h2>
+    <p class="body">The brief was deceptively open: design and build a full-scale chair. But the real constraint was every design decision had to survive contact with a CNC flatbed router.</p>
+      <p class="body">The name came early. Cardboard, an essential material for designers. The hexagon came from the research: parametric wood furniture that lets geometry do the structural work. CardoHex was the intersection: cardboard's honesty about layered material, hexagonal geometry as the design language.</p>
+      <div class="q mt3">
+        <p>&ldquo;The internal structure of cardboard isn&rsquo;t hidden &mdash; it&rsquo;s the point. What if the chair worked the same way?&rdquo;</p>
+        <cite>Design intent, DES 460</cite>
+      </div>
+    </div>
+      <div>
+        <div class="frame">
+          <img src="IMG_1046.png" alt="Person seated in CardoHex outdoors">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 03 IDEATION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 &mdash; Ideation</span>
+    <h2 class="h2">Twelve concepts.<br><em>One geometry worth keeping.</em></h2>
+    <p class="body">I explored different chair directions. The goal was to exhaust the obvious directions first.</p>
+  </div>
+
+  <div class="sketches rev mt3">
+    <div class="sketch-frame"><img src="sketches1.png" alt="Ideation sketches — set 1"></div>
+    <div class="sketch-frame"><img src="sketches2.png" alt="Ideation sketches — set 2"></div>
+  </div>
+  <p class="cap rev" style="margin-top:.8rem">24 concepts sketches</p>
+
+  </div>
+</div>
+</section>
+
+<!-- 04 LO-FI MODELS -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">03 &mdash; Lo-Fi Models</span>
+    <h2 class="h2 h2-w">Cardboard first.<br><em>Always cardboard first.</em></h2>
+    <p class="body body-w">Before touching the CNC file, I built three 1:6 scale cardboard models. The material was intentional — cardboard is honest about structure in a way foam and clay are not. If a joint doesn&rsquo;t hold in cardboard, it won&rsquo;t hold in plywood.</p>
+  </div>
+
+  <div class="g3 mt3 rev">
+    <div>
+      <div class="frame frame-dark" style="aspect-ratio:3/4;overflow:hidden"><img src="cardboard1.png" alt="Cardboard model — lounge chair" style="width:100%;height:100%;object-fit:cover"></div>
+      <p class="cap cap-dark">Sofa chair - CNC compatible form</p>
+    </div>
+    <div>
+      <div class="frame frame-dark" style="aspect-ratio:3/4;overflow:hidden"><img src="cardboard2.png" alt="Cardboard model — panel chair" style="width:100%;height:100%;object-fit:cover"></div>
+      <p class="cap cap-dark">Flat panel — assymetrical stacked arm cap</p>
+    </div>
+    <div>
+      <div class="frame frame-dark" style="aspect-ratio:3/4;overflow:hidden"><img src="cardboard3.png" alt="Cardboard model — closest to final" style="width:100%;height:100%;object-fit:cover"></div>
+      <p class="cap cap-dark">Hexagonal arm lounge — closest to final direction</p>
+    </div>
+  </div>
+
+  <div class="q q-dark mt4 rev">
+    <p>&ldquo;Cardboard is the most honest prototyping material.&rdquo;</p>
+    <cite>Process note, Week 3</cite>
+  </div>
+</div>
+</div>
+
+<!-- 05 SCALE MODEL ITERATIONS -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">04 &mdash; Scale Model Iterations</span>
+    <h2 class="h2">Four versions.<br><em>Each one teaching something the last couldn&rsquo;t.</em></h2>
+    <p class="body">With the hexagonal direction confirmed, I moved to 1:6 3D-printed scale models. Four iterations over two weeks — each one addressing a specific structural or manufacturing problem discovered in the previous version.</p>
+  </div>
+
+  <div class="iter-versions rev mt3">
+    <div class="iter-v">
+      <div class="iter-v-img"><img src="v1.png" alt="Version 1 — red 3D printed model angled seat"></div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-v1">V1</span>
+        <h4>Angled seat, full hex frame</h4>
+        <p>Original direction with a dramatically reclined seat panel. Visually strong. Structurally a problem, a CNC flatbed can&rsquo;t cut a compound-angled panel in a single flat pass.</p>
+      </div>
+    </div>
+    <div class="iter-v">
+      <div class="iter-v-img"><img src="v2.png" alt="Version 2 — corrugated texture detail"></div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-v2">V2</span>
+        <h4>Corrugated texture, hex detail</h4>
+        <p>More hexagon cutouts. Interesting idea, but too much competing detail. The chair needed to feel simple. Solved the CNC angle problem. Back arms took too much space.</p>
+      </div>
+    </div>
+    <div class="iter-v">
+      <div class="iter-v-img"><img src="v3.png" alt="Version 3 — olive green slatted seat"></div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-v3">V3</span>
+        <h4>Cardboard internal structure</h4>
+        <p>Solid panels replaced with slats to reduce material weight, back hexagon was cut. However the arms could split laterally, and the tall back risked tipping the chair. </p>
+      </div>
+    </div>
+    <div class="iter-v">
+      <div class="iter-v-img"><img src="v4.png" alt="Version 4 — dark green final direction"></div>
+      <div class="iter-v-info">
+        <span class="iter-v-tag tag-v4">V4 — Selected</span>
+        <h4>Weight reduction, hex cutout</h4>
+        <p>Brace added to the back stop arm split. Large middle piece with angled cutouts at top and bottom for weight reduction. Arms angled to match the back support for visual cohesion.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 07 CNC + MANUFACTURE -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 &mdash; CNC &amp; Manufacture</span>
+    <h2 class="h2">One sheet.<br><em>Every part nested and cut together.</em></h2>
+    <p class="body">All structural components were nested onto a smooth varnished single ¾″ plywood sheet and cut in one CNC pass. Followed by routing and sanding individual part for that smooth finish.</p>
+  </div>
+  
+  <div class="g4 mt4 rev top">
+    <div>
+      <div class="frame"><img src="IMG_8479.jpeg" alt="sanding the plywood"></div>
+    </div>
+    <div>
+      <div class="frame"><img src="IMG_8486.jpeg" alt="varnishing the sanded plywood"></div>
+    </div>
+    <div>
+      <div class="frame"><img src="IMG_0878.png" alt="CNC machine cutting all chair parts in one pass"></div>
+    </div>
+    <div>
+      <div class="frame"><img src="IMG_0937.png" alt="Parts fresh off CNC machine"></div>
+    </div>
+  </div>
+
+  <div class="g4 mt4 rev top">
+    <div>
+      <div class="frame"><img src="IMG_0936.png" alt="Parts fresh off CNC machine"></div>
+    </div>
+    <div>
+      <div class="frame"><img src="IMG_0918.png" alt="Hexagonal side frame in bench vice"></div>
+    </div>
+    <div>
+      <div class="frame"><img src="IMG_2042.png" alt="Routing the cnc cut parts"></div>
+    </div>
+    <div>
+      <div class="frame"><img src="IMG_2043.png" alt="Sanding the arm"></div>
+    </div>
+  </div>
+
+  <div class="joinery-bar rev mt4">
+    <div class="joinery-item">
+      <span class="joinery-n">Lap Joint</span>
+      <span class="joinery-l">Back Arm Support</span>
+      <p>The rear arm-to-back-support connection uses overlapping half-thickness slots. Both parts are notched to half depth.</p>
+    </div>
+    <div class="joinery-item">
+      <span class="joinery-n">Mortise &amp; Tenon</span>
+      <span class="joinery-l">All Primary Joints</span>
+      <p>Seat slats, back panel, and cross-brace all use CNC-cut mortise and tenon connections. The tenon tab is milled to a 0.01' tolerance ensuring the joint holds under load.</p>
+    </div>
+    <div class="joinery-item">
+      <span class="joinery-n">Tension Fit</span>
+      <span class="joinery-l">Side Frame Assembly</span>
+      <p>The angled back support passes through a corresponding slot in the side panel at −15°. The harder you press into the back, the tighter the joint becomes.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 08 BUILD PROCESS -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">06 &mdash; Build Process</span>
+    <h2 class="h2 h2-w">Glue, clamp, wait.<br><em>Then do it again.</em></h2>
+    <p class="body body-w">Assembly happened in stages — each sub-assembly clamped and cured before the next joint was glued. The seat cushion was hand-cut from 1″ foam, wrapped in olive green fabric, and tension-seated into the plywood frame.</p>
+  </div>
+
+  <div class="build-collage rev">
+    <div class="frame frame-dark"><img src="IMG_0928.jpeg" alt="Seat slats being glued and clamped flat"></div>
+    <div class="frame frame-dark"><img src="IMG_0929.jpeg" alt="Back panel one side slats glue-up"></div>
+    <div class="frame frame-dark"><img src="IMG_0927.jpeg" alt="Seat slats being glued and clamped flat"></div>
+      <div class="frame frame-dark"><img src="IMG_0930.jpeg" alt="Hexagonal side frame in bench vice"></div>
+      <div class="frame frame-dark"><img src="IMG_0981.jpeg" alt="One side constructed"></div>
+      <div class="frame frame-dark"><img src="IMG_0938.jpeg" alt="Foam cutting"></div>
+      <div class="frame frame-dark"><img src="IMG_0939.jpeg" alt="Fabric and foam cutout"></div>
+      <div class="frame frame-dark"><img src="IMG_0940.jpeg" alt="Foam and green fabric cushion construction"></div>
+      <div class="frame frame-dark"><img src="IMG_0984.jpeg" alt="Chair clamped during glue-up with green cushion"></div>
+</div>
+</div>
+</div>
+
+<!-- 09 FINAL CHAIR -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">07 &mdash; Final Chair</span>
+    <h2 class="h2">Beige Plywood. Olive cushion.<br><em>Structure as the surface.</em></h2>
+    <p class="body">The finished chair was coated with polyurethane. The exposed plywood edges reveal 13 alternating veneer layers, a cross-section of the material that becomes the texture. The joinery is visible from every angle.</p>
+  </div>
+
+  <div class="final-trio rev mt2">
+    <div class="frame">
+      <img src="side.png" alt="CardoHex side view — joinery detail">
+    </div>
+    <div class="frame">
+      <img src="angled.png" alt="CardoHex angle view">
+    </div>
+    <div class="frame">
+      <img src="back.png" alt="CardoHex rear view — clean back panel">
+    </div>
+  </div>
+  <p class="cap rev" style="margin-top:.7rem">Side — Three-quarter — Back</p>
+
+  </div>
+</div>
+</section>
+
+<!-- 10 REFLECTION -->
+<section class="sec" style="border-top:1px solid var(--rule)">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">08 &mdash; Reflection</span>
+    <h2 class="h2">What building taught me<br><em>that designing never would.</em></h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card"><span class="r-n">01</span><h4>Manufacturing constraints are design constraints</h4><p>Every time I changed the design because the CNC couldn&rsquo;t do something, the chair got better.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Scale models lie in specific ways</h4><p>A 1:6 model can&rsquo;t tell you about weight, flex, or how a joint feels under load. It can only tell you about proportion and assembly sequence.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>Simplicity can be hard to achieve</h4><p>The final chair looks simple. It took four iterations to get there. Simplicity was what was left after removing everything that wasn&rsquo;t necessary.</p></div>
+    <div class="r-card"><span class="r-n">04</span><h4>One angle can hold a whole design together</h4><p>The −15° back angle appears in the back support, the side cutouts, the arm geometry, and the leg flare. Repeating a single rule made it feel resolved.</p></div>
+    <div class="r-card"><span class="r-n">05</span><h4>Joinery is design, not engineering</h4><p>The visible joints are the visual evidence that the chair was made. Hiding them would have made the chair dishonest about what it is.</p></div>
+ </div>
+
+  <div class="mt4 rev">
+    <span class="lbl">Next Steps</span>
+    <h2 class="h2" style="font-size:1.5rem;">What comes next.</h2>
+  </div>
+  <ul class="nexts rev">
+    <li><span>Next &rarr;</span>Improve manufacturability for mass production.</li>
+  </ul>
+</div>
+</section>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">&larr; Portfolio</a>
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
