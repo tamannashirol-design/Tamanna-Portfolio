@@ -12,17 +12,20 @@
   --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#999;
   --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
   --card:#F3F0EA;--white:#fff;
+  --coral:#D2823A;
+  --onhero:#F1EEE4;
+  --onhero-dim:#B8B2A0;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
 .nav-logo{
   font-family:'Space Mono', monospace;
-  font-size:.7rem;
-  font-weight:700;
-  letter-spacing:.06em;
+  font-size:.8rem;
+  font-weight:400;
+  letter-spacing:.05em;
   text-decoration:none;
   color:var(--ink);
   transition:color .2s;
@@ -30,28 +33,64 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
 .nav-menu a{
   font-family:'Space Mono', monospace;
-  font-size:0.68rem;
-  font-weight:400;
-  letter-spacing:0.08em;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:0.06em;
   text-decoration:none;
-  color:var(--dim);
+  color: var(--mid);
   transition:color .2s;
-}.nav-menu a:hover{color:var(--ink)}
-.nav-cta{font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--olive);border:1px solid var(--olive);padding:.4rem .9rem;border-radius:4px;transition:all .2s}
+}
+.nav-menu a:hover{color:var(--ink)}
+.nav-menu a:hover{color:var(--ink)}
+.nav-cta{font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--olive);border:1px solid var(--olive);padding:.5rem 1rem;border-radius:4px;transition:all .2s}
 .nav-cta:hover{background:var(--olive);color:#fff}
 
 /* ── HERO ── */
-.hero{position:relative;height:30vh;min-height:550px;background:#191B0F;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
-.hero-tagline-large{font-family:'Fraunces',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.20);letter-spacing:-.02em;line-height:1;}
-/* Subtle grain texture */
-.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.hero-tagline-large{font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.6vw,2rem);font-weight:300;font-style:italic;color:var(--onhero);letter-spacing:-.02em;line-height:1;margin-left:9rem}
 
+#tag-barriers{position:relative;color:var(--coral);transition:color .5s ease .55s;}
+#tag-barriers::after{content:'';position:absolute;left:0;top:50%;height:2px;width:0;background:var(--coral);transition:width .45s ease;}
+#tag-barriers.struck::after{width:100%}
+#tag-barriers.struck{color:var(--onhero-dim)}
+#tag-rest span{display:inline-block;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
+
+@media (max-width:600px){
+  .hero-headline{max-width:90%}
+}/* Subtle grain texture */
+.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.hero{position:relative;min-height:560px;background:#191B0F;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+
+.hero-name{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.8rem,2.7vw,2rem);
+  font-weight:300;
+  color:var(--onhero-dim);
+  line-height:1;
+  letter-spacing:-.01em;
+  margin-bottom:1.6rem;
+}
+.hero-name em{font-style:italic;color:var(--onhero-dim)}
+.hero-headline{
+  font-family:'Fraunces',serif;
+  font-weight:250;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  line-height:1.15;
+  letter-spacing:-.01em;
+  color:var(--onhero);
+  max-width:900px;
+  margin:0 0 2.2rem;
+}
 /* Ambient glow */
 .hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 3rem;width:100%}
-.hero-eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem;display:block}
-.hero-name{font-family:'Fraunces',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:300;color:#fff;line-height:.98;letter-spacing:-.03em;margin-bottom:.5rem}
-.hero-name em{font-style:italic;color:rgba(255,255,255,.45)}
-.hero-role{font-family:'Space Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.08em;margin-bottom:2.5rem}
+.hero-eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:.95rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--onhero-dim);
+  margin-bottom:1.4rem;
+  display:block;
+}.hero-role{font-family:'Space Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.08em;margin-bottom:2.5rem}
 .hero-desc{font-size:.93rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:480px;margin-bottom:3rem}
 
 .hero-actions{display:flex;gap:1.5rem;align-items:center;margin-bottom:4rem}
@@ -63,7 +102,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 
 /* Scroll hint bar */
 .hero-bottom-bar{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;max-width:100%}
-.hero-scroll-hint{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);display:flex;align-items:center;gap:.6rem}
+.hero-scroll-hint{font-family:'Space Mono',monospace;font-size:.60rem;letter-spacing:.12em;text-transform:uppercase;  color:var(--onhero-dim);display:flex;align-items:center;gap:.6rem}
 .hero-scroll-hint::before{content:'';display:block;width:18px;height:1px;background:rgba(255,255,255,.2)}
 .hero-stat-row{display:flex;gap:3rem}
 .hero-stat label{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);display:block;margin-bottom:.2rem}
@@ -279,6 +318,7 @@ footer {
     display: none;
   }
 }
+
 </style>
 </head>
 <body>
@@ -295,22 +335,52 @@ footer {
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-
-
-  <div class="hero-inner" style="margin-bottom:auto;padding-top:140px">
+  <div class="hero-inner" style="margin-bottom:auto;padding-top:100px">
     <span class="hero-eyebrow">Product Designer</span>
-    <h1 class="hero-name">Tamanna<br><em>Shirol.</em></h1>
+    <h1 class="hero-name">Tamanna <em>Shirol</em></h1>
+    <p class="hero-headline">I design for people navigating systems that weren't built for them.</p>
     <div class="hero-actions">
       <a href="./Tamanna%20Resume_2026.pdf" class="hero-btn hero-btn-ghost" onclick="window.open(this.href, '_blank'); return false;">Resume</a>
       <a href="mailto:tamanna.shirol@gmail.com" class="hero-btn hero-btn-ghost">Let's Connect!</a>
     </div>
   </div>
 
-  <div class="hero-bottom-bar" >
-<p class="hero-tagline-large">I turn barriers into better beginnings.</p>
+  <div class="hero-bottom-bar">
+    <p class="hero-tagline-large">I turn <span id="tag-barriers">barriers</span><span id="tag-rest"></span></p>
     <span class="hero-scroll-hint">Scroll to explore</span>
-</div>
+  </div>
 </section>
+
+<script>
+function playHeroAnim(){
+  const barriers = document.getElementById('tag-barriers');
+  const rest = document.getElementById('tag-rest');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduced) {
+    barriers.classList.add('struck');
+    rest.textContent = ' into better beginnings.';
+    return;
+  }
+
+  setTimeout(() => barriers.classList.add('struck'), 300);
+
+  setTimeout(() => {
+    const text = ' into better beginnings.';
+    text.split('').forEach((ch, i) => {
+      const s = document.createElement('span');
+      s.textContent = ch === ' ' ? '\u00A0' : ch;
+      s.style.transitionDelay = (i * 0.02) + 's';
+      rest.appendChild(s);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        s.style.opacity = '1';
+        s.style.transform = 'translateY(0)';
+      }));
+    });
+  }, 900);
+}
+document.addEventListener('DOMContentLoaded', playHeroAnim);
+</script>
 
 <!-- ═══ SELECTED PROJECTS ═══ -->
 <section class="sec" id="work">
