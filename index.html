@@ -9,15 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#999;
-  --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
+  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#6D6D6D;
+    --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
   --card:#F3F0EA;--white:#fff;
   --coral:#D2823A;
   --onhero:#F1EEE4;
   --onhero-dim:#B8B2A0;
 }
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+html{ scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
@@ -45,9 +47,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-cta{font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--olive);border:1px solid var(--olive);padding:.5rem 1rem;border-radius:4px;transition:all .2s}
 .nav-cta:hover{background:var(--olive);color:#fff}
 
-/* ── HERO ── */
-.hero-tagline-large{font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.6vw,2rem);font-weight:300;font-style:italic;color:var(--onhero);letter-spacing:-.02em;line-height:1;margin-left:9rem}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;z-index:301}
+.nav-toggle span{display:block;width:100%;height:2px;background:var(--ink);transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
+/* ── HERO ── */
+.hero-tagline-large{font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.6vw,2rem);font-weight:300;font-style:italic;color:var(--onhero);letter-spacing:-.02em;line-height:1}
 #tag-barriers{position:relative;color:var(--coral);transition:color .5s ease .55s;}
 #tag-barriers::after{content:'';position:absolute;left:0;top:50%;height:2px;width:0;background:var(--coral);transition:width .45s ease;}
 #tag-barriers.struck::after{width:100%}
@@ -56,7 +63,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 
 @media (max-width:600px){
   .hero-headline{max-width:90%}
-}/* Subtle grain texture */
+}
+
+/* Subtle grain texture */
 .hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
 .hero{position:relative;min-height:560px;background:#191B0F;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
 
@@ -90,7 +99,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
   color:var(--onhero-dim);
   margin-bottom:1.4rem;
   display:block;
-}.hero-role{font-family:'Space Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.08em;margin-bottom:2.5rem}
+}
+.hero-role{font-family:'Space Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.55);letter-spacing:.08em;margin-bottom:2.5rem}
 .hero-desc{font-size:.93rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:480px;margin-bottom:3rem}
 
 .hero-actions{display:flex;gap:1.5rem;align-items:center;margin-bottom:4rem}
@@ -101,12 +111,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .hero-btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.4)}
 
 /* Scroll hint bar */
-.hero-bottom-bar{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;max-width:100%}
-.hero-scroll-hint{font-family:'Space Mono',monospace;font-size:.60rem;letter-spacing:.12em;text-transform:uppercase;  color:var(--onhero-dim);display:flex;align-items:center;gap:.6rem}
+.hero-bottom-bar{
+  position:relative;
+  z-index:2;
+  border-top:1px solid rgba(255,255,255,.07);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:1200px;
+  margin:0 auto;
+  width:100%;
+  padding:1.2rem 3rem;
+}.hero-scroll-hint{font-family:'Space Mono',monospace;font-size:.60rem;letter-spacing:.12em;text-transform:uppercase;  color:var(--onhero-dim);display:flex;align-items:center;gap:.6rem}
 .hero-scroll-hint::before{content:'';display:block;width:18px;height:1px;background:rgba(255,255,255,.2)}
 .hero-stat-row{display:flex;gap:3rem}
-.hero-stat label{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);display:block;margin-bottom:.2rem}
-.hero-stat span{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.4)}
+.hero-stat label{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-bottom:.2rem}
+.hero-stat span{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;color:rgba(255,255,255,.55)}
 
 /* Projects peek — partially visible below fold */
 .projects-peek{position:relative;z-index:2;padding:0 3rem;margin-bottom:-2.5rem}
@@ -199,7 +219,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .proj-item.locked .proj-img-inner{background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem}
 .lock-icon{width:40px;height:40px;border:1.5px solid rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center}
 .lock-icon svg{opacity:.3}
-.locked-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.locked-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 .locked-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border:1px solid var(--rule);padding:.3rem .7rem;border-radius:4px;margin-top:.5rem}
 .locked-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--olive);opacity:.5;display:inline-block}
 
@@ -239,7 +259,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .cta-band{background:var(--ink);padding:5rem 0;text-align:center}
 .cta-band .h2{color:#fff}
 .cta-band .h2 em{color:rgba(255,255,255,.4)}
-.cta-body{font-size:.91rem;color:rgba(255,255,255,.4);line-height:1.8;max-width:480px;margin:1rem auto 2.5rem}
+.cta-body{font-size:.91rem;color:rgba(255,255,255,.55);line-height:1.8;max-width:480px;margin:1rem auto 2.5rem}
 .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .cta-btn{font-family:'Space Mono',monospace;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:.7rem 1.5rem;border-radius:4px;transition:all .2s}
 .cta-btn-primary{background:var(--olive);color:#fff}
@@ -247,7 +267,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .cta-btn-ghost{color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15)}
 .cta-btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.4)}
 
-/* ── FOOTER ── */
 /* ── FOOTER ── */
 footer {
   background: var(--ink);
@@ -262,7 +281,7 @@ footer {
   font-family: 'Space Mono', monospace;
   font-size: .65rem;
   letter-spacing: .04em;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.55);
   text-align: center;
 }
 /* ── REVEAL ── */
@@ -274,9 +293,26 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
-  nav{padding:.9rem 1.5rem}
-  .nav-menu{display:none}
-  .wrap{padding:0 1.5rem}
+  nav{padding:.9rem 1.5rem;position:fixed}
+.nav-toggle{display:flex}
+.nav-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:0;
+  background:var(--bg);
+  border-bottom:1px solid var(--rule);
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease;
+}
+.nav-menu.open{max-height:280px}
+.nav-menu li{width:100%}
+.nav-menu a{display:block;width:100%;padding:1rem 1.5rem;font-size:.85rem}
+.wrap{padding:0 1.5rem}
   .sec,.sec-dark,.sec-tinted{padding:5rem 0}
   .hero-inner,.hero-bottom-bar,.projects-peek{padding-left:1.5rem;padding-right:1.5rem}
   .hero-stat-row{display:none}
@@ -299,9 +335,6 @@ footer {
   object-fit: cover;
   display: block;
 }
-.hero-tagline-large {
-  margin-left: 9rem;
-}
 
 @media (max-width: 600px) {
   .hero-bottom-bar {
@@ -309,7 +342,6 @@ footer {
   }
 
   .hero-tagline-large {
-    margin-left: 0;
     max-width: 85%;
     line-height: 1.1;
   }
@@ -326,9 +358,12 @@ footer {
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Tamanna Shirol</a>
-  <ul class="nav-menu">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="navMenu">
     <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="art gallery/art.html">Art Gallery</a></li>
   </ul>
 </nav>
@@ -394,12 +429,80 @@ document.addEventListener('DOMContentLoaded', playHeroAnim);
 
   <div class="proj-list">
 
-    <!-- 01 ONVERO -->
+        <!-- 01 ATLASTAX -->
+        <a href="AtlasTax/atlastax.html" class="proj-item rev">
+          <div class="proj-info">
+            <div>
+              <div class="proj-meta-top">
+                <span class="proj-tag">Product Design</span>
+                <span class="proj-year">2026</span>
+              </div>
+        
+              <h3 class="proj-title">
+                AtlasTax
+              </h3>
+        
+              <p class="proj-desc">
+                Tax-filing software for international students (F-1, J-1 & M-1) AtlasTax provides the guidance they need to file accurately in a system they have no knowledge about. Won 2nd place at the SFSU LCFoB product pitch.
+              </p>
+        
+              <div class="proj-stats">
+                <div class="proj-stat">
+                  <span>Personal</span>
+                  <label>Passion Project</label>
+                </div>
+              </div>
+            </div>
+        
+            <span class="proj-link">View case study</span>
+          </div>
+        
+          <div class="proj-img">
+            <div class="proj-img-inner" style="background:#1a2035">
+              <img src="atlastashero.png" alt="AtlasTax">
+            </div>
+          </div>
+        </a>
+
+                <!-- 02 YERBA BUENA -->
+                <a href="" class="proj-item rev">
+                  <div class="proj-info">
+                    <div>
+                      <div class="proj-meta-top">
+                        <span class="proj-tag">Product Design</span>
+                        <span class="proj-year">2026</span>
+                      </div>
+                
+                      <h3 class="proj-title">
+                        Yerba Buena Gardens App
+                      </h3>
+                
+                      <p class="proj-desc">
+                        Yerba Buena Gardens runs 100+ free events a year, and Gen Z has no idea. Introducing a gamified app with short-form videos feed, live RSVP counts, and a hidden gems map that turns a space they walk past into one they come back to. <strong> MVP built on Lovable.  </strong>              
+                      <div class="proj-stats">
+                        <div class="proj-stat">
+                          <span>Professional</span>
+                          <label>Yerba Buena Gardens Conservancy</label>
+                        </div>
+                      </div>
+                    </div>
+                
+                    <span class="proj-link">View case study</span>
+                  </div>
+                
+                  <div class="proj-img">
+                    <div class="proj-img-inner" style="background:#1a2035">
+                      <img src="ybgappmockup.png" alt="Yerba Buena Garden App">
+                    </div>
+                  </div>
+                </a>
+
+    <!-- 03 ONVERO -->
     <a href="Onvero/Onvero.html" class="proj-item rev">
       <div class="proj-info">
         <div>
           <div class="proj-meta-top">
-            <span class="proj-tag">UX Design</span>
+            <span class="proj-tag">Product Design</span>
             <span class="proj-year">2025</span>
           </div>
     
@@ -429,42 +532,8 @@ document.addEventListener('DOMContentLoaded', playHeroAnim);
       </div>
     </a>
 
-    <!-- 02 ATLASTAX -->
-    <a href="AtlasTax/atlastax.html" class="proj-item rev">
-      <div class="proj-info">
-        <div>
-          <div class="proj-meta-top">
-            <span class="proj-tag">UX Design</span>
-            <span class="proj-year">2026</span>
-          </div>
-    
-          <h3 class="proj-title">
-            AtlasTax
-          </h3>
-    
-          <p class="proj-desc">
-            Tax-filing software for international students (F-1, J-1 & M-1) AtlasTax provides the guidance they need to file accurately in a system they have no knowledge about. Won 2nd place at the SFSU LCFoB product pitch.
-          </p>
-    
-          <div class="proj-stats">
-            <div class="proj-stat">
-              <span>Personal</span>
-              <label>Passion Project</label>
-            </div>
-          </div>
-        </div>
-    
-        <span class="proj-link">View case study</span>
-      </div>
-    
-      <div class="proj-img">
-        <div class="proj-img-inner" style="background:#1a2035">
-          <img src="atlastashero.png" alt="AtlasTax">
-        </div>
-      </div>
-    </a>
 
-    <!-- 03 CULTIVAR -->
+    <!-- 04 CULTIVAR -->
     <a href="Cultivar/cultivar.html" class="proj-item rev">
       <div class="proj-info">
         <div>
@@ -498,40 +567,6 @@ document.addEventListener('DOMContentLoaded', playHeroAnim);
         </div>
       </div>
     </a> 
-    
-    <!-- 04 LOCKED -->
-
-    <div class="proj-item locked rev rev-delay-3">
-      <div class="proj-info">
-        <div>
-          <div class="proj-meta-top">
-            <span class="proj-tag">UX &amp; Product Design</span>
-            <span class="proj-year">2026</span>
-            <span class="locked-badge">In progress</span>
-          </div>
-          <h3 class="proj-title" style="color:var(--dim)">New project coming soon</em></h3>
-          <p class="proj-desc">I'm currently leading and contributing to design initiatives through my internship. Details and outcomes will be shared in a full case study once the project is ready for publication.</p>
-          <div class="proj-stats">
-            <div class="proj-stat">
-              <span>Professional</span>
-              <label>Product Design intern at Yerba Buena Gardens Conservancy</label>
-            </div>
-          </div>
-        </div>
-        
-        <a href="mailto:tamanna.shirol@gmail.com" class="proj-link" style="color:var(--dim)">Get in touch if you&rsquo;d like to hear more</a>
-      </div>
-      <div class="proj-img">
-        <div class="proj-img-inner locked-img">
-          <div class="lock-icon">
-            <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="8" width="14" height="10" rx="2" stroke="white" stroke-width="1.5"/>
-              <path d="M4 8V5.5C4 3.567 5.79 2 8 2C10.21 2 12 3.567 12 5.5V8" stroke="white" stroke-width="1.5"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div><!-- /proj-list -->
 </div>
@@ -660,58 +695,6 @@ document.addEventListener('DOMContentLoaded', playHeroAnim);
 </div>
 </div>
 
-<!-- ═══ ABOUT ═══ -->
-<section class="sec" id="about">
-<div class="wrap">
-  <div class="about-grid">
-    <div class="rev">
-      <span class="lbl">About</span>
-      <p class="about-intro"> Drawn to what gets <em>overlooked.</em></p>
-      <p class="about-body">I'm a product designer currently pursuing a Master's in Emerging Technologies in UX Design at New York University, with a background in industrial design. My foundation in industrial design taught me to think beyond interfaces and consider the broader experience surrounding a product.
-      </p>
-      <p class="about-body"> Growing up in Kenya taught me that access isn't something people can take for granted. I saw how technology could make life easier for some people while creating entirely new challenges for others. That perspective continues to shape the way I approach design today.</p>     
-      <p class="about-body">I'm fascinated by the gap between how products are intended to work and how people actually experience them.</p>
-      <p class="about-body">Outside of work, I'm probably looking for my next meal before I've finished the current one, planning a trip I haven't booked yet or designing my dream apartment. And always on the hunt for unique desserts.
-        </p>  
-        <div class="skill-row">
-        <span class="skill">User Research</span>
-        <span class="skill">Iteraction Design</span>
-        <span class="skill">Visual Design</span>
-        <span class="skill">Illustration</span>
-        <span class="skill">Rapid Visualization</span>
-        <span class="skill">Wireframing</span>
-        <span class="skill">Accessibility Design</span>
-        <span class="skill">Prototyping</span>
-        <span class="skill">Computer-Aided Design</span>
-        <span class="skill">3D Rendering</span>
-      </div>
-    </div>
-
-    <div class="rev rev-delay-1">
-      <div class="about-photo">
-        <img src="headshot.png" alt="Tamanna Shirol">
-      </div>
-      <div class="aside-block">
-        <span class="lbl">Currently</span>
-        <div class="aside-item"><strong>Yerba Buena Gardens Conservancy</strong><span>Product Design Intern</span></div>
-        <div class="aside-item"><strong>New York University</strong><span>MS Emerging Technologies in UX Design</span></div>
-      </div>
-      <div class="aside-block">
-        <span class="lbl">Links</span>
-    
-        <div class="aside-item">
-          <a href="https://www.linkedin.com/in/tamanna-shirol/"
-             style="color:var(--ink);text-decoration:none"
-             target="_blank">
-            LinkedIn
-          </a>
-          <span>↗</span>
-        </div>
-    </div>
-  </div>
-</div>
-</section>
-
 <!-- ═══ CTA ═══ -->
 <div class="cta-band rev">
   <div class="wrap" style="text-align:center">
@@ -728,8 +711,6 @@ document.addEventListener('DOMContentLoaded', playHeroAnim);
   <div class="footer-copy">
     © 2026 Tamanna Shirol. All rights reserved.
   </div>
-
-  <div class="footer-spacer"></div>
 </footer>
 
 <script>
@@ -738,5 +719,31 @@ const obs = new IntersectionObserver(entries => {
 },{threshold:.06,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rev').forEach(el => obs.observe(el));
 </script>
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+  </script>
 </body>
 </html>

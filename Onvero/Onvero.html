@@ -17,22 +17,48 @@
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
-.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
-.nav-back:hover{color:var(--olive)}
-.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-decoration:none;
+  color:var(--mid);
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  transition:color .2s;
+}
+.nav-back:hover{color:var(--ink)}
+.nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-menu a{
+  font-family:'Space Mono', monospace;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-decoration:none;
+  color: var(--mid);
+  transition:color .2s;
+}
+.nav-menu a:hover{color:var(--ink)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;z-index:301}
+.nav-toggle span{display:block;width:100%;height:2px;background:var(--ink);transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
 .hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
 .hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
-.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
 
 /* STAT BAR */
@@ -112,7 +138,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .flow-steps{display:flex;flex-direction:column;gap:4rem;margin-top:3rem}
 .flow-step{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:center}
 .flow-step.reverse{grid-template-columns:1.6fr 1fr}
-.flow-step-text{}
 .flow-step-num{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;color:var(--olive);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:.6rem}
 .flow-step-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:300;color:var(--ink);margin-bottom:.6rem;line-height:1.2}
 .flow-step-desc{font-size:.86rem;color:var(--mid);line-height:1.8}
@@ -258,6 +283,16 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
 @media(max-width:900px){
   nav{padding:.9rem 1.5rem}
+  .nav-toggle{display:flex}
+  .nav-menu{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:flex-start;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--rule);
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .nav-menu.open{max-height:280px}
+  .nav-menu li{width:100%}
+  .nav-menu a{display:block;width:100%;padding:1rem 1.5rem;font-size:.85rem}
   .wrap{padding:0 1.5rem}
   .sec,.sec-dark,.sec-tinted,.flow-section{padding:4.5rem 0}
   .g2,.g3,.g4,.iter,.journeys,.reflects,.data-row,.how-steps,.sketches,.method-bar,.access-grid,.concept-grid,.biz-row,.photo-grid,.pitch-photos{grid-template-columns:1fr;gap:1.25rem}
@@ -365,11 +400,17 @@ height:118px;
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-back" onclick="history.back(); return false;">
-    ← Tamanna Shirol
-  </a>    <span class="nav-tag">Onvero &nbsp;/&nbsp; UX Case Study</span>
-</nav>
+  <nav>
+    <a href="../index.html" class="nav-back">← Back</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../art gallery/art.html">Art Gallery</a></li>
+    </ul>
+  </nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -380,22 +421,23 @@ height:118px;
       <img src="onvero logo.png" alt="Onvero logomark">
     </div>
 
-    <h1>When people fear being scammed,<br><em>trust becomes the product.</em></h1>
+    <h1>When people fear scams,<br><em>trust becomes the product.</em></h1>
     <p class="hero-hmw">How might we help undocumented immigrants feel safe enough to seek and access verified legal support?</p>
     <div class="hero-meta">
       <div class="hero-meta-item"><label>Role</label><span>UX Designer &amp; Researcher</span></div>
       <div class="hero-meta-item"><label>Team</label><span>Collaborative project</span></div>
       <div class="hero-meta-item"><label>Tools</label><span>Figma &middot; FigJam &middot; Procreate</span></div>
+      <div class="hero-meta-item"><label>Presented</label><span>Wells Fargo Product Pitch </span></div>
     </div>
   </div>
 </section>
 
 <!-- STAT BAR -->
 <div class="stat-bar">
-  <div class="stat-cell"><span class="stat-n">78%</span><span class="stat-l">Task success rate after iterations</span></div>
+  <div class="stat-cell"><span class="stat-n">70%</span><span class="stat-l">Current Task success rate after iterations</span></div>
   <div class="stat-cell"><span class="stat-n">4</span><span class="stat-l">Team members</span></div>
   <div class="stat-cell"><span class="stat-n">5</span><span class="stat-l">Community partners</span></div>
-  <div class="stat-cell"><span class="stat-n">20+</span><span class="stat-l">Participants tested</span></div>
+  <div class="stat-cell"><span class="stat-n">12</span><span class="stat-l">Participants interviewed</span></div>
 </div>
 
 <!-- 01 PROBLEM -->
@@ -405,7 +447,7 @@ height:118px;
     <div>
       <span class="lbl">01 &mdash; Problem</span>
       <h2 class="h2">The resources existed.<br><em>The trust didn&rsquo;t.</em></h2>
-      <p class="body">Working alongside community organisations supporting undocumented immigrants across the Bay Area, I kept hearing the same story: people weren&rsquo;t failing to find help because resources didn&rsquo;t exist. They were failing because they couldn&rsquo;t tell who was trustworthy.</p>
+      <p class="body">Working alongside community organizations supporting undocumented immigrants across the Bay Area, I kept hearing the same story: people weren&rsquo;t failing to find help because resources didn&rsquo;t exist. They were failing because they couldn&rsquo;t tell who was trustworthy.</p>
       <div class="q mt2">
         <p>&ldquo;I&rsquo;ve lived here most of my life, but I still feel like I&rsquo;m walking on eggshells.&rdquo;</p>
         <cite>Research participant</cite>
@@ -426,7 +468,6 @@ height:118px;
     <span class="lbl">02 &mdash; Research</span>
     <h2 class="h2">What the research revealed.</h2>
     <p class="body">Over three weeks, I conducted 12 interviews with undocumented individuals, legal advocates, nonprofit leaders, and community workers. One pattern appeared in every session: the challenge wasn&rsquo;t access to resources &mdash; it was access to trustworthy resources.</p>
-    <a class="appendix-link" href="https://docs.google.com/document/d/1EzXMXCWkBtUSPFYN-neFyUuQZtPJDeefj5_PLomNBvA/edit?tab=t.ofu6vupvpxow" target="_blank">View detailed research appendix</a>
   </div>
 
   <div class="method-bar rev mt3">
@@ -458,7 +499,7 @@ height:118px;
     </div>
   
     <p class="cap">
-      Community organizations and legal advocates who we partned with and contributed to research
+      Community organizations and legal advocates we partnered with and who contributed to research
     </p>
   
   </div>
@@ -485,7 +526,7 @@ height:118px;
 
   <div class="g3 mt3 rev">
     <div class="card">
-      <h4>Fear Changes Behaviour</h4>
+      <h4>Fear Changes Behavior</h4>
       <p>Fear of scams, deportation, and exposure caused users to avoid seeking help entirely &mdash; even when support was available.</p>
     </div>
     <div class="card">
@@ -506,7 +547,7 @@ height:118px;
   <div class="rev">
     <span class="lbl lbl-dark">03 &mdash; Who I&rsquo;m Designing For</span>
     <h2 class="h2 h2-w">Designing for Maria Garcia.</h2>
-    <p class="body body-w">Maria is a 70-year-old undocumented grandmother living in San Jose. Limited English proficiency, low digital literacy, and deep concerns about sharing information online. She represents the users most at risk of falling through the gaps.</p>
+    <p class="body body-w">Maria is a 70-year-old undocumented grandmother living in San Jose. Limited English proficiency, low digital literacy, and deep concerns about sharing information online. She represents the users most at risk.</p>
   </div>
 
   <div class="g2 mt3 rev">
@@ -516,11 +557,11 @@ height:118px;
     <div>
       <div class="q q-dark" style="margin-top:0">
         <p>&ldquo;If I share too much information, what happens to it?&rdquo;</p>
-        <cite>Persona quote &mdash; synthesised from interviews</cite>
+        <cite>Persona quote &mdash; synthesized from interviews</cite>
       </div>
       <div class="g2 mt2" style="gap:1rem">
         <div class="card card-dark"><h4>Goal</h4><p>Find trustworthy legal help without risking her family&rsquo;s future.</p></div>
-        <div class="card card-dark"><h4>Need</h4><p>Simple explanations, verified services, and clear next steps.</p></div>
+        <div class="card card-dark"><h4>Need</h4><p>Simple explanations with verified legal services, and clear next steps.</p></div>
         <div class="card card-dark"><h4>Pain</h4><p>Legal processes feel overwhelming and impossible to navigate alone.</p></div>
         <div class="card card-dark"><h4>Fear</h4><p>Being scammed, misled, or exposing her undocumented status.</p></div>
       </div>
@@ -529,7 +570,7 @@ height:118px;
 
   <div class="journeys mt4 rev">
     <div class="j-card">
-      <div class="j-label j-a">Future Journey &mdash; With Onvero</div>
+      <div class="j-label j-a">Projected Journey &mdash; With Onvero</div>
       <img src="User Journey After.png" alt="Journey after">
     </div>
   </div>
@@ -585,6 +626,7 @@ height:118px;
     
     </div>
     </section>
+
 <!-- 05 ITERATIONS -->
 <div class="sec-tinted">
 <div class="wrap">
@@ -688,7 +730,7 @@ height:118px;
     </div>
     <div class="iter-half">
       <span class="iter-tag tag-a">Solution</span>
-      <p>Verification became transparent. Users can see which organisation validated a provider and exactly why they can trust them before making any contact. Added a clear about us ensuring users can trust us too.</p>
+      <p>Verification became transparent. Users can see which organization validated a provider and exactly why they can trust them before making any contact. Added a clear about us ensuring users can trust us too.</p>
       <div class="frame"><img src="Lawyer.jpg" alt="Verified provider"></div>
     </div>
   </div>
@@ -702,9 +744,7 @@ height:118px;
   
         <h3>The hardest problem: integrating OnveroAI with the Community Map.</h3>
   
-        <p>Users faced too many decisions per screen and often needed to jump between pages, disrupting their experience. My goal was to streamline navigation into a single &ldquo;happy path.&rdquo; Integrating OnveroAI with the Community Map was particularly challenging &mdash; with feedback from Kyle Zantos, I refined the architecture until we achieved a clear, seamless flow.</p>
-
-      </div>
+        <p>The obstacle was twofold: users weren't sure OnveroAI was safe to confide in, and the AI and map felt like two disconnected tools. With feedback from Kyle Zantos, I clarified that OnveroAI is self-hosted, not affiliated with any third-party AI company, so user data never leaves the platform and connected the map directly into OnveroAI's suggested next steps, turning two tools into one path.</p>      </div>
   
       <div class="obstacle-screens">
           <img src="PATH check.jpg" alt="OnveroAI steps screen">
@@ -715,9 +755,8 @@ height:118px;
   </div>
 
   <div class="success-banner rev">
-    <span class="success-n">78%</span>
-    <span class="success-l">Task success rate after implementing these changes &mdash; up from an initial baseline where users frequently abandoned the flow before reaching legal resources.</span>
-  </div>
+    <span class="success-n">70%</span>
+<span class="success-l">Task success rate — up from 30% in initial testing, measured across 10 moderated usability sessions where participants were tasked with finding a nearby pro-bono lawyer.</span>  </div>
 </div>
 </div>
 
@@ -728,7 +767,7 @@ height:118px;
   <div class="rev">
     <span class="lbl">06 &mdash; Accessibility Measures</span>
     <h2 class="h2">Designed for everyone.<br><em>Especially those most excluded.</em></h2>
-    <p class="body">Accessibility was prioritised throughout the design process &mdash; inclusive interactions, clear visual hierarchy, and WCAG compliance &mdash; so the product can be usable and welcoming for people of all abilities.</p>
+    <p class="body">Accessibility was prioritized throughout the design process &mdash; inclusive interactions, clear visual hierarchy, and WCAG compliance &mdash; so the product can be usable and welcoming for people of all abilities.</p>
   </div>
 
   <div class="access-grid rev">
@@ -736,8 +775,8 @@ height:118px;
       <div class="access-illustration">
         <img src="colorblind.png" alt="Color accessibility">
     </div>
-      <h4>Colour Palette Optimised for Colour-Blind Users</h4>
-      <p>Contrast ratios and colour combinations tested against deuteranopia, protanopia, and tritanopia to ensure legibility for all users.</p>
+      <h4>Color Palette Optimized for Color-Blind Users</h4>
+      <p>Contrast ratios and color combinations tested against deuteranopia, protanopia, and tritanopia to ensure legibility for all users.</p>
     </div>
     <div class="access-card">
       <div class="access-illustration">
@@ -751,7 +790,7 @@ height:118px;
         <img src="multiple languages.png" alt="Multiple Languages">
     </div>
       <h4>Multiple Languages, Starting with English &amp; Spanish</h4>
-      <p>Bilingual support from day one, with Spanish prioritised given the primary community served. Further language expansion planned post-launch.</p>
+      <p>Bilingual support from day one, with Spanish prioritized given the primary community served. Further language expansion planned post-launch.</p>
     </div>
     <div class="access-card">
       <div class="access-illustration">
@@ -799,7 +838,7 @@ height:118px;
       <div class="flow-step-text">
         <span class="flow-step-num">Step 02</span>
         <p class="flow-step-title">Transparency &amp; Resolution</p>
-        <p class="flow-step-desc">The About Us section surfaces the humans and organisations behind the platform. Users leave with a clear next step, verified contact, and the confidence to act.</p>
+        <p class="flow-step-desc">The About Us section surfaces the humans and organizations behind the platform. Users leave with a clear next step, verified contact, and the confidence to act.</p>
       </div>
     </div>
     <hr class="flow-divider">
@@ -825,7 +864,7 @@ height:118px;
       <div class="flow-step-text">
         <span class="flow-step-num">Step 04</span>
         <p class="flow-step-title">Community Map &amp; Verified Services </p>
-        <p class="flow-step-desc">Onvero surfaces verified legal services showing exactly where each community organisation is located. (Key Insight: Users trusted the service more when there was proof of a brick and mortar location.) Users see the evidence before making any contact.</p>
+        <p class="flow-step-desc">Onvero surfaces verified legal services showing exactly where each community organization is located. (Key Insight: Users trusted the service more when there was proof of a brick and mortar location.) Users see the evidence before making any contact.</p>
       </div>
 
     </div>
@@ -861,9 +900,9 @@ height:118px;
   </div>
 
   <div class="data-row rev">
-    <div class="data-card"><span class="data-n">78%</span><span class="data-l">Task success rate after iterations</span></div>
+    <div class="data-card"><span class="data-n">70%</span><span class="data-l">Task success rate after iterations</span></div>
     <div class="data-card"><span class="data-n">85%</span><span class="data-l">Completed the full experience</span></div>
-    <div class="data-card"><span class="data-n">20+</span><span class="data-l">Participants involved in testing</span></div>
+    <div class="data-card"><span class="data-n">10</span><span class="data-l">Participants involved in testing</span></div>
   </div>
 
   <div class="q q-dark mt3 rev">
@@ -899,7 +938,7 @@ height:118px;
   <div class="rev" style="margin-top:3.5rem">
     <span class="lbl lbl-dark">Business Model</span>
     <h3 style="font-family:'Fraunces',serif;font-weight:300;font-size:1.4rem;color:#fff;margin-bottom:.6rem">Free, independent, and rooted in trust.</h3>
-    <p class="body body-w">To keep Onvero strong and accessible, the model relies on grants, nonprofit partnerships, and mission-aligned sponsorships. No ads &mdash; all sources are found and verified independently so no organisation can pay to be featured.</p>
+    <p class="body body-w">To keep Onvero strong and accessible, the model relies on grants, nonprofit partnerships, and mission-aligned sponsorships. No ads &mdash; all sources are found and verified independently so no organization can pay to be featured.</p>
   </div>
 
   <div class="biz-row rev">
@@ -945,11 +984,11 @@ height:118px;
 
   <div class="reflects rev">
     <div class="r-card"><span class="r-n">01</span><h4>Trust is a design requirement</h4><p>For vulnerable populations, trust isn&rsquo;t a feature. Without it, users never engage. Every interaction either builds it or destroys it.</p></div>
-    <div class="r-card"><span class="r-n">02</span><h4>Research should change the direction</h4><p>The best insight wasn&rsquo;t validating assumptions &mdash; it was realising we were solving the wrong problem entirely. We came in thinking about access and left thinking about safety.</p></div>
-    <div class="r-card"><span class="r-n">03</span><h4>Community is part of the product</h4><p>The strongest design decisions came from partnering with organisations that had already earned users&rsquo; trust. We couldn&rsquo;t design trust in isolation.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Research should change the direction</h4><p>The best insight wasn&rsquo;t validating assumptions &mdash; it was realizing we were solving the wrong problem entirely. We came in thinking about access and left thinking about safety.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>Community is part of the product</h4><p>The strongest design decisions came from organizations that had already earned users&rsquo; trust. We couldn&rsquo;t design trust in isolation.</p></div>
     <div class="r-card"><span class="r-n">04</span><h4>Accessibility goes beyond compliance</h4><p>Accessibility here meant language, literacy, emotional safety, and confidence &mdash; not just technical standards. That was a significant reframe for the team.</p></div>
     <div class="r-card"><span class="r-n">05</span><h4>Design can create agency</h4><p>Good design doesn&rsquo;t just reduce friction. It helps people feel capable of taking action they otherwise wouldn&rsquo;t have taken.</p></div>
-    <div class="r-card"><span class="r-n">06</span><h4>Designing for sensitivity is different</h4><p>Like AtlasTax, this project involved high-stakes, sensitive information. That shapes everything &mdash; tone, pacing, privacy, and what you ask users to give up.</p></div>
+    <div class="r-card"><span class="r-n">06</span><h4>Designing for sensitivity is different</h4><p>This project involved high-stakes, sensitive information. That shapes everything &mdash; tone, pacing, privacy, and what you ask users to give up.</p></div>
   </div>
 
   <!-- Next Steps with concept previews -->
@@ -1014,6 +1053,30 @@ height:118px;
 </footer>
 
 <script>
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
 }, {threshold:.07, rootMargin:'0px 0px -40px 0px'});

@@ -25,22 +25,48 @@
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
-.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
-.nav-back:hover{color:var(--olive)}
-.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-decoration:none;
+  color:var(--mid);
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  transition:color .2s;
+}
+.nav-back:hover{color:var(--ink)}
+.nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-menu a{
+  font-family:'Space Mono', monospace;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-decoration:none;
+  color: var(--mid);
+  transition:color .2s;
+}
+.nav-menu a:hover{color:var(--ink)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;z-index:301}
+.nav-toggle span{display:block;width:100%;height:2px;background:var(--ink);transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
 .hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.78) 0%,rgba(20,20,20,.4) 55%,rgba(20,20,20,.12) 100%)}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
-.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
 
 /* STAT BAR */
@@ -220,6 +246,16 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
 @media(max-width:900px){
   nav{padding:.9rem 1.5rem}
+  .nav-toggle{display:flex}
+  .nav-menu{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:flex-start;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--rule);
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .nav-menu.open{max-height:280px}
+  .nav-menu li{width:100%}
+  .nav-menu a{display:block;width:100%;padding:1rem 1.5rem;font-size:.85rem}
   .wrap{padding:0 1.5rem}
   .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
   .g2,.g3,.g4,.iter,.journeys,.reflects,.data-row,.how-steps,.how-screens,.sketches,.phones,.method-bar{grid-template-columns:1fr;gap:1.25rem}
@@ -237,11 +273,17 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-back" onclick="history.back(); return false;">
-    ← Tamanna Shirol
-  </a>    <span class="nav-tag">AtlasTax &nbsp;/&nbsp; UX Case Study</span>
-</nav>
+  <nav>
+    <a href="../index.html" class="nav-back">← Back</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../art gallery/art.html">Art Gallery</a></li>
+    </ul>
+  </nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -257,7 +299,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     <div class="hero-meta">
       <div class="hero-meta-item"><label>Role</label><span>UX Designer</span></div>
       <div class="hero-meta-item"><label>Tools</label><span>Figma &middot; Procreate &middot; Illustrator</span></div>
-      <div class="hero-meta-item"><label>Team</label><span>Business Collaboration · In Development</span></div>
+      <div class="hero-meta-item"><label>Team</label><span>Solo design · Business partner for pitch</span></div>
     </div>
   </div>
 </section>
@@ -267,7 +309,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="stat-cell"><span class="stat-n">90%</span><span class="stat-l">Preferred over competitors</span></div>
   <div class="stat-cell"><span class="stat-n">94%</span><span class="stat-l">Reported reduced anxiety</span></div>
   <div class="stat-cell"><span class="stat-n">80%</span><span class="stat-l">Willing to pay $29</span></div>
-  <div class="stat-cell"><span class="stat-n">2nd</span><span class="stat-l">SFSU Business Pitch</span></div>
+  <div class="stat-cell"><span class="stat-n">2nd</span><span class="stat-l">Place at the SFSU Product Pitch</span></div>
 </div>
 
 <!-- 01 PROBLEM -->
@@ -278,10 +320,10 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       <span class="lbl">01 &mdash; Problem</span>
       <h2 class="h2">Built for citizens.<br><em>Not for students.</em></h2>
       <p class="body">A U.S. citizen earning under $15,750 doesn&rsquo;t need to file. An 18-year-old international student with zero income still does &mdash; and one mistake can jeopardize their visa, immigration applications, and future employment.</p>
-      <div class="q mt2">
-        <p>&ldquo;The system exists, just not for them. Residents have TurboTax. Non-resident students are left with confusion.&rdquo;</p>
-      </div>
-      <p class="body">1.2 million international students in the U.S. Nearly all carry annual IRS filing obligations. Almost none have a tool built for them.</p>
+      <p class="body" style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--ink);margin:1.5rem 0">
+        The system exists, just not for them. Residents have TurboTax. Non-resident students are left with confusion.
+      </p>
+                  <p class="body">1.2 million international students in the U.S. (2024/25 academic year). Nearly all carry annual IRS filing obligations. Almost none have a simplified tool built for them.</p>
     </div>
     <div>
       <div class="frame"><img src="image 17.png" alt="Affinity map of pain points"></div>
@@ -362,7 +404,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     </div>
     <div class="card">
       <h4>TurboTax &mdash; Indirect Competitor</h4>
-      <p>Doesn&rsquo;t support non-resident returns. Students who use it risk filing the wrong form entirely, which has real immigration consequences. Doesn&rsquo;t let users know the difference between 1040NR and 1040. </p>
+      <p>Doesn&rsquo;t support non-resident returns. Students who use it risk filing the wrong form entirely, which has real immigration consequences. Doesn't distinguish between 1040NR and 1040 filing requirements. </p>
     </div>
   </div>
 
@@ -389,7 +431,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="rev">
     <span class="lbl lbl-dark">04 &mdash; Who I&rsquo;m Designing For</span>
     <h2 class="h2 h2-w">Meet Aditi Sharma.</h2>
-    <p class="body body-w">A proto-persona built from n=12 interviews. She represents the organised, tech-savvy student who just needs someone to make this make sense.</p>
+    <p class="body body-w">A proto-persona built from n=12 interviews. She represents the organized, tech-savvy student who just needs someone to make this make sense.</p>
   </div>
 
   <div class="g2 mt3 rev">
@@ -466,7 +508,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     <div class="how-step">
       <span class="step-num">Step 01</span>
       <p class="step-title">Smart Onboarding</p>
-      <p class="step-desc">Students answer 10&ndash;15 questions to determine their correct filing path. Visa type, income sources, residency status &mdash; all used to personalise the experience.</p>
+      <p class="step-desc">Students answer 10&ndash;15 questions to determine their correct filing path. Visa type, income sources, residency status &mdash; all used to personalize the experience.</p>
     </div>
     <div class="how-step">
       <span class="step-num">Step 02</span>
@@ -497,12 +539,38 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     <div class="how-step">
       <div class="iter-2up">
       <div class="frame"><img src="Document Upload 5.png" alt="All documents complete"></div>
-      <div class="frame"><img src="Document Upload 7.png" alt="Personalised deadlines"></div>
+      <div class="frame"><img src="Document Upload 7.png" alt="Personalized deadlines"></div>
     </div>
   </div>
   </div>
 </div>
 </div>
+
+<!-- 06.5 TRUST & DATA HANDLING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="rev">
+      <span class="lbl">Trust &amp; Data Handling</span>
+      <h2 class="h2">Sensitive documents.<br><em>Designed with care.</em></h2>
+      <p class="body">Students upload SSNs, visa documents, and income forms &mdash; information tied directly to their immigration status. Every design decision around document handling started from one question: would a student trust this with their most sensitive information?</p>
+    </div>
+  
+    <div class="g3 mt3 rev">
+      <div class="card">
+        <h4>Purpose-Built Extraction</h4>
+        <p>Documents are processed through OCR to auto-fill forms, reducing the amount of manual re-entry and the number of places sensitive data has to be typed or copied.</p>
+      </div>
+      <div class="card">
+        <h4>Minimal Data Requested</h4>
+        <p>The onboarding flow only asks for what's needed to determine filing status; no unnecessary fields, no data collected "just in case."</p>
+      </div>
+      <div class="card">
+        <h4>Security as a Build Priority</h4>
+        <p>As AtlasTax moves from prototype to production, encryption and access controls for uploaded documents are a first-priority engineering requirement before the 2027 pilot.</p>
+      </div>
+    </div>
+  </div>
+  </section>
 
 <!-- 07 DESIGN PROCESS -->
 <section class="sec">
@@ -536,13 +604,13 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="ds-row rev">
     <div class="ds-notes">
       <p class="body" style="margin-bottom:1rem">The design system was built to feel calm and trustworthy &mdash; deliberately opposite to the anxiety students already feel about taxes.</p>
-      <div class="ds-note"><strong>Colour</strong><span>Muted teal and cream &mdash; warm, not clinical. Chosen to reduce the visual stress of financial interfaces.</span></div>
+      <div class="ds-note"><strong>Color</strong><span>Muted teal and cream &mdash; warm, not clinical. Chosen to reduce the visual stress of financial interfaces.</span></div>
       <div class="ds-note"><strong>Typography</strong><span>SF Pro throughout &mdash; familiar from iOS, which reduces cognitive load on a mobile-first product.</span></div>
       <div class="ds-note"><strong>Illustration</strong><span>Hand-drawn style icons soften the intimidation of tax forms and keep the experience feeling human.</span></div>
     </div>
     <div>
       <div class="frame"><img src="Group 119.png" alt="Design system"></div>
-      <p class="cap">Design system &mdash; colour, type, illustration, brand</p>
+      <p class="cap">Design system &mdash; color, type, illustration, brand</p>
     </div>
   </div>
 </div>
@@ -690,9 +758,9 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     </div>
     <div class="phone">
       <div class="phone-shell">
-        <img src="Deadlines uploaded.png" alt="Personalised deadlines">
+        <img src="Deadlines uploaded.png" alt="Personalized deadlines">
       </div>
-      <p>Personalised</p>
+      <p>Personalized</p>
     </div>
   </div>
 </div>
@@ -704,7 +772,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="rev">
     <span class="lbl lbl-dark">10 &mdash; Results &amp; Validation</span>
     <h2 class="h2 h2-w">The numbers spoke.</h2>
-    <p class="body body-w">Measured through post-testing with 15 F-1 students after completing the high-fidelity prototype task flow. They didn&rsquo;t just find it easier &mdash; they wanted it.</p>
+    <p class="body body-w">Measured through unmoderated usability testing with 15 F-1 students after completing the high-fidelity prototype task flow.</p>
   </div>
 
   <div class="data-row rev">
@@ -741,11 +809,11 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   </div>
 
   <div class="reflects rev">
-    <div class="r-card"><span class="r-n">01</span><h4>Designing with sensitive information is hard</h4><p>This project made me realise how different it is designing for high-stakes, sensitive data. Every interaction carries real anxiety. Tone, clarity, and trust aren&rsquo;t nice-to-haves &mdash; they&rsquo;re functional requirements.</p></div>
-    <div class="r-card"><span class="r-n">02</span><h4>Simplicity in complex domains is earned</h4><p>Taxes feel impossible. But structuring information correctly &mdash; not dumbing it down &mdash; is what turns overwhelming into manageable. That distinction took multiple iterations to understand.</p></div>
+    <div class="r-card"><span class="r-n">01</span><h4>Designing with sensitive information is hard</h4><p>This project made me realize how different it is designing for high-stakes, sensitive data. Every interaction carries real anxiety. Tone and trust are functional requirements.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Simplicity in complex domains is earned</h4><p>Taxes feel impossible. But structuring information correctly is what turns overwhelming into manageable. That distinction took multiple iterations to understand.</p></div>
     <div class="r-card"><span class="r-n">03</span><h4>Small tests reveal big problems fast</h4><p>Three users in phase 1 caught the broken flow interaction. Three more in phase 2 revealed the missing file CTA. You don&rsquo;t need a hundred participants to find what&rsquo;s broken.</p></div>
     <div class="r-card"><span class="r-n">04</span><h4>Anxiety is a design problem</h4><p>94% reduced anxiety is a product outcome. If users feel scared navigating your interface, the design failed regardless of how clean it looks.</p></div>
-    <div class="r-card"><span class="r-n">05</span><h4>Product-market fit comes from listening</h4><p>The 90% preference rate came from sitting with students and hearing their actual pain &mdash; not from confidence in my design instincts.</p></div>
+    <div class="r-card"><span class="r-n">05</span><h4>Product-market fit comes from listening</h4><p>The 90% preference rate came from sitting with students and hearing their actual struggles &mdash; not from confidence in my design instincts.</p></div>
     <div class="r-card"><span class="r-n">06</span><h4>This project isn&rsquo;t finished</h4><p>The Learn Taxes module, e-filing integration, and more visa types are next. Taking this to engineering is the goal. This is still being built.</p></div>
   </div>
 
@@ -780,6 +848,31 @@ document.querySelectorAll('.phone').forEach(p => {
   p.addEventListener('mouseenter', () => v.play());
   p.addEventListener('mouseleave', () => { v.pause(); v.currentTime=0; });
 });
+
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
 </script>
 </body>
 </html>

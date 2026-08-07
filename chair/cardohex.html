@@ -25,10 +25,36 @@
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(250,248,244,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
-.nav-back{font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color:var(--ink);transition:color .2s}
-.nav-back:hover{color:var(--olive)}
-.nav-tag{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:0.08em}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-decoration:none;
+  color:var(--mid);
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  transition:color .2s;
+}
+.nav-back:hover{color:var(--ink)}
+.nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-menu a{
+  font-family:'Space Mono', monospace;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-decoration:none;
+  color: var(--mid);
+  transition:color .2s;
+}
+.nav-menu a:hover{color:var(--ink)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;z-index:301}
+.nav-toggle span{display:block;width:100%;height:2px;background:var(--ink);transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
 .hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
@@ -212,6 +238,16 @@ footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:sp
 nav{
   padding:.9rem 1.5rem;
 }
+.nav-toggle{display:flex}
+  .nav-menu{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:flex-start;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--rule);
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .nav-menu.open{max-height:280px}
+  .nav-menu li{width:100%}
+  .nav-menu a{display:block;width:100%;padding:1rem 1.5rem;font-size:.85rem}
 
 .nav-tag{
   display:none;
@@ -278,9 +314,15 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-back" onclick="history.back(); return false;">
-    ← Tamanna Shirol
-  </a>    <span class="nav-tag">CardoHex / Furniture Industrial Design Case Study</span>
+  <a href="../index.html" class="nav-back">← Back</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="../index.html#work">Work</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../art gallery/art.html">Art Gallery</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
@@ -573,6 +615,32 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
 }, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
 </script>
 </body>
 </html>

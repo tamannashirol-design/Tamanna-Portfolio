@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamanna Shirol — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F4;--ink:#141414;--mid:#555;--dim:#6D6D6D;
+  --rule:#E4E0D8;--olive:#6B7040;--navy:#2C3E6B;
+  --card:#F3F0EA;--white:#fff;
+  --coral:#D2823A;
+  --onhero:#F1EEE4;
+  --onhero-dim:#B8B2A0;
+}
+html{ scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-logo{
+  font-family:'Space Mono', monospace;
+  font-size:.8rem;
+  font-weight:400;
+  letter-spacing:.05em;
+  text-decoration:none;
+  color:var(--ink);
+  transition:color .2s;
+}.nav-logo:hover{color:var(--olive)}
+.nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-menu a{
+  font-family:'Space Mono', monospace;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-decoration:none;
+  color: var(--mid);
+  transition:color .2s;
+}
+.nav-menu a:hover{color:var(--ink)}
+.nav-cta{font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--olive);border:1px solid var(--olive);padding:.5rem 1rem;border-radius:4px;transition:all .2s}
+.nav-cta:hover{background:var(--olive);color:#fff}
+
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;z-index:301}
+.nav-toggle span{display:block;width:100%;height:2px;background:var(--ink);transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── LAYOUT UTILITIES ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:7rem 0}
+.sec-tinted{background:#F0EFE7;padding:7rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:300;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin-bottom:.6rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:540px}
+.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.about-intro{font-family:'Fraunces',serif;font-size:clamp(1.3rem,2vw,1.7rem);font-weight:300;line-height:1.4;letter-spacing:-.01em;color:var(--ink);margin-bottom:2rem}
+.about-intro em{font-style:italic;color:var(--mid)}
+.about-body{font-size:.9rem;color:var(--mid);line-height:1.85;margin-bottom:1.4rem}
+.skill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.skill{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);border:1px solid var(--rule);padding:.35rem .75rem;border-radius:4px}
+
+/* Currently reading / etc. */
+.aside-block{border-top:1px solid var(--rule);padding-top:2rem;margin-top:2rem}
+.aside-block .lbl{margin-bottom:1.2rem}
+.aside-item{display:flex;justify-content:space-between;align-items:baseline;padding:.7rem 0;border-bottom:1px solid var(--rule);font-size:.95rem;color:var(--mid)}
+.aside-item:last-child{border-bottom:none}
+.aside-item strong{color:var(--ink);font-weight:500}
+.aside-item span{font-family:'Space Mono',monospace;font-size:.85rem;color:var(--dim);letter-spacing:.04em}
+
+/* ── CTA ── */
+.cta-band{background:var(--ink);padding:5rem 0;text-align:center}
+.cta-band .h2{color:#fff;font-size:2rem}
+.cta-band .h2 em{color:rgba(255,255,255,.4)}
+.cta-body{font-size:.91rem;color:rgba(255,255,255,.55);line-height:1.8;max-width:480px;margin:1rem auto 2.5rem}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-btn{font-family:'Space Mono',monospace;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:.7rem 1.5rem;border-radius:4px;transition:all .2s}
+.cta-btn-primary{background:var(--olive);color:#fff}
+.cta-btn-primary:hover{background:#5a6034}
+.cta-btn-ghost{color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15)}
+.cta-btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+
+.rev{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rev.in{opacity:1;transform:none}
+.rev-delay-1{transition-delay:.1s}
+.rev-delay-2{transition-delay:.2s}
+.rev-delay-3{transition-delay:.3s}
+
+/* ── FOOTER ── */
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 2.5rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.footer-copy {
+  font-family: 'Space Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.55);
+  text-align: center;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:.9rem 1.5rem;position:fixed}
+.nav-toggle{display:flex}
+.nav-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:0;
+  background:var(--bg);
+  border-bottom:1px solid var(--rule);
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease;
+}
+.nav-menu.open{max-height:280px}
+.nav-menu li{width:100%}
+.nav-menu a{display:block;width:100%;padding:1rem 1.5rem;font-size:.85rem}
+.wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:5rem 0}
+  footer{padding:2rem 1.5rem}
+}
+@media (max-width: 600px) {
+
+.aside-item{
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .35rem;
+}
+
+.aside-item span{
+  font-size: .7rem;
+}
+
+}
+.about-photo img {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 3/3;
+  object-fit: cover;
+  display: block;
+}
+
+</style>
+</head>
+<body>
+    <!-- NAV -->
+<nav>
+    <a href="index.html" class="nav-logo">Tamanna Shirol</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="art gallery/art.html">Art Gallery</a></li>
+    </ul>
+  </nav>
+  
+<!-- ═══ ABOUT ═══ -->
+<section class="sec" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="rev">
+          <p class="about-intro"> Drawn to what gets <em>overlooked.</em></p>
+          <p class="about-body">I'm a product designer currently pursuing a Master's in Emerging Technologies in UX Design at New York University, with a background in industrial design. My foundation in industrial design taught me to think beyond interfaces and consider the broader experience surrounding a product.
+          </p>
+          <p class="about-body"> Growing up in Kenya taught me that access isn't something people can take for granted. I saw how technology could make life easier for some people while creating entirely new challenges for others. That perspective continues to shape the way I approach design today.</p>     
+          <p class="about-body">I'm fascinated by the gap between how products are intended to work and how people actually experience them.</p>
+          <p class="about-body">Outside of work, I'm probably looking for my next meal before I've finished the current one, planning a trip I haven't booked yet or designing my dream apartment. And always on the hunt for unique desserts.
+            </p>  
+            <div class="skill-row">
+            <span class="skill">User Research</span>
+            <span class="skill">Interaction Design</span>
+            <span class="skill">Visual Design</span>
+            <span class="skill">Illustration</span>
+            <span class="skill">Rapid Visualization</span>
+            <span class="skill">Wireframing</span>
+            <span class="skill">Accessibility Design</span>
+            <span class="skill">Prototyping</span>
+            <span class="skill">Computer-Aided Design</span>
+            <span class="skill">3D Rendering</span>
+          </div>
+        </div>
+    
+        <div class="rev rev-delay-1">
+          <div class="about-photo">
+            <img src="headshot.png" alt="Tamanna Shirol">
+          </div>
+          <div class="aside-block">
+            <span class="lbl">Currently</span>
+            <div class="aside-item"><strong>Yerba Buena Gardens Conservancy</strong><span>Product Design Intern</span></div>
+            <div class="aside-item"><strong>New York University</strong><span>MS Emerging Technologies in UX Design</span></div>
+          </div>
+          <div class="aside-block">
+            <span class="lbl">Links</span>
+        
+            <div class="aside-item">
+              <a href="https://www.linkedin.com/in/tamanna-shirol/"
+                 style="color:var(--ink);text-decoration:none"
+                 target="_blank">
+                LinkedIn
+              </a>
+              <span>↗</span>
+            </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta-band rev">
+    <div class="wrap" style="text-align:center">
+      <span class="lbl" style="justify-content:center;display:block;color:#7d8f4a">Let&rsquo;s work together</span>
+      <h2 class="h2 " style="color:#fff;text-align:center">Have a project in mind?<br><em>I&rsquo;d love to hear about it.</em></h2>
+      <div class="cta-actions">
+        <a href="mailto:tamanna.shirol@gmail.com" class="cta-btn cta-btn-primary">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+    <!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="footer-copy">
+      © 2026 Tamanna Shirol. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+    },{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+    </script>
+    <script>
+      const navToggle = document.getElementById('navToggle');
+      const navMenu = document.getElementById('navMenu');
+      
+      navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+      
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+      
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+          navMenu.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      </script>
+  
+</body>
+</html>
