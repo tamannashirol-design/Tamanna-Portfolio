@@ -50,16 +50,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(14,10,10,.88) 0%,rgba(14,10,10,.55) 55%,rgba(14,10,10,.18) 100%)}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
-.hero h1 em{font-style:italic;color:rgba(255,255,255,.55)}
-.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:620px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
 
 /* STAT BAR */
@@ -234,7 +234,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img" src="ring main rendering edited.png" alt="Evergreen Connection engagement ring set">
+  <img class="hero-img" src="ringmainrenderingedited.png" alt="Evergreen Connection engagement ring set">
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <h1>Designing rings that carry<br><em>meaning beyond the moment.</em></h1>
@@ -269,7 +269,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       </div>
     </div>
     <div>
-      <div class="frame"><img src="Ring on Hand Rendering.png" alt="Rings worn in context on hands"></div>
+      <div class="frame"><img src="RingonHandRendering.png" alt="Rings worn in context on hands"></div>
       <p class="cap">In-context rendering &mdash; both rings worn together</p>
     </div>
   </div>
@@ -286,7 +286,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   </div>
 
   <div class="rev mt3">
-    <div class="frame frame-dark"><img src="ring rendering solid back.png" alt="Well lit rendering of the rings"></div>
+    <div class="frame frame-dark"><img src="ringrenderingsolidback.png" alt="Well lit rendering of the rings"></div>
   </div>
 
   </div>
@@ -307,7 +307,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       <img src="IDeation.png" alt="Initial ideation sketches — hers and his concepts">
     </div>
     <div class="sketch-frame">
-      <img src="refined sketch.png" alt="Refined sketch with annotated gem cuts">
+      <img src="refinedsketch.png" alt="Refined sketch with annotated gem cuts">
     </div>
   </div>
   <p class="cap rev mt1">Left: Initial ideation &mdash; 30+ sketches exploring gem cuts and forms &nbsp;/&nbsp; Right: Refined sketch with final cut selection annotated</p>
@@ -392,10 +392,10 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="dim-row rev">
     <div class="dim-panel">
-      <img src="ring dimensions-01.png" alt="Women's ring dimensional drawings — size 8.5">
+      <img src="ringdimensions-01.png" alt="Women's ring dimensional drawings — size 8.5">
     </div>
     <div class="dim-panel">
-      <img src="ring dimensions-02.png" alt="Men's ring dimensional drawings — size 11.5">
+      <img src="ringdimensions-02.png" alt="Men's ring dimensional drawings — size 11.5">
     </div>
   </div>
   <p class="cap rev mt1">Left: Women's ring &mdash; US Size 8.5 &nbsp;/&nbsp; Right: Men's ring &mdash; US Size 11.5</p>
@@ -412,7 +412,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   </div>
 
   <div class="final-hero rev mt3">
-    <img src="Marketing Ring ad.png" alt="Final rendering — in a spotlight with a call out">
+    <img src="MarketingRingad.png" alt="Final rendering — in a spotlight with a call out">
   </div>
   <p class="cap rev">Hero render &mdash; Evergreen Connection set, rose gold with marquise diamond</p>
 

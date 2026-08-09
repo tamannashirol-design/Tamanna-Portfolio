@@ -61,17 +61,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.88) 0%,rgba(20,20,20,.55) 55%,rgba(20,20,20,.18) 100%)}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
-.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
 
 /* STAT BAR */
 .stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
@@ -273,7 +274,7 @@ footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:sp
 
 <!-- HERO -->
 <div class="hero">
-  <img class="hero-img" src="billboard mockup.png" alt="Inspire Oakland billboard at dusk">
+  <img class="hero-img" src="billboardmockup.png" alt="Inspire Oakland billboard at dusk">
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <h1>Inspire Oakland<br><em>The Foreigner's Perspective.</em></h1>
@@ -450,7 +451,7 @@ footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:sp
 
   <div class="iter-versions rev">
     <div class="iter-v">
-      <div class="iter-v-img"><img src="Billboard idea 1.png" alt="Version 1 — original billboard design with Bay Bridge"></div>
+      <div class="iter-v-img"><img src="Billboardidea1.png" alt="Version 1 — original billboard design with Bay Bridge"></div>
       <div class="iter-v-info">
         <span class="iter-v-tag tag-v1">Version 1</span>
         <h4>Bay Bridge + Full Cast</h4>
@@ -458,7 +459,7 @@ footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:sp
       </div>
     </div>
     <div class="iter-v">
-      <div class="iter-v-img"><img src="Final Billbaord.jpeg" alt="Version 2 — final selected billboard design"></div>
+      <div class="iter-v-img"><img src="FinalBillbaord.jpeg" alt="Version 2 — final selected billboard design"></div>
       <div class="iter-v-info">
         <span class="iter-v-tag tag-selected">Final — Selected</span>
         <h4>Tighter Cast, Stronger Read</h4>
@@ -486,13 +487,13 @@ footer{background:var(--ink);padding:2.5rem 3rem;display:flex;justify-content:sp
   <div class="resize-grid rev">
     <div class="resize-item">
       <div class="frame">
-        <img src="Tamanna_Shirol_InApp 1.jpg" alt="In-app square format">
+        <img src="TamannaShirolInApp1.jpg" alt="In-app square format">
       </div>
       <p class="cap">In-App / Social Square — recomposed for vertical read</p>
     </div>
     <div class="resize-item">
       <div class="frame">
-        <img src="Final LED.jpeg" alt="LED display version of Inspire Oakland">
+        <img src="FinalLED.jpeg" alt="LED display version of Inspire Oakland">
       </div>
       <p class="cap">LED Digital Display — higher contrast, dark border</p>
     </div>

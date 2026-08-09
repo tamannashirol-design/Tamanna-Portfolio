@@ -56,15 +56,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
   overflow:hidden;
   margin-top:0;
   padding-top:0;
-}.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.12) 100%)}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+}
+/* HERO */
+.hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
-.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:620px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
 
 /* STAT BAR */
@@ -419,10 +422,10 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <div class="logo-hero">
-      <img src="root logo.png" alt="Root logomark">
+      <img src="rootlogo.png" alt="Root logomark">
     </div>
     <h1>What if aroma could bring back<br><em>lost memories?</em></h1>
-    <p class="hero-hmw">How might we design a home care device that uses olfactory stimulation to reduce anxiety and support memory retention in early-stage Alzheimer&rsquo;s patients?</p>
+    <p class="hero-hmw">How might we design a home care device that uses olfactory stimulation to support memory retention in early-stage Alzheimer&rsquo;s patients?</p>
     <div class="hero-meta">
       <div class="hero-meta-item"><label>Role</label><span>Industrial &amp; UX Designer</span></div>
       <div class="hero-meta-item"><label>Team</label><span>Collaborative project</span></div>
@@ -453,7 +456,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       <p class="body">Existing care tools focus on what&rsquo;s lost. Root focuses on what&rsquo;s still there: emotional memory, sensory response, and the deeply personal link between smell and self.</p>
     </div>
     <div>
-      <div class="frame"><img src="open diffuser in living room.png" alt="Root in living room"></div>
+      <div class="frame"><img src="opendiffuserinlivingroom.png" alt="Root in living room"></div>
       <p class="cap">Root diffuser active in a home environment</p>
     </div>
   </div>
@@ -471,7 +474,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="g2 mt3 rev top">
     <div>
-      <div class="frame"><img src="Group 70.png" alt="Olfactory pathway diagram"></div>
+      <div class="frame"><img src="overview.png" alt="Olfactory pathway diagram"></div>
       <p class="cap">Overview</p>
     </div>
     <div>
@@ -523,7 +526,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="g2 mt3 rev">
     <div class="frame frame-dark">
-      <img src="bertha persona.jpg" alt="Bertha Smith persona">
+      <img src="berthapersona.jpg" alt="Bertha Smith persona">
     </div>
     <div>
       <div class="q q-dark" style="margin-top:0">
@@ -584,7 +587,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   </div>
 
   <div class="mt3 rev" style="border-radius:12px;overflow:hidden;box-shadow:0 16px 60px rgba(0,0,0,.08)">
-    <img src="bud form.jpg" alt="Root refined sketch" style="width:100%;display:block;">
+    <img src="budform.jpg" alt="Root refined sketch" style="width:100%;display:block;">
   </div>
 
   <div class="how-steps mt4 rev">
@@ -637,7 +640,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="mt3 rev">
     <div class="frame" style="border-radius:12px;overflow:hidden">
-      <img src="bud mechanism.png" alt="Detailed mechanical sketch of Root">
+      <img src="budmechanism.png" alt="Detailed mechanical sketch of Root">
     </div>
     <p class="cap">Detailed mechanical sketch &mdash; scent airflow and mixing mechanism</p>
   </div>
@@ -665,7 +668,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="app-row rev">
     <div>
       <div class="app-screen">
-        <img src="Landing Page.png" alt="Onboarding">
+        <img src="LandingPage.png" alt="Onboarding">
         <video src="onboarding.mp4" muted loop playsinline></video>
       </div>
       <p class="cap" style="margin-top:.5rem">Onboarding</p>
@@ -673,7 +676,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   
     <div>
       <div class="app-screen">
-        <img src="Connect Diffuser.png" alt="Memory profile">
+        <img src="ConnectDiffuser.png" alt="Memory profile">
         <video src="scents.mp4" muted loop playsinline></video>
       </div>
       <p class="cap" style="margin-top:.5rem">Selecting Scents</p>
@@ -745,14 +748,14 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="proto-versions rev proto-featured">
     <div class="proto-card proto-small">
-      <div class="proto-card-img"><img src="mid prototype.png" alt="Prototype version 1" style="width:100%;height:100%;object-fit:cover"></div>
+      <div class="proto-card-img"><img src="midprototype.png" alt="Prototype version 1" style="width:100%;height:100%;object-fit:cover"></div>
       <div class="proto-card-info">
         <h4>Version 01 &mdash; Proof of Concept</h4>
         <p>First physical model made with clay and cardboard established the core form language.</p>
       </div>
     </div>
     <div class="proto-card proto-large">
-      <div class="proto-card-img"><img src="Final Prototype.png" alt="Prototype version 2" style="width:100%;height:100%;object-fit:cover"></div>
+      <div class="proto-card-img"><img src="FinalPrototype.png" alt="Prototype version 2" style="width:100%;height:100%;object-fit:cover"></div>
       <div class="proto-card-info">
         <h4>Version 02 &mdash; Final Form Prototype</h4>
         <p>This high-fidelity prototype represented the intended final form of Root. Through 3D printing and finishing, I was able to evaluate the product's proportions, visual language, and emotional presence within the home.</p>
@@ -772,13 +775,13 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   </div>
 
   <div class="render-hero rev">
-    <img src="Diffuser Rendering in room w smokepng.png" alt="Root in living room" style="width:100%;display:block;border-radius:12px">
+    <img src="Livingroomrendering.png" alt="Root in living room" style="width:100%;display:block;border-radius:12px">
   </div>
 
   <div class="render-gallery rev">
-    <div class="frame"><img src="open diffuser.png" alt="Root open in kitchen"></div>
-    <div class="frame"><img src="closed in bedroom.png" alt="Root in bedroom"></div>
-    <div class="frame"><img src="beachside diffuser rendering.png" alt="Root on beach"></div>
+    <div class="frame"><img src="opendiffuser.png" alt="Root open in kitchen"></div>
+    <div class="frame"><img src="closedinbedroom.png" alt="Root in bedroom"></div>
+    <div class="frame"><img src="beachsidediffuserrendering.png" alt="Root on beach"></div>
   </div>
 </div>
 </section>
@@ -793,7 +796,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   </div>
 
   <div class="rev" style="margin-top:2.5rem;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
-    <img src="impact 1.png" alt="Storyboard: Bertha using Root" style="width:100%;display:block;">
+    <img src="impact1.png" alt="Storyboard: Bertha using Root" style="width:100%;display:block;">
   </div>
   <p class="cap cap-dark" style="margin-top:.7rem">Storyboard &mdash; a day in Bertha&rsquo;s life with Root</p>
 

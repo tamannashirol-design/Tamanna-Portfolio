@@ -63,16 +63,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.90) 0%,rgba(20,20,20,.60) 55%,rgba(20,20,20,.20) 100%)}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
-.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
 
 /* STAT BAR */
@@ -291,7 +291,7 @@ footer{
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <img class="hero-img" src="magazine mockeup 2.png" alt="Connected magazine flat lay on rattan tray">
+  <img class="hero-img" src="magazinemockeup2.png" alt="Connected magazine flat lay on rattan tray">
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <h1>Connected.<br><em>Visual Media Alliance.</em></h1>
@@ -414,7 +414,7 @@ footer{
     </div>
     <div class="cover-v">
       <div class="cover-v-img">
-        <img src="magazine front page design.png" alt="Connected cover final illustration centered">
+        <img src="magazinefrontpagedesign.png" alt="Connected cover final illustration centered">
       </div>
       <div class="cover-v-info">
         <span class="cover-v-tag tag-final">Final Cover</span>
@@ -435,7 +435,7 @@ footer{
   </div>
 
   <div class="billboard-full rev">
-    <img src="Mockup magazine 3.png" alt="Connected magazine stacked print run mockup">
+    <img src="Mockupmagazine3.png" alt="Connected magazine stacked print run mockup">
   </div>
 </div>
 </section>

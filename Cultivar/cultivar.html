@@ -58,15 +58,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
   margin-top:0;
   padding-top:0;
 }.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.85) 0%,rgba(20,20,20,.5) 55%,rgba(20,20,20,.15) 100%)}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+/* HERO */
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
-.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:620px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
 
 /* STAT BAR */
 .stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
@@ -388,7 +390,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img" src="contest different scene.png" alt="Cultivar system in context">
+  <img class="hero-img" src="contextdifferentscene.png" alt="Cultivar system in context">
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <div class="logo-hero">
@@ -430,7 +432,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       </div>
     </div>
     <div>
-      <div class="frame"><img src="problem graphic.png" alt="Research and problem overview"></div>
+      <div class="frame"><img src="problemgraphic.png" alt="Research and problem overview"></div>
       <p class="cap">Research summary &mdash; problem framing and user insights</p>
     </div>
   </div>
@@ -447,7 +449,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     </div>
   
     <div class="mt3 rev" style="border-radius:12px;overflow:hidden;box-shadow:0 16px 60px rgba(0,0,0,.08)">
-      <img src="in context.png" alt="Cultivar hero rendering" style="width:100%;display:block;">
+      <img src="incontext.png" alt="Cultivar hero rendering" style="width:100%;display:block;">
     </div>
   
     <div class="how-steps mt4 rev">
@@ -483,7 +485,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
         </div>
       </div>
       <div>
-        <div class="frame"><img src="plants rendered in.png" alt="Materials and food options exploded view"></div>
+        <div class="frame"><img src="plantsrenderedin.png" alt="Materials and food options exploded view"></div>
         <p class="cap"> Concept rendering showing selected crops</p>
       </div>
     </div>
@@ -577,11 +579,11 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <!-- CAD iterations -->
   <div class="g2 mt3 rev top">
     <div>
-      <div class="frame"><img src="System rendering 1.png" alt="CAD iteration 1 angled view"></div>
+      <div class="frame"><img src="Systemrendering1.png" alt="CAD iteration 1 angled view"></div>
       <p class="cap">CAD iteration 1 &mdash; first digital model, however there was issues with open structure allowing dirt ingress</p>
     </div>
     <div>
-      <div class="frame"><img src="remodel rendering.png" alt="CAD iteration 2 with enclosed panels"></div>
+      <div class="frame"><img src="remodelrendering.png" alt="CAD iteration 2 with enclosed panels"></div>
       <p class="cap">CAD iteration 2 &mdash; enclosed polycarbonate panels added, though additional features were needed for water protection and measurement. </p>
     </div>
   </div>
@@ -617,14 +619,14 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="proto-featured rev" style="margin-top:2rem;">
     <div class="proto-card">
-      <div class="proto-card-img" style="height:320px;"><img src="side proto.png" alt="1:4 prototype side view"></div>
+      <div class="proto-card-img" style="height:320px;"><img src="sideproto.png" alt="1:4 prototype side view"></div>
       <div class="proto-card-info">
         <h4>Side View</h4>
         <p>LED canopy clearance and depth proportions evaluated from this angle.</p>
       </div>
     </div>
     <div class="proto-card">
-      <div class="proto-card-img" style="height:320px;"><img src="pots removed.png" alt="1:4 prototype angled view with parts"></div>
+      <div class="proto-card-img" style="height:320px;"><img src="potsremoved.png" alt="1:4 prototype angled view with parts"></div>
       <div class="proto-card-info">
         <h4>Angled View &mdash; Components Out</h4>
         <p>Pots removed to test how easily components slot in and out. Pod spacing and upper tray clearance were refined based on this.</p>
@@ -634,7 +636,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="render-gallery rev" style="margin-top:1.5rem;">
     <div class="frame"><img src="front.png" alt="1:4 prototype front"></div>
-    <div class="frame"><img src="no pots.png" alt="Pots removed shot"></div>
+    <div class="frame"><img src="nopots.png" alt="Pots removed shot"></div>
     <div class="frame"><img src="angled.png" alt="Angled shot"></div>
   </div>
   <p class="cap" style="margin-top:.7rem">1:4 scale prototype &mdash; front view, assembled, and pot collar detail</p>
@@ -651,7 +653,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   </div>
 
   <div class="rev" style="margin-top:2.5rem;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)">
-    <img src="w person plants rendered in.png" alt="Cultivar in living room context" style="width:100%;display:block;">
+    <img src="wpersonplantsrenderedin.png" alt="Cultivar in living room context" style="width:100%;display:block;">
   </div>
   <p class="cap cap-dark" style="margin-top:.7rem">Cultivar in a living room environment</p>
 
@@ -659,19 +661,19 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="mt3 rev">
     <div class="ortho-row">
       <div class="ortho-cell">
-        <div class="frame frame-dark"><img src="right rendering .png" alt="Right view" style="width:100%;display:block;"></div>
+        <div class="frame frame-dark"><img src="rightrendering.png" alt="Right view" style="width:100%;display:block;"></div>
         <p class="ortho-label">Right</p>
       </div>
       <div class="ortho-cell">
-        <div class="frame frame-dark"><img src="back rendering .png" alt="Back view" style="width:100%;display:block;"></div>
+        <div class="frame frame-dark"><img src="backrendering.png" alt="Back view" style="width:100%;display:block;"></div>
         <p class="ortho-label">Back</p>
       </div>
       <div class="ortho-cell">
-        <div class="frame frame-dark"><img src="front rendering 1.png" alt="Front view" style="width:100%;display:block;"></div>
+        <div class="frame frame-dark"><img src="frontrendering1.png" alt="Front view" style="width:100%;display:block;"></div>
         <p class="ortho-label">Front</p>
       </div>
       <div class="ortho-cell">
-        <div class="frame frame-dark"><img src="left rendering .png" alt="Left view" style="width:100%;display:block;"></div>
+        <div class="frame frame-dark"><img src="leftrendering.png" alt="Left view" style="width:100%;display:block;"></div>
         <p class="ortho-label">Left</p>
       </div>
     </div>
@@ -698,7 +700,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   
     <div>
       <div class="frame frame-dark">
-        <img src="pods.pots rendering.png" alt="HDPE hydroponic pots and pods">
+        <img src="podspotsrendering.png" alt="HDPE hydroponic pots and pods">
       </div>
       <p class="cap cap-dark" style="margin-top:.5rem">
         Individual components &mdash; HDPE hydroponic pot and mushroom pod drawer
@@ -707,7 +709,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   
     <div>
       <div class="frame frame-dark">
-        <img src="close up.png" alt="Pots close up">
+        <img src="closeup.png" alt="Pots close up">
       </div>
       <p class="cap cap-dark" style="margin-top:.5rem">
         Pots close up
@@ -740,13 +742,13 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     <p class="body">The app is organised around what users actually need to do: check the system, track their harvest, manage tasks, find recipes, and adjust settings. History and harvest logging are nested within their parent sections to reduce top-level clutter.</p>
   </div>
   <div class="mt2 rev">
-    <div class="frame"><img src="IA Food growing.png" alt="Information architecture diagram"></div>
+    <div class="frame"><img src="IAFoodgrowing.png" alt="Information architecture diagram"></div>
     <p class="cap">Information architecture &mdash; Home, Harvest, Tasks, Recipes, Profile</p>
   </div>
 
   <!-- User flow -->
   <div class="mt4 rev">
-    <div class="frame"><img src="User flow food growing.png" alt="User flow diagram"></div>
+    <div class="frame"><img src="Userflowfoodgrowing.png" alt="User flow diagram"></div>
     <p class="cap">User flow &mdash; home → tasks → harvest log → recipes</p>
   </div>
 
@@ -763,7 +765,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       <p class="cap">Initial wireframe sketches &mdash; homepage, harvest, tasks, recipes</p>
     </div>
     <div>
-      <div class="frame"><img src="low fidelity.png" alt="Low fidelity digital wireframes"></div>
+      <div class="frame"><img src="lowfidelity.png" alt="Low fidelity digital wireframes"></div>
       <p class="cap">Low-fi digital wireframes</p>
     </div>
   </div>
@@ -789,7 +791,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       <p>Labels added to all navigation icons. Harvest icon redesigned to a plant/leaf motif, clearly distinguishing it from the clock-based history icon. Navigation confidence improved across all users.</p>
   
       <div class="frame iter-img">
-        <img src="HomePage hifi.png" alt="After: labeled navigation icons">
+        <img src="HomePagehifi.png" alt="After: labeled navigation icons">
       </div>
     </div>
   </div>
@@ -816,7 +818,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       <p>Filter tabs &mdash; Today, This Week, Next Week, and No Action Yet &mdash; break the task list into digestible views. Users can focus on what actually needs attention now and ignore everything else until it becomes relevant.</p>
   
       <div class="frame iter-img">
-        <img src="Tasks hifi.png" alt="After: filtered task tabs">
+        <img src="Taskshifi.png" alt="After: filtered task tabs">
       </div>
     </div>
   </div>
@@ -833,10 +835,10 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="g2 mt3 rev top">
     <div>
-      <div class="frame"><img src="style tile.png" alt="App style tile"></div>
+      <div class="frame"><img src="styletile.png" alt="App style tile"></div>
     </div>
     <div>
-      <div class="frame"><img src="ux rendering.png" alt="Floating phones"></div>
+      <div class="frame"><img src="uxrendering.png" alt="Floating phones"></div>
     </div>
   </div>
 
@@ -851,22 +853,22 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 <div class="app-row rev mt3">
   <div class="app-screen">
     <img src="flowHomePage.png" alt="App homepage screen">
-    <video src="log harvest.mp4" muted loop playsinline></video>
+    <video src="logharvest.mp4" muted loop playsinline></video>
   </div>
 
   <div class="app-screen">
-    <img src="Recipe Page.png" alt="App harvest screen">
-    <video src="view reciped.mp4" muted loop playsinline></video>
+    <img src="RecipePage.png" alt="App harvest screen">
+    <video src="viewreciped.mp4" muted loop playsinline></video>
   </div>
 
   <div class="app-screen">
-    <img src="new Tasks.png" alt="App tasks screen">
-    <video src="clear task.mp4" muted loop playsinline></video>
+    <img src="newTasks.png" alt="App tasks screen">
+    <video src="cleartask.mp4" muted loop playsinline></video>
   </div>
 
   <div class="app-screen">
     <img src="HomePage-1.png" alt="App recipes screen">
-    <video src="review changes.mp4" muted loop playsinline></video>
+    <video src="reviewchanges.mp4" muted loop playsinline></video>
   </div>
 </div>
 
@@ -878,28 +880,28 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 <div class="state-row rev mt3">
   <div> 
     <div class="app-screen">
-      <img src="Something needs attention.png" alt="System Down"> 
+      <img src="Somethingneedsattention.png" alt="System Down"> 
     </div> 
     <p class="cap" style="margin-top:.5rem">System Down</p> 
   </div> 
 
   <div> 
     <div class="app-screen">
-      <img src="Empty Tasks.png" alt="No tasks"> 
+      <img src="EmptyTasks.png" alt="No tasks"> 
     </div> 
     <p class="cap" style="margin-top:.5rem">No Tasks</p> 
   </div> 
 
   <div> 
     <div class="app-screen"> 
-      <img src="Nothin to harvest.png" alt="Nothing is ready to harvest"> 
+      <img src="Nothintoharvest.png" alt="Nothing is ready to harvest"> 
     </div>
     <p class="cap" style="margin-top:.5rem">Nothing to Harvest</p> 
   </div> 
 
   <div> 
     <div class="app-screen">
-      <img src="Logged Success.png" alt="Harvest logged">
+      <img src="LoggedSuccess.png" alt="Harvest logged">
     </div> 
     <p class="cap" style="margin-top:.5rem">Harvest Logged</p> 
   </div> 

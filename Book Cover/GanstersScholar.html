@@ -61,17 +61,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;margin-top:0}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.92) 0%,rgba(20,20,20,.65) 55%,rgba(20,20,20,.25) 100%)}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:860px}
+.hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
-.hero-hmw{font-family:'Space Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.45);letter-spacing:.04em;line-height:1.6;max-width:600px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
 
 /* STAT BAR */
 .stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
@@ -279,7 +280,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
 <!-- HERO -->
 <div class="hero">
-  <img class="hero-img" src="Thick_Book_Mockup_OK_8 copy.png" alt="The Gangsters Scholar book mockup">
+  <img class="hero-img" src="TopViewMockup.png" alt="The Gangsters Scholar book mockup">
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <h1>The Gangsters Scholar<br><em>Love Behind Bars.</em></h1>
@@ -316,7 +317,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     </div>
     <div>
       <div class="frame">
-        <img src="Thick_Book_Mockup_OK_6.png" alt="mockup">
+        <img src="Flattenmockup.png" alt="Front and back cover mockup">
       </div>
     </div>
   </div>
@@ -336,13 +337,13 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="g2 mt3 rev top">
     <div>
       <div class="frame">
-        <img src="illustration v1.png" alt="Illustration version 1 — early stage" onerror="this.src='final_illustration.jpg'">
+        <img src="illustrationv1.png" alt="Illustration version 1 — early stage" onerror="this.src='final_illustration.jpg'">
       </div>
       <p class="cap">Early illustration — establishing the composition and figures</p>
     </div>
     <div>
       <div class="frame">
-        <img src="final illustration.jpg" alt="Final illustration — Shanice and Joe">
+        <img src="finalillustration.jpg" alt="Final illustration — Shanice and Joe">
       </div>
       <p class="cap">Final illustration — refined detail, warm skin tones, full cell environment</p>
     </div>
@@ -361,7 +362,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="iter-versions rev">
     <div class="iter-v">
-      <div class="iter-v-img"><img src="Front Cover 1.png" alt="Cover version 1 — gold and bold white"></div>
+      <div class="iter-v-img"><img src="FrontCover1.png" alt="Cover version 1 — gold and bold white"></div>
       <div class="iter-v-info">
         <span class="iter-v-tag tag-v1">Version 1</span>
         <h4>Gold Headline — Graphic &amp; Bold</h4>
@@ -369,7 +370,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
       </div>
     </div>
     <div class="iter-v">
-      <div class="iter-v-img"><img src="Front Cover 2.png" alt="Cover version 2 — pink and soft"></div>
+      <div class="iter-v-img"><img src="FrontCover2.png" alt="Cover version 2 — pink and soft"></div>
       <div class="iter-v-info">
         <span class="iter-v-tag tag-v2">Version 2</span>
         <h4>Pink Headline — Soft &amp; Romantic</h4>
@@ -379,7 +380,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
     <div class="iter-v">
       <div class="iter-v-img">
-        <img src="Front Cover Final.png" alt="Final published cover — red distressed type">
+        <img src="FrontCoverFinal.png" alt="Final published cover — red distressed type">
       </div>
       <div class="iter-v-info">
         <span class="iter-v-tag tag-selected">Final Version</span>
@@ -452,7 +453,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
     <div class="iter-v">
       <div class="iter-v-img iter-v-img-back">
-        <img src="Back cover v1 .jpg" alt="Back cover version 1">
+        <img src="Backcoverv1.jpg" alt="Back cover version 1">
       </div>
       <div class="iter-v-info">
         <span class="iter-v-tag tag-v1">Version 1</span>
@@ -463,7 +464,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   
     <div class="iter-v">
       <div class="iter-v-img iter-v-img-back">
-        <img src="final back cover.jpg" alt="Final back cover">
+        <img src="finalbackcover.jpg" alt="Final back cover">
       </div>
       <div class="iter-v-info">
         <span class="iter-v-tag tag-selected">Final Version</span>
@@ -537,12 +538,12 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="g2 mt4 rev top">
     <div>
       <div class="frame frame-dark">
-        <img src="holding book.png" alt="Tamanna holding the published Gangsters Scholar book">
+        <img src="holdingbook.png" alt="Tamanna holding the published Gangsters Scholar book">
       </div>
     </div>
     <div>
       <div class="frame frame-dark">
-        <img src="book cover.png" alt="Book mockup — stacked copies">
+        <img src="bookcover.png" alt="Book mockup — stacked copies">
       </div>
     </div>
   </div>
