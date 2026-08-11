@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YBGC — Tamanna Shirol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&family=Aleo:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#FAF8F4;
+  --ink:#141414;
+  --mid:#555;
+  --dim:#767676;
+  --rule:#E4E0D8;
+  --olive:#6B7040;
+  --navy:#2C3E6B;
+  --card:#F3F0EA;
+  --white:#fff;
+  --ybg-green:#3E6B4F;
+  --ybg-pink:#E85D8A;
+}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(250,248,244,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-back{font-family:'Space Mono',monospace;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-decoration:none;color:var(--mid);display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.nav-back:hover{color:var(--ink)}
+.nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-menu a{font-family:'Space Mono', monospace;font-size:.82rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;color: var(--mid);transition:color .2s}
+.nav-menu a:hover{color:var(--ink)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;z-index:301}
+.nav-toggle span{display:block;width:100%;height:2px;background:var(--ink);transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-hmw{font-family:'Space Mono',monospace;font-size:.95rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
+.hero-meta-item label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.83rem;color:rgba(255,255,255,.78);font-weight:400}
+
+
+/* STAT BAR */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
+.stat-cell{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:#fff;display:block;line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.6);letter-spacing:.09em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 3rem}
+.sec{padding:6.5rem 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-dark{background:var(--ink);padding:6.5rem 0}
+.sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+.lbl{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
+.lbl-dark{color:#7d8f4a}
+.h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
+.h2 em{font-style:italic;color:var(--mid)}
+.h2-w{color:#fff}
+.h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:.6rem}
+.body{font-size:.91rem;color:var(--mid);line-height:1.8;max-width:560px}
+.body-w{color:rgba(255,255,255,.5)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.g2.top{align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.mt1{margin-top:1rem}.mt2{margin-top:1.5rem}.mt3{margin-top:2.5rem}.mt4{margin-top:3.5rem}
+
+/* QUOTE */
+.q{border-left:2px solid var(--olive);padding:.9rem 1.4rem;margin:1.5rem 0}
+.q p{font-family:'Fraunces',serif;font-size:1.08rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.6}
+.q cite{display:block;margin-top:.4rem;font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.04em;font-style:normal}
+.q-dark{border-color:#7d8f4a}
+.q-dark p{color:rgba(255,255,255,.85)}
+.q-dark cite{color:rgba(255,255,255,.3)}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:1.6rem}
+.card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.83rem;color:var(--mid);line-height:1.7}
+.card-dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.card-dark h4{color:#fff}
+.card-dark p{color:rgba(255,255,255,.45)}
+
+/* IMAGES / PLACEHOLDERS */
+.frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.frame img{width:100%;display:block}
+.frame-dark{border-color:rgba(255,255,255,.08)}
+.cap{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.cap-dark{color:rgba(255,255,255,.55)}
+.ph{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,var(--card),var(--card) 10px,#EAE6DC 10px,#EAE6DC 20px)}
+.ph span{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-align:center;padding:0 1rem}
+.ph-dark{background:repeating-linear-gradient(135deg,rgba(255,255,255,.03),rgba(255,255,255,.03) 10px,rgba(255,255,255,.06) 10px,rgba(255,255,255,.06) 20px)}
+.ph-dark span{color:rgba(255,255,255,.3)}
+.ph-tall{aspect-ratio:9/16}
+.ph-wide{aspect-ratio:16/9}
+.ph-hero{aspect-ratio:21/12}
+
+/* Phone-proportioned frame used in Iterations — capped width so it reads as a screen, not a banner */
+.phone-frame{max-width:230px;margin:1rem auto 0}
+.phone-frame .ph{aspect-ratio:9/17}
+
+/* SKETCH ROW */
+.sketches{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2.5rem}
+.sketch-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/5}
+.sketch-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* HOW IT WORKS */
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.how-step{padding:2.5rem 2rem;border-right:1px solid var(--rule);position:relative}
+.how-step:last-child{border-right:none}
+.step-num{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;color:var(--olive);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.8rem}
+.step-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.step-desc{font-size:.83rem;color:var(--mid);line-height:1.7}
+
+/* PHONE HOVER ROW */
+.flow-hint{font-family:'Space Mono',monospace;font-size:.85rem;color:black;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-top:.4rem;border-bottom:1px solid var(--rule);padding-bottom:.2rem}
+.phones{display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem;margin-top:2.5rem;align-items:end}
+.phone{cursor:pointer;text-align:center}
+.phone-shell{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/17.5;background:#111;border:1.5px solid rgba(0,0,0,.1);box-shadow:0 6px 24px rgba(0,0,0,.11);transition:transform .3s,box-shadow .3s;display:flex;align-items:center;justify-content:center}
+.phone:hover .phone-shell{transform:translateY(-10px);box-shadow:0 20px 48px rgba(0,0,0,.18)}
+.phone-shell span{font-family:'Space Mono',monospace;font-size:.52rem;color:rgba(255,255,255,.3);text-align:center;padding:0 .6rem;letter-spacing:.06em;text-transform:uppercase}
+.phone p{font-family:'Space Mono',monospace;font-size:.56rem;color:var(--dim);letter-spacing:.07em;text-transform:uppercase;margin-top:.55rem}
+.phone-frame{max-width:230px;margin:1rem auto 0;overflow:hidden;border-radius:8px}
+.phone-frame img{width:100%;height:auto;display:block}
+.iter-half{padding:2.2rem;min-width:0}
+.phone-pair{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
+.phone-pair .phone-frame{max-width:none;margin:0}
+.phone-poster,.phone-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.phone-video{opacity:0;transition:opacity .3s ease}
+.phone:hover .phone-video{opacity:1}
+
+/* STATS DATA POINTS */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
+.data-n{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
+.data-l{font-size:.8rem;color:rgba(255,255,255,.62);margin-top:.4rem;display:block;line-height:1.5}
+
+/* RESEARCH METHOD */
+.method-bar{display:flex;gap:0;margin-top:2rem;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.method-item{flex:1;padding:1.5rem;border-right:1px solid var(--rule);background:var(--card)}
+.method-item:last-child{border-right:none}
+.method-n{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;color:var(--olive);display:block;line-height:1}
+.method-l{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem;display:block}
+
+/* ITER */
+.iter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1.5rem}
+.iter-half{padding:2.2rem}
+.iter-half+.iter-half{border-left:1px solid var(--rule)}
+.iter-tag{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.9rem}
+.tag-b{background:#FDECEA;color:#9B2335}
+.tag-a{background:#EAF3EA;color:#266226}
+.iter-half p{font-size:.86rem;color:var(--mid);line-height:1.75;margin-bottom:.8rem}
+
+/* JOURNEY / SPLIT CARDS */
+.journeys{display:grid;grid-template-columns:4.9fr 5.95fr;gap:1.5rem;margin-top:2.5rem}
+.j-card{border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.j-label{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1rem}
+.j-b{background:#FDECEA;color:#9B2335}
+.j-a{background:#EAF3EA;color:#266226}
+.j-neutral{background:#EEF1F6;color:var(--navy)}
+.j-card img{width:100%;height:271px;object-fit:contain;display:block}
+
+/* PERSONA */
+.persona-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.persona-card{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+.persona-img{aspect-ratio:4/5;overflow:hidden}
+.persona-img img{width:100%;height:100%;object-fit:contain;display:block}
+.persona-body{padding:1.6rem}
+.persona-name{font-family:'Fraunces',serif;font-size:1.1rem;color:#fff;margin-bottom:.7rem}
+.key-insight{font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7d8f4a;display:block;margin-bottom:.5rem}
+.persona-body p{font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.7}
+
+/* REFLECT */
+.reflects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.r-card{padding:1.6rem;border:1px solid var(--rule);border-radius:8px}
+.r-n{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.1em;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;display:block}
+.r-card h4{font-family:'Fraunces',serif;font-size:.95rem;font-weight:400;margin-bottom:.35rem;color:var(--ink)}
+.r-card p{font-size:.82rem;color:var(--mid);line-height:1.7}
+
+/* NEXT */
+.nexts{list-style:none;margin-top:2rem}
+.nexts li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--mid);line-height:1.6}
+.nexts li span{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--navy);letter-spacing:.08em;flex-shrink:0;font-weight:700}
+
+/* COMP TABLE */
+.comp{width:100%;border-collapse:collapse;margin-top:2rem;border-radius:8px;overflow:hidden}
+.comp th{background:var(--ink);color:rgba(255,255,255,.5);padding:.75rem 1rem;text-align:left;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+.comp td{padding:.85rem 1rem;font-size:.83rem;color:var(--mid);border-bottom:1px solid var(--rule);vertical-align:middle}
+.comp tr.at td{background:#F0F3EA;color:var(--olive);font-weight:500}
+.comp tr.at td:first-child{border-left:2px solid var(--olive)}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.68rem;font-family:'Space Mono',monospace;font-weight:700}
+.by{background:#EAF3EA;color:#266226}
+.bn{background:#FDECEA;color:#9B2335}
+.bm{background:#F3EFE3;color:#8A6D1F}
+
+.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem}
+.snap-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);height:200px}
+.snap-frame.snap-large{grid-column:1 / -1;height:240px}
+.snap-frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* TASK METRICS TABLE */
+.metrics{width:100%;border-collapse:collapse;margin-top:2rem;border-radius:8px;overflow:hidden}
+.metrics th{background:var(--ink);color:rgba(255,255,255,.5);padding:.75rem 1rem;text-align:left;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+.metrics td{padding:.85rem 1rem;font-size:.83rem;color:var(--mid);border-bottom:1px solid var(--rule)}
+.metrics tr.flag td{background:#FDECEA}
+.metrics tr.flag td:first-child{border-left:2px solid #9B2335;font-weight:500;color:#9B2335}
+.metrics tr.strong td{background:#EAF3EA}
+.metrics tr.strong td:first-child{border-left:2px solid #266226;font-weight:500;color:#266226}
+
+/* A/B COMPARISON */
+.ab-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem;max-width:600px}
+.ab-card{border-radius:8px;overflow:hidden;border:2px solid var(--rule);position:relative}
+.ab-card img{width:100%;height:300px;object-fit:cover;display:block}
+.ab-card.winner{border-color:var(--olive)}
+.ab-tag{position:absolute;top:.8rem;left:.8rem;z-index:2;font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border-radius:20px;background:rgba(20,20,20,.75);color:#fff}
+.ab-card.winner .ab-tag{background:var(--olive)}
+.ab-cap{padding:.9rem 1.1rem;background:var(--card)}
+.ab-cap strong{font-size:.8rem;color:var(--ink);display:block}
+.ab-cap span{font-size:.75rem;color:var(--mid)}
+.ab-card.winner .ab-cap{background:#EAF3EA}
+
+/* SUS */
+.sus-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.5rem;align-items:start}
+.sus-score{text-align:center;padding:3rem 2rem;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+.sus-n{font-family:'Fraunces',serif;font-size:4rem;font-weight:300;color:var(--olive);display:block;line-height:1}
+.sus-l{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;margin-top:.5rem;display:block}
+.sus-bench{font-size:.8rem;color:var(--mid);margin-top:1rem}
+
+/* PITCH / CALLOUT MOMENT */
+.pitch-block{margin-top:2.5rem;background:var(--navy);border-radius:12px;padding:2.5rem;display:flex;align-items:center;gap:3rem;flex-wrap:wrap}
+.pitch-n{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:#fff;flex:1;min-width:220px}
+.pitch-n span{display:block;font-size:.72rem;color:rgba(255,255,255,.4);font-family:'Space Mono',monospace;letter-spacing:.06em;margin-top:.3rem}
+
+/* PRODUCT SHOT */
+.product-shot{width:100%;border-radius:12px;overflow:hidden;margin-top:2.5rem;box-shadow:0 16px 60px rgba(0,0,0,.1)}
+.product-shot img{width:100%;display:block}
+
+/* DESIGN SYSTEM CALLOUTS */
+.ds-row{display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:start;margin-top:2.5rem}
+.ds-notes{display:flex;flex-direction:column;gap:1rem}
+.ds-note{padding:1.2rem 1.5rem;border-left:2px solid var(--rule)}
+.ds-note strong{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.ds-note span{font-size:.8rem;color:var(--mid);line-height:1.65}
+.type-sample{font-size:1rem;color:var(--ink)}
+.swatch-row{display:flex;gap:.6rem;margin-top:.5rem}
+.swatch{width:28px;height:28px;border-radius:6px;border:1px solid rgba(0,0,0,.08)}
+
+/* DISCOVERY CHANNELS */
+.channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;align-items:start}
+.channel-card{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:var(--card)}
+.channel-head{padding:1.1rem 1.4rem;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:.6rem}
+.channel-n{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--olive);text-transform:uppercase}
+.channel-body{padding: 1.6rem 1.4rem;}
+.channel-body h4{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;margin-bottom:.5rem}
+.channel-body p{font-size:.82rem;color:var(--mid);line-height:1.7}
+.channel-card .ph{position:relative;overflow:hidden}
+.channel-card .ph img,
+.channel-card .ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.channel-video{opacity:0;transition:opacity .3s ease}
+.channel-card:hover .channel-video{opacity:1}
+
+/* APP ANIMATIONS SHOWCASE */
+.anim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
+.anim-tile{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);height:510px;position:relative}
+.anim-tile .ph-dark{height:100%}
+.anim-pulse{position:absolute;top:.8rem;right:.8rem;width:8px;height:8px;border-radius:50%;background:#7d8f4a;box-shadow:0 0 0 rgba(125,143,74,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(125,143,74,.5)}70%{box-shadow:0 0 0 10px rgba(125,143,74,0)}100%{box-shadow:0 0 0 0 rgba(125,143,74,0)}}
+.anim-label{position:absolute;bottom:0;left:0;right:0;padding:.8rem;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+
+/* ===== ENGINEERING HANDOFF (roadmap, clear, visual) ===== */
+.insight-callout{margin-top:2.5rem;background:rgba(125,143,74,.08);border:1px solid rgba(125,143,74,.25);border-radius:12px;padding:2rem 2.2rem;display:flex;gap:1.5rem;align-items:flex-start}
+.insight-mark{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:300;color:#9fb373;line-height:1;flex-shrink:0}
+.insight-callout-body span{margin-bottom:.5rem}
+.insight-callout-body p{font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.75;font-family:'Fraunces',serif;font-weight:300;font-style:italic}
+
+.roadmap-now{margin-top:2.5rem;border-radius:14px;padding:2.4rem;background:rgba(125,143,74,.08);border:1px solid rgba(125,143,74,.25)}
+.roadmap-now .roadmap-list{max-width:640px}
+.roadmap-split{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.25rem}
+.roadmap-col{border-radius:12px;padding:1.8rem;display:flex;flex-direction:column}
+.roadmap-col.next{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)}
+.roadmap-col.later{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08)}
+.roadmap-phase{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-bottom:.5rem}
+.roadmap-now .roadmap-phase{color:#9fb373}
+.roadmap-title{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:300;color:#fff;margin-bottom:.6rem;line-height:1.3}
+.roadmap-now .roadmap-title{font-size:1.5rem}
+.roadmap-owner{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;display:inline-block;margin-bottom:1.1rem}
+.owner-me{background:rgba(125,143,74,.18);color:#9fb373}
+.owner-it{background:rgba(255,255,255,.08);color:rgba(255,255,255,.5)}
+.roadmap-list{list-style:none}
+.roadmap-list li{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.6;padding:.5rem 0;border-top:1px solid rgba(255,255,255,.08);display:flex;gap:.55rem}
+.roadmap-list li:first-child{border-top:none}
+.roadmap-list li::before{content:"—";color:rgba(255,255,255,.25);flex-shrink:0}
+
+.repo-proof{margin-top:1.6rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.repo-proof .ph{aspect-ratio:3/2;border-radius:10px; overflow: hidden;}
+.repo-proof-cap{font-family:'Space Mono',monospace;font-size:.62rem;color:rgba(255,255,255,.6);letter-spacing:.05em;text-transform:uppercase;margin-top:.6rem;text-align:center}
+.repo-proof .ph img {
+  width: 120%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* FIGMA RIGOR CALLOUT (Design Process section) */
+.rigor-row{margin-top:2.5rem;display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:center}
+.rigor-row .frame {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  overflow: hidden;
+}
+
+.rigor-row .frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.beta-tile{margin-top:2.5rem;border-radius:16px;overflow:hidden;position:relative;display:block;text-decoration:none;border:1px solid rgba(255,255,255,.1)}
+.beta-tile .ph-wide{aspect-ratio:23.2/9;position:relative;overflow:hidden}
+.beta-tile .ph-wide img{width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.beta-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;background:rgba(13,13,13,.3);transition:background .25s}
+.beta-tile:hover .beta-play{background:rgba(13,13,13,.5)}
+.beta-circle{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;transition:transform .25s}
+.beta-tile:hover .beta-circle{transform:scale(1.08);background:rgba(255,255,255,.2)}
+.beta-text{font-family:'Space Mono',monospace;font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-align:center}
+.beta-text span{display:block;font-size:.90rem;color:white;margin-top:.3rem;letter-spacing:.05em}
+.beta-link-note{margin-top:1rem;font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.03em}
+.beta-link-note code{color:#9fb373;background:rgba(125,143,74,.12);padding:.15rem .5rem;border-radius:4px}
+.hoff-note{margin-top:1.5rem;font-size:.20rem;color:white;line-height:1.7;max-width:700px}
+.hoff-note strong{color:rgba(255,255,255,.7)}
+
+
+/* SECTION HEADER WITH SMALL SIDE PHOTO */
+.sec-header-row{display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:end}
+.sec-header-row .frame{aspect-ratio:4/3}
+.sec-header-row .cap{margin-top:.5rem}
+
+/* RESULTS 3-COL GRID (A/B images + SUS/quote stack) */
+.results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:2.5rem;align-items:start}
+.results-col3{display:flex;flex-direction:column;gap:1.25rem}
+.results-col3>*{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+/* PROMPT ENGINEERING CAR STRIP */
+.pe-intro{margin-top:2.5rem}
+.pe-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem}
+.pe-card{padding:1.6rem;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
+.pe-eyebrow{font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block;margin-bottom:.6rem}
+.pe-card p{font-size:.83rem;color:rgba(255,255,255,.65);line-height:1.65}
+
+/* RETENTION RATIONALE NOTE (Core Features) */
+.retain-note{font-size:.78rem;color:var(--olive);font-style:italic;margin-top:.6rem;line-height:1.6}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-name{font-family:'Space Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.3);text-decoration:none;letter-spacing:.04em;transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.8)}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}
+  .nav-toggle{display:flex}
+  .nav-menu{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg);border-bottom:1px solid var(--rule);max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .nav-menu.open{max-height:280px}
+  .nav-menu li{width:100%}
+  .nav-menu a{display:block;width:100%;padding:1rem 1.5rem;font-size:.85rem}
+  .wrap{padding:0 1.5rem}
+  .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
+  .g2,.g3,.g4,.iter,.journeys,.reflects,.data-row,.how-steps,.sketches,.phones,.method-bar,.sus-wrap,.persona-row,.channel-grid,.ab-row,.snap-grid,.hoff-split{grid-template-columns:1fr;gap:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .iter-half+.iter-half{border-left:none;border-top:1px solid var(--rule)}
+  .how-step{border-right:none;border-bottom:1px solid var(--rule)}
+  .phones{grid-template-columns:repeat(3,1fr)}
+  .anim-grid{grid-template-columns:repeat(2,1fr)}
+  footer{padding:2rem 1.5rem}
+  .ds-row{grid-template-columns:1fr}
+  .tiktok-concepts{grid-template-columns:1fr}
+  .hoff-flow{flex-direction:column}
+  .hoff-step{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+}
+.anim-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+/* LOGO HERO */
+.logo-hero{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
+.logo-hero img{width:100px;height:100px;object-fit:contain;}
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-back">← Back</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../art gallery/art.html">Art Gallery</a></li>
+    </ul>
+  </nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img" src="heroimage.png" alt="Yerba Buena Gardens App">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="logo-hero">
+      <img src="logo.png" alt="YBGC logomark">
+    </div>
+    <h1>Gen Z isn't allergic<br>to <em>touching grass.</em><br>They just don't know it's there.</h1>
+    <p class="hero-hmw">How might we make Yerba Buena Gardens a place 18-25 year olds actively seek out, not just stumble upon?</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Role</label><span>Product Design Intern</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Figma &middot; Claude &middot; Lovable &middot; Cursor &middot; Procreate</span></div>
+      <div class="hero-meta-item"><label>Team</label><span>Solo design &middot; handoff to internal IT engineering</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-cell"><span class="stat-n">11</span><span class="stat-l">Staff &amp; visitor interviews</span></div>
+  <div class="stat-cell"><span class="stat-n">4</span><span class="stat-l">Core features shipped to MVP</span></div>
+  <div class="stat-cell"><span class="stat-n">84.8%</span><span class="stat-l">Task success rate, hi-fi testing</span></div>
+  <div class="stat-cell"><span class="stat-n">70.0</span><span class="stat-l">SUS score &mdash; above-average usability</span></div>
+</div>
+
+<!-- 01 OVERVIEW -->
+<section class="sec">
+<div class="wrap">
+  <div class="g2 rev">
+    <div>
+      <span class="lbl">01 &mdash; Overview</span>
+      <h2 class="h2">18&ndash;25 year olds walk<br>past this park every<br>day. <em>They just don't<br>know it's there.</em></h2>
+      <p class="body">Yerba Buena Gardens sits in the middle of SoMa, next to Metreon and a cluster of museums and the age group it needs most has no reason to know it exists. There's no social proof and poor presence on TikTok, the channel Gen Z actually uses to find things to do in SF.</p>
+      <p class="body" style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--ink);margin:1.5rem 0">
+        So I designed a companion app that makes the Gardens discoverable and worth coming back to.
+      </p>
+      <p class="body">Interview-backed from day one with a <strong style="color:var(--ink);font-weight:600"> working MVP in Lovable and Cursor.</strong></p>
+    </div>
+    <div>
+      <div class="product-shot" style="margin-top:0"><img src="HandMockup.png" alt="App overview mockup"></div>      <p class="cap">Main concept, at a glance</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 CORE FEATURES -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">02 &mdash; Core Features</span>
+    <h2 class="h2">Four features.<br><em>Every one earned by research.</em></h2>
+  </div>
+
+  <div class="how-steps rev">
+    <div class="how-step">
+      <span class="step-num">01</span>
+      <p class="step-title">Creator Feed</p>
+      <p class="step-desc">A TikTok-style scrollable feed of Gardens content; visitor-generated and creator content, so discovery happens in a format Gen Z already trusts.</p>
+      <p class="retain-note">Vertical, endless-scroll layout &mdash; the format with the lowest friction to keep watching, chosen to maximize time-in-app on first open.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">02</span>
+      <p class="step-title">RSVP</p>
+      <p class="step-desc">Social proof event RSVPs that show who's going, lowering the social risk of showing up alone that came up repeatedly in interviews.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">03</span>
+      <p class="step-title">Map + Badges</p>
+      <p class="step-desc">A consolidated map surfacing hidden gems, amenities, and much more, with badges earned by exploring, redeemable for real rewards like free bowling.</p>
+      <p class="retain-note">Badges use exploration-triggered reward, the same loop that drives return visits in habit-forming apps, not a fixed points system.</p>
+    </div>
+    <div class="how-step">
+      <span class="step-num">04</span>
+      <p class="step-title">Nudges</p>
+      <p class="step-desc">SMS and push notifications written in a Gen-Z-coded voice, designed to turn a one-time visit into a repeat habit rather than a single event attendance.</p>
+    </div>
+  </div>
+  <p class="flow-hint rev" style="margin-top:3rem;margin-bottom:.5rem">HOVER OVER THE SCREENS TO SEE THE FLOW IN MOTION </p>
+
+  <div class="phones rev mt4">
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="explore.png" alt="Creator feed" class="phone-poster">
+        <video src="explore.mp4" class="phone-video" muted loop playsinline></video>
+      </div>
+      <p>Creator feed</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="event.png" alt="Event RSVP" class="phone-poster">
+        <video src="rsvp.mp4" class="phone-video" muted loop playsinline></video>
+      </div>
+      <p>Event RSVP</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="mapview.png" alt="Consolidated Map" class="phone-poster">
+        <video src="map.mp4" class="phone-video" muted loop playsinline></video>
+      </div>
+      <p>Consolidated Map</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="badges.png" alt="Badge & reward" class="phone-poster">
+        <video src="badges.mp4" class="phone-video" muted loop playsinline></video>
+      </div>
+      <p>Badge &amp; reward</p>
+    </div>
+    <div class="phone">
+      <div class="phone-shell">
+        <img src="notificationnudge.png" alt="SMS nudge" class="phone-poster">
+        <video src="notification.mp4" class="phone-video" muted loop playsinline></video>
+      </div>
+      <p>SMS nudge</p>
+    </div>
+    
+  </div>
+</div>
+</div>
+
+<!-- 03 DISCOVERY MECHANISMS -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">03 &mdash; Discovery Mechanisms</span>
+    <h2 class="h2">Three doors in.<br><em>All of them start on a phone.</em></h2>
+    <p class="body">The app only works if people find it. Three entry points were designed to meet 18&ndash;25 year olds exactly where the research said they already are.</p>
+  </div>
+
+  <div class="channel-grid rev">
+    <div class="channel-card">
+      <div class="channel-head"><span class="channel-n">01 - Hover over to see the flow in motion</span></div>
+      <div class="ph" style="aspect-ratio:9/17">
+        <img src="scanversion.png" alt="Webpage QR Code Scanned" class="channel-poster">
+        <video src="qrscan.mp4" class="channel-video" muted loop playsinline></video>
+      </div>
+      <div class="channel-body">
+        <h4>QR Scan</h4>
+        <p>A QR code on a physical art piece or event flyer opens straight into the app-download flow, turning a moment of curiosity in the Gardens into an install, not a missed opportunity.</p>
+      </div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-head"><span class="channel-n">02</span></div>
+      <div class="ph" style="aspect-ratio:9/17">
+        <img src="websiteintegration.png" alt="Website Integration">
+      </div>
+      <div class="channel-body">
+        <h4>Website</h4>
+        <p>For anyone who lands on YBG's site directly, a dedicated signature accent CTA, to get users to download the app, turning the gardens to an exciting experience.</p>
+      </div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-head"><span class="channel-n">03 - Hover over to see the flow in motion</span></div>
+      <div class="ph" style="aspect-ratio:9/16">
+        <img src="tiktokad.jpeg" alt="Example creator ad video" class="channel-poster">
+        <video src="tiktokad.mp4" class="channel-video" muted loop playsinline></video>
+      </div>
+      <div class="channel-body">
+        <h4>TikTok Creator Ads</h4>
+        <p>User Generated Content posts, partnering with creaters who have already posted about YBG and Tiktok ads, meeting the discovery channel every non-visitor named in research. "Video displayed is an example, has been edited"</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 04 PROBLEM -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="g2 rev">
+    <div>
+      <span class="lbl">04 &mdash; The Problem</span>
+      <h2 class="h2">A 33-year veteran of<br>Parks &amp; Rec told me<br><em>this is unsolved.</em></h2>
+      <p class="body">YBG's own Executive Director, across 33 years and seven different parks &amp; recreation departments, named 18&ndash;25 year olds as the one demographic recreation programming has never cracked.</p>
+      <div class="q" style="margin:1.5rem 0">
+        <p>The Gardens aren't invisible because they're boring. They're invisible because they have no digital footprint in the one place this age group actually looks.</p>
+        <cite>Synthesized from staff &amp; visitor interviews</cite>
+      </div>
+      <p class="body">The infrastructure is slow to change, the marketing is printed flyers and neighborhood organizations, and the audience it's built for skews older &mdash; while the people it needs to reach live on TikTok.</p>
+    </div>
+    <div>
+      <div class="frame ph ph-hero"><img src="Thegardens.JPG" alt="Sister Gardens photo"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 05 RESEARCH -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">05 &mdash; Research</span>
+    <h2 class="h2">11 conversations. One clear pattern.</h2>
+    <p class="body">Interviews with the people who run the Gardens and the people who are supposed to show up to them &mdash; to find out where the disconnect actually lives.</p>
+  </div>
+
+  <div class="method-bar rev mt3">
+    <div class="method-item"><span class="method-n">5</span><span class="method-l">YBG staff &amp; leadership</span></div>
+    <div class="method-item"><span class="method-n">4</span><span class="method-l">Non-visitors, 18&ndash;25</span></div>
+    <div class="method-item"><span class="method-n">2</span><span class="method-l">Current visitors, 18&ndash;25</span></div>
+  </div>
+
+  <div class="g2 top mt3 rev">
+    <div>
+      <div class="q" style="margin-top:0">
+        <p>&ldquo;That's the one group we've never figured out the magic bill for &mdash; at seven different parks and recreation departments, seven different cities.&rdquo;</p>
+        <cite>Executive Director, YBG</cite>
+      </div>
+      <div class="q">
+        <p>&ldquo;I don't think people are going on our website to look things up. People go on social media to look things up.&rdquo;</p>
+        <cite>Special Projects Manager, YBG</cite>
+      </div>
+      <div class="q">
+        <p>&ldquo;There's a reason to come here. They just don't know.&rdquo;</p>
+        <cite>Special Projects Manager, YBG</cite>
+      </div>
+    </div>
+    <div>
+      <div class="frame">
+        <img src="Affinity.png" alt="Affinity map synthesized from interviews">
+      </div>
+      <p class="cap">Affinity map &mdash; synthesized from interviews</p>
+    </div>
+  </div>
+
+  <div class="g3 mt3 rev">
+    <div class="card">
+      <h4>No Digital Layer</h4>
+      <p>Staff confirmed marketing is still print-first: posters and flyers passed through neighborhood organizations. The audience that reaches skews older by default.</p>
+    </div>
+    <div class="card">
+      <h4>No Social Proof</h4>
+      <p>Non-visitors said they'd never been because none of their friends go &mdash; and without an "internet-adjacent" hook, there's no reason to be first.</p>
+    </div>
+    <div class="card">
+      <h4>Discovery Happens on TikTok</h4>
+      <p>Every non-visitor interviewed named TikTok as their default source for "free things to do" &mdash; not YBG's website, not Google.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 06 SYNTHESIS / HMW -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">06 &mdash; Synthesis</span>
+    <h2 class="h2">From findings to<br><em>how might we.</em></h2>
+    <p class="body">Interview data clustered into five HMW statements &mdash; each one tested against sticky-note feature brainstorming before any screen was drawn.</p>
+  </div>
+
+  <ul class="nexts mt3 rev">
+    <li><span>HMW 01</span>Help 18&ndash;25 year olds discover Yerba Buena Gardens through the social channels they already trust.</li>
+    <li><span>HMW 02</span>Give 18&ndash;25 year olds a compelling enough reason to travel to SoMa specifically for the Gardens.</li>
+    <li><span>HMW 03</span>Turn a first visit into a habit that brings 18&ndash;25 year olds back repeatedly.</li>
+    <li><span>HMW 04</span>Make Gardens events feel socially alive enough that 18&ndash;25 year olds feel confident showing up.</li>
+  </ul>
+
+  <div class="frame mt3 rev"><img src="Solutionmapping.jpeg" alt="Sticky-note feature brainstorming, mapped against each HMW"></div>
+</div>
+</div>
+
+<!-- 07 PERSONAS -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">07 &mdash; Who I'm Designing For</span>
+    <h2 class="h2 h2-w">Two people. Two<br>completely different gaps.</h2>
+    <p class="body body-w">Built from the 11 interviews. One has never set foot in the Gardens. The other has and doesn't even know it.</p>
+  </div>
+
+  <div class="persona-row rev">
+    <div class="persona-card">
+      <div class="persona-img"><img src="Maya.png" alt="Persona spread — Maya Hernandez"></div>
+      <div class="persona-body">
+        <p class="persona-name">Maya Hernandez &middot; 20</p>
+        <span class="key-insight">Key insight</span>
+        <p>Has never visited, with no social proof from her friend group, YBG doesn't register as a real place worth going.</p>
+      </div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-img"><img src="Josh.png" alt="Persona spread — Josh Richardson"></div>
+      <div class="persona-body">
+        <p class="persona-name">Josh Richardson &middot; 20s</p>
+        <span class="key-insight">Key insight</span>
+        <p>Visits regularly and likes it, but never knew it was called Yerba Buena Gardens due to poor digital footprint.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 08 USER JOURNEY -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">08 &mdash; User Journey</span>
+    <h2 class="h2">From a place with no<br>reason to go, to one<br><em>worth coming back to.</em></h2>
+    <p class="body">Mapping the journey before and after the app makes the gap concrete, where the friction actually sits today, and what changes once discovery are designed in.</p>
+  </div>
+
+  <div class="journeys rev">
+    <div class="j-card">
+      <div class="j-label j-b">Current Journey</div>
+      <div class="frame"><img src="CurrentUserJourney.png" alt="Current-state user journey map"></div>    </div>
+    <div class="j-card">
+      <div class="j-label j-a">Projected Journey</div>
+      <div class="frame"><img src="ProjectedUserJourney.png" alt="Projected-state user journey map"></div>    </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 09 OPPORTUNITY -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">09 &mdash; Opportunity</span>
+    <h2 class="h2">Everyone else has the<br>same three gaps.</h2>
+    <p class="body">Physical-space competitors are seasonal, have no digital layer, or price Gen Z out. Digital-native apps aren't built around a physical destination at all.</p>
+  </div>
+
+  <div style="overflow-x:auto;margin-top:2rem;" class="rev">
+    <table class="comp">
+      <thead>
+        <tr><th>Space / App</th><th>Free to Access</th><th>Digital Discovery Layer</th><th>Year-Round</th><th>Built-in Incentive</th></tr>
+      </thead>
+      <tbody>
+        <tr class="at"><td>YBGC App</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Creator feed + QR + web</span></td><td><span class="badge by">Yes</span></td><td><span class="badge by">Badges &rarr; real rewards</span></td></tr>
+        <tr><td>SFMOMA</td><td><span class="badge bn">$30&ndash;40</span></td><td><span class="badge bm">Owned channels only</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td></tr>
+        <tr><td>Dolores Park</td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td></tr>
+        <tr><td>Stern Grove</td><td><span class="badge by">Yes&ndash;Lottery</span></td><td><span class="badge bn">None</span></td><td><span class="badge bn">Seasonal</span></td><td><span class="badge bn">None</span></td></tr>
+        <tr><td>Partiful / Posh</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Not destination-tied</span></td></tr>
+        <tr><td>Luma</td><td><span class="badge by">Yes</span></td><td><span class="badge bm">Tech-event skewed</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Not destination-tied</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rev mt4">
+    <span class="lbl">Hands-On Teardown</span>
+    <h3 class="h3">Sticky notes on every screenshot.</h3>
+    <p class="body">Each competitor app was printed, screen by screen, and annotated by hand to pull out exactly what worked, what didn't, and what YBGC's app could borrow or avoid.</p>
+  </div>
+  <div class="snap-grid rev">
+    <div class="snap-frame"><img src="Partiful.png" alt="Sticky-note teardown — Partiful"></div>
+    <div class="snap-frame"><img src="Luma.png" alt="Sticky-note teardown — Luma"></div>
+    <div class="snap-frame snap-large"><img src="Posh.png" alt="Sticky-note teardown — Posh"></div>  </div>
+</div>
+</section>
+
+<!-- 09 DESIGN PROCESS -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">10 &mdash; Design Process</span>
+    <h2 class="h2">Wireframes to a<br>working prototype.</h2>
+    <p class="body">Early sketches moved into mid-fidelity wireframes, then into a visual system built inside a real constraint: YBG's own existing brand guidelines.</p>
+  </div>
+
+  <div class="sketches rev">
+    <div><div class="frame"><img src="Wireframe1.png" alt="Wireframe sketches"></div><p class="cap">Wireframe sketches - Discovery + Short-form videos</p></div>
+    <div><div class="frame"><img src="Wireframe2.png" alt="Wireframe sketches"></div><p class="cap">Wireframe sketches - Events + Badge-earning</p></div>
+    <div><div class="frame"><img src="Midfievents+scroll.png" alt="Mid-fidelity wireframes — flow 1 and 2"></div><p class="cap">Mid-fidelity wireframes - Events + Explore</p></div>
+    <div><div class="frame"><img src="Midfimap+badge.png" alt="Mid-fidelity wireframes — flow 3 and 4"></div><p class="cap">Mid-fidelity wireframes - Consolidated + Badges</p></div>
+  </div>
+
+  <div class="ds-row rev">
+    <div class="ds-notes">
+      <p class="body" style="margin-bottom:1rem">The visual system had a real constraint: it had to work within YBG's existing brand, so the direction leans on their approved system, pushed just far enough to feel native to a feed.</p>
+      <div class="ds-note">
+        <strong>Typography</strong>
+        <span>Two clear voices: a calmer one for wayfinding and everyday content, and a punchier one reserved for elements that need attention.</span>
+      </div>
+      <div class="ds-note">
+        <strong>Color</strong>
+        <span>The primary color keeps the everyday app calm and grounded, like the space itself. The accent is used for CTAs, so a flash of it always signals "something just happened."</span>
+      </div>
+    </div>
+    <div><div class="frame ph" style="aspect-ratio:16/11">
+        <img src="designsystem.png" alt="Design System">
+    </div>
+      <p class="cap">Design system &mdash; color &amp; type, within YBG's brand</p></div>
+  </div>
+
+  <div class="rigor-row rev">
+    <div>
+      <div class="frame ph">
+        <img src="figmaarrangement.png" alt="Figma file organized with style">
+      </div>
+      <p class="cap">Figma file &mdash; local styles &amp; auto layout</p>
+    </div>
+    <div>
+      <span class="lbl">Building It Pushed the File Further</span>
+      <h3 class="h3">The codebase demands a real Figma file.</h3>
+      <p class="body">Handing a file to Lovable and Cursor is unforgiving in a way clicking through Figma prototypes isn't, nothing carries over automatically. That pushed me to build proper text styles, color styles, and auto layout with proper naming across every screen instead of one-off frames, so the file could actually hold up as a system engineering could build from.</p>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- 10 ITERATIONS -->
+<section class="sec">
+<div class="wrap">
+  <div class="sec-header-row rev">
+    <div>
+      <span class="lbl">11 &mdash; Iterations</span>
+      <h2 class="h2">What round-one testing<br><em>forced me to fix.</em></h2>
+      <p class="body">Moderated usability testing on the first prototype surfaced four issues before the design ever reached a high-fidelity build.</p>
+    </div>
+    <div>
+      <div class="frame"><img src="Lo-fiTestNotes.jpeg" alt="Round 1 testing notes"></div>
+            <p class="cap">My notes, round 1</p>
+    </div>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Finding</span>
+      <p>The badge flow lacked hierarchy. Users couldn't tell which badge to go for, how to actually earn one, or how badges connected to the map.</p>
+      <div class="phone-frame"><img src="midfiprofilesolutions.png" alt="Before"></div>
+    </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Added color and micro-animations to make progress and next steps legible, and tied badge-earning to the map so the two flows connected.</p>
+      <div class="phone-pair">
+        <div class="phone-frame"><img src="hifiprofilesolutions.png" alt="After"></div>
+        <div class="phone-frame"><img src="hifimapviewbadgessolutions.png" alt="After"></div>
+      </div>    </div>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Finding</span>
+      <p>Icons across the events page: events icon and calendar view felt too visually similar to distinguish at a glance.</p>
+      <div class="phone-frame"><img src="midfiEventssolutions.png" alt="Before"></div>
+        </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Differentiated the icon set between calendar view and events navigation bar page icon.</p>
+      <div class="phone-frame"><img src="Hifieventssolution.png" alt="After"></div>
+    </div>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Finding</span>
+      <p>The option to post a video to the creator feed wasn't visible or clear, users didn't realize they could contribute content, only consume it.</p>
+      <div class="phone-frame"><img src="EXPLORESCROLLEDsolutions.png" alt="Before"></div> 
+       </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Added a persistent feature CTA to the feed, mirroring the TikTok's own post button and added occasional get featured ad while scrolling.</p>
+      <div class="phone-pair">
+        <div class="phone-frame"><img src="EXPLOREscrollsolutions.png" alt="After"></div>
+        <div class="phone-frame"><img src="EXPLOREGETFeatured.png" alt="After"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="iter rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Finding</span>
+      <p>An accessibility list-view was added for the map, but in testing it felt confusing due to many buttons and it competed with the main map view instead of supporting it.</p>
+      <div class="phone-pair">
+        <div class="phone-frame"><img src="midfimapviewsolutions.png" alt="Before"></div>
+        <div class="phone-frame"><img src="midfilistviewsolutions.png" alt="Before"></div>
+      </div>
+    </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Simplified to a single map view with accessible list content accessed via a toggle, rather than as a separate competing mode, accessibility additions still need their own usability pass.</p>
+      <div class="phone-pair">
+        <div class="phone-frame"><img src="hifimapviewsolutions.png" alt="After"></div>
+        <div class="phone-frame"><img src="hifilistviewsolutions.png" alt="After"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="body mt3 rev" style="color:var(--dim);font-style:italic">This is an ongoing project. These iterations reflect the move from round-one testing into the high-fidelity build validated in round two, below.</p>
+</div>
+</section>
+
+<!-- 11 RESULTS -->
+<div class="sec-dark">
+<div class="wrap">
+  <div class="sec-header-row rev">
+    <div>
+      <span class="lbl lbl-dark">12 &mdash; Results &amp; Validation</span>
+      <h2 class="h2 h2-w">Round two: task-based<br>testing on the hi-fi build.</h2>
+      <p class="body body-w">Six participants completed five core tasks on the high-fidelity prototype, measured on success rate, time on task, and error count, plus an A/B test on the RSVP confirm gesture and a System Usability Scale survey.</p>
+    </div>
+    <div>
+      <div class="frame"><img src="Hi-fiTestNotes.jpeg" alt="Round 2 testing notes"></div>
+      <p class="cap cap-dark">My notes, round 2</p>
+    </div>
+  </div>
+
+  <div class="data-row rev">
+    <div class="data-card"><span class="data-n">84.8%</span><span class="data-l">Overall task success rate</span></div>
+    <div class="data-card"><span class="data-n">5.45</span><span class="data-l">Average ease rating (of 7)</span></div>
+    <div class="data-card"><span class="data-n">0.70</span><span class="data-l">Average errors per task</span></div>
+  </div>
+
+  <div style="overflow-x:auto;margin-top:2.5rem" class="rev">
+    <table class="metrics">
+      <thead><tr><th>Task</th><th>Success</th><th>Avg. Time</th><th>Avg. Errors</th><th>Ease (1&ndash;7)</th></tr></thead>
+      <tbody>
+        <tr><td>Onboarding / download</td><td>83.3%</td><td>32.5s</td><td>0.67</td><td>5.58</td></tr>
+        <tr><td>RSVP to an event</td><td>91.7%</td><td>31.7s</td><td>0.17</td><td>5.83</td></tr>
+        <tr class="strong"><td>Discover via explore feed</td><td>100%</td><td>35s</td><td>0</td><td>6.0</td></tr>
+        <tr class="flag"><td>Earn a badge</td><td>53.3%</td><td>76.7s</td><td>1.83</td><td>4.67</td></tr>
+        <tr><td>Explore the map</td><td>95.8%</td><td>100s</td><td>0.83</td><td>5.17</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="body body-w mt2 rev">The explore feed was the strongest flow in the entire study, no zero errors. Badge-earning was the clear weak point on every metric, confirming the round-one finding above as the single highest-priority fix before this ships further.</p>
+
+  <div class="rev mt4">
+    <span class="lbl lbl-dark">A/B Test &mdash; RSVP Confirm Gesture</span>
+    <h3 class="h3" style="color:#fff;font-weight:300">Swipe right beat swipe up, 5 to 1.</h3>
+  </div>
+  <div class="results-grid rev">
+    <div class="ab-card">
+      <span class="ab-tag">Option A &mdash; Swipe Up</span>
+      <div class="ph-dark"><img src="EventsSelectedSwipup.jpeg" alt="Swipe-up RSVP confirm"></div>
+      <div class="ab-cap"><strong>1 / 6 preferred</strong><span>Felt less natural against one-handed phone use</span></div>
+    </div>
+    <div class="ab-card winner">
+      <span class="ab-tag">Option B &mdash; Swipe Right &middot; Chosen</span>
+      <div class="ph-dark"><img src="Fifaeventselected.jpeg" alt="Swipe-right RSVP confirm"></div>
+            <div class="ab-cap"><strong>5 / 6 preferred</strong><span>Matched the gesture users already knew</span></div>
+    </div>
+    <div class="results-col3">
+      <div class="sus-score">
+        <span class="sus-n">70.0</span>
+        <span class="sus-l">System Usability Scale</span>
+        <p class="sus-bench">Above the 68-point average-usability benchmark, from a 4-participant SUS survey.</p>
+      </div>
+      <div class="q q-dark">
+        <p>&ldquo;I didn't want to truly explore.&rdquo; &mdash; flagged as a note on map engagement.</p>
+        <cite>Round-two testing participant</cite>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 12 ENGINEERING HANDOFF -->
+<div class="sec-dark" style="background:#0d0d0d">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl lbl-dark">13 &mdash; Engineering Handoff</span>
+    <h2 class="h2 h2-w">I built the MVP to prove<br>it. IT is building it to last.</h2>
+    <p class="body body-w">Lovable and Cursor let me take this from Figma to a working, testable product fast enough to prove the concept, but a prototype and a production system for a public institution aren't the same thing. From here, it's formally handed off to YBGC's internal IT team, who already maintain their live website, to make it secure and ready for real users. The Beta version addressed all usability issues for the second usability study.</p>
+  </div>
+
+  <div class="insight-callout rev">
+    <span class="insight-mark">&ldquo;</span>
+    <div class="insight-callout-body">
+      <span class="lbl lbl-dark" style="margin-bottom:.5rem">Why This Matters</span>
+      <p>Figma's prototypes fake state &mdash; code has to actually remember it. Building this in Lovable and Cursor, not just Figma, meant the app had to behave like real software. Small interaction bugs that survived two rounds of usability testing became obvious the moment I could truly interact with it.</p>
+    </div>
+  </div>
+
+  <div class="pe-intro rev">
+    <span class="lbl lbl-dark">Working With AI, Not Around It</span>
+    <p class="body body-w">AI was a way to move faster on execution, not a substitute for the design decisions themselves. The clearest example was working inside strict token limits while building in Cursor and Lovable.</p>
+  </div>
+  <div class="pe-strip rev">
+    <div class="pe-card"><span class="pe-eyebrow">Challenge</span><p>Strict token limits while building the MVP in Cursor and Lovable.</p></div>
+    <div class="pe-card"><span class="pe-eyebrow">Action</span><p>Used Claude to engineer high-density, precise prompts that cut token usage.</p></div>
+    <div class="pe-card"><span class="pe-eyebrow">Result</span><p>Shipped the full functional MVP inside the resource constraints.</p></div>
+  </div>
+
+  <div class="roadmap-now rev">
+    <span class="roadmap-phase">Now</span>
+    <h3 class="roadmap-title">Shipped by me</h3>
+    <span class="roadmap-owner owner-me">Design</span>
+    <ul class="roadmap-list">
+      <li>4 core features researched, designed, and built into a working MVP (Figma &rarr; Lovable/Cursor)</li>
+      <li>Two rounds of usability testing, an A/B test, and a SUS survey</li>
+      <li>Documented GitHub repo, ready to hand off to IT</li>
+    </ul>
+
+    <div class="repo-proof">
+    
+      <div>
+        <div class="ph" style="aspect-ratio:3/2">
+          <img src="githubfolders.png" alt="README Repo">
+        </div>
+        <p class="repo-proof-cap">Repo &mdash; file structure</p>
+      </div>
+    
+      <div>
+        <div class="ph" style="aspect-ratio:3/2">
+          <img src="readmefile.png" alt="README Repo">
+        </div>
+        <p class="repo-proof-cap">Repo &mdash; README</p>
+      </div>
+    
+    </div>
+    
+  </div>
+
+  <div class="roadmap-split rev">
+    <div class="roadmap-col next">
+      <span class="roadmap-phase">Next</span>
+      <h3 class="roadmap-title">In progress &mdash; IT</h3>
+      <span class="roadmap-owner owner-it">Engineering</span>
+      <ul class="roadmap-list">
+        <li>Security review &amp; authentication layer</li>
+        <li>Backend architecture, hosting, and admin tooling</li>
+        <li>Content moderation for the creator feed</li>
+        <li>Code review and hardening</li>
+      </ul>
+    </div>
+    <div class="roadmap-col later">
+      <span class="roadmap-phase">Later</span>
+      <h3 class="roadmap-title">Public launch</h3>
+      <span class="roadmap-owner owner-it">IT-led</span>
+      <ul class="roadmap-list">
+        <li>Beta test with real visitors and staff</li>
+        <li>QR, website, and TikTok discovery flows go live</li>
+        <li>Public launch</li>
+        <li>CS intern onboarded to support long-term (pending confirmation)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BETA LINK -->
+  <a href="https://yerba-buena-canvas.lovable.app" class="beta-tile rev" target="_blank" rel="noopener">
+    <div class="ph-wide ph-dark">
+      <img src="screens.png" alt="YBGC app — first screen">
+    </div>
+    <div class="beta-play">
+      <div class="beta-circle">▶</div>
+      <span class="beta-text">Click to try the beta<span>Opens the live app</span></span>
+    </div>
+  </a>
+</div>
+</div>
+
+<!-- 13 MOTION & GAMIFICATION -->
+<section class="sec">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">14 &mdash; Motion &amp; Gamification</span>
+    <h2 class="h2">Small moments that make<br>exploring feel like winning.</h2>
+    <p class="body">Micro-animations gamify the experience, and a worm mascot keeps it feeling personable rather than transactional.</p>
+  </div>
+  <div class="anim-grid rev">
+    <div class="anim-tile">
+      <video src="mascotbadges.mp4" autoplay muted loop playsinline></video>
+      <div class="anim-pulse"></div>
+      <div class="anim-label">Mascot guides badge rewards</div>
+    </div>
+    <div class="anim-tile">
+      <video src="onboarding.mp4" autoplay muted loop playsinline></video>
+      <div class="anim-pulse"></div>
+      <div class="anim-label">Onboarding with mascot</div>
+    </div>
+    <div class="anim-tile">
+      <video src="navbar.mp4" autoplay muted loop playsinline></video>
+      <div class="anim-pulse"></div>
+      <div class="anim-label">Navigation bar spotlight</div>
+    </div>
+    <div class="anim-tile">
+      <video src="swiperight.mp4" autoplay muted loop playsinline></video>
+      <div class="anim-pulse"></div>
+      <div class="anim-label">Complete RSVP</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 14 REFLECTION -->
+<div class="sec-tinted">
+<div class="wrap">
+  <div class="rev">
+    <span class="lbl">15 &mdash; Reflection</span>
+    <h2 class="h2">What this taught me.</h2>
+  </div>
+
+  <div class="reflects rev">
+    <div class="r-card"><span class="r-n">01</span><h4>AI-assisted engineering has a real learning curve</h4><p>Prompt structure matters, tokens run out fast, and getting Lovable and Cursor to produce something usable meant learning to scope and sequence prompts deliberately, not just describe a feature and hope.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Solo doesn't mean alone</h4><p>Owning a project this size as the only designer was, at points, overwhelming. It reinforced how much a project like this actually needs cross-departmental collaboration &mdash; you can't design something this big in isolation.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>A prototype's job is to prove, not to ship</h4><p>Building a functional MVP was about generating evidence; usable, testable proof the concept works and not about producing something ready for the public. Knowing that line is part of the design job too.</p></div>
+  </div>
+
+  <ul class="nexts mt4 rev">
+    <li><span>Next &rarr;</span> Internal IT team refines and hardens the codebase handed off from Lovable/Cursor</li>
+    <li><span>Next &rarr;</span> Add a proper security and data-privacy layer before any public beta</li>
+    <li><span>Next &rarr;</span> Beta test with real visitors and staff before a public launch</li>
+    <li><span>Next &rarr;</span> Launch the QR and website discovery flows alongside the first TikTok creator collabs</li>
+    <li><span>Next &rarr;</span> Confirm and onboard a CS student intern to support the handoff</li>
+  </ul>
+</div>
+</div>
+
+<footer>
+  <span class="f-name">Tamanna Shirol</span>
+  <div class="f-links">
+    <a href="../index.html">&larr; Portfolio</a>
+    <a href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+
+navToggle.addEventListener('click', () => {
+  const isOpen = navMenu.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', isOpen);
+});
+
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+    navMenu.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+document.querySelectorAll('.phone').forEach(phone => {
+  const video = phone.querySelector('.phone-video');
+  if (!video) return;
+  phone.addEventListener('mouseenter', () => video.play());
+  phone.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+});
+
+document.querySelectorAll('.channel-card').forEach(card => {
+  const video = card.querySelector('.channel-video');
+  if (!video) return;
+  card.addEventListener('mouseenter', () => video.play());
+  card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+});
+
+</script>
+</body>
+</html>
