@@ -211,10 +211,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .bn{background:#FDECEA;color:#9B2335}
 .bm{background:#F3EFE3;color:#8A6D1F}
 
-.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem}
-.snap-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);height:200px}
-.snap-frame.snap-large{grid-column:1 / -1;height:240px}
-.snap-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;align-items:start}
+.snap-frame{border-radius:8px;overflow:hidden;border:1px solid var(--rule);background:var(--card)}
+.snap-frame.snap-large{grid-column:1 / -1}
+.snap-frame img{width:100%;height:auto;display:block}
 
 /* TASK METRICS TABLE */
 .metrics{width:100%;border-collapse:collapse;margin-top:2rem;border-radius:8px;overflow:hidden}
@@ -318,7 +318,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
   object-fit: contain;
   display: block;
 }
-
 /* FIGMA RIGOR CALLOUT (Design Process section) */
 .rigor-row{margin-top:2.5rem;display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:center}
 .rigor-row .frame {
@@ -406,6 +405,24 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 /* LOGO HERO */
 .logo-hero{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
 .logo-hero img{width:100px;height:100px;object-fit:contain;}
+
+.phone:hover .phone-video, .phone.touch-active .phone-video{opacity:1}
+.channel-card:hover .channel-video, .channel-card.touch-active .channel-video{opacity:1}
+
+@media(max-width:900px){
+  .ab-card img{height:220px}
+  .j-card img{height:auto;aspect-ratio:4/3}
+  .repo-proof .ph img{width:100%}
+  .g2,.g3,.g4,.iter,.journeys,.reflects,.data-row,.how-steps,.sketches,.method-bar,.sus-wrap,.persona-row,.ab-row,.snap-grid,.hoff-split,.rigor-row{grid-template-columns:1fr;gap:1.25rem}
+}
+@media(max-width:1200px) and (min-width:901px){
+  .g3,.g4,.channel-grid,.persona-row,.pe-strip{grid-template-columns:repeat(2,1fr)}
+  .phones{grid-template-columns:repeat(3,1fr)}
+  .anim-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .repo-proof .ph img{width:100%}
+}
 </style>
 </head>
 <body>
@@ -1024,14 +1041,14 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     <div class="repo-proof">
     
       <div>
-        <div class="ph" style="aspect-ratio:3/2">
+        <div class="ph">
           <img src="githubfolders.webp" alt="README Repo" loading="lazy" decoding="async">
         </div>
         <p class="repo-proof-cap">Repo &mdash; file structure</p>
       </div>
     
       <div>
-        <div class="ph" style="aspect-ratio:3/2">
+        <div class="ph">
           <img src="readmefile.webp" alt="README Repo" loading="lazy" decoding="async">
         </div>
         <p class="repo-proof-cap">Repo &mdash; README</p>
@@ -1189,6 +1206,25 @@ document.querySelectorAll('.channel-card').forEach(card => {
   card.addEventListener('mouseenter', () => video.play());
   card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
 });
+
+function isTouchDevice(){ return 'ontouchstart' in window || navigator.maxTouchPoints > 0; }
+
+if (isTouchDevice()) {
+  document.querySelectorAll('.phone, .channel-card').forEach(el => {
+    const video = el.querySelector('video');
+    if (!video) return;
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      const wasActive = el.classList.contains('touch-active');
+      document.querySelectorAll('.touch-active').forEach(o => {
+        o.classList.remove('touch-active');
+        const v = o.querySelector('video');
+        if (v) { v.pause(); v.currentTime = 0; }
+      });
+      if (!wasActive) { el.classList.add('touch-active'); video.play(); }
+    });
+  });
+}
 
 </script>
 </body>
