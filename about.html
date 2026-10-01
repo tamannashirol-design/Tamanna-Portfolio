@@ -33,16 +33,47 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
   transition:color .2s;
 }.nav-logo:hover{color:var(--olive)}
 .nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
-.nav-menu a{
-  font-family:'DM Sans', sans-serif;
-  font-size:.82rem;
-  font-weight:700;
-  letter-spacing:0.06em;
-  text-decoration:none;
+.nav-menu a {
+  position: relative;
+
+  font-family: 'DM Sans', sans-serif;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
   color: var(--mid);
-  transition:color .2s;
+  padding-bottom: 6px;
+  transition: color .2s ease;
 }
-.nav-menu a:hover{color:var(--ink)}
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--olive);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--ink);
+}
+
+.nav-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-menu a.active {
+  color: var(--ink);
+}
+
+.nav-menu a.active::after {
+  transform: scaleX(1);
+}
 .nav-cta{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--olive);border:1px solid var(--olive);padding:.5rem 1rem;border-radius:4px;transition:all .2s}
 .nav-cta:hover{background:var(--olive);color:#fff}
 
@@ -174,10 +205,10 @@ footer {
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-menu" id="navMenu">
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="/explorations.html">Explorations</a></li>
-      <li><a href="artgallery/art.html">Art Gallery</a></li>
+      <li><a href="index.html#work" class="nav-link" data-section="work">Work</a></li>
+      <li><a href="about.html" class="nav-link active" >About</a></li>
+      <li><a href="explorations.html" class="nav-link">Explorations</a></li>
+      <li><a href="artgallery/art.html" class="nav-link">Art Gallery</a></li>
     </ul>
   </nav>
   
