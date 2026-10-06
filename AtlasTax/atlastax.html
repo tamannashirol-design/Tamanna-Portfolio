@@ -240,11 +240,53 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .bn{background:#FDECEA;color:#9B2335}
 
 /* PITCH MOMENT */
-.pitch-block{margin-top:2.5rem;background:var(--navy);border-radius:12px;padding:2.5rem;display:flex;align-items:center;gap:3rem;flex-wrap:wrap}
-.pitch-n{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:#fff;flex:1;min-width:220px}
-.pitch-n span{display:block;font-size:.72rem;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif;letter-spacing:.06em;margin-top:.3rem}
+.pitch-block{ margin-top:2.5rem;
+  background:var(--navy);
+  border-radius:12px;
+  padding:2.8rem;
+  display:flex;
+  align-items:flex-start;
+  gap:3rem;
+  flex-wrap:wrap;} 
+.pitch-n{font-family:'Fraunces',serif;
+  font-size:1.35rem;
+  font-weight:400;
+  color:#fff;
+  flex:1;
+  min-width:280px;
+  line-height:1.35;
+}
+.pitch-n span{ display:block;
+  font-size:1rem;
+  color:rgba(255,255,255,.78);
+  font-family:'DM Sans',sans-serif;
+  letter-spacing:0;
+  line-height:1.7;
+  margin-top:.75rem;
+  max-width:700px;}
 .pitch-link{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid rgba(255,255,255,.2);padding:.5rem 1rem;border-radius:4px;transition:all .2s;white-space:nowrap;flex-shrink:0}
 .pitch-link:hover{color:#fff;border-color:rgba(255,255,255,.6)}
+.pitch-images{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:.5rem;
+}
+
+.pitch-image{
+  border-radius:8px;
+  overflow:hidden;
+  aspect-ratio:4/3;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.pitch-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
 
 /* THINK ALOUD */
 .ta-link{display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:700;color:var(--olive);text-decoration:none;border:1px solid var(--olive);padding:.55rem 1.1rem;border-radius:4px;transition:all .2s;margin-top:1.5rem}
@@ -336,10 +378,10 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
 <!-- STAT BAR -->
 <div class="stat-bar">
-  <div class="stat-cell"><span class="stat-n">86.7%</span><span class="stat-l">Preferred over competitors</span></div>
+  <div class="stat-cell"><span class="stat-n">86.7%</span><span class="stat-l">Preferred over current methods</span></div>
   <div class="stat-cell"><span class="stat-n">93.3%</span><span class="stat-l">Reported reduced anxiety</span></div>
   <div class="stat-cell"><span class="stat-n">93.3%</span><span class="stat-l">Would use this tool next tax season</span></div>
-  <div class="stat-cell"><span class="stat-n">2nd</span><span class="stat-l">Place at the SFSU Product Pitch</span></div>
+  <div class="stat-cell"><span class="stat-n">2nd</span><span class="stat-l">Place at the SFSU LFCoB Product Pitch</span></div>
 </div>
 
 <!-- 01 PROBLEM -->
@@ -369,13 +411,13 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="rev">
     <span class="lbl">02 &mdash; Research</span>
     <h2 class="h2">What the research revealed.</h2>
-    <p class="body">Two rounds of research which involved 12 interviews with F-1 and OPT students, followed by 15 usability testing participants evaluating the high-fidelity prototype.</p>
+    <p class="body">Initial research involved 12 interviews with F-1 and OPT students.</p>
   </div>
 
   <div class="method-bar rev mt3">
     <div class="method-item"><span class="method-n">n=12</span><span class="method-l">F-1 &amp; OPT students interviewed</span></div>
-    <div class="method-item"><span class="method-n">73%</span><span class="method-l">Unaware of Form 1040-NR</span></div>
-    <div class="method-item"><span class="method-n">80%</span><span class="method-l">Not confident in filing accuracy</span></div>
+    <div class="method-item"><span class="method-n">75%</span><span class="method-l">Unaware of Form 1040-NR</span></div>
+    <div class="method-item"><span class="method-n">83%</span><span class="method-l">Not confident in filing accuracy</span></div>
     <div class="method-item"><span class="method-n">3</span><span class="method-l">Rounds of usability testing</span></div>
   </div>
 
@@ -424,7 +466,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="rev">
     <span class="lbl">03 &mdash; Opportunity</span>
     <h2 class="h2">No one built this for them.</h2>
-    <p class="body">Two competitors dominate the space. Neither was built for non-resident students.</p>
+    <p class="body">Two competitors dominate the space and neither was built for non-resident students.</p>
   </div>
 
   <div class="g2 mt3 rev" style="align-items:start">
@@ -501,7 +543,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="rev">
     <span class="lbl">05 &mdash; Solution Overview</span>
     <h2 class="h2">AtlasTax. File taxes confidently,<br><em>the simple way.</em></h2>
-    <p class="body">A mobile-first platform that enables F-1, J-1 &amp; M-1 students to file IRS-compliant non-resident tax forms in under 20 minutes for $29.</p>
+    <p class="body">A mobile-first platform designed for F-1, J-1 &amp; M-1 students to file IRS-compliant non-resident tax forms in under 20 minutes for $29.</p>
   </div>
 
   <div class="product-shot rev">
@@ -588,7 +630,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
     <div class="g3 mt3 rev">
       <div class="card">
         <h4>Purpose-Built Extraction</h4>
-        <p>Documents are designed to be processed through OCR to auto-fill forms, the goal is fewer manual re-entries and fewer places sensitive data has to be typed or copied.</p>
+        <p>Documents are designed to be processed through OCR to auto-fill forms. The goal is fewer manual entries and sensitive data that has to be typed or copied.</p>
       </div>
       <div class="card">
         <h4>Minimal Data Requested</h4>
@@ -652,7 +694,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="rev">
     <span class="lbl">08 &mdash; Iterations</span>
     <h2 class="h2">Mid-fi to hi-fi &mdash; what users<br><em>forced me to change.</em></h2>
-    <p class="body">Three rounds of think-aloud testing. Each session surfaced something that would have broken the experience in production.</p>
+    <p class="body">Usability testing 1 included think-aloud testing with 3 people. Each session surfaced something that would have broken the experience in production.</p>
     <a class="ta-link" href="https://drive.google.com/file/d/1IIafFRjAlFkCamBSrl6cdCtcKHVmu7TF/view?usp=sharing" target="_blank">Watch think-aloud session</a>
   </div>
 
@@ -802,7 +844,7 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   <div class="rev">
     <span class="lbl lbl-dark">10 &mdash; Results &amp; Validation</span>
     <h2 class="h2 h2-w">The numbers spoke.</h2>
-    <p class="body body-w">Measured through unmoderated usability testing with 15 F-1 students after completing the high-fidelity prototype task flow. </p>
+    <p class="body body-w">Measured through another unmoderated usability testing with 15 F-1 students after completing the latest high-fidelity prototype task flow. </p>
   </div>
 
   <div class="data-row rev">
@@ -822,10 +864,26 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 
   <div class="pitch-block rev">
     <div class="pitch-n">
-      2nd Place &mdash; SFSU Business Pitch Competition
-      <span>AtlasTax went from UX prototype to full business pitch in 3 weeks. Covering product, market size, business model, and go-to-market. Also invited as guest speaker at the Epsilon Pi Tau inauguration at SFSU.</span>
+      2nd Place &mdash; San Francisco State University Lam Family College of Business Product Pitch Competition
+      <span>AtlasTax went from UX prototype to full business pitch in 3 weeks: covering product, market size, business model, and risk stategies. I was also invited as guest speaker at the Epsilon Pi Tau inauguration at SFSU.</span>
     </div>
     <a class="pitch-link" href="https://cob.sfsu.edu/initiatives-centers/pitch-contest" target="_blank">View Pitch Contest Details &rarr;</a>
+
+  <div class="pitch-images">
+
+    <div class="pitch-image">
+      <img src="pitchphotos01.webp" alt="AtlasTax product pitch presentation" loading="lazy" decoding="async">
+    </div>
+
+    <div class="pitch-image">
+      <img src="pitchphotos03.webp" alt="AtlasTax pitch competition presentation" loading="lazy" decoding="async">
+    </div>
+
+    <div class="pitch-image">
+      <img src="pitchphotos02.webp" alt="AtlasTax at San Francisco State University" loading="lazy" decoding="async">
+    </div>
+
+  </div>
   </div>
 </div>
 </div>
