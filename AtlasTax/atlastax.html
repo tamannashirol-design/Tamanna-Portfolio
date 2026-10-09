@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AtlasTax — Tamanna Shirol</title>
-<meta name="description" content="Case study: tax-filing guidance for international students on F-1, J-1 and M-1 visas. 2nd place at the SFSU LFCoB product pitch.">
+<title>AtlasTax | Tamanna Shirol</title>
+<meta name="description" content="Case study: tax-filing guidance for international students on F-1, J-1 and M-1 visas. 2nd place at SF State's business school product pitch.">
 <link rel="canonical" href="https://tamannashirol.com/AtlasTax/atlastax.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tamanna Shirol">
-<meta property="og:title" content="AtlasTax — Tamanna Shirol">
-<meta property="og:description" content="Case study: tax-filing guidance for international students on F-1, J-1 and M-1 visas. 2nd place at the SFSU LFCoB product pitch.">
+<meta property="og:title" content="AtlasTax | Tamanna Shirol">
+<meta property="og:description" content="Case study: tax-filing guidance for international students on F-1, J-1 and M-1 visas. 2nd place at SF State's business school product pitch.">
 <meta property="og:url" content="https://tamannashirol.com/AtlasTax/atlastax.html">
 <meta property="og:image" content="https://tamannashirol.com/AtlasTax/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="AtlasTax — Tamanna Shirol">
+<meta property="og:image:alt" content="AtlasTax | Tamanna Shirol">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AtlasTax — Tamanna Shirol">
-<meta name="twitter:description" content="Case study: tax-filing guidance for international students on F-1, J-1 and M-1 visas. 2nd place at the SFSU LFCoB product pitch.">
+<meta name="twitter:title" content="AtlasTax | Tamanna Shirol">
+<meta name="twitter:description" content="Case study: tax-filing guidance for international students on F-1, J-1 and M-1 visas. 2nd place at SF State's business school product pitch.">
 <meta name="twitter:image" content="https://tamannashirol.com/AtlasTax/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -393,6 +393,23 @@ img,video{max-width:100%}
 .vbtn:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px rgba(20,20,20,.6)}
 .vbtn svg{width:14px;height:14px;fill:currentColor}
 .is-playing .phone-video,.is-playing .channel-video{opacity:1}
+
+/* small consent / ethics note */
+.consent-note{font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--mid);margin-top:.6rem;line-height:1.6}
+.sec-dark .consent-note{color:rgba(255,255,255,.75)}
+
+/* round two block inside the dark results section */
+.iter-dark{border-color:rgba(255,255,255,.14);margin-top:2.5rem}
+.iter-dark .iter-half+.iter-half{border-left-color:rgba(255,255,255,.14)}
+.iter-dark .iter-half p{color:rgba(255,255,255,.78)}
+.r2-shot{border-color:rgba(255,255,255,.14)}
+.r2-single{width:calc(50% - .375rem);margin:1rem auto 0}
+.r2-empty{aspect-ratio:9/19;border:1.5px dashed rgba(255,255,255,.3);background:rgba(255,255,255,.03)}
+@media (max-width:900px){.iter-dark{grid-template-columns:1fr}.iter-dark .iter-half+.iter-half{border-left:none;border-top:1px solid rgba(255,255,255,.14)}}
+
+/* second row of result cards */
+.data-row-2{margin-top:1.25rem}
+.data-note{display:block;font-family:'DM Sans',sans-serif;font-size:.8rem;color:rgba(255,255,255,.72);margin-top:.5rem}
 </style>
 </head>
 <body>
@@ -431,10 +448,10 @@ img,video{max-width:100%}
 
 <!-- STAT BAR -->
 <div class="stat-bar">
-  <div class="stat-cell"><span class="stat-n">86.7%</span><span class="stat-l">Preferred over current methods</span></div>
-  <div class="stat-cell"><span class="stat-n">93.3%</span><span class="stat-l">Reported reduced anxiety</span></div>
-  <div class="stat-cell"><span class="stat-n">93.3%</span><span class="stat-l">Would use this tool next tax season</span></div>
-  <div class="stat-cell"><span class="stat-n">2nd</span><span class="stat-l">Place at the SFSU LFCoB Product Pitch</span></div>
+  <div class="stat-cell"><span class="stat-n">100%</span><span class="stat-l">Said they finished without outside help</span></div>
+  <div class="stat-cell"><span class="stat-n">86.7%</span><span class="stat-l">Preferred it over their current tool</span></div>
+  <div class="stat-cell"><span class="stat-n">93.3%</span><span class="stat-l">Said it reduced their filing anxiety</span></div>
+  <div class="stat-cell"><span class="stat-n">2nd</span><span class="stat-l">Place at SF State's business school product pitch</span></div>
 </div>
 
 <!-- 01 PROBLEM -->
@@ -442,9 +459,9 @@ img,video{max-width:100%}
 <div class="wrap">
   <div class="g2 rev">
     <div>
-      <span class="lbl">01 &mdash; Problem</span>
-      <h2 class="h2">Built for citizens.<br><em>Not for students.</em></h2>
-      <p class="body">A U.S. citizen earning under $15,750 doesn&rsquo;t need to file. An 18-year-old international student with zero income still does &mdash; and one mistake can jeopardize their visa, immigration applications, and future employment.</p>
+      <span class="lbl">01 &middot; Problem</span>
+      <h2 class="h2">Tax tools are built for U.S. residents, <em>not international students.</em></h2>
+      <p class="body">A U.S. citizen earning under $15,750 doesn&rsquo;t need to file. An 18-year-old international student with zero income still does, and one mistake can jeopardize their visa, immigration applications, and future employment.</p>
       <p class="body" style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--ink);margin:1.5rem 0">
         The system exists, just not for them. Residents have TurboTax. Non-resident students are left with confusion.
       </p>
@@ -452,7 +469,7 @@ img,video{max-width:100%}
     </div>
     <div>
       <div class="frame"><img src="affinitymap.webp" alt="Affinity map of pain points" loading="lazy" decoding="async"></div>
-      <p class="cap">Pain point clustering &mdash; early interview synthesis</p>
+      <p class="cap">Pain point clustering, early interview synthesis</p>
     </div>
   </div>
 </div>
@@ -462,7 +479,7 @@ img,video{max-width:100%}
 <div class="sec-tinted">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">02 &mdash; Research</span>
+    <span class="lbl">02 &middot; Research</span>
     <h2 class="h2">What the research revealed.</h2>
     <p class="body">Initial research involved 12 interviews with F-1 and OPT students.</p>
   </div>
@@ -492,7 +509,7 @@ img,video{max-width:100%}
     <div>
       <div class="frame"><img src="EmpathyMap.webp" alt="Empathy map" loading="lazy" decoding="async">
       </div>
-      <p class="cap">Empathy map &mdash; synthesized from interviews</p>
+      <p class="cap">Empathy map, synthesized from interviews</p>
     </div>
   </div>
 
@@ -517,18 +534,18 @@ img,video{max-width:100%}
 <section class="sec">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">03 &mdash; Opportunity</span>
-    <h2 class="h2">No one built this for them.</h2>
+    <span class="lbl">03 &middot; Opportunity</span>
+    <h2 class="h2">Existing tools don't fit non-resident students.</h2>
     <p class="body">Two competitors dominate the space and neither was built for non-resident students.</p>
   </div>
 
   <div class="g2 mt3 rev" style="align-items:start">
     <div class="card">
-      <h4>Sprintax &mdash; Direct Competitor</h4>
+      <h4>Sprintax, Direct Competitor</h4>
       <p>Supports non-resident tax returns, but the process is long, text-heavy, and prone to manual entry errors. Without a university partnership, the cost can feel high relative to the value provided.</p>
     </div>
     <div class="card">
-      <h4>TurboTax &mdash; Indirect Competitor</h4>
+      <h4>TurboTax, Indirect Competitor</h4>
       <p>Doesn&rsquo;t support non-resident returns. Students who use it risk filing the wrong form entirely, which has real immigration consequences. Doesn't distinguish between 1040NR and 1040 filing requirements. </p>
     </div>
   </div>
@@ -539,7 +556,7 @@ img,video{max-width:100%}
         <tr><th>Product</th><th>Non-Resident</th><th>Tax Treaty</th><th>Student-First</th><th>Price</th></tr>
       </thead>
       <tbody>
-        <tr class="at"><td>AtlasTax</td><td><span class="badge by">F-1 &middot; J-1 &middot; M-1</span></td><td><span class="badge by">Auto-detected</span></td><td><span class="badge by">Yes</span></td><td>$29</td></tr>
+        <tr class="at"><td>AtlasTax</td><td><span class="badge by">F-1 &middot; J-1 &middot; M-1</span></td><td><span class="badge by">Auto-detected</span></td><td><span class="badge by">Yes</span></td><td>Planned flat fee</td></tr>
         <tr><td>Sprintax</td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Manual</span></td><td><span class="badge bn">Text-heavy</span></td><td>$100&ndash;150</td></tr>
         <tr><td>TurboTax</td><td><span class="badge bn">Residents only</span></td><td><span class="badge bn">No</span></td><td><span class="badge bn">No</span></td><td>$0&ndash;120</td></tr>
         <tr><td>H&amp;R Block</td><td><span class="badge bn">Primarily residents</span></td><td><span class="badge bn">No</span></td><td><span class="badge bn">No</span></td><td>$35&ndash;85+</td></tr>
@@ -554,7 +571,7 @@ img,video{max-width:100%}
 <div class="sec-dark">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl lbl-dark">04 &mdash; Who I&rsquo;m Designing For</span>
+    <span class="lbl lbl-dark">04 &middot; Who I&rsquo;m Designing For</span>
     <h2 class="h2 h2-w">Meet Aditi Sharma.</h2>
     <p class="body body-w">A proto-persona built from n=12 interviews. She represents the organized, tech-savvy student who just needs someone to make this make sense.</p>
   </div>
@@ -579,11 +596,11 @@ img,video{max-width:100%}
 
   <div class="journeys mt4 rev">
     <div class="j-card">
-      <div class="j-label j-b">Before &mdash; Filing without AtlasTax</div>
+      <div class="j-label j-b">Before, Filing without AtlasTax</div>
       <img src="UserJourneyBefore.webp" alt="User journey before" loading="lazy" decoding="async">
     </div>
     <div class="j-card">
-      <div class="j-label j-a">After &mdash; Filing with AtlasTax</div>
+      <div class="j-label j-a">After, Filing with AtlasTax</div>
       <img src="UserJourneyAfter.webp" alt="User journey after" loading="lazy" decoding="async">
     </div>
   </div>
@@ -594,9 +611,9 @@ img,video{max-width:100%}
 <section class="sec">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">05 &mdash; Solution Overview</span>
-    <h2 class="h2">AtlasTax. File taxes confidently,<br><em>the simple way.</em></h2>
-    <p class="body">A mobile-first platform designed for F-1, J-1 &amp; M-1 students to file IRS-compliant non-resident tax forms in under 20 minutes for $29.</p>
+    <span class="lbl">05 &middot; Solution Overview</span>
+    <h2 class="h2">What AtlasTax does.</h2>
+    <p class="body">A mobile-first platform designed to help F-1, J-1 &amp; M-1 students prepare their non-resident tax forms in under 20 minutes. The goal is IRS-compliant forms, which we plan to validate with a CPA before launch.</p>
   </div>
 
   <div class="product-shot rev">
@@ -625,15 +642,15 @@ img,video{max-width:100%}
 <div class="sec-tinted">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">06 &mdash; How It's Designed To Work</span>
-    <h2 class="h2">Three steps.<br><em>Under 20 minutes.</em></h2>
+    <span class="lbl">06 &middot; How It's Designed To Work</span>
+    <h2 class="h2">How it works, <em>in three steps.</em></h2>
   </div>
 
   <div class="how-steps rev">
     <div class="how-step">
       <span class="step-num">Step 01</span>
       <p class="step-title">Smart Onboarding</p>
-      <p class="step-desc">Students answer 10&ndash;15 questions to determine their correct filing path. Visa type, income sources, residency status &mdash; all used to personalize the experience.</p>
+      <p class="step-desc">Students answer 10&ndash;15 questions to determine their correct filing path. Visa type, income sources, residency status, all used to personalize the experience.</p>
     </div>
     <div class="how-step">
       <span class="step-num">Step 02</span>
@@ -676,8 +693,8 @@ img,video{max-width:100%}
   <div class="wrap">
     <div class="rev">
       <span class="lbl">Trust &amp; Data Handling</span>
-      <h2 class="h2">Sensitive documents.<br><em>Designed with care.</em></h2>
-      <p class="body">Students upload SSNs, visa documents, and income forms &mdash; information tied directly to their immigration status. Every design decision around document handling started from one question: would a student trust this with their most sensitive information?</p>
+      <h2 class="h2">Handling <em>sensitive documents.</em></h2>
+      <p class="body">Students upload SSNs, visa documents and income forms, all tied to their immigration status. So for every document decision, I asked: would a student trust this with that?</p>
     </div>
   
     <div class="g3 mt3 rev">
@@ -691,7 +708,7 @@ img,video{max-width:100%}
       </div>
       <div class="card">
         <h4>Security as a Build Priority</h4>
-        <p>As AtlasTax moves from prototype to production, encryption and access controls for uploaded documents are a first-priority engineering requirement before the 2027 pilot.</p>
+        <p>Before AtlasTax goes live, uploaded documents need encryption and access controls. That comes first in the build.</p>
       </div>
     </div>
   </div>
@@ -701,7 +718,7 @@ img,video{max-width:100%}
 <section class="sec">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">07 &mdash; Design Process</span>
+    <span class="lbl">07 &middot; Design Process</span>
     <h2 class="h2">From paper to prototype.</h2>
     <p class="body">Starting on paper to explore structure without committing to visuals. Three sketch sheets, then digital wireframes, then high-fidelity.</p>
   </div>
@@ -723,19 +740,19 @@ img,video{max-width:100%}
 
   <div class="mt3 rev">
     <div class="frame"><img src="Midfidelity.webp" alt="Mid-fidelity wireframe user flow" loading="lazy" decoding="async"></div>
-    <p class="cap">Mid-fidelity wireframes &mdash; full user flow</p>
+    <p class="cap">Mid-fidelity wireframes, full user flow</p>
   </div>
 
   <div class="ds-row rev">
     <div class="ds-notes">
-      <p class="body" style="margin-bottom:1rem">The design system was built to feel calm and trustworthy &mdash; deliberately opposite to the anxiety students already feel about taxes.</p>
-      <div class="ds-note"><strong>Color</strong><span>Muted teal and cream &mdash; warm, not clinical. Chosen to reduce the visual stress of financial interfaces.</span></div>
-      <div class="ds-note"><strong>Typography</strong><span>SF Pro throughout &mdash; familiar from iOS, which reduces cognitive load on a mobile-first product.</span></div>
+      <p class="body" style="margin-bottom:1rem">Taxes already stress students out, so the design system is meant to feel calm.</p>
+      <div class="ds-note"><strong>Color</strong><span>Muted teal and cream, warm, not clinical. Chosen to reduce the visual stress of financial interfaces.</span></div>
+      <div class="ds-note"><strong>Typography</strong><span>SF Pro throughout, familiar from iOS, which reduces cognitive load on a mobile-first product.</span></div>
       <div class="ds-note"><strong>Illustration</strong><span>Hand-drawn style icons soften the intimidation of tax forms and keep the experience feeling human.</span></div>
     </div>
     <div>
       <div class="frame"><img src="Styletile.webp" alt="Design system" loading="lazy" decoding="async"></div>
-      <p class="cap">Design system &mdash; color, type, illustration, brand</p>
+      <p class="cap">Design system, color, type, illustration, brand</p>
     </div>
   </div>
 </div>
@@ -745,16 +762,17 @@ img,video{max-width:100%}
 <div class="sec-tinted">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">08 &mdash; Iterations</span>
-    <h2 class="h2">Mid-fi to hi-fi &mdash; what users<br><em>forced me to change.</em></h2>
-    <p class="body">Usability testing 1 included think-aloud testing with 3 people. Each session surfaced something that would have broken the experience in production.</p>
+    <span class="lbl">08 &middot; Iterations</span>
+    <h2 class="h2">Mid-fi to hi-fi, what users<br><em>forced me to change.</em></h2>
+    <p class="body">Round one was think-aloud testing with 3 people. Each session turned up a problem that would have broken the flow.</p>
     <a class="ta-link" href="https://drive.google.com/file/d/1IIafFRjAlFkCamBSrl6cdCtcKHVmu7TF/view?usp=sharing" target="_blank">Watch think-aloud session</a>
+    <p class="consent-note">Shared with the participant&rsquo;s consent.</p>
   </div>
 
   <div class="iter rev">
     <div class="iter-half">
       <span class="iter-tag tag-b">Finding 01</span>
-      <p>When users selected scholarship, on-campus job, or freelance, the screen jumped to a new question with no warning &mdash; breaking the expected select &rarr; continue pattern. Users thought it was a bug.</p>
+      <p>When users selected scholarship, on-campus job, or freelance, the screen jumped to a new question with no warning, breaking the expected select &rarr; continue pattern. Users thought it was a bug.</p>
       <div class="iter-2up">
       <div class="frame"><img src="Financepicturemid.webp" alt="Before: mid-fidelity income grid with Scholarship selected, just before the app jumps to a new question" loading="lazy" decoding="async"></div>
       <div class="frame"><img src="scholarshipmid.webp" alt="Before: the unannounced follow-up question asking whether the scholarship covered tuition only or living expenses too" loading="lazy" decoding="async"></div>
@@ -784,7 +802,7 @@ img,video{max-width:100%}
       <p>Added a &ldquo;FILE 2025 &rarr;&rdquo; button that appears once all documents are uploaded, and a &ldquo;Download Checklist PDF&rdquo; option. Green checkmarks make completion state unambiguous.</p>
       <div class="iter-2up">
         <div class="frame"><img src="DocumentUpload.webp" alt="After: document checklist with upload sections for income, education, visa and supporting forms, plus a Download Checklist PDF button" loading="lazy" decoding="async"></div>
-        <div class="frame"><img src="FormGenerated.webp" alt="Forms generated" loading="lazy" decoding="async"></div>
+        <div class="frame"><img src="DocumentUploaded.webp" alt="After: every checklist category checked off, with the new FILE 2025 button and a Download Checklist PDF option" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </div>
@@ -792,7 +810,7 @@ img,video{max-width:100%}
   <div class="iter rev">
     <div class="iter-half">
       <span class="iter-tag tag-b">Finding 03</span>
-      <p>Users questioned why the deadlines section existed &mdash; &ldquo;I can just Google this.&rdquo; The feature needed a reason to exist beyond tax season to justify its place in the app.</p>
+      <p>Users questioned why the deadlines section existed, &ldquo;I can just Google this.&rdquo; The feature needed a reason to exist beyond tax season to justify its place in the app.</p>
       <div class="iter-2up">
         <div class="frame"><img src="Homepagemid.webp" alt="Before: questioning deadlines" loading="lazy" decoding="async"></div>
         <div class="frame"><img src="Deadlinesmid.webp" alt="Before: random deadlines" loading="lazy" decoding="async"></div>
@@ -800,7 +818,7 @@ img,video{max-width:100%}
     </div>
     <div class="iter-half">
       <span class="iter-tag tag-a">Solution</span>
-      <p>Deadlines are now personalized once documents are uploaded &mdash; including OPT application windows, visa expiry, and I-20 dates. The app becomes useful year-round, not just in April.</p>
+      <p>Deadlines are now personalized once documents are uploaded, including OPT application windows, visa expiry, and I-20 dates. The app becomes useful year-round, not just in April.</p>
       <div class="iter-2up">
         <div class="frame"><img src="Homepagedocsuploaded.webp" alt="After: new homepage" loading="lazy" decoding="async"></div>
         <div class="frame"><img src="Deadlinesuploaded.webp" alt="After: curated deadlines" loading="lazy" decoding="async"></div>
@@ -827,7 +845,6 @@ img,video{max-width:100%}
     </div>
   </div>
 
-  <p class="body mt3 rev" style="color:var(--dim);font-style:italic">Note: this is an ongoing project. These iterations reflect the transition from mid-fidelity to high-fidelity. The experience is still being refined before engineering handoff.</p>
 </div>
 </div>
 
@@ -835,7 +852,7 @@ img,video{max-width:100%}
 <section class="sec">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">09 &mdash; Final Flow</span>
+    <span class="lbl">09 &middot; Final Flow</span>
     <h2 class="h2">The experience, end to end.</h2>
     <span class="flow-hint">Hover (or tap) over the screens to see the flow in motion (2-4)</span>
   </div>
@@ -895,15 +912,21 @@ img,video{max-width:100%}
 <div class="sec-dark">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl lbl-dark">10 &mdash; Results &amp; Validation</span>
-    <h2 class="h2 h2-w">The numbers spoke.</h2>
-    <p class="body body-w">Measured through a second round of unmoderated usability testing with 15 F-1 students after completing the latest high-fidelity prototype task flow. </p>
+    <span class="lbl lbl-dark">10 &middot; Results &amp; Validation</span>
+    <h2 class="h2 h2-w">Round two results.</h2>
+    <p class="body body-w">15 F-1 students tested the high-fidelity prototype on their own and answered a survey afterward. Because testing was unmoderated, these numbers are what testers reported, not what I observed. They estimated the flow took about 10 minutes on average, and no more than 20.</p>
   </div>
 
   <div class="data-row rev">
-    <div class="data-card"><span class="data-n">86.7%</span><span class="data-l">Preferred AtlasTax over their current method</span></div>
-    <div class="data-card"><span class="data-n">93.3%</span><span class="data-l">Reported reduced filing anxiety</span></div>
-    <div class="data-card"><span class="data-n">93.3%</span><span class="data-l">Would use this tool during tax season</span></div>
+    <div class="data-card"><span class="data-n">15/15</span><span class="data-l">Said they finished the flow without outside help</span></div>
+    <div class="data-card"><span class="data-n">13/15</span><span class="data-l">Preferred AtlasTax over their current tool</span></div>
+    <div class="data-card"><span class="data-n">14/15</span><span class="data-l">Said it reduced their anxiety about filing</span></div>
+  </div>
+
+  <div class="data-row data-row-2 rev">
+    <div class="data-card"><span class="data-n">11/15</span><span class="data-l">Rated the flow simple to understand</span><span class="data-note">3 rated it very difficult</span></div>
+    <div class="data-card"><span class="data-n">14/15</span><span class="data-l">Would use it during tax season</span></div>
+    <div class="data-card"><span class="data-n">12/15</span><span class="data-l">Said they&rsquo;d pay $29 to file</span></div>
   </div>
 
   <div class="q q-dark mt3 rev">
@@ -911,13 +934,29 @@ img,video{max-width:100%}
     <cite>Round 2 usability testing participant</cite>
   </div>
 
-  <div class="product-shot rev">
-    <img src="pagesmock.webp" alt="Final product spread" loading="lazy" decoding="async">
+  <div class="iter iter-dark rev">
+    <div class="iter-half">
+      <span class="iter-tag tag-b">Round two finding</span>
+      <p>Testers still asked &ldquo;then what?&rdquo; after FILE 2025, since it didn&rsquo;t lead anywhere. The 3 who rated it very difficult got stuck at document upload, and 2 comments called the dropdowns hard to use.</p>
+      <!-- ROUND 2 SCREEN (before) -->
+      <div class="frame r2-shot r2-single"><img src="DocumentUploaded.webp" alt="Round two: the completed document checklist with the FILE 2025 button, which didn&rsquo;t lead anywhere yet" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
+    </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Added a Forms Generated screen after FILE 2025, so the flow ends with forms ready to review. The checklist dropdowns get fixed in the Claude Code build. Neither change has been tested yet.</p>
+      <!-- ROUND 2 SCREENS (after) -->
+      <div class="iter-2up">
+        <div class="frame r2-shot"><img src="FormGenerated.webp" alt="After round two: Your Forms Are Ready screen showing the auto-filled tax form with Submit Forms and Review Forms buttons" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
+        <div class="frame r2-shot"><img src="FormsReady.webp" alt="After round two: confirmation that the forms are ready for submission, with a prompt to download, sign and mail them to the IRS" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
+      </div>
+    </div>
   </div>
+
+  <p class="body mt3 rev" style="color:rgba(255,255,255,.72);font-style:italic">Note: this is an ongoing project. These changes were made to the high-fidelity prototype after round two, and the experience is still being refined before engineering handoff.</p>
 
   <div class="pitch-block rev">
     <div class="pitch-n">
-      2nd Place &mdash; San Francisco State University Lam Family College of Business Product Pitch Competition
+      2nd Place, San Francisco State University Lam Family College of Business Product Pitch Competition
       <span>AtlasTax went from UX prototype to full business pitch in 3 weeks: covering product, market size, business model, and risk strategies. I was also invited as guest speaker at the Epsilon Pi Tau inauguration at SFSU.</span>
     </div>
     <a class="pitch-link" href="https://cob.sfsu.edu/initiatives-centers/pitch-contest" target="_blank">View Pitch Contest Details &rarr;</a>
@@ -945,24 +984,25 @@ img,video{max-width:100%}
 <section class="sec">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">11 &mdash; Reflection</span>
+    <span class="lbl">11 &middot; Reflection</span>
     <h2 class="h2">What this taught me.</h2>
   </div>
 
   <div class="reflects rev">
-    <div class="r-card"><span class="r-n">01</span><h4>Simplicity in complex domains</h4><p>Taxes feel impossible. But structuring information correctly is what turns overwhelming into manageable. That distinction took multiple iterations to understand.</p></div>
-    <div class="r-card"><span class="r-n">02</span><h4>Small tests reveal big problems fast</h4><p>Three users in phase 1 caught the broken flow interaction. Three more in phase 2 revealed the missing file CTA. You don&rsquo;t need a hundred participants to find what&rsquo;s broken.</p></div>
-    <div class="r-card"><span class="r-n">03</span><h4>Anxiety is a design problem</h4><p>93.3% reduced anxiety is a product outcome. If users feel scared navigating your interface, the design failed regardless of how clean it looks.</p></div>
-    <div class="r-card"><span class="r-n">04</span><h4>Explain the "why," not just the "what"</h4><p>Users weren't confused by the SSN and treaty questions, they didn't know why they were being asked. Adding a brief explanation and a source link fixed it.</p></div>
-    <div class="r-card"><span class="r-n">05</span><h4>Niche doesn't mean unfundable</h4><p> At the pitch competition, the sharpest pushback was "1.2 million students is small, why does this matter?" A real problem for a small population still has to answer the scalability question.</p></div>
+    <div class="r-card"><span class="r-n">01</span><h4>One question at a time made taxes manageable</h4><p>Testers saw taxes as impossible. Asking one question per screen, in the right order, is what made the flow manageable, and it took several rounds to get that order right.</p></div>
+    <div class="r-card"><span class="r-n">02</span><h4>Three testers were enough to find the dead end</h4><p>Three think-aloud sessions in round one showed the flow dead-ended after document upload. In round two, my FILE 2025 fix only moved the dead end, because the button didn&rsquo;t go anywhere yet.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>I measured anxiety, not just usability</h4><p>14 of 15 testers said the flow reduced their anxiety about filing. For students worried about their visa, how the flow feels matters as much as whether it works.</p></div>
+    <div class="r-card"><span class="r-n">04</span><h4>Users needed to know why each question was asked</h4><p>Users understood the SSN and treaty questions. They just didn&rsquo;t know why we needed the answers. A one-line explanation and a source link fixed it.</p></div>
+    <div class="r-card"><span class="r-n">05</span><h4>Judges questioned the market size</h4><p>The toughest question at the pitch competition was &ldquo;Why do 1.2 million students matter?&rdquo; I still need a clearer answer on how AtlasTax grows beyond them.</p></div>
   </div>
 
   <ul class="nexts mt4 rev">
-    <li><span>Next &rarr;</span> Build the initial MVP with Lovable</li>
+    <li><span>Next &rarr;</span> Build a working version with Claude Code, starting with a fix for the document checklist</li>
+    <li><span>Next &rarr;</span> Run moderated testing on the full flow, including Forms Generated, and time each task</li>
     <li><span>Next &rarr;</span> Partner with a software engineer to develop the product further</li>
     <li><span>Next &rarr;</span> Validate form generation and compliance logic with a CPA</li>
     <li><span>Next &rarr;</span> Explore e-filing integration to replace download-and-mail submission</li>
-    <li><span>Next &rarr;</span> Interactive Learn Taxes module &mdash; removed for time constraints, now the priority</li>
+    <li><span>Next &rarr;</span> Interactive Learn Taxes module, removed for time constraints, now the priority</li>
     <li><span>Next &rarr;</span> Expand filing support for J-1, M-1, OPT, and more edge-case scenarios</li>
   </ul>
 </div>
@@ -1063,5 +1103,8 @@ document.querySelectorAll('.phone').forEach(p => {
   });
 })();
 </script>
+
+<!-- Visitor stats (GoatCounter: free, no cookies). Dashboard: https://tamannashirol.goatcounter.com -->
+<script data-goatcounter="https://tamannashirol.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
