@@ -454,6 +454,9 @@ img,video{max-width:100%}
 .vbtn:hover{background:rgba(20,20,20,.92);transform:scale(1.06)}
 .vbtn:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px rgba(20,20,20,.6)}
 .vbtn svg{width:14px;height:14px;fill:currentColor}
+/* hidden for mouse + touch users, appears only when a keyboard user tabs to it */
+.vbtn{opacity:0;pointer-events:none;transition:opacity .15s}
+.vbtn:focus-visible{opacity:1;pointer-events:auto}
 .is-playing .phone-video,.is-playing .channel-video{opacity:1}
 </style>
 </head>
