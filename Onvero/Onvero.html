@@ -261,6 +261,7 @@ display:block;
 .data-card{padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04)}
 .data-n{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:300;color:#fff;display:block;line-height:1}
 .data-l{font-size:.875rem;color:rgba(255,255,255,.72);margin-top:.4rem;display:block;line-height:1.5}
+.data-note{font-family:'DM Sans',sans-serif;font-size:.875rem;line-height:1.7;color:rgba(255,255,255,.75);max-width:720px;margin-top:1.5rem}
 
 /* BUSINESS MODEL */
 .biz-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2rem}
@@ -371,32 +372,7 @@ height:118px;
   object-fit:cover;
   object-position:center top;
 }
-.iter .frame{
-    text-align:center;
-    padding:1rem;
-}
-
-.iter .frame img{
-    max-height:360px;
-    width:auto;
-    display:inline-block;
-    border-radius:9px;
-}
-.iter-2up-frame{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:.75rem;
-  padding:1rem;
-  align-items:center;
-  justify-items:center;
-}
-
-.iter-2up-frame img{
-  max-height:360px;
-  width:auto;
-  max-width:100%;
-  object-fit:contain;
-}
+.iter-half > .frame{width:calc(50% - .375rem);margin:1rem auto 0}
 .obstacle-layout{
     display:grid;
     grid-template-columns:1.2fr 1fr;
@@ -485,7 +461,7 @@ img,video{max-width:100%}
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-menu" id="navMenu">
-      <li><a href="../index.html#work"class="nav-link" data-section="work">Work</a></li>
+      <li><a href="../index.html#work" class="nav-link" data-section="work">Work</a></li>
       <li><a href="../about.html" class="nav-link" >About</a></li>
       <li><a href="/explorations.html" class="nav-link" >Explorations</a></li>
       <li><a href="../artgallery/art.html" class="nav-link" >Art Gallery</a></li>
@@ -533,9 +509,11 @@ img,video{max-width:100%}
         <p>&ldquo;I&rsquo;ve lived here most of my life, but I still feel like I&rsquo;m walking on eggshells.&rdquo;</p>
         <cite>Research participant</cite>
       </div>
+      <p class="body mt2">We designed primarily for Spanish-speaking community members with limited English and low digital literacy, the people most at risk of falling for a scam.</p>
     </div>
     <div>
-      <div class="frame"><img src="problem.webp" alt="Problem statement" loading="lazy" decoding="async"></div>
+      <div class="frame"><img src="problem.webp" alt="Sketch of an older community member seeking legal help" loading="lazy" decoding="async"></div>
+      <p class="cap">Who we designed for</p>
     </div>
   </div>
 </div>
@@ -619,6 +597,18 @@ img,video{max-width:100%}
       <p>Language barriers, low digital literacy, and legal jargon created friction at every step of the process.</p>
     </div>
   </div>
+
+  <div class="g2 mt3 rev">
+    <div>
+      <div class="frame"><img src="crazy8s.webp" alt="Crazy 8s and dot voting" loading="lazy" decoding="async"></div>
+      <p class="cap">Crazy 8s + dot voting workshop</p>
+    </div>
+    <div>
+      <span class="lbl">From findings to first concept</span>
+      <p class="body">We used Crazy 8s and dot voting to explore ideas around trust, accessibility, legal guidance, and fraud prevention, then built our first version from the concepts that won.</p>
+    </div>
+  </div>
+  
 </div>
 </div>
 
@@ -707,11 +697,11 @@ img,video{max-width:100%}
     </div>
     </section> -->
 
-<!-- 05 ITERATIONS -->
+<!-- 03 ITERATIONS -->
 <div class="sec-tinted">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">05 &middot; Iterations</span>
+    <span class="lbl">03 &middot; Iterations</span>
     <h2 class="h2">Our first version failed testing, <em>and it changed our direction.</em></h2>
     <p class="body">
         Our first round of testing revealed a deeper issue than usability.
@@ -794,9 +784,9 @@ img,video{max-width:100%}
     <div class="iter-half">
       <span class="iter-tag tag-a">Solution</span>
       <p>Rebranded as OnveroAI with transparent data handling explained upfront. Connecting the assistant directly to the verified platform increased trust.</p>
-      <div class="frame iter-2up-frame">
-        <img src="LANDINGPAGEspeech.webp" alt="OnveroAI privacy onboarding" loading="lazy" decoding="async">
-        <img src="AIlegalchat.webp" alt="OnveroAI chat" loading="lazy" decoding="async">
+      <div class="iter-2up">
+        <div class="frame"><img src="LANDINGPAGEspeech.webp" alt="OnveroAI privacy onboarding" loading="lazy" decoding="async"></div>
+        <div class="frame"><img src="AIlegalchat.webp" alt="OnveroAI chat" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </div>
@@ -835,18 +825,19 @@ img,video{max-width:100%}
 
   <div class="success-banner rev">
     <span class="success-n">70%</span>
-<span class="success-l">Task success rate, up from 30% in initial testing, measured across 10 moderated usability sessions where participants were tasked with finding a nearby pro-bono lawyer.</span>  </div>
+    <span class="success-l">Task success rate, up from 30% in round one. The same 10 participants tested both versions, each moderated, and each was tasked with finding a nearby pro-bono lawyer.</span>
+  </div>
 </div>
 </div>
 
 
-<!-- 06 ACCESSIBILITY -->
+<!-- 04 ACCESSIBILITY -->
 <div class="sec-tinted">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">06 &middot; Accessibility Measures</span>
-    <h2 class="h2">Usable without reading, <em>typing, or English.</em></h2>
-    <p class="body">We designed for accessibility from the start: simple interactions, clear hierarchy and colors checked against WCAG contrast, so people of all abilities can use it.</p>
+    <span class="lbl">04 &middot; Accessibility Measures</span>
+    <h2 class="h2">Accessibility beyond WCAG</h2>
+    <p class="body">We designed for accessibility from the start: simple interactions, clear hierarchy, and colors checked for contrast and color-blind readability.</p>
   </div>
 
   <div class="access-grid rev">
@@ -854,7 +845,7 @@ img,video{max-width:100%}
       <div class="access-illustration">
         <img src="colorblind.webp" alt="Color accessibility" loading="lazy" decoding="async">
     </div>
-      <h4>Optimized for Color-Blind Users</h4>
+      <h4>Checked for Color-Blind Users</h4>
       <p>Contrast and color combinations checked for deuteranopia, protanopia and tritanopia, so text stays readable.</p>
     </div>
     <div class="access-card">
@@ -879,16 +870,17 @@ img,video{max-width:100%}
       <p>All copy written at a sixth-grade reading level, with little to no legal jargon. The copy was tested with a Spanish-speaking participant with limited English.</p>
     </div>
   </div>
+  <p class="consent-note">Tested so far: color checks and copy with one Spanish-speaking participant. Voice input has not yet been tested with users.</p>
 </div>
 </div>
 
-<!-- 07 FINAL FLOW -->
+<!-- 05 FINAL FLOW -->
 <section class="flow-section">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">07 &middot; Final Experience</span>
+    <span class="lbl">05 &middot; Final Experience</span>
     <h2 class="h2">The experience, end to end.</h2>
-    <p class="body">Every screen evaluated against a single question: would Maria feel safe using this?</p>
+    <p class="body">Every screen evaluated against a single question: would an undocumented user feel safe using this?</p>
     <div class="q mt2">
       <p>Together we stand, together we navigate.</p>
   </div>
@@ -969,20 +961,21 @@ img,video{max-width:100%}
 </div>
 </section>
 
-<!-- 08 RESULTS -->
+<!-- 06 RESULTS -->
 <div class="sec-dark">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl lbl-dark">08 &middot; Results &amp; Validation</span>
+    <span class="lbl lbl-dark">06 &middot; Results &amp; Validation</span>
     <h2 class="h2 h2-w">Round two results.</h2>
-    <p class="body body-w">After the trust redesign, more users finished the journey and said they felt confident asking for help, something they&rsquo;d avoided before.</p>
-  </div>
+    <p class="body body-w">After the trust redesign, more users finished the journey. One participant told us they felt safer knowing they weren&rsquo;t doing it alone.</p>  </div>
 
   <div class="data-row rev">
     <div class="data-card"><span class="data-n">70%</span><span class="data-l">Task success: completed the flow as intended</span></div>
     <div class="data-card"><span class="data-n">90%</span><span class="data-l">Task completion: reached the end, even with wrong turns</span></div>
     <div class="data-card"><span class="data-n">10</span><span class="data-l">Participants involved in testing</span></div>
   </div>
+
+  <p class="data-note rev">The same 10 people tested both rounds, so some of the improvement may come from familiarity with the task. We retested after the trust redesign to see whether it removed the barriers they hit the first time. Participant details are withheld to protect their privacy.</p>
 
   <div class="q q-dark mt3 rev">
     <p>&ldquo;I feel safer knowing I&rsquo;m not doing this alone.&rdquo;</p>
@@ -1010,17 +1003,15 @@ img,video{max-width:100%}
 <div class="frame">
     <img src="A378A9D2-F77D-45A8-9916-208D72BDD1D2.webp" alt="Onvero team presentation" loading="lazy" decoding="async">
 </div>
-
-  </div>
   </div>
 </div>
 </div>
 
-<!-- 09 LAUNCH STORY -->
+<!-- 07 LAUNCH STORY -->
 <section class="sec">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">09 &middot; Launch Story</span>
+    <span class="lbl">07 &middot; Launch Story</span>
     <h2 class="h2">The marketing video.</h2>
     <p class="body">For the final showcase, the team created a marketing video communicating the problem, the impact of legal scams, and how Onvero helps users find trustworthy support.</p>
   </div>
@@ -1031,15 +1022,15 @@ img,video{max-width:100%}
       <track kind="captions" src="captions-en.vtt" srclang="en" label="English">
     </video>
   </div>
-  <p class="cap">30-second conceptual story played during the final showcase at Wells Fargo HQ to illustrate the emotional impact of legal scams created </p>
+  <p class="cap">30-second conceptual story played during the final showcase at Wells Fargo HQ to illustrate the emotional impact of legal scams </p>
 </div>
 </section>
 
-<!-- 10 REFLECTION + NEXT STEPS -->
+<!-- 08 REFLECTION + NEXT STEPS -->
 <div class="sec-tinted">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">10 &middot; Reflection</span>
+    <span class="lbl">08 &middot; Reflection</span>
     <h2 class="h2">What this project taught me.</h2>
   </div>
 
@@ -1063,7 +1054,7 @@ img,video{max-width:100%}
     <div class="concept-card">
       <div class="concept-preview">
         <div class="concept-preview-placeholder">
-            <img src="AddtionalLanguages.webp" alt="lanuage expansion" loading="lazy" decoding="async">
+            <img src="AddtionalLanguages.webp" alt="Language expansion" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="concept-info">
