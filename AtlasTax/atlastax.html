@@ -185,7 +185,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 
 /* PHONE HOVER ROW */
 .flow-hint{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-top:.4rem;border-bottom:1px solid var(--rule);padding-bottom:.2rem}
-.phones{display:grid;grid-template-columns:repeat(7,1fr);gap:.85rem;margin-top:2.5rem;align-items:end}
+.phones{display:grid;grid-template-columns:repeat(5,1fr);gap:1.25rem;margin-top:2.5rem;align-items:end}
 .phone{cursor:pointer;text-align:center}
 .phone-shell{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/19;background:#111;border:1.5px solid rgba(0,0,0,.1);box-shadow:0 6px 24px rgba(0,0,0,.11);transition:transform .3s,box-shadow .3s}
 .phone:hover .phone-shell{transform:translateY(-10px);box-shadow:0 20px 48px rgba(0,0,0,.18)}
@@ -454,7 +454,7 @@ img,video{max-width:100%}
 <div class="stat-bar">
   <div class="stat-cell"><span class="stat-n">86.7%</span><span class="stat-l">Preferred it over their current tool</span></div>
   <div class="stat-cell"><span class="stat-n">93.3%</span><span class="stat-l">Said it reduced their filing anxiety</span></div>
-  <div class="stat-cell"><span class="stat-n">73%</span><span class="stat-l">Rated the flow simple to understand</span></div>
+  <div class="stat-cell"><span class="stat-n">73.3%</span><span class="stat-l">Rated the flow simple to understand</span></div>
   <div class="stat-cell"><span class="stat-n">2nd</span><span class="stat-l">Place at SF State's business school product pitch</span></div>
 </div>
 
@@ -469,7 +469,7 @@ img,video{max-width:100%}
       <p class="body" style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--ink);margin:1.5rem 0">
         The system exists, just not for them. Residents have TurboTax. Non-resident students are left with confusion.
       </p>
-                  <p class="body">1.2 million international students in the U.S. (2024/25 academic year). Nearly all carry annual IRS filing obligations. Almost none have a simplified tool built for them.</p>
+      <p class="body">1.2 million international students in the U.S. (2024/25 academic year). Nearly all carry annual IRS filing obligations. Almost none have a simplified tool built for them.</p>
     </div>
     <div>
       <div class="frame"><img src="atlasmockup.webp" alt="AtlasTax Mockup" loading="lazy" decoding="async"></div>
@@ -515,7 +515,7 @@ img,video{max-width:100%}
       <p class="cap">Empathy map, synthesized from interviews</p>
     </div>
   </div>
-
+  <p class="body mt3 rev" style="max-width:720px"><strong>Who I&rsquo;m designing for:</strong> F-1 and OPT students who don&rsquo;t know which form applies to them, and who are afraid one mistake will affect their visa. Everything in the flow is built for that fear.</p>
   <div class="g3 mt3 rev">
     <div class="card">
       <h4>Document Collection</h4>
@@ -559,11 +559,13 @@ img,video{max-width:100%}
         <tr><th>Product</th><th>Non-Resident</th><th>Tax Treaty</th><th>Student-First</th><th>Price</th></tr>
       </thead>
       <tbody>
-        <tr class="at"><td>AtlasTax</td><td><span class="badge by">F-1 &middot; J-1 &middot; M-1</span></td><td><span class="badge by">Auto-detected</span></td><td><span class="badge by">Yes</span></td><td>Planned flat fee</td></tr>
+        <tr class="at"><td>AtlasTax</td><td><span class="badge by">F-1 &middot; J-1 &middot; M-1</span></td><td><span class="badge by">Guided treaty + 1042-S</span></td><td><span class="badge by">Yes</span></td><td>Planned flat fee</td></tr>
         <tr><td>Sprintax</td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Manual</span></td><td><span class="badge bn">Text-heavy</span></td><td>$100&ndash;150</td></tr>
         <tr><td>TurboTax</td><td><span class="badge bn">Residents only</span></td><td><span class="badge bn">No</span></td><td><span class="badge bn">No</span></td><td>$0&ndash;120</td></tr>
         <tr><td>H&amp;R Block</td><td><span class="badge bn">Primarily residents</span></td><td><span class="badge bn">No</span></td><td><span class="badge bn">No</span></td><td>$35&ndash;85+</td></tr>
-        <tr><td>CPA / VITA</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Manual</span></td><td>$200&ndash;400</td></tr>
+        <tr><td>CPA</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Manual</span></td><td>$200&ndash;400</td></tr>
+        <tr><td>VITA</td><td><span class="badge by">Depends on the University</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Manual</span></td><td>Free</td></tr>
+
       </tbody>
     </table>
   </div>
@@ -613,7 +615,7 @@ img,video{max-width:100%}
     <div class="how-step">
       <div class="iter-2up">
       <div class="frame"><img src="DocumentUploaded.webp" alt="All documents complete" loading="lazy" decoding="async"></div>
-      <div class="frame"><img src="FormGenerated.webp" alt="Your Forms Are Ready screen showing an auto-filled 1040-NR-EZ tax form with Submit Forms and Review Forms buttons" loading="lazy" decoding="async"></div>
+      <div class="frame"><img src="FormGenerated.webp" alt="Your Forms Are Ready screen showing an generated 1040-NR tax form with Submit Forms and Review Forms buttons" loading="lazy" decoding="async"></div>
     </div>
   </div>
   </div>
@@ -626,7 +628,7 @@ img,video{max-width:100%}
     <div class="rev">
       <span class="lbl">05 &middot; Final Flow</span>
       <h2 class="h2">The experience, end to end.</h2>
-      <span class="flow-hint">Hover (or tap) over the screens to see the flow in motion (2-4)</span>
+      <span class="flow-hint">Hover (or tap) over the screens to see the flow in motion (2-5)</span>
     </div>
   
     <div class="phones rev">
@@ -659,24 +661,11 @@ img,video{max-width:100%}
       </div>
       <div class="phone">
         <div class="phone-shell">
-          <img src="DocumentUploaded.webp" alt="Uploading" loading="lazy" decoding="async">
+          <img src="DocumentUploaded.webp" alt="Filing screen with all document sections uploaded and a FILE 2025 button" loading="lazy" decoding="async">
           <video src="file.mp4" aria-label="Screen recording: reviewing and filing the generated tax forms" muted loop playsinline></video>
         </div>
         <p>Filing</p>
       </div>
-      <div class="phone">
-        <div class="phone-shell">
-          <img src="Homepagedocsuploaded.webp" alt="Finance" loading="lazy" decoding="async">
-        </div>
-        <p>Deadlines</p>
-      </div>
-      <div class="phone">
-        <div class="phone-shell">
-          <img src="Deadlinesuploaded.webp" alt="Deadlines screen with a personalized timeline: school 1042-S deadline, federal filing deadline, graduation, OPT application, visa and I-20 expiry" loading="lazy" decoding="async">
-        </div>
-        <p>Personalized</p>
-      </div>
-    </div>
   </div>
   </section>
 
@@ -732,25 +721,6 @@ img,video{max-width:100%}
     <div class="iter rev">
       <div class="iter-half">
         <span class="iter-tag tag-b">Finding 03</span>
-        <p>Users questioned why the deadlines section existed, &ldquo;I can just Google this.&rdquo; The feature needed a reason to exist beyond tax season to justify its place in the app.</p>
-        <div class="iter-2up">
-          <div class="frame"><img src="Homepagemid.webp" alt="Before: questioning deadlines" loading="lazy" decoding="async"></div>
-          <div class="frame"><img src="Deadlinesmid.webp" alt="Before: random deadlines" loading="lazy" decoding="async"></div>
-        </div>
-      </div>
-      <div class="iter-half">
-        <span class="iter-tag tag-a">Solution</span>
-        <p>Deadlines are now personalized once documents are uploaded, including OPT application windows, visa expiry, and I-20 dates. The app becomes useful year-round, not just in April.</p>
-        <div class="iter-2up">
-          <div class="frame"><img src="Homepagedocsuploaded.webp" alt="After: new homepage" loading="lazy" decoding="async"></div>
-          <div class="frame"><img src="Deadlinesuploaded.webp" alt="After: curated deadlines" loading="lazy" decoding="async"></div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="iter rev">
-      <div class="iter-half">
-        <span class="iter-tag tag-b">Finding 04</span>
         <p>Users were unsure what some questions meant and why they were being asked. The flow assumed prior knowledge, causing confusion and making users less confident in their answers.</p>
         <div class="iter-2up">
           <div class="frame"><img src="ssnmid.webp" alt="Before: mid-fidelity question asking for an SSN or ITIN, with no explanation of why it is asked" loading="lazy" decoding="async"></div>
@@ -770,11 +740,11 @@ img,video{max-width:100%}
   </div>
   </div>
   
-  <!-- 06.5 TRUST & DATA HANDLING -->
+  <!-- 07 TRUST & DATA HANDLING -->
 <section class="sec">
   <div class="wrap">
     <div class="rev">
-      <span class="lbl">Trust &amp; Data Handling</span>
+      <span class="lbl">07 &middot; Trust &amp; Data Handling</span>
       <h2 class="h2">Handling <em>sensitive documents.</em></h2>
       <p class="body">Students upload SSNs, visa documents and income forms, all tied to their immigration status. So for every document decision, I asked: would a student trust this with that?</p>
     </div>
@@ -801,7 +771,7 @@ img,video{max-width:100%}
 <div class="sec-dark">
   <div class="wrap">
     <div class="rev">
-      <span class="lbl lbl-dark">07 &middot; Results &amp; Validation</span>
+      <span class="lbl lbl-dark">08 &middot; Results &amp; Validation</span>
       <h2 class="h2 h2-w">Round two results.</h2>
       <p class="body body-w">15 F-1 students tested the high-fidelity prototype on their own and answered a survey afterward. Because testing was unmoderated, these numbers are what testers reported, not what I observed. They estimated the flow took about 10 minutes on average, and no more than 20.</p>
     </div>
@@ -825,18 +795,35 @@ img,video{max-width:100%}
   
     <div class="iter iter-dark rev">
       <div class="iter-half">
-        <span class="iter-tag tag-b">Round two finding</span>
+        <span class="iter-tag tag-b">Round two &middot; Finding 01</span>
         <p>Testers still asked &ldquo;then what?&rdquo; after FILE 2025, since it didn&rsquo;t lead anywhere. The 3 who rated it very difficult got stuck at document upload, and 2 comments called the dropdowns hard to use.</p>
-        <!-- ROUND 2 SCREEN (before) -->
         <div class="frame r2-shot r2-single"><img src="DocumentUploaded.webp" alt="Round two: the completed document checklist with the FILE 2025 button, which didn&rsquo;t lead anywhere yet" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
       </div>
       <div class="iter-half">
         <span class="iter-tag tag-a">Solution</span>
         <p>Added a Forms Generated screen after FILE 2025, so the flow ends with forms ready to review. The checklist dropdowns get fixed in the Claude Code build. Neither change has been tested yet.</p>
-        <!-- ROUND 2 SCREENS (after) -->
         <div class="iter-2up">
-          <div class="frame r2-shot"><img src="FormGenerated.webp" alt="After round two: Your Forms Are Ready screen showing the auto-filled tax form with Submit Forms and Review Forms buttons" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
+          <div class="frame r2-shot"><img src="FormGenerated.webp" alt="After round two: Your Forms Are Ready screen showing the generated tax form with Submit Forms and Review Forms buttons" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
           <div class="frame r2-shot"><img src="FormsReady.webp" alt="After round two: confirmation that the forms are ready for submission, with a prompt to download, sign and mail them to the IRS" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="iter iter-dark rev">
+      <div class="iter-half">
+        <span class="iter-tag tag-b">Round two &middot; Finding 02</span>
+        <p>After round one, selecting scholarship opened the same kind of follow-up as every other income type, behind a popup heads-up. But scholarships are taxed differently for F-1 and J-1 students than most income, so one generic follow-up wasn&rsquo;t enough.</p>        <!-- ROUND 2 SCREEN (before) -->
+        <div class="iter-2up">
+        <div class="frame r2-shot"><img src="ScholarshipPopup.webp" alt="Before: scholarship pop-up" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
+        <div class="frame r2-shot"><img src="ScholarshipWithheld.webp" alt="Before: scholarship follow-up question" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
+    </div>
+  </div>
+      <div class="iter-half">
+        <span class="iter-tag tag-a">Solution</span>
+        <p>Scholarship now has its own set of questions for F-1 and J-1 students, the visa types where scholarship rules matter most. The questions change based on the visa chosen at the start. This has not yet been tested with J-1.</p>        <!-- ROUND 2 SCREENS (after) -->
+        <div class="iter-2up">
+          <div class="frame r2-shot"><img src="ScholarshipMoney.webp" alt="After: question about where the scholarship money went" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
+          <div class="frame r2-shot"><img src="J1Program.webp" alt="After: second J-1 scholarship follow-up question" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
         </div>
       </div>
     </div>
@@ -846,7 +833,7 @@ img,video{max-width:100%}
     <div class="pitch-block rev">
       <div class="pitch-n">
         2nd Place, San Francisco State University Lam Family College of Business Product Pitch Competition
-        <span>AtlasTax went from an initial UX prototype to a validated product strategy in 3 weeks. Pitching the product to business judges forced me to defend my design decisions through the lens of market viability, user trust, and business risk. I was also invited as guest speaker at the Epsilon Pi Tau inauguration at SFSU.</span>
+        <span>AtlasTax went from an initial UX prototype to a pitch-ready product strategy in 3 weeks. Pitching the product to business judges forced me to defend my design decisions through the lens of market viability, user trust, and business risk. I was also invited as guest speaker at the Epsilon Pi Tau inauguration at SFSU.</span>
       </div>
       <a class="pitch-link" href="https://cob.sfsu.edu/initiatives-centers/pitch-contest" target="_blank">View Pitch Contest Details &rarr;</a>
   
@@ -910,11 +897,11 @@ img,video{max-width:100%}
 </div>-->
 
 
-<!-- 08 DESIGN PROCESS -->
+<!-- 09 DESIGN PROCESS -->
 <section class="sec">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">08 &middot; Design Process</span>
+    <span class="lbl">09 &middot; Design Process</span>
     <h2 class="h2">From paper to prototype.</h2>
     <p class="body">Starting on paper to explore structure without committing to visuals. Three sketch sheets, then digital wireframes, then high-fidelity.</p>
   </div>
@@ -925,12 +912,12 @@ img,video{max-width:100%}
       <p class="cap">Onboarding Q&A + checklist</p>
     </div>
     <div>
-      <div class="sketch-frame"><img src="wireframe2.webp" alt="Deadlines sketches" loading="lazy" decoding="async"></div>
-      <p class="cap">Deadlines + learn screen</p>
-    </div>
-    <div>
       <div class="sketch-frame"><img src="wireframe3.webp" alt="Homepage sketches" loading="lazy" decoding="async"></div>
       <p class="cap">Homepage explorations</p>
+    </div>
+    <div>
+      <div class="sketch-frame"><img src="wireframe2.webp" alt="Deadlines sketches" loading="lazy" decoding="async"></div>
+      <p class="cap">Deadlines + learn screen (Feature was cut)</p>
     </div>
   </div>
   <div class="mt3 rev">
@@ -953,7 +940,7 @@ img,video{max-width:100%}
     <div class="ds-notes">
       <p class="body" style="margin-bottom:1rem">Taxes already stress students out, so the design system is meant to feel calm.</p>
       <div class="ds-note"><strong>Color</strong><span>Muted teal and cream, warm, not clinical. Chosen to reduce the visual stress of financial interfaces.</span></div>
-      <div class="ds-note"><strong>Typography</strong><span>SF Pro throughout, familiar from iOS, which reduces cognitive load on a mobile-first product.</span></div>
+      <div class="ds-note"><strong>Typography</strong><span>SF Pro throughout, familiar from iOS, so it feels native on a phone.</span></div>
       <div class="ds-note"><strong>Illustration</strong><span>Hand-drawn style icons soften the intimidation of tax forms and keep the experience feeling human.</span></div>
     </div>
     <div>
@@ -965,18 +952,18 @@ img,video{max-width:100%}
 </div>
 </section>
 
-<!-- 09 REFLECTION -->
+<!-- 10 REFLECTION -->
 <section class="sec">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">09 &middot; Reflection</span>
+    <span class="lbl">10 &middot; Reflection</span>
     <h2 class="h2">What this taught me.</h2>
   </div>
 
   <div class="reflects rev">
     <div class="r-card"><span class="r-n">01</span><h4>One question at a time made taxes manageable</h4><p>Testers saw taxes as impossible. Asking one question per screen, in the right order, is what made the flow manageable, and it took several rounds to get that order right.</p></div>
     <div class="r-card"><span class="r-n">02</span><h4>Three testers were enough to find the dead end</h4><p>Three think-aloud sessions in round one showed the flow dead-ended after document upload. In round two, my FILE 2025 fix only moved the dead end, because the button didn&rsquo;t go anywhere yet.</p></div>
-    <div class="r-card"><span class="r-n">03</span><h4>I measured anxiety, not just usability</h4><p>14 of 15 testers said the flow reduced their anxiety about filing. For students worried about their visa, how the flow feels matters as much as whether it works.</p></div>
+    <div class="r-card"><span class="r-n">03</span><h4>Testers reported less anxiety</h4><p>14 of 15 testers said the flow reduced their anxiety about filing. For students worried about their visa, how the flow feels matters as much as whether it works.</p></div>
     <div class="r-card"><span class="r-n">04</span><h4>Users needed to know why each question was asked</h4><p>Users understood the SSN and treaty questions. They just didn&rsquo;t know why we needed the answers. A one-line explanation and a source link fixed it.</p></div>
     <div class="r-card"><span class="r-n">05</span><h4>Designing for edge-case audiences</h4><p>The pitch highlighted how specialized the F-1 visa tax flow is. As a designer, my next challenge is exploring how this onboarding system scales to broader non-resident tax scenarios without adding cognitive load.</p></div>
   </div>
