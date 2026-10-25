@@ -221,6 +221,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .iter-half p{font-size:.9375rem;color:var(--mid);line-height:1.75;margin-bottom:.8rem}
 .iter-half .frame{margin-top:1rem}
 .iter-2up{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
+.iter-half .iter-2up .frame,
+.iter-half .phone-pair .frame{margin-top:0}
 
 /* FULL BLEED */
 .full{width:100%;display:block}
@@ -408,12 +410,74 @@ img,video{max-width:100%}
 .r2-shot{border-color:rgba(255,255,255,.14)}
 .r2-single{width:calc(50% - .375rem);margin:1rem auto 0}
 .r2-empty{aspect-ratio:9/19;border:1.5px dashed rgba(255,255,255,.3);background:rgba(255,255,255,.03)}
-@media (max-width:900px){.iter-dark{grid-template-columns:1fr}.iter-dark .iter-half+.iter-half{border-left:none;border-top:1px solid rgba(255,255,255,.14)}}
 
 /* second row of result cards */
 .data-row-2{margin-top:1.25rem}
 .data-note{display:block;font-family:'DM Sans',sans-serif;font-size:.8rem;color:rgba(255,255,255,.72);margin-top:.5rem}
+
+/* ── MOBILE ── */
+@media (max-width:900px){
+
+  /* hero */
+  .hero{height:auto;min-height:100svh}
+  .hero-content{height:auto;min-height:100svh;padding:88px 1.5rem 2rem;justify-content:flex-end;max-width:none}
+  .hero-img{object-position:60% top}
+  .logo-hero img{width:72px;height:72px}
+  .hero h1{font-size:2.1rem}
+  .hero-hmw{font-size:.9rem;letter-spacing:.02em;margin-bottom:1.75rem}
+  .hero-meta{gap:1rem 1.75rem}
+
+  /* Final Flow phones: swipe row */
+  .phones{
+    display:flex !important;
+    gap:1rem;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    margin-left:-1.5rem;margin-right:-1.5rem;
+    padding:1rem 1.5rem 1.75rem;
+    scroll-padding-left:1.5rem;
+    scrollbar-width:none;
+  }
+  .phones::-webkit-scrollbar{display:none}
+  .phones>.phone{flex:0 0 60%;scroll-snap-align:start}
+
+  /* How it works: each step's text sits above its own phones */
+  .how-wrap{display:flex;flex-direction:column}
+  .how-wrap>.rev:first-child{margin-bottom:1.5rem}
+  .how-wrap>.how-steps{display:contents}
+
+  .how-text>.how-step:nth-child(1){order:1}
+  .how-shots>.how-step:nth-child(1){order:2}
+  .how-text>.how-step:nth-child(2){order:3}
+  .how-shots>.how-step:nth-child(2){order:4}
+  .how-text>.how-step:nth-child(3){order:5}
+  .how-shots>.how-step:nth-child(3){order:6}
+
+  .how-text>.how-step,.how-shots>.how-step{border:1px solid var(--rule)}
+  .how-text>.how-step{border-radius:12px 12px 0 0;border-bottom:none}
+  .how-shots>.how-step{border-radius:0 0 12px 12px;border-top:none;margin-bottom:1.5rem}
+
+  /* Iterations: finding + solution side by side */
+  .iter,.iter-dark{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}
+  .iter-half{min-width:0;padding:1rem .85rem}
+  .iter-half+.iter-half{border-top:none;border-left:1px solid var(--rule)}
+  .iter-dark .iter-half+.iter-half{border-left-color:rgba(255,255,255,.14)}
+  .iter-half p{font-size:.8125rem;line-height:1.55;margin-bottom:1rem}
+  .iter-tag{font-size:.65rem;padding:.15rem .45rem;margin-bottom:.7rem}
+  .iter-half .iter-2up,.iter-half .phone-pair{grid-template-columns:1fr;gap:.6rem}
+  .phone-frame{max-width:none}
+  .iter-half .frame{max-width:240px;margin-left:auto;margin-right:auto}
+  .iter-half .frame.r2-single{width:100%;margin:0}
+
+  /* one source of spacing: paragraph -> phones */
+  .iter-half .frame,
+  .iter-half .iter-2up,
+  .iter-half .phone-pair{margin-top:0 !important}
+}
 </style>
+
 </head>
 <body>
 
@@ -440,7 +504,7 @@ img,video{max-width:100%}
     </div>
 
     <h1>One wrong form could<br><em>cost you your visa.</em></h1>
-    <p class="hero-hmw">AtlasTax is a mobile-first platform designed to help F-1, J-1 & M-1 international students prepare their non-resident IRS tax forms. How might we help international students understand exactly which documents they need and complete their tax forms accurately without confusion?</p>
+    <p class="hero-hmw">AtlasTax is a platform designed to help F-1, J-1 & M-1 international students prepare their non-resident IRS tax forms. How might we help international students understand exactly which documents they need and complete their tax forms accurately without confusion?</p>
     <div class="hero-meta">
       <div class="hero-meta-item"><label>Role</label><span>UX Designer</span></div>
       <div class="hero-meta-item"><label>Tools</label><span>Figma &middot; Procreate &middot; Illustrator</span></div>
@@ -539,18 +603,7 @@ img,video{max-width:100%}
   <div class="rev">
     <span class="lbl">03 &middot; Opportunity</span>
     <h2 class="h2">Existing tools don't fit non-resident students.</h2>
-    <p class="body">Two competitors dominate the space and neither was built for non-resident students.</p>
-  </div>
-
-  <div class="g2 mt3 rev" style="align-items:start">
-    <div class="card">
-      <h4>Sprintax, Direct Competitor</h4>
-      <p>Supports non-resident tax returns, but the process is long, text-heavy, and prone to manual entry errors. Without a university partnership, the cost can feel high relative to the value provided.</p>
-    </div>
-    <div class="card">
-      <h4>TurboTax, Indirect Competitor</h4>
-      <p>Doesn&rsquo;t support non-resident returns. Students who use it risk filing the wrong form entirely, which has real immigration consequences. Doesn't distinguish between 1040NR and 1040 filing requirements. </p>
-    </div>
+    <p class="body">Two main competitors (Sprintax and TurboTax) dominate the space and neither was built for non-resident students.</p>
   </div>
 
   <div tabindex="0" role="region" aria-label="Scrollable table" style="overflow-x:auto;margin-top:2rem;" class="rev">
@@ -571,56 +624,54 @@ img,video{max-width:100%}
   </div>
 </div>
 </section>
-
 <!-- 04 HOW IT WORKS -->
 <div class="sec-tinted">
-<div class="wrap">
-  <div class="rev">
-    <span class="lbl">04 &middot; How It's Designed To Work</span>
-    <h2 class="h2">How it works, <em>in three steps.</em></h2>
-  </div>
-
-  <div class="how-steps rev">
-    <div class="how-step">
-      <span class="step-num">Step 01</span>
-      <p class="step-title">Smart Onboarding</p>
-      <p class="step-desc">Students answer 10&ndash;15 questions to determine their correct filing path. Visa type, income sources, residency status, all used to personalize the experience.</p>
+  <div class="wrap how-wrap"> 
+    <div class="rev">
+      <span class="lbl">04 &middot; How It's Designed To Work</span>
+      <h2 class="h2">How it works, <em>in three steps.</em></h2>
     </div>
-    <div class="how-step">
-      <span class="step-num">Step 02</span>
-      <p class="step-title">Upload Documents</p>
-      <p class="step-desc">A personalized checklist shows exactly which documents are needed. Upload income, education, visa, and supporting forms. Uploaded documents are intended to auto-fill via OCR. </p>
-    </div>
-    <div class="how-step">
-      <span class="step-num">Step 03</span>
-      <p class="step-title">Forms Generated</p>
-      <p class="step-desc">AtlasTax is designed to prepare the correct IRS forms automatically. Review, download, sign, and mail to the IRS. The goal: no manual data entry, no transcription errors.</p>
-    </div>
-  </div>
-
   
-  <div class="how-steps rev">
-    <div class="how-step">
-      <div class="iter-2up">
-      <div class="frame"><img src="Visa.webp" alt="Visa type question" loading="lazy" decoding="async"></div>
-      <div class="frame"><img src="Financepicture.webp" alt="Income sources screen with illustrated tiles to select, including bank interest, OPT/CPT, on-campus job, scholarship and freelance" loading="lazy" decoding="async"></div>
+    <div class="how-steps how-text rev"> 
+      <div class="how-step">
+        <span class="step-num">Step 01</span>
+        <p class="step-title">Smart Onboarding</p>
+        <p class="step-desc">Students answer 10&ndash;15 questions to determine their correct filing path. Visa type, income sources, residency status, all used to personalize the experience.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">Step 02</span>
+        <p class="step-title">Upload Documents</p>
+        <p class="step-desc">A personalized checklist shows exactly which documents are needed. Upload income, education, visa, and supporting forms. Uploaded documents are intended to auto-fill via OCR.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">Step 03</span>
+        <p class="step-title">Forms Generated</p>
+        <p class="step-desc">AtlasTax is designed to prepare the correct IRS forms automatically. Review, download, sign, and mail to the IRS. The goal: no manual data entry, no transcription errors.</p>
+      </div>
     </div>
-    </div>
-    <div class="how-step">
-      <div class="iter-2up">
-      <div class="frame"><img src="DocumentUpload.webp" alt="Document checklist expanded" loading="lazy" decoding="async"></div>
-      <div class="frame"><img src="Educationupload.webp" alt="Education forms" loading="lazy" decoding="async"></div>
+  
+    <div class="how-steps how-shots rev"> 
+      <div class="how-step">
+        <div class="iter-2up">
+          <div class="frame"><img src="Visa.webp" alt="Visa type question" loading="lazy" decoding="async"></div>
+          <div class="frame"><img src="Financepicture.webp" alt="Income sources screen with illustrated tiles to select, including bank interest, OPT/CPT, on-campus job, scholarship and freelance" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="iter-2up">
+          <div class="frame"><img src="DocumentUpload.webp" alt="Document checklist expanded" loading="lazy" decoding="async"></div>
+          <div class="frame"><img src="Educationupload.webp" alt="Education forms" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="iter-2up">
+          <div class="frame"><img src="DocumentUploaded.webp" alt="All documents complete" loading="lazy" decoding="async"></div>
+          <div class="frame"><img src="FormGenerated.webp" alt="Your Forms Are Ready screen showing a generated 1040-NR tax form with Submit Forms and Review Forms buttons" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
     </div>
   </div>
-    <div class="how-step">
-      <div class="iter-2up">
-      <div class="frame"><img src="DocumentUploaded.webp" alt="All documents complete" loading="lazy" decoding="async"></div>
-      <div class="frame"><img src="FormGenerated.webp" alt="Your Forms Are Ready screen showing an generated 1040-NR tax form with Submit Forms and Review Forms buttons" loading="lazy" decoding="async"></div>
-    </div>
   </div>
-  </div>
-</div>
-</div>
 
   <!-- 05 FINAL FLOW -->
 <section class="sec">
@@ -683,7 +734,7 @@ img,video{max-width:100%}
     <div class="iter rev">
       <div class="iter-half">
         <span class="iter-tag tag-b">Finding 01</span>
-        <p>When users selected scholarship, on-campus job, or freelance, the screen jumped to a new question with no warning, breaking the expected select &rarr; continue pattern. Users thought it was a bug.</p>
+        <p>When users selected income related questions, the screen jumped to a new question with no warning, breaking the expected pattern. Users thought it was a bug.</p>
         <div class="iter-2up">
         <div class="frame"><img src="Financepicturemid.webp" alt="Before: mid-fidelity income grid with Scholarship selected, just before the app jumps to a new question" loading="lazy" decoding="async"></div>
         <div class="frame"><img src="scholarshipmid.webp" alt="Before: the unannounced follow-up question asking whether the scholarship covered tuition only or living expenses too" loading="lazy" decoding="async"></div>
@@ -702,26 +753,26 @@ img,video{max-width:100%}
     <div class="iter rev">
       <div class="iter-half">
         <span class="iter-tag tag-b">Finding 02</span>
-        <p>After uploading documents, users had no clear way to actually file. They also had to open every category individually with no sense of overall progress or completion.</p>
+        <p>After uploading documents, users had no way to actually file. They also had to open every category individually with no sense of overall progress.</p>
         <div class="iter-2up">
         <div class="frame"><img src="DocumentUploadingmid.webp" alt="Before: mid-fidelity document checklist where each category opens one at a time, with no button to file" loading="lazy" decoding="async"></div>
         <div class="frame"><img src="DocumentUploadedmid.webp" alt="Before: every checklist category checked off, but still no button to file and no overall progress" loading="lazy" decoding="async"></div>
       </div>
     </div>
-      <div class="iter-half">
-        <span class="iter-tag tag-a">Solution</span>
-        <p>Added a &ldquo;FILE 2025 &rarr;&rdquo; button that appears once all documents are uploaded, and a &ldquo;Download Checklist PDF&rdquo; option. Green checkmarks make completion state unambiguous.</p>
-        <div class="iter-2up">
-          <div class="frame"><img src="DocumentUpload.webp" alt="After: document checklist with upload sections for income, education, visa and supporting forms, plus a Download Checklist PDF button" loading="lazy" decoding="async"></div>
-          <div class="frame"><img src="DocumentUploaded.webp" alt="After: every checklist category checked off, with the new FILE 2025 button and a Download Checklist PDF option" loading="lazy" decoding="async"></div>
-        </div>
+    <div class="iter-half">
+      <span class="iter-tag tag-a">Solution</span>
+      <p>Added a &ldquo;FILE 2025&rdquo; button once documents are uploaded, plus a &ldquo;Download Checklist PDF&rdquo; option. Green checkmarks make completion clear.</p>
+      <div class="iter-2up">
+        <div class="frame"><img src="DocumentUpload.webp" alt="After: document checklist with upload sections for income, education, visa and supporting forms, plus a Download Checklist PDF button" loading="lazy" decoding="async"></div>
+        <div class="frame"><img src="DocumentUploaded.webp" alt="After: every checklist category checked off, with the new FILE 2025 button and a Download Checklist PDF option" loading="lazy" decoding="async"></div>
       </div>
     </div>
+  </div>
   
     <div class="iter rev">
       <div class="iter-half">
         <span class="iter-tag tag-b">Finding 03</span>
-        <p>Users were unsure what some questions meant and why they were being asked. The flow assumed prior knowledge, causing confusion and making users less confident in their answers.</p>
+        <p>Users were unsure what some questions meant and why they were being asked. The flow assumed prior knowledge, making users less confident in their answers.</p>
         <div class="iter-2up">
           <div class="frame"><img src="ssnmid.webp" alt="Before: mid-fidelity question asking for an SSN or ITIN, with no explanation of why it is asked" loading="lazy" decoding="async"></div>
           <div class="frame"><img src="treatymid.webp" alt="Before: mid-fidelity question asking for country of citizenship, with no explanation of why it is asked" loading="lazy" decoding="async"></div>
@@ -729,7 +780,7 @@ img,video{max-width:100%}
       </div>
       <div class="iter-half">
         <span class="iter-tag tag-a">Solution</span>
-        <p>Added a brief explanation for each question and a link to a verified source for additional context. Users can now understand the purpose of each question and answer more accurately.</p>
+        <p>Added a brief explanation for each question and a link to a verified source for context. Users can now understand the purpose of each question and answer accurately.</p>
         <div class="iter-2up">
           <div class="frame"><img src="ssn1.webp" alt="After: the SSN or ITIN question now explains it decides whether you can e-file, with a 'Not sure whether you have it?' link" loading="lazy" decoding="async"></div>
           <div class="frame"><img src="treaty.webp" alt="After: the citizenship question now explains it checks tax-treaty eligibility, with a 'What is a tax treaty?' link" loading="lazy" decoding="async"></div>
@@ -812,7 +863,7 @@ img,video{max-width:100%}
     <div class="iter iter-dark rev">
       <div class="iter-half">
         <span class="iter-tag tag-b">Round two &middot; Finding 02</span>
-        <p>After round one, selecting scholarship opened the same kind of follow-up as every other income type, behind a popup heads-up. But scholarships are taxed differently for F-1 and J-1 students than most income, so one generic follow-up wasn&rsquo;t enough.</p>        <!-- ROUND 2 SCREEN (before) -->
+        <p>After round one, selecting scholarship opened the same follow-up questions for all visas. But scholarships are taxed differently for F-1 and J-1 students, so one generic follow-up wasn&rsquo;t enough.</p>        <!-- ROUND 2 SCREEN (before) -->
         <div class="iter-2up">
         <div class="frame r2-shot"><img src="ScholarshipPopup.webp" alt="Before: scholarship pop-up" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
         <div class="frame r2-shot"><img src="ScholarshipWithheld.webp" alt="Before: scholarship follow-up question" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
@@ -820,7 +871,7 @@ img,video{max-width:100%}
   </div>
       <div class="iter-half">
         <span class="iter-tag tag-a">Solution</span>
-        <p>Scholarship now has its own set of questions for F-1 and J-1 students, the visa types where scholarship rules matter most. The questions change based on the visa chosen at the start. This has not yet been tested with J-1.</p>        <!-- ROUND 2 SCREENS (after) -->
+        <p>Scholarship now has its own set of questions for F-1 and J-1 students, the visa types where scholarship rules matter most. The questions change based on the visa chosen at the start. </p>        <!-- ROUND 2 SCREENS (after) -->
         <div class="iter-2up">
           <div class="frame r2-shot"><img src="ScholarshipMoney.webp" alt="After: question about where the scholarship money went" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
           <div class="frame r2-shot"><img src="J1Program.webp" alt="After: second J-1 scholarship follow-up question" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('r2-empty');this.remove()"></div>
@@ -828,7 +879,7 @@ img,video{max-width:100%}
       </div>
     </div>
   
-    <p class="body mt3 rev" style="color:rgba(255,255,255,.72);font-style:italic">Note: this is an ongoing project. These changes were made to the high-fidelity prototype after round two, and the experience is still being refined before engineering handoff.</p>
+    <p class="body mt3 rev" style="color:rgba(255,255,255,.72);font-style:italic">Note: this is an ongoing project. These changes were made to the high-fidelity prototype after round two, and the experience is still being refined.</p>
   
     <div class="pitch-block rev">
       <div class="pitch-n">

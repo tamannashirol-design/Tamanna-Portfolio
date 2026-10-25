@@ -451,6 +451,22 @@ img,video{max-width:100%}
 /* small consent / ethics note */
 .consent-note{font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--mid);margin-top:.6rem;line-height:1.6}
 .sec-dark .consent-note{color:rgba(255,255,255,.75)}
+
+@media (max-width:900px){
+  /* finding + solution side by side, equal columns */
+  .iter{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+  .iter-half{min-width:0;padding:1rem .85rem}
+  .iter-half+.iter-half{border-top:none;border-left:1px solid var(--rule)}
+  .iter-half p{font-size:.8125rem;line-height:1.55;margin-bottom:1rem}
+  .iter-tag{font-size:.65rem;padding:.15rem .45rem;margin-bottom:.7rem}
+
+  /* single screens: full column width, capped so they don't get huge */
+  .iter-half > .frame{width:100%;max-width:240px;margin:0 auto}
+
+  /* Finding 03 solution: two screens stack inside their half */
+  .iter-2up{grid-template-columns:1fr;gap:.6rem;margin-top:0}
+  .iter-2up .frame{margin-top:0;max-width:240px;margin-left:auto;margin-right:auto}
+}
 </style>
 </head>
 <body>

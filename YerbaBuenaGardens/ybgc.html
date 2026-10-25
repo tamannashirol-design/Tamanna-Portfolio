@@ -518,6 +518,53 @@ img,video{max-width:100%}
 .vbtn{opacity:0;pointer-events:none;transition:opacity .15s}
 .vbtn:focus-visible{opacity:1;pointer-events:auto}
 .is-playing .phone-video,.is-playing .channel-video{opacity:1}
+
+
+@media (max-width:900px){
+  /* CAROUSELS: phones, discovery cards, motion tiles */
+  .phones,.channel-grid,.anim-grid{
+    display:flex !important;
+    gap:1rem;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    margin-left:-1.5rem;margin-right:-1.5rem;
+    padding:1rem 1.5rem 1.75rem;
+    scroll-padding-left:1.5rem;
+    scrollbar-width:none;
+    
+  }
+  .phones::-webkit-scrollbar,.channel-grid::-webkit-scrollbar,.anim-grid::-webkit-scrollbar{display:none}
+  .phones>.phone{flex:0 0 60%;scroll-snap-align:start}
+  .channel-grid>.channel-card{flex:0 0 64%;scroll-snap-align:start}
+  .channel-head{padding:.7rem 1rem}
+  .channel-body{padding:1rem}
+  .channel-body h4{margin-bottom:.3rem}
+  .channel-body p{font-size:.8125rem;line-height:1.55}
+  .anim-grid>.anim-tile{flex:0 0 66%;scroll-snap-align:start;height:auto;aspect-ratio:9/19;background:#0d0d0d}
+  .anim-tile video{object-fit:contain}
+  .repo-proof{grid-template-columns:1fr;gap:1.5rem}
+  /* ── ITERATIONS: finding + solution side by side ── */
+  .iter,.iter-dark{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}
+  .iter-half{min-width:0;padding:1rem .85rem}
+  .iter-half+.iter-half{border-top:none;border-left:1px solid var(--rule)}
+  .iter-dark .iter-half+.iter-half{border-left-color:rgba(255,255,255,.14)}
+  .iter-half p{font-size:.8125rem;line-height:1.55;margin-bottom:1rem}
+  .iter-tag{font-size:.65rem;padding:.15rem .45rem;margin-bottom:.7rem}
+
+  /* phones/screens stack inside each half so both halves stay the same width */
+  .iter-half .iter-2up,
+  .iter-half .phone-pair{grid-template-columns:1fr;gap:.6rem}
+  .phone-frame{max-width:none}
+  .iter-half .frame{max-width:240px;margin-left:auto;margin-right:auto}
+  .iter-half .frame.r2-single{width:100%;margin:0}
+
+  /* one source of spacing: paragraph -> screens */
+  .iter-half .frame,
+  .iter-half .iter-2up,
+  .iter-half .phone-pair{margin-top:0 !important}
+}
 </style>
 </head>
 <body>
@@ -614,7 +661,7 @@ img,video{max-width:100%}
       <p class="retain-note">Testing confirmed this directly, event notifications were one of the top reasons participants said they'd reopen the app.</p>
     </div>
   </div>
-  <p class="flow-hint rev" style="margin-top:3rem;margin-bottom:.5rem">HOVER OVER THE SCREENS TO SEE THE FLOW IN MOTION </p>
+  <p class="flow-hint rev" style="margin-top:3rem;margin-bottom:.5rem">HOVER (OR TAP) OVER THE SCREENS TO SEE THE FLOW IN MOTION </p>
 
   <div class="phones rev mt4">
     <div class="phone">
@@ -811,12 +858,11 @@ img,video{max-width:100%}
     <div class="rev">
       <span class="lbl">07 &middot; Discovery Mechanisms</span>
       <h2 class="h2">Three ways <em>people find the app.</em></h2>
-      <p class="body">The app only works if people find it, so I designed three ways in, based on where research said 18&ndash;25 year olds already look.</p>
-    </div>
+      <p class="body">The app only works if people find it, so I designed three ways in, based on where research said 18&ndash;25 year olds already look. Hover (or tap) a screen to see it in motion.</p>    </div>
   
     <div class="channel-grid rev">
       <div class="channel-card">
-        <div class="channel-head"><span class="channel-n">01 - Hover to see the flow in motion</span></div>
+        <div class="channel-head"><span class="channel-n">01</span></div>
         <div class="ph" style="aspect-ratio:9/17">
           <img src="scanversion.webp" alt="Webpage QR Code Scanned" class="channel-poster" loading="lazy" decoding="async">
           <video src="qrscan.mp4" aria-label="Screen recording: scanning a QR code that opens the app download flow" class="channel-video" muted loop playsinline></video>
@@ -837,7 +883,7 @@ img,video{max-width:100%}
         </div>
       </div>
       <div class="channel-card">
-        <div class="channel-head"><span class="channel-n">03 - Hover to see the flow in motion</span></div>
+        <div class="channel-head"><span class="channel-n">03</span></div>
         <div class="ph" style="aspect-ratio:9/16">
           <img src="tiktokad.webp" alt="Example creator ad video" class="channel-poster" loading="lazy" decoding="async">
           <video src="tiktokad.mp4" aria-label="Example TikTok creator ad for Yerba Buena Gardens, edited" class="channel-video" muted loop playsinline></video>
@@ -941,15 +987,13 @@ img,video{max-width:100%}
       <h2 class="h2">What round-one testing<br><em>forced me to fix.</em></h2>
       <p class="body">Moderated usability testing with 5 participants on the first prototype surfaced four issues before the design reached a high-fidelity build.</p>    </div>
     <div>
-      <div class="frame"><img src="Lo-fiTestNotes.webp" alt="Round 1 testing notes" loading="lazy" decoding="async"></div>
-            <p class="cap">My notes, round 1</p>
     </div>
   </div>
 
   <div class="iter rev">
     <div class="iter-half">
       <span class="iter-tag tag-b">Finding 01</span>
-      <p>The badge flow lacked hierarchy. Users couldn't tell which badge to go for, how to actually earn one, or how badges connected to the map.</p>
+      <p>The badge flow lacked hierarchy with no label. Users couldn't tell which badge to go for, how to actually earn one, or how badges connected to the map.</p>
       <div class="phone-frame"><img src="midfiprofilesolutions.webp" alt="Before: mid-fidelity profile with a grid of identical black badge shapes and a plain rewards list" loading="lazy" decoding="async"></div>
     </div>
     <div class="iter-half">
@@ -968,7 +1012,7 @@ img,video{max-width:100%}
        </div>
     <div class="iter-half">
       <span class="iter-tag tag-a">Solution</span>
-      <p>Added a persistent feature CTA to the feed and added an occasional get featured ad while scrolling.</p>
+      <p>Added a fixed feature CTA to the feed and added an occasional get featured ad while scrolling, the ad frequency changes.</p>
       <div class="phone-pair">
         <div class="phone-frame"><img src="EXPLOREscrollsolutions.webp" alt="After: video feed with a prominent pink Feature button for posting your own video" loading="lazy" decoding="async"></div>
         <div class="phone-frame"><img src="EXPLOREGETFeatured.webp" alt="After: Get Featured card shown while scrolling, explaining how to create, upload and get featured, with a Create Your Video button" loading="lazy" decoding="async"></div>
@@ -987,7 +1031,7 @@ img,video{max-width:100%}
     </div>
     <div class="iter-half">
       <span class="iter-tag tag-a">Solution</span>
-      <p>Simplified to a single map view with accessible list content accessed via a toggle, rather than as a separate competing mode, accessibility additions still need their own usability pass.</p>
+      <p>Simplified to an accessible list content accessed via a toggle, rather than a separate mode, accessibility additions still need their own usability pass.</p>
       <div class="phone-pair">
         <div class="phone-frame"><img src="hifimapviewsolutions.webp" alt="After: a single map view with a simple Map/List toggle in the corner" loading="lazy" decoding="async"></div>
         <div class="phone-frame"><img src="hifilistviewsolutions.webp" alt="After: amenities list reached through the same toggle, with a photo, address and directions for each place" loading="lazy" decoding="async"></div>
@@ -1007,10 +1051,6 @@ img,video{max-width:100%}
       <span class="lbl lbl-dark">11 &middot; Results &amp; Validation</span>
       <h2 class="h2 h2-w">Round two: task-based<br>testing on the hi-fi build.</h2>
       <p class="body body-w">Six participants completed five core tasks on the high-fidelity prototype, measured on success rate, time on task, and error count, plus an A/B test on the RSVP confirm gesture and a System Usability Scale survey.</p>
-    </div>
-    <div>
-      <div class="frame"><img src="Hi-fiTestNotes.webp" alt="Round 2 testing notes" loading="lazy" decoding="async"></div>
-      <p class="cap cap-dark">My notes, round 2</p>
     </div>
   </div>
 
