@@ -45,47 +45,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .nav-back{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-decoration:none;color:var(--mid);display:flex;align-items:center;gap:.4rem;transition:color .2s}
 .nav-back:hover{color:var(--ink)}
 .nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
-.nav-menu a {
-  position: relative;
-
-  font-family: 'DM Sans', sans-serif;
-  font-size: .875rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--mid);
-  padding-bottom: 6px;
-  transition: color .2s ease;
-}
-.nav-menu a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: var(--olive);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .25s ease;
-}
-
-.nav-menu a:hover {
-  color: var(--ink);
-}
-
-.nav-menu a:hover::after {
-  transform: scaleX(1);
-}
-
-.nav-menu a.active {
-  color: var(--ink);
-}
-
-.nav-menu a.active::after {
-  transform: scaleX(1);
-}
+.nav-menu a{position:relative;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--mid);padding-bottom:6px;transition:color .2s ease}
+.nav-menu a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--olive);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.nav-menu a:hover,.nav-menu a.active{color:var(--ink)}
+.nav-menu a:hover::after,.nav-menu a.active::after{transform:scaleX(1)}
 .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;z-index:301}
 .nav-toggle span{display:block;width:100%;height:2px;background:var(--ink);transition:transform .25s ease,opacity .25s ease}
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -95,16 +58,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 /* HERO */
 .hero{margin-top:0;position:relative;height:100vh;min-height:600px;overflow:hidden}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,20,.92) 0%,rgba(20,20,20,.78) 38%,rgba(20,20,20,.35) 70%,rgba(20,20,20,0) 100%),linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)}
 .hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;max-width:1000px}
 .hero-eyebrow{font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:1rem}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:.6rem}
-.hero h1 em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.82)}
 .hero-hmw{font-family:'DM Sans',sans-serif;font-size:1rem;color:#fff;letter-spacing:.04em;line-height:1.6;max-width:800px;margin-bottom:2.5rem;border-left:2px solid rgba(255,255,255,.18);padding-left:1rem}
 .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem}
-.hero-meta-item label{display:block;font-family:'DM Sans',sans-serif;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.68);margin-bottom:.2rem}
-.hero-meta-item span{font-size:.875rem;color:rgba(255,255,255,.78);font-weight:400}
-
+.hero-meta-item label{display:block;font-family:'DM Sans',sans-serif;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:.2rem}
+.hero-meta-item span{font-size:.875rem;color:rgba(255,255,255,.92);font-weight:400}
 
 /* STAT BAR */
 .stat-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink)}
@@ -120,11 +82,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .sec-dark{background:var(--ink);padding:6.5rem 0}
 .sec-tinted{background:#F0EFE7;padding:6.5rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 
+/* TYPE */
 .lbl{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:.8rem}
 .lbl-dark{color:#7d8f4a}
 .h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin-bottom:.8rem}
 .h2 em{font-style:italic;color:var(--mid)}
 .h2-w{color:#fff}
+.h2-w em{color:rgba(255,255,255,.72)}
 .h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:.6rem}
 .body{font-size:1rem;color:var(--mid);line-height:1.8;max-width:560px}
 .body-w{color:rgba(255,255,255,.75)}
@@ -166,9 +130,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .ph-wide{aspect-ratio:16/9}
 .ph-hero{aspect-ratio:21/12}
 
-/* Phone-proportioned frame used in Iterations — capped width so it reads as a screen, not a banner */
-.phone-frame{max-width:230px;margin:1rem auto 0}
+/* Phone-proportioned frame (Iterations) */
+.phone-frame{max-width:230px;margin:1rem auto 0;overflow:hidden;border-radius:8px}
 .phone-frame .ph{aspect-ratio:9/17}
+.phone-frame img{width:100%;height:auto;display:block}
+.phone-pair{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
+.phone-pair .phone-frame{max-width:none;margin:0}
 
 /* SKETCH ROW */
 .sketches{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2.5rem}
@@ -191,14 +158,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .phone:hover .phone-shell{transform:translateY(-10px);box-shadow:0 20px 48px rgba(0,0,0,.18)}
 .phone-shell span{font-family:'DM Sans',sans-serif;font-size:.75rem;color:rgba(255,255,255,.68);text-align:center;padding:0 .6rem;letter-spacing:.06em;text-transform:uppercase}
 .phone p{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--dim);letter-spacing:.07em;text-transform:uppercase;margin-top:.55rem}
-.phone-frame{max-width:230px;margin:1rem auto 0;overflow:hidden;border-radius:8px}
-.phone-frame img{width:100%;height:auto;display:block}
-.iter-half{padding:2.2rem;min-width:0}
-.phone-pair{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
-.phone-pair .phone-frame{max-width:none;margin:0}
 .phone-poster,.phone-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .phone-video{opacity:0;transition:opacity .3s ease}
-.phone:hover .phone-video{opacity:1}
+.phone:hover .phone-video,.phone.touch-active .phone-video{opacity:1}
 
 /* STATS DATA POINTS */
 .data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
@@ -215,7 +177,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 
 /* ITER */
 .iter{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1.5rem}
-.iter-half{padding:2.2rem}
+.iter-half{padding:2.2rem;min-width:0}
 .iter-half+.iter-half{border-left:1px solid var(--rule)}
 .iter-tag{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.18rem .55rem;border-radius:4px;margin-bottom:.9rem}
 .tag-b{background:#FDECEA;color:#9B2335}
@@ -277,6 +239,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .metrics tr.flag td:first-child{border-left:2px solid #9B2335;font-weight:500;color:#9B2335}
 .metrics tr.strong td{background:#EAF3EA}
 .metrics tr.strong td:first-child{border-left:2px solid #266226;font-weight:500;color:#266226}
+.sec-dark .metrics td{color:rgba(255,255,255,.75)}
+.sec-dark .metrics tr.flag td,.sec-dark .metrics tr.strong td{color:var(--ink)}
 
 /* A/B COMPARISON */
 .ab-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem;max-width:600px}
@@ -321,24 +285,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .channel-card{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:var(--card)}
 .channel-head{padding:1.1rem 1.4rem;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:.6rem}
 .channel-n{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.08em;color:var(--olive);text-transform:uppercase}
-.channel-body{padding: 1.6rem 1.4rem;}
+.channel-body{padding:1.6rem 1.4rem}
 .channel-body h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;margin-bottom:.5rem}
 .channel-body p{font-size:.875rem;color:var(--mid);line-height:1.7}
 .channel-card .ph{position:relative;overflow:hidden}
 .channel-card .ph img,
 .channel-card .ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .channel-video{opacity:0;transition:opacity .3s ease}
-.channel-card:hover .channel-video{opacity:1}
+.channel-card:hover .channel-video,.channel-card.touch-active .channel-video{opacity:1}
+.disc-intro{margin-top:72px;margin-bottom:8px}
+.channel-grid--compact{max-width:900px;gap:20px}
+.channel-grid--compact .ph{aspect-ratio:9/16.5}
 
 /* APP ANIMATIONS SHOWCASE */
 .anim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
 .anim-tile{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);height:510px;position:relative}
 .anim-tile .ph-dark{height:100%}
+.anim-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .anim-pulse{position:absolute;top:.8rem;right:.8rem;width:8px;height:8px;border-radius:50%;background:#7d8f4a;box-shadow:0 0 0 rgba(125,143,74,.6);animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(125,143,74,.5)}70%{box-shadow:0 0 0 10px rgba(125,143,74,0)}100%{box-shadow:0 0 0 0 rgba(125,143,74,0)}}
-.anim-label{position:absolute;bottom:0;left:0;right:0;padding:.8rem;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.anim-label{position:absolute;bottom:0;left:0;right:0;padding:.8rem;background:linear-gradient(0deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.6) 70%,transparent 100%);font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#fff}
 
-/* ===== ENGINEERING HANDOFF (roadmap, clear, visual) ===== */
+/* ENGINEERING HANDOFF */
 .insight-callout{margin-top:2.5rem;background:rgba(125,143,74,.08);border:1px solid rgba(125,143,74,.25);border-radius:12px;padding:2rem 2.2rem;display:flex;gap:1.5rem;align-items:flex-start}
 .insight-mark{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:300;color:#9fb373;line-height:1;flex-shrink:0}
 .insight-callout-body span{margin-bottom:.5rem}
@@ -363,28 +331,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .roadmap-list li::before{content:"—";color:rgba(255,255,255,.68);flex-shrink:0}
 
 .repo-proof{margin-top:1.6rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-.repo-proof .ph{aspect-ratio:3/2;border-radius:10px; overflow: hidden;}
+.repo-proof .ph{aspect-ratio:3/2;border-radius:10px;overflow:hidden}
 .repo-proof-cap{font-family:'DM Sans',sans-serif;font-size:.75rem;color:rgba(255,255,255,.6);letter-spacing:.05em;text-transform:uppercase;margin-top:.6rem;text-align:center}
-.repo-proof .ph img {
-  width: 120%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-/* FIGMA RIGOR CALLOUT (Design Process section) */
-.rigor-row{margin-top:2.5rem;display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:center}
-.rigor-row .frame {
-  width: 100%;
-  height: auto;
-  aspect-ratio: auto;
-  overflow: hidden;
-}
+.repo-proof .ph img{width:120%;height:100%;object-fit:contain;display:block}
 
-.rigor-row .frame img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+/* FIGMA RIGOR CALLOUT */
+.rigor-row{margin-top:2.5rem;display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:center}
+.rigor-row .frame{width:100%;height:auto;aspect-ratio:auto;overflow:hidden}
+.rigor-row .frame img{width:100%;height:auto;display:block}
 
 .beta-tile{margin-top:2.5rem;border-radius:16px;overflow:hidden;position:relative;display:block;text-decoration:none;border:1px solid rgba(255,255,255,.1)}
 .beta-tile .ph-wide{aspect-ratio:23.2/9;position:relative;overflow:hidden}
@@ -400,25 +354,50 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .hoff-note{margin-top:1.5rem;font-size:.75rem;color:white;line-height:1.7;max-width:700px}
 .hoff-note strong{color:rgba(255,255,255,.7)}
 
-
 /* SECTION HEADER WITH SMALL SIDE PHOTO */
 .sec-header-row{display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:end}
 .sec-header-row .frame{aspect-ratio:4/3}
 .sec-header-row .cap{margin-top:.5rem}
 
-/* RESULTS 3-COL GRID (A/B images + SUS/quote stack) */
+/* RESULTS 3-COL GRID */
 .results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:2.5rem;align-items:start}
 .results-col3{display:flex;flex-direction:column;gap:1.25rem}
 .results-col3>*{flex:1;display:flex;flex-direction:column;justify-content:center}
 
-/* PROMPT ENGINEERING CAR STRIP */
+/* PROMPT ENGINEERING / AI SECTION */
 .pe-intro{margin-top:2.5rem}
 .pe-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem}
 .pe-card{padding:1.6rem;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
-.pe-eyebrow{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block;margin-bottom:.6rem}
-.pe-card p{font-size:.875rem;color:rgba(255,255,255,.65);line-height:1.65}
+.pe-eyebrow{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);display:block;margin-bottom:.6rem}
+.pe-card p{font-size:.875rem;color:rgba(255,255,255,.8);line-height:1.65}
+.pe-figma{margin:32px 0 56px}
+.pe-example{margin-top:56px}
+.pe-example > .pe-eyebrow{display:block;margin-bottom:10px}
+.pe-compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:0 0 36px}
+.pe-compare .pe-card.pe-bad{background:rgba(220,70,70,.12);border:1px solid rgba(220,70,70,.45)}
+.pe-compare .pe-card.pe-bad .pe-eyebrow{color:#e57373}
+.pe-compare .pe-card.pe-good{background:rgba(60,180,110,.12);border:1px solid rgba(60,180,110,.45)}
+.pe-compare .pe-card.pe-good .pe-eyebrow{color:#6fcf97}
+.pe-example .pe-note{margin-top:18px}
+@media (max-width:700px){.pe-compare{grid-template-columns:1fr}}
 
-/* RETENTION RATIONALE NOTE (Core Features) */
+/* PROCESS DETAIL (collapsed) */
+.pe-detail{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.pe-detail > summary{display:flex;flex-direction:column;gap:.25rem;padding:1.5rem 2.5rem 1.5rem 0;position:relative;cursor:pointer;list-style:none}
+.pe-detail > summary::-webkit-details-marker{display:none}
+.pe-detail > summary::after{content:"+";position:absolute;right:.25rem;top:50%;transform:translateY(-50%);font-family:'DM Sans',sans-serif;font-size:1.75rem;line-height:1;color:var(--olive)}
+.pe-detail[open] > summary::after{content:"\2013"}
+.pe-detail-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:400;color:var(--ink);transition:color .2s}
+.pe-detail > summary:hover .pe-detail-title{color:var(--olive)}
+.pe-detail-sub{font-size:.9375rem;color:var(--mid)}
+.pe-detail-block{padding:2.5rem 0;border-top:1px solid var(--rule)}
+.pe-detail-block .sketches,
+.pe-detail-block .ds-row,
+.pe-detail-block .anim-grid{margin-top:32px}
+/* never leave reveal-animated content invisible inside a closed details */
+.pe-detail .rev{opacity:1 !important;transform:none !important}
+
+/* RETENTION RATIONALE NOTE */
 .retain-note{font-size:.8rem;color:var(--olive);font-style:italic;margin-top:.6rem;line-height:1.6}
 
 /* REVEAL */
@@ -431,7 +410,39 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 .f-links{display:flex;gap:2rem}
 .f-links a{font-family:'DM Sans',sans-serif;font-size:.75rem;color:rgba(255,255,255,.68);text-decoration:none;letter-spacing:.04em;transition:color .2s}
 .f-links a:hover{color:rgba(255,255,255,.8)}
+.footer-links{display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:.9rem}
+.footer-links a{font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+footer:has(.footer-links){flex-direction:column}
+.cta-btn-ghost{color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3)}
+.cta-btn-ghost:hover{border-color:#fff;color:#fff}
 
+/* LOGO HERO */
+.logo-hero{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
+.logo-hero img{width:100px;height:100px;object-fit:contain}
+
+/* ACCESSIBILITY */
+img,video{max-width:100%}
+:focus-visible{outline:2px solid var(--olive,#6B7040);outline-offset:3px;border-radius:2px}
+.sec-dark :focus-visible,footer :focus-visible,.hero :focus-visible{outline-color:#fff}
+.palette-hex{background:rgba(0,0,0,.62)!important;color:#fff!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* VIDEO PLAY/PAUSE BUTTON (keyboard users) */
+.vbtn{position:absolute;top:10px;right:10px;z-index:8;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);background:rgba(20,20,20,.75);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0;opacity:0;pointer-events:none;transition:opacity .15s}
+.vbtn:hover{background:rgba(20,20,20,.92);transform:scale(1.06)}
+.vbtn:focus-visible{opacity:1;pointer-events:auto;outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px rgba(20,20,20,.6)}
+.vbtn svg{width:14px;height:14px;fill:currentColor}
+.is-playing .phone-video,.is-playing .channel-video{opacity:1}
+
+/* RESPONSIVE: 901-1200 */
+@media(max-width:1200px) and (min-width:901px){
+  .g3,.g4,.channel-grid,.persona-row,.pe-strip{grid-template-columns:repeat(2,1fr)}
+  .phones{grid-template-columns:repeat(3,1fr)}
+  .anim-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* RESPONSIVE: up to 900 */
 @media(max-width:900px){
   nav{padding:.9rem 1.5rem}
   .nav-toggle{display:flex}
@@ -441,87 +452,31 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
   .nav-menu a{display:block;width:100%;padding:1rem 1.5rem;font-size:.9375rem}
   .wrap{padding:0 1.5rem}
   .sec,.sec-dark,.sec-tinted{padding:4.5rem 0}
-  .g2,.g3,.g4,.iter,.journeys,.reflects,.data-row,.how-steps,.sketches,.phones,.method-bar,.sus-wrap,.persona-row,.channel-grid,.ab-row,.snap-grid,.hoff-split{grid-template-columns:1fr;gap:1.25rem}
+  .g2,.g3,.g4,.journeys,.reflects,.data-row,.how-steps,.sketches,.method-bar,.sus-wrap,.persona-row,.ab-row,.snap-grid,.hoff-split,.rigor-row{grid-template-columns:1fr;gap:1.25rem}
   .stat-bar{grid-template-columns:repeat(2,1fr)}
-  .iter-half+.iter-half{border-left:none;border-top:1px solid var(--rule)}
   .how-step{border-right:none;border-bottom:1px solid var(--rule)}
-  .phones{grid-template-columns:repeat(3,1fr)}
-  .anim-grid{grid-template-columns:repeat(2,1fr)}
   footer{padding:2rem 1.5rem}
   .ds-row{grid-template-columns:1fr}
   .tiktok-concepts{grid-template-columns:1fr}
   .hoff-flow{flex-direction:column}
   .hoff-step{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
-}
-.anim-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-
-/* LOGO HERO */
-.logo-hero{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
-.logo-hero img{width:100px;height:100px;object-fit:contain;}
-
-.phone:hover .phone-video, .phone.touch-active .phone-video{opacity:1}
-.channel-card:hover .channel-video, .channel-card.touch-active .channel-video{opacity:1}
-
-@media(max-width:900px){
   .ab-card img{height:220px}
   .j-card img{height:auto;aspect-ratio:4/3}
   .repo-proof .ph img{width:100%}
-  .g2,.g3,.g4,.iter,.journeys,.reflects,.data-row,.how-steps,.sketches,.method-bar,.sus-wrap,.persona-row,.ab-row,.snap-grid,.hoff-split,.rigor-row{grid-template-columns:1fr;gap:1.25rem}
-}
-@media(max-width:1200px) and (min-width:901px){
-  .g3,.g4,.channel-grid,.persona-row,.pe-strip{grid-template-columns:repeat(2,1fr)}
-  .phones{grid-template-columns:repeat(3,1fr)}
-  .anim-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:900px){
-  .repo-proof .ph img{width:100%}
 }
 
-/* ── ACCESSIBILITY (WCAG 2.2 AA) ── */
-/* footer links + CTA secondary buttons */
-.footer-links{display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:.9rem}
-.footer-links a{font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
-footer:has(.footer-links){flex-direction:column}
-.cta-btn-ghost{color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3)}
-.cta-btn-ghost:hover{border-color:#fff;color:#fff}
-/* hero: bottom-up scrim keeps meta + HMW text readable on bright photos */
-.hero-scrim{background:linear-gradient(0deg,rgba(20,20,20,.92) 0%,rgba(20,20,20,.78) 38%,rgba(20,20,20,.35) 70%,rgba(20,20,20,0) 100%),linear-gradient(150deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.45) 55%,rgba(20,20,20,.15) 100%)!important}
-.hero h1 em{color:rgba(255,255,255,.82)}
-.hero-meta-item label{color:rgba(255,255,255,.75)}
-.hero-meta-item span{color:rgba(255,255,255,.92)}
-.anim-label{background:linear-gradient(0deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.6) 70%,transparent 100%)}
-/* reflow: content fits at 320px with no sideways scrolling (WCAG 1.4.10) */
-img,video{max-width:100%}
+/* RESPONSIVE: up to 600 */
 @media (max-width:600px){
-  .stat-bar,.phones,.ortho-row,.process-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .stat-bar,.ortho-row,.process-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
   .science-row,.pe-strip,.roadmap-split,.about-grid,.results-grid,.sec-header-row{grid-template-columns:minmax(0,1fr)!important}
   .stat-cell{padding:1.25rem .75rem;min-width:0}
   .stat-cell:nth-child(2n){border-right:none}
   .pitch-n{min-width:0!important;flex-basis:100%}
   .flow-hint{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 }
-.sec-dark .metrics td{color:rgba(255,255,255,.75)}
-.sec-dark .metrics tr.flag td,.sec-dark .metrics tr.strong td{color:var(--ink)}
-:focus-visible{outline:2px solid var(--olive,#6B7040);outline-offset:3px;border-radius:2px}
-.sec-dark :focus-visible,footer :focus-visible,.hero :focus-visible{outline-color:#fff}
-.h2-w em{color:rgba(255,255,255,.72)}
-.palette-hex{background:rgba(0,0,0,.62)!important;color:#fff!important}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
-/* ── VIDEO ACCESSIBILITY: play/pause button, keyboard + tap ── */
-.vbtn{position:absolute;top:10px;right:10px;z-index:8;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);background:rgba(20,20,20,.75);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0;transition:background .2s,transform .2s}
-.vbtn:hover{background:rgba(20,20,20,.92);transform:scale(1.06)}
-.vbtn:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 6px rgba(20,20,20,.6)}
-.vbtn svg{width:14px;height:14px;fill:currentColor}
-/* hidden for mouse + touch users, appears only when a keyboard user tabs to it */
-.vbtn{opacity:0;pointer-events:none;transition:opacity .15s}
-.vbtn:focus-visible{opacity:1;pointer-events:auto}
-.is-playing .phone-video,.is-playing .channel-video{opacity:1}
-
-
+/* RESPONSIVE: mobile carousels + side-by-side iterations (keep last) */
 @media (max-width:900px){
-  /* CAROUSELS: phones, discovery cards, motion tiles */
   .phones,.channel-grid,.anim-grid{
     display:flex !important;
     gap:1rem;
@@ -533,7 +488,6 @@ img,video{max-width:100%}
     padding:1rem 1.5rem 1.75rem;
     scroll-padding-left:1.5rem;
     scrollbar-width:none;
-    
   }
   .phones::-webkit-scrollbar,.channel-grid::-webkit-scrollbar,.anim-grid::-webkit-scrollbar{display:none}
   .phones>.phone{flex:0 0 60%;scroll-snap-align:start}
@@ -545,25 +499,49 @@ img,video{max-width:100%}
   .anim-grid>.anim-tile{flex:0 0 66%;scroll-snap-align:start;height:auto;aspect-ratio:9/19;background:#0d0d0d}
   .anim-tile video{object-fit:contain}
   .repo-proof{grid-template-columns:1fr;gap:1.5rem}
-  /* ── ITERATIONS: finding + solution side by side ── */
+
   .iter,.iter-dark{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}
-  .iter-half{min-width:0;padding:1rem .85rem}
+  .iter-half{padding:1rem .85rem}
   .iter-half+.iter-half{border-top:none;border-left:1px solid var(--rule)}
   .iter-dark .iter-half+.iter-half{border-left-color:rgba(255,255,255,.14)}
   .iter-half p{font-size:.8125rem;line-height:1.55;margin-bottom:1rem}
   .iter-tag{font-size:.65rem;padding:.15rem .45rem;margin-bottom:.7rem}
 
-  /* phones/screens stack inside each half so both halves stay the same width */
   .iter-half .iter-2up,
   .iter-half .phone-pair{grid-template-columns:1fr;gap:.6rem}
   .phone-frame{max-width:none}
   .iter-half .frame{max-width:240px;margin-left:auto;margin-right:auto}
   .iter-half .frame.r2-single{width:100%;margin:0}
 
-  /* one source of spacing: paragraph -> screens */
   .iter-half .frame,
   .iter-half .iter-2up,
   .iter-half .phone-pair{margin-top:0 !important}
+}
+
+.sec-tinted .pr-sub{margin-top:5rem !important;padding-top:0;border-top:none}
+.pr-sub .h3{font-size:1.6rem;font-weight:300}
+.pr-sub .h3 em{font-style:italic;color:var(--mid)}
+
+.persona-row--light .persona-card{background:var(--card) !important;border-color:var(--rule) !important}
+.persona-row--light .persona-name{color:var(--ink) !important}
+.persona-row--light .key-insight{color:var(--olive) !important}
+.persona-row--light .persona-body p{color:var(--mid) !important}
+
+/* personas without the box */
+.persona-row--light{max-width:900px;gap:20px}
+.persona-row--light .persona-card{background:none !important;border:none !important;border-radius:0;overflow:visible}
+.persona-row--light .persona-img{aspect-ratio:auto;overflow:visible}
+.persona-row--light .persona-img img{width:100%;height:auto;object-fit:contain}
+.persona-row--light .persona-body{padding:1rem 0 0}
+
+/* narrow text column, wide personas */
+.pr-split{grid-template-columns:minmax(0,.7fr) minmax(0,1.6fr);gap:3rem}
+.pr-split .body{max-width:300px}
+.pr-split .persona-row--light{max-width:none}
+
+@media (max-width:900px){
+  .pr-split{grid-template-columns:1fr}
+  .pr-split .body{max-width:none}
 }
 </style>
 </head>
@@ -575,8 +553,8 @@ img,video{max-width:100%}
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-menu" id="navMenu">
-      <li><a href="../index.html#work"class="nav-link" data-section="work">Work</a></li>
-      <li><a href="../about.html" class="nav-link" >About</a></li>
+      <li><a href="../index.html#work" class="nav-link" data-section="work">Work</a></li>
+            <li><a href="../about.html" class="nav-link" >About</a></li>
       <li><a href="/explorations.html" class="nav-link" >Explorations</a></li>
       <li><a href="../artgallery/art.html" class="nav-link" >Art Gallery</a></li>
     </ul>
@@ -619,7 +597,7 @@ img,video{max-width:100%}
       <p class="body" style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--ink);margin:1.5rem 0">
         So I designed a companion app that makes the Gardens discoverable and worth coming back to.
       </p>
-      <p class="body">I interviewed the staff and the visitors they want to reach, built a <strong style="color:var(--ink);font-weight:600"> working MVP in Lovable and Cursor, </strong>tested it twice and fixed what broke. YBG's IT team is taking it to launch.</p>
+      <p class="body">I interviewed the staff and the visitors they want to reach, built a <strong style="color:var(--ink);font-weight:600"> working MVP in Lovable and Cursor, </strong>tested it twice, and fixed what each round found. YBG's IT team is taking it to launch.</p>
     </div>
     <div>
       <div class="product-shot" style="margin-top:0"><img src="HandMockup.webp" alt="App overview mockup" loading="lazy" decoding="async"></div>      <p class="cap">Main concept, at a glance</p>
@@ -628,106 +606,33 @@ img,video{max-width:100%}
 </div>
 </section>
 
-<!-- 02 CORE FEATURES -->
-<div class="sec-tinted">
-<div class="wrap">
-  <div class="rev">
-    <span class="lbl">02 &middot; Core Features</span>
-    <h2 class="h2">Four features, <em>each tied to an interview finding.</em></h2>
-  </div>
 
-  <div class="how-steps rev">
-    <div class="how-step">
-      <span class="step-num">01</span>
-      <p class="step-title">Creator Feed</p>
-      <p class="step-desc">A TikTok-style scrollable feed of Gardens content; visitor-generated and creator content, so discovery happens in a format Gen Z already trusts.</p>
-      <p class="retain-note">Vertical, endless-scroll layout, the format with the lowest friction to keep watching, chosen to maximize time-in-app on first open.</p>
-    </div>
-    <div class="how-step">
-      <span class="step-num">02</span>
-      <p class="step-title">RSVP</p>
-      <p class="step-desc">Social proof event RSVPs that show who's going, lowering the social risk of showing up alone that came up repeatedly in interviews.</p>
-    </div>
-    <div class="how-step">
-      <span class="step-num">03</span>
-      <p class="step-title">Map + Badges</p>
-      <p class="step-desc">A consolidated map surfacing hidden gems, amenities, and much more, with badges earned by exploring, redeemable for real rewards like free bowling.</p>
-      <p class="retain-note">Badges unlock as you explore, instead of a fixed points system, so there&rsquo;s a reason to come back.</p>
-    </div>
-    <div class="how-step">
-      <span class="step-num">04</span>
-      <p class="step-title">Nudges</p>
-      <p class="step-desc">SMS and push notifications written in a Gen-Z-coded voice, designed to turn a one-time visit into a repeat habit rather than a single event attendance.</p>
-      <p class="retain-note">Testing confirmed this directly, event notifications were one of the top reasons participants said they'd reopen the app.</p>
-    </div>
-  </div>
-  <p class="flow-hint rev" style="margin-top:3rem;margin-bottom:.5rem">HOVER (OR TAP) OVER THE SCREENS TO SEE THE FLOW IN MOTION </p>
-
-  <div class="phones rev mt4">
-    <div class="phone">
-      <div class="phone-shell">
-        <img src="explore.webp " alt="Creator feed" class="phone-poster" loading="lazy" decoding="async">
-        <video src="explore.mp4" aria-label="Screen recording: scrolling the creator video feed" class="phone-video" muted loop playsinline></video>
-      </div>
-      <p>Creator feed</p>
-    </div>
-    <div class="phone">
-      <div class="phone-shell">
-        <img src="event.webp" alt="Event RSVP" class="phone-poster" loading="lazy" decoding="async">
-        <video src="rsvp.mp4" aria-label="Screen recording: RSVPing to an event" class="phone-video" muted loop playsinline></video>
-      </div>
-      <p>Event RSVP</p>
-    </div>
-    <div class="phone">
-      <div class="phone-shell">
-        <img src="mapview.webp" alt="Consolidated Map" class="phone-poster" loading="lazy" decoding="async">
-        <video src="map.mp4" aria-label="Screen recording: exploring the consolidated map" class="phone-video" muted loop playsinline></video>
-      </div>
-      <p>Consolidated Map</p>
-    </div>
-    <div class="phone">
-      <div class="phone-shell">
-        <img src="badges.webp" alt="Badge & reward" class="phone-poster" loading="lazy" decoding="async">
-        <video src="badges.mp4" aria-label="Screen recording: earning a badge and reward" class="phone-video" muted loop playsinline></video>
-      </div>
-      <p>Badge &amp; reward</p>
-    </div>
-    <div class="phone">
-      <div class="phone-shell">
-        <img src="notificationnudge.webp" alt="SMS nudge" class="phone-poster" loading="lazy" decoding="async">
-        <video src="notification.mp4" aria-label="Screen recording: an SMS nudge notification" class="phone-video" muted loop playsinline></video>
-      </div>
-      <p>SMS nudge</p>
-    </div>
-    
-  </div>
-</div>
-</div>
-
-<!-- 03 PROBLEM & RESEARCH -->
+<!-- 02 PROBLEM & RESEARCH (one continuous section) -->
 <div class="sec-tinted">
   <div class="wrap">
+
+    <!-- Problem -->
     <div class="g2 rev">
       <div>
-        <span class="lbl">03 &middot; Problem &amp; Research</span>
+        <span class="lbl">02 &middot; Problem &amp; Research</span>
         <h2 class="h2">A 33-year veteran of<br>Parks &amp; Rec told me<br><em>this is unsolved.</em></h2>
         <div class="q" style="margin:1.5rem 0">
           <p>&ldquo;That's the one group we've never figured out the magic pill for, at seven different parks and recreation departments, seven different cities.&rdquo;</p>
           <cite>Executive Director, YBG</cite>
         </div>
-        <p class="body">The Gardens aren't invisible because they're boring. They're invisible because they have no digital footprint in the one place this age group actually looks. I interviewed the people who run the Gardens and the people they want to reach to find where the gap is.</p>
+        <p class="body">The Gardens aren't invisible because they're boring. They have no digital footprint in the one place this age group actually looks. I interviewed the people who run the Gardens and the people they want to reach to find the gap.</p>
       </div>
       <div>
         <div class="frame ph ph-hero"><img src="Thegardens.webp" alt="Yerba Buena Gardens" loading="lazy" decoding="async"></div>
       </div>
     </div>
-  
+
     <div class="method-bar rev mt3">
       <div class="method-item"><span class="method-n">5</span><span class="method-l">YBG staff &amp; leadership</span></div>
       <div class="method-item"><span class="method-n">4</span><span class="method-l">Non-visitors, 18&ndash;25</span></div>
       <div class="method-item"><span class="method-n">2</span><span class="method-l">Current visitors, 18&ndash;25</span></div>
     </div>
-  
+
     <div class="g2 top mt3 rev">
       <div>
         <div class="q" style="margin-top:0">
@@ -746,468 +651,565 @@ img,video{max-width:100%}
         <p class="cap">Affinity map, synthesized from interviews</p>
       </div>
     </div>
-  
+
     <div class="g3 mt3 rev">
       <div class="card">
         <h4>No Digital Layer</h4>
-        <p>Staff confirmed marketing is still print-first: posters and flyers passed through neighborhood organizations. The audience that reaches skews older by default.</p>
+        <p>Marketing is still print-first: flyers passed through neighborhood organizations, which skews older.</p>
       </div>
       <div class="card">
         <h4>No Social Proof</h4>
-        <p>Non-visitors said they'd never been because none of their friends go, and without an "internet-adjacent" hook, there's no reason to be first.</p>
+        <p>Non-visitors never went because none of their friends do, so there's no reason to be first.</p>
       </div>
       <div class="card">
         <h4>Discovery Happens on TikTok</h4>
-        <p>Every non-visitor interviewed named TikTok as their default source for "free things to do", not YBG's website, not Google.</p>
+        <p>Every non-visitor named TikTok as their default source for "free things to do," not YBG's website or Google.</p>
       </div>
     </div>
-  </div>
-  </div>
 
-
-<!-- 04 PERSONAS -->
-<div class="sec-dark">
-  <div class="wrap">
-    <div class="rev">
-      <span class="lbl lbl-dark">04 &middot; Who I'm Designing For</span>
-      <h2 class="h2 h2-w">Two proto-personas <em>built from the 11 interviews</em></h2>
-      <p class="body body-w">One has never set foot in the Gardens. The other has and doesn't even know it.</p>
-    </div>
-  
-    <div class="persona-row rev">
-      <div class="persona-card">
-        <div class="persona-img"><img src="Maya.webp" alt="Persona spread, Maya Hernandez" loading="lazy" decoding="async"></div>
-        <div class="persona-body">
-          <p class="persona-name">Maya Hernandez &middot; 20</p>
-          <span class="key-insight">Key insight</span>
-          <p>Has never visited, with no social proof from her friend group, YBG doesn't register as a real place worth going.</p>
+     <!-- Personas -->
+     <div class="pr-sub rev">
+      <div class="g2 top pr-split">
+        <div>
+          <span class="lbl">Who I'm designing for</span>
+          <h3 class="h3">Two proto-personas <em>built from the 11 interviews</em></h3>
+          <p class="body">One has never set foot in the Gardens. The other visits but doesn't know its name.</p>
+        </div>
+        <div class="persona-row persona-row--light">
+          <div class="persona-card">
+            <div class="persona-img"><img src="Maya.webp" alt="Persona spread, Maya Hernandez" loading="lazy" decoding="async"></div>
+            <div class="persona-body">
+              <p class="persona-name">Maya Hernandez &middot; 20</p>
+              <span class="key-insight">Key insight</span>
+              <p>Has never visited. With no social proof from her friends, YBG doesn't register as a place worth going.</p>
+            </div>
+          </div>
+          <div class="persona-card">
+            <div class="persona-img"><img src="Josh.webp" alt="Persona spread, Josh Richardson" loading="lazy" decoding="async"></div>
+            <div class="persona-body">
+              <p class="persona-name">Josh Richardson &middot; 20s</p>
+              <span class="key-insight">Key insight</span>
+              <p>Visits regularly and likes it, but never knew its name because of the poor digital footprint.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="persona-card">
-        <div class="persona-img"><img src="Josh.webp" alt="Persona spread, Josh Richardson" loading="lazy" decoding="async"></div>
-        <div class="persona-body">
-          <p class="persona-name">Josh Richardson &middot; 20s</p>
-          <span class="key-insight">Key insight</span>
-          <p>Visits regularly and likes it, but never knew it was called Yerba Buena Gardens due to poor digital footprint.</p>
-        </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="pr-sub rev">
+      <span class="lbl">How YBG compares</span>
+      <h3 class="h3">Other places and apps <em>miss the mark.</em></h3>
+      <p class="body">Physical spaces are seasonal, have no digital layer, or price Gen Z out. Event apps have the social layer but aren't tied to a place.</p>
+
+      <div tabindex="0" role="region" aria-label="Scrollable table" style="overflow-x:auto;margin-top:2rem;">
+        <table class="comp">
+          <thead>
+            <tr><th>Space / App</th><th>Free to Access</th><th>Digital Discovery Layer</th><th>Year-Round</th><th>Built-in Incentive</th></tr>
+          </thead>
+          <tbody>
+            <tr class="at"><td>YBGC App (Planned)</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Creator feed + QR + web</span></td><td><span class="badge by">Yes</span></td><td><span class="badge by">Badges &rarr; real rewards</span></td></tr>
+            <tr><td>SFMOMA</td><td><span class="badge bn">$30&ndash;40</span></td><td><span class="badge bm">Owned channels only</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td></tr>
+            <tr><td>Dolores Park</td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td></tr>
+            <tr><td>Stern Grove</td><td><span class="badge by">Yes&ndash;Lottery</span></td><td><span class="badge bn">None</span></td><td><span class="badge bn">Seasonal</span></td><td><span class="badge bn">None</span></td></tr>
+            <tr><td>Partiful / Posh</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Not destination-tied</span></td></tr>
+            <tr><td>Luma</td><td><span class="badge by">Yes</span></td><td><span class="badge bm">Tech-event skewed</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Not destination-tied</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
-  </div>
 
+  </div>
+</div>
 
-<!-- 05 SYNTHESIS / HMW -->
+<!-- 03 CORE FEATURES + DISCOVERY -->
 <div class="sec-tinted">
-<div class="wrap">
-  <div class="rev">
-    <span class="lbl">05 &middot; Synthesis</span>
-    <h2 class="h2">From findings to<br><em>how might we.</em></h2>
-    <p class="body">Interview data clustered into four HMW statements, each one tested against sticky-note feature brainstorming before any screen was drawn.</p>
-  </div>
-
-  <ul class="nexts mt3 rev">
-    <li><span>HMW 01</span>Help 18&ndash;25 year olds discover Yerba Buena Gardens through the social channels they already trust.</li>
-    <li><span>HMW 02</span>Give 18&ndash;25 year olds a compelling enough reason to travel to SoMa specifically for the Gardens.</li>
-    <li><span>HMW 03</span>Turn a first visit into a habit that brings 18&ndash;25 year olds back repeatedly.</li>
-    <li><span>HMW 04</span>Make Gardens events feel socially alive enough that 18&ndash;25 year olds feel confident showing up.</li>
-  </ul>
-
-  <div class="frame mt3 rev"><img src="Solutionmapping.webp" alt="Sticky-note feature brainstorming, mapped against each HMW" loading="lazy" decoding="async"></div>
-</div>
-</div>
-
-
-
-<!-- 06 OPPORTUNITY -->
-<section class="sec">
-<div class="wrap">
-  <div class="rev">
-    <span class="lbl">06 &middot; Opportunity</span>
-    <h2 class="h2">How YBG compares <em>to other places and apps.</em></h2>
-    <p class="body">Physical spaces are seasonal, have no digital layer, or price Gen Z out. Event apps have the social layer but aren't tied to a place.</p>
-  <div tabindex="0" role="region" aria-label="Scrollable table" style="overflow-x:auto;margin-top:2rem;" class="rev">
-    <table class="comp">
-      <thead>
-        <tr><th>Space / App</th><th>Free to Access</th><th>Digital Discovery Layer</th><th>Year-Round</th><th>Built-in Incentive</th></tr>
-      </thead>
-      <tbody>
-        <tr class="at"><td>YBGC App (Planned)</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Creator feed + QR + web</span></td><td><span class="badge by">Yes</span></td><td><span class="badge by">Badges &rarr; real rewards</span></td></tr>
-        <tr><td>SFMOMA</td><td><span class="badge bn">$30&ndash;40</span></td><td><span class="badge bm">Owned channels only</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td></tr>
-        <tr><td>Dolores Park</td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td></tr>
-        <tr><td>Stern Grove</td><td><span class="badge by">Yes&ndash;Lottery</span></td><td><span class="badge bn">None</span></td><td><span class="badge bn">Seasonal</span></td><td><span class="badge bn">None</span></td></tr>
-        <tr><td>Partiful / Posh</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Not destination-tied</span></td></tr>
-        <tr><td>Luma</td><td><span class="badge by">Yes</span></td><td><span class="badge bm">Tech-event skewed</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Not destination-tied</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-
-  <div class="snap-grid rev">
-    <div class="snap-frame"><img src="Partiful.webp" alt="Sticky-note teardown, Partiful" loading="lazy" decoding="async"></div>
-    <div class="snap-frame"><img src="Luma.webp" alt="Sticky-note teardown, Luma" loading="lazy" decoding="async"></div>
-    <div class="snap-frame snap-large"><img src="Posh.webp" alt="Sticky-note teardown, Posh" loading="lazy" decoding="async"></div>  </div>
-</div>
-<div class="rev mt4">
-  <p class="cap rev mt4">Hands-on teardown: I printed each competitor app and annotated every screen by hand.</p>  </div>
-</section>
-
-
-<!-- 07 DISCOVERY MECHANISMS -->
-<section class="sec">
   <div class="wrap">
     <div class="rev">
-      <span class="lbl">07 &middot; Discovery Mechanisms</span>
-      <h2 class="h2">Three ways <em>people find the app.</em></h2>
-      <p class="body">The app only works if people find it, so I designed three ways in, based on where research said 18&ndash;25 year olds already look. Hover (or tap) a screen to see it in motion.</p>    </div>
+      <span class="lbl">03 &middot; Core Features</span>
+      <h2 class="h2">Four features, <em>each tied to an interview finding.</em></h2>
+    </div>
   
-    <div class="channel-grid rev">
+    <div class="how-steps rev">
+      <div class="how-step">
+        <span class="step-num">01</span>
+        <p class="step-title">Creator Feed</p>
+        <p class="step-desc">A TikTok-style feed of visitor and creator content, so discovery happens in a format Gen Z already trusts.</p>
+        <p class="retain-note">Vertical endless scroll: the lowest-friction way to keep watching.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">02</span>
+        <p class="step-title">RSVP</p>
+        <p class="step-desc">Event RSVPs that show who's going, lowering the social risk of showing up alone, which came up repeatedly in interviews.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">03</span>
+        <p class="step-title">Map + Badges</p>
+        <p class="step-desc">A consolidated map of hidden gems and amenities, with badges earned by exploring and redeemable for real rewards like free bowling.</p>
+        <p class="retain-note">Badges unlock as you explore, not through a fixed points system, so there&rsquo;s a reason to come back.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-num">04</span>
+        <p class="step-title">Nudges</p>
+        <p class="step-desc">SMS and push notifications in a Gen-Z voice, turning a one-time visit into a repeat habit.</p>
+        <p class="retain-note">In testing, event notifications were one of the top reasons participants said they&rsquo;d reopen the app.</p>
+      </div>
+    </div>
+  
+    <p class="flow-hint rev" style="margin-top:3rem;margin-bottom:.5rem">HOVER (OR TAP) OVER THE SCREENS TO SEE THE FLOW IN MOTION</p>
+  
+    <div class="phones rev mt4">
+      <div class="phone">
+        <div class="phone-shell">
+          <img src="explore.webp" alt="Creator feed" class="phone-poster" loading="lazy" decoding="async">
+          <video src="explore.mp4" aria-label="Screen recording: scrolling the creator video feed" class="phone-video" muted loop playsinline></video>
+        </div>
+        <p>Creator feed</p>
+      </div>
+      <div class="phone">
+        <div class="phone-shell">
+          <img src="event.webp" alt="Event RSVP" class="phone-poster" loading="lazy" decoding="async">
+          <video src="rsvp.mp4" aria-label="Screen recording: RSVPing to an event" class="phone-video" muted loop playsinline></video>
+        </div>
+        <p>Event RSVP</p>
+      </div>
+      <div class="phone">
+        <div class="phone-shell">
+          <img src="mapview.webp" alt="Consolidated Map" class="phone-poster" loading="lazy" decoding="async">
+          <video src="map.mp4" aria-label="Screen recording: exploring the consolidated map" class="phone-video" muted loop playsinline></video>
+        </div>
+        <p>Consolidated Map</p>
+      </div>
+      <div class="phone">
+        <div class="phone-shell">
+          <img src="badges.webp" alt="Badge & reward" class="phone-poster" loading="lazy" decoding="async">
+          <video src="badges.mp4" aria-label="Screen recording: earning a badge and reward" class="phone-video" muted loop playsinline></video>
+        </div>
+        <p>Badge &amp; reward</p>
+      </div>
+      <div class="phone">
+        <div class="phone-shell">
+          <img src="notificationnudge.webp" alt="SMS nudge" class="phone-poster" loading="lazy" decoding="async">
+          <video src="notification.mp4" aria-label="Screen recording: an SMS nudge notification" class="phone-video" muted loop playsinline></video>
+        </div>
+        <p>SMS nudge</p>
+      </div>
+    </div>
+  
+    <!-- Discovery -->
+    <div class="rev disc-intro">
+      <span class="lbl">Three ways people find the app</span>
+      <p class="body">Based on where research said 18&ndash;25 year olds already look.</p>
+        </div>
+  
+    <div class="channel-grid channel-grid--compact rev">
       <div class="channel-card">
-        <div class="channel-head"><span class="channel-n">01</span></div>
-        <div class="ph" style="aspect-ratio:9/17">
+        <div class="channel-head"><span class="channel-n">01  Hover (or tap)</span></div>
+        <div class="ph">
           <img src="scanversion.webp" alt="Webpage QR Code Scanned" class="channel-poster" loading="lazy" decoding="async">
           <video src="qrscan.mp4" aria-label="Screen recording: scanning a QR code that opens the app download flow" class="channel-video" muted loop playsinline></video>
         </div>
         <div class="channel-body">
           <h4>QR Scan</h4>
-          <p>A QR code on an art piece or event flyer opens the app download, so someone curious in the Gardens can install it on the spot.</p>
-        </div>
+          <p>A QR code on an art piece or flyer opens the app, so someone curious in the Gardens can install it on the spot.</p>
+                </div>
       </div>
       <div class="channel-card">
         <div class="channel-head"><span class="channel-n">02</span></div>
-        <div class="ph" style="aspect-ratio:9/17">
+        <div class="ph">
           <img src="websiteintegration.webp" alt="Website Integration" loading="lazy" decoding="async">
         </div>
         <div class="channel-body">
           <h4>Website</h4>
-          <p>For anyone who lands on YBG&rsquo;s website, an accent-colored banner prompts them to download the app.</p>
-        </div>
+          <p>People already visit YBG's website, so a Gen-Z-voiced accent-colored button and banner that prompts them to download the app.</p>        </div>
       </div>
       <div class="channel-card">
-        <div class="channel-head"><span class="channel-n">03</span></div>
-        <div class="ph" style="aspect-ratio:9/16">
+        <div class="channel-head"><span class="channel-n">03  Hover (or tap)</span></div>
+        <div class="ph">
           <img src="tiktokad.webp" alt="Example creator ad video" class="channel-poster" loading="lazy" decoding="async">
           <video src="tiktokad.mp4" aria-label="Example TikTok creator ad for Yerba Buena Gardens, edited" class="channel-video" muted loop playsinline></video>
         </div>
         <div class="channel-body">
           <h4>TikTok Creator Ads</h4>
-          <p>User Generated Content posts, partnering with creators who have already posted about YBG and TikTok ads, meeting the discovery channel every non-visitor named. "Video displayed is an example, has been edited"</p>
+          <p>Creators who already post about YBG, plus TikTok ads, on the channel every non-visitor named. Video shown is an edited example.</p>
         </div>
       </div>
     </div>
   </div>
-  </section>
-
-<!-- 08 DESIGN PROCESS -->
-<div class="sec-tinted">
-<div class="wrap">
-  <div class="rev">
-    <span class="lbl">08 &middot; Design Process</span>
-    <h2 class="h2">Wireframes to a<br>working prototype.</h2>
-    <p class="body">Early sketches moved into mid-fidelity wireframes, then into a visual system built inside a real constraint: YBG's own existing brand guidelines.</p>
   </div>
 
-  <div class="sketches rev">
-    <div><div class="frame"><img src="Wireframe1.webp" alt="Hand-drawn wireframes for the download flows from QR codes and flyers, and the social video feed, with annotations" loading="lazy" decoding="async"></div><p class="cap">Wireframe sketches - Discovery + Short-form videos</p></div>
-    <div><div class="frame"><img src="Wireframe2.webp" alt="Hand-drawn wireframes for the events and badges flows, annotated with design notes" loading="lazy" decoding="async"></div><p class="cap">Wireframe sketches - Events + Badge-earning</p></div>  </div>
+  <!-- PROCESS DETAIL (collapsed) -->
+<section class="sec">
+  <div class="wrap">
+    <details class="pe-detail">
+      <summary>
+        <span class="pe-detail-title h3">See the full process</span>
+        <span class="pe-detail-sub body">How the findings became a working prototype</span>
+      </summary>
 
-  <div class="ds-row rev">
+      <!-- Synthesis / HMW -->
+      <div class="pe-detail-block">
+        <span class="lbl">Synthesis</span>
+        <h2 class="h2">From findings to <em>how might we.</em></h2>
+        <p class="body">Interview data clustered into four HMW statements, each tested against sticky-note feature brainstorming before any screen was drawn.</p>
+
+        <ul class="nexts mt3">
+          <li><span>HMW 01</span>Help 18&ndash;25 year olds discover Yerba Buena Gardens through the social channels they already trust.</li>
+          <li><span>HMW 02</span>Give 18&ndash;25 year olds a compelling enough reason to travel to SoMa specifically for the Gardens.</li>
+          <li><span>HMW 03</span>Turn a first visit into a habit that brings 18&ndash;25 year olds back repeatedly.</li>
+          <li><span>HMW 04</span>Make Gardens events feel socially alive enough that 18&ndash;25 year olds feel confident showing up.</li>
+        </ul>
+
+        <div class="frame mt3"><img src="Solutionmapping.webp" alt="Sticky-note feature brainstorming, mapped against each HMW" loading="lazy" decoding="async"></div>
+      </div>
+
+      <!-- Competitor teardown -->
+      <div class="pe-detail-block">
+        <span class="lbl">Competitor teardown</span>
+        <p class="body">I printed each competitor app and annotated every screen by hand.</p>
+        <div class="snap-grid">
+          <div class="snap-frame"><img src="Partiful.webp" alt="Sticky-note teardown, Partiful" loading="lazy" decoding="async"></div>
+          <div class="snap-frame"><img src="Luma.webp" alt="Sticky-note teardown, Luma" loading="lazy" decoding="async"></div>
+          <div class="snap-frame snap-large"><img src="Posh.webp" alt="Sticky-note teardown, Posh" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+
+  <!-- Design process -->
+<div class="pe-detail-block">
+  <span class="lbl">Design process</span>
+  <h2 class="h2">Wireframes to a<br>working prototype.</h2>
+  <p class="body">Early sketches moved into mid-fidelity wireframes, then into a visual system built inside a real constraint: YBG's own brand guidelines.</p>
+
+  <div class="sketches">
+    <div>
+      <div class="frame"><img src="Wireframe1.webp" alt="Hand-drawn wireframes for the download flows from QR codes and flyers, and the social video feed, with annotations" loading="lazy" decoding="async"></div>
+      <p class="cap">Wireframe sketches - Discovery + Short-form videos</p>
+    </div>
+    <div>
+      <div class="frame"><img src="Wireframe2.webp" alt="Hand-drawn wireframes for the events and badges flows, annotated with design notes" loading="lazy" decoding="async"></div>
+      <p class="cap">Wireframe sketches - Events + Badge-earning</p>
+    </div>
+  </div>
+
+  <div class="ds-row">
     <div class="ds-notes">
-      <p class="body" style="margin-bottom:1rem">The visual system had a real constraint: it had to work within YBG's existing brand, so the direction leans on their approved system, pushed just far enough to feel native to a feed.</p>
+      <p class="body" style="margin-bottom:1rem">The visual system had to work within YBG's existing brand, so it leans on their approved system, pushed just far enough to feel native to a feed.</p>
       <div class="ds-note">
         <strong>Typography</strong>
-        <span>Two clear voices: a calmer one for wayfinding and everyday content, and a punchier one reserved for elements that need attention.</span>
+        <span>Two clear voices: a calmer one for wayfinding and everyday content, and a punchier one for elements that need attention.</span>
       </div>
       <div class="ds-note">
         <strong>Color</strong>
-        <span>The primary color keeps the everyday app calm and grounded, like the space itself. The accent is used for CTAs, so a flash of it always signals "something just happened."</span>
+        <span>The primary color keeps the app calm and grounded, like the space itself. The accent is used for CTAs, so a flash of it always signals "something just happened."</span>
       </div>
     </div>
-    <div><div class="frame ph" style="aspect-ratio:16/11">
+    <div>
+      <div class="frame ph" style="aspect-ratio:16/11">
         <img src="designsystem.webp" alt="Design System" loading="lazy" decoding="async">
-    </div>
-      <p class="cap">Design system, color &amp; type, within YBG's brand</p></div>
-  </div>
-
-  <div class="rigor-row rev">
-    <div>
-      <div class="frame ph">
-        <img src="figmaarrangement.webp" alt="Figma file organized with style" loading="lazy" decoding="async">
       </div>
-      <p class="cap">Figma file, local styles &amp; auto layout</p>
+      <p class="cap">Design system, color &amp; type, within YBG's brand</p>
     </div>
-    <div>
-      <span class="lbl">Building It Pushed the File Further</span>
-      <h3 class="h3">The codebase needs a clean Figma file.</h3>
-      <p class="body">Handing a file to Lovable and Cursor is unforgiving: nothing carries over automatically. So I built proper text styles, color styles and auto layout across every screen, so engineering could build from it as a system.</p>
-    </div>
-
   </div>
 </div>
-</div>
+<!-- Motion & gamification -->
+<div class="pe-detail-block">
+  <span class="lbl">Motion &amp; gamification</span>
+  <h2 class="h2">Animations <em>and the worm mascot.</em></h2>
+  <p class="body">Micro-animations make progress feel rewarding, and a worm mascot keeps the app personable rather than transactional.</p>
 
-<!-- 09 MOTION & GAMIFICATION -->
+  <div class="anim-grid">
+    <div class="anim-tile">
+      <video src="mascotbadges.mp4" aria-label="Animation: the mascot guiding badge rewards" autoplay muted loop playsinline></video>
+      <div class="anim-pulse"></div>
+      <div class="anim-label">Mascot guides badge rewards</div>
+    </div>
+    <div class="anim-tile">
+      <video src="onboarding.mp4" aria-label="Animation: onboarding with the mascot" autoplay muted loop playsinline></video>
+      <div class="anim-pulse"></div>
+      <div class="anim-label">Onboarding with mascot</div>
+    </div>
+    <div class="anim-tile">
+      <video src="navbar.mp4" aria-label="Animation: navigation bar spotlight" autoplay muted loop playsinline></video>
+      <div class="anim-pulse"></div>
+      <div class="anim-label">Navigation bar spotlight</div>
+    </div>
+    <div class="anim-tile">
+      <video src="swiperight.mp4" aria-label="Animation: swiping right to complete an RSVP" autoplay muted loop playsinline></video>
+      <div class="anim-pulse"></div>
+      <div class="anim-label">Complete RSVP</div>
+    </div>
+  </div>
+</div>
+    </details>
+  </div>
+</section>
+
+  <!-- 04 ITERATIONS -->
 <section class="sec">
   <div class="wrap">
+    <div class="sec-header-row rev">
+      <div>
+        <span class="lbl">04 &middot; Iterations</span>
+        <h2 class="h2">What round-one testing<br><em>forced me to fix.</em></h2>
+        <p class="body">Moderated usability testing with 5 participants on the first prototype surfaced four issues before the design reached a high-fidelity build.</p>    </div>
+      <div>
+      </div>
+    </div>
+  
+    <div class="iter rev">
+      <div class="iter-half">
+        <span class="iter-tag tag-b">Finding 01</span>
+        <p>The badge flow had poor hierarchy or labels. Users couldn't tell which badge to collect, how to earn one, or how badges connected to the map.</p>
+        <div class="phone-frame"><img src="midfiprofilesolutions.webp" alt="Before: mid-fidelity profile with a grid of identical black badge shapes and a plain rewards list" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="iter-half">
+        <span class="iter-tag tag-a">Solution</span>
+        <p>Added color and micro-animations to make progress and next steps legible, and tied badge-earning to the map so the two flows connected.</p>
+        <div class="phone-pair">
+          <div class="phone-frame"><img src="hifiprofilesolutions.webp" alt="After: profile with colorful earned badges, the next badge highlighted, and the mascot prompting 'Earn some badges and unlock new rewards'" loading="lazy" decoding="async"></div>
+          <div class="phone-frame"><img src="hifimapviewbadgessolutions.webp" alt="After: map of the gardens with a badge location highlighted, connecting badge-earning to the map" loading="lazy" decoding="async"></div>
+        </div>    </div>
+    </div>
+  
+    <div class="iter rev">
+      <div class="iter-half">
+        <span class="iter-tag tag-b">Finding 02</span>
+        <p>The option to post a video to the creator feed wasn't clear. Users didn't realize they could contribute content, only consume it.</p>      <div class="phone-frame"><img src="EXPLORESCROLLEDsolutions.webp" alt="Before: mid-fidelity video feed with only a small plus button for posting" loading="lazy" decoding="async"></div> 
+         </div>
+      <div class="iter-half">
+        <span class="iter-tag tag-a">Solution</span>
+        <p>Added a fixed feature CTA to the feed and added an occasional get featured ad while scrolling, the ad frequency changes.</p>
+        <div class="phone-pair">
+          <div class="phone-frame"><img src="EXPLOREscrollsolutions.webp" alt="After: video feed with a prominent pink Feature button for posting your own video" loading="lazy" decoding="async"></div>
+          <div class="phone-frame"><img src="EXPLOREGETFeatured.webp" alt="After: Get Featured card shown while scrolling, explaining how to create, upload and get featured, with a Create Your Video button" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="iter rev">
+      <div class="iter-half">
+        <span class="iter-tag tag-b">Finding 03</span>
+        <p>An accessibility list-view was added for the map, but in testing it felt confusing due to many buttons and it competed with the main map view instead of supporting it.</p>
+        <div class="phone-pair">
+          <div class="phone-frame"><img src="midfimapviewsolutions.webp" alt="Before: mid-fidelity map with separate, competing Map View and List View buttons" loading="lazy" decoding="async"></div>
+          <div class="phone-frame"><img src="midfilistviewsolutions.webp" alt="Before: mid-fidelity amenities list with the same competing Map View and List View buttons" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <div class="iter-half">
+        <span class="iter-tag tag-a">Solution</span>
+        <p>Replaced the two competing buttons with a single Map/List toggle, so the accessible list supports the map instead of competing with it. The list view still needs its own usability pass.</p>
+        <div class="phone-pair">
+          <div class="phone-frame"><img src="hifimapviewsolutions.webp" alt="After: a single map view with a simple Map/List toggle in the corner" loading="lazy" decoding="async"></div>
+          <div class="phone-frame"><img src="hifilistviewsolutions.webp" alt="After: amenities list reached through the same toggle, with a photo, address and directions for each place" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+  
+    <p class="body mt3 rev">Also fixed: the events icon and calendar view looked too alike, so I differentiated the icon set.</p>
+  
+    <p class="body mt3 rev" style="color:var(--dim);font-style:italic">These fixes went into the high-fidelity build tested in round two. The badge flow was still the weakest task there, so I redesigned it again afterward (see Results).</p>
+  </div>
+</section>  
+  <!-- 05 RESULTS -->
+  <div class="sec-dark">
+  <div class="wrap">
+    <div class="sec-header-row rev">
+      <div>
+        <span class="lbl lbl-dark">05 &middot; Results &amp; Validation</span>
+        <h2 class="h2 h2-w">Round two: task-based<br>testing on the hi-fi build.</h2>
+        <p class="body body-w">Six participants completed five core tasks on the high-fidelity prototype, measured on success rate, time on task, and error count, plus an A/B test on the RSVP confirm gesture and a System Usability Scale survey.</p>
+      </div>
+    </div>
+  
+    <div class="data-row rev">
+      <div class="data-card"><span class="data-n">84.8%</span><span class="data-l">Average task success (0 - 1 scale)</span></div>
+      <div class="data-card"><span class="data-n">5.45</span><span class="data-l">Average ease rating (of 7)</span></div>
+      <div class="data-card"><span class="data-n">0.70</span><span class="data-l">Average errors per task</span></div>
+    </div>
+  
+    <div tabindex="0" role="region" aria-label="Scrollable table" style="overflow-x:auto;margin-top:2.5rem" class="rev">
+      <table class="metrics">
+        <thead><tr><th>Task</th><th>Success (0 - 1)</th><th>Avg. Time</th><th>Avg. Errors</th><th>Ease (1&ndash;7)</th></tr></thead>
+        <tbody>
+          <tr><td>Onboarding / download</td><td>83.3%</td><td>32.5s</td><td>0.67</td><td>5.58</td></tr>
+          <tr><td>RSVP to an event</td><td>91.7%</td><td>31.7s</td><td>0.17</td><td>5.83</td></tr>
+          <tr class="strong"><td>Discover via explore feed</td><td>100%</td><td>35s</td><td>0</td><td>6.0</td></tr>
+          <tr class="flag"><td>Earn a badge</td><td>53.3%</td><td>76.7s</td><td>1.83</td><td>4.67</td></tr>
+          <tr><td>Explore the map</td><td>95.8%</td><td>100s</td><td>0.83</td><td>5.17</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body body-w mt2 rev">After round two I redesigned the badge flow again and showed it to 3 coworkers, not the original testers. They found it easier to follow, but this was an informal check with no metrics.</p>  <div class="rev mt4">
+      <span class="lbl lbl-dark">What Brings Them Back</span>
+      <h3 class="h3" style="color:#fff;font-weight:300">Events pulled harder than rewards.</h3>
+      <p class="body body-w" style="margin-top:.5rem">Asked what would make them reopen the app, half of participants pointed to upcoming events first.</p>  </div>
+    <div class="data-row rev">
+      <div class="data-card"><span class="data-n">3/6</span><span class="data-l">Cited events as the reason to reopen the app</span></div>
+      <div class="data-card"><span class="data-n">2/6</span><span class="data-l">Cited badges &amp; rewards, including as a pull for younger users specifically</span></div>
+      <div class="data-card"><span class="data-n">2/6</span><span class="data-l">Cited the map or explore page, one specifically for how accessible it felt to a first-time visitor</span></div>
+    </div>
+  
+    <div class="rev mt4">
+      <span class="lbl lbl-dark">A/B Test, RSVP Confirm Gesture</span>
+      <h3 class="h3" style="color:#fff;font-weight:300">Swipe right beat swipe up, 5 to 1.</h3>
+    </div>
+    <div class="results-grid rev">
+      <div class="ab-card">
+        <span class="ab-tag">Option A, Swipe Up</span>
+        <div class="ph-dark"><img src="EventsSelectedSwipup.webp" alt="Swipe-up RSVP confirm" loading="lazy" decoding="async"></div>
+        <div class="ab-cap"><strong>1 / 6 preferred</strong><span>Felt less natural against one-handed phone use</span></div>
+      </div>
+      <div class="ab-card winner">
+        <span class="ab-tag">Option B, Swipe Right &middot; Chosen</span>
+        <div class="ph-dark"><img src="Fifaeventselected.webp" alt="Swipe-right RSVP confirm" loading="lazy" decoding="async"></div>
+              <div class="ab-cap"><strong>5 / 6 preferred</strong><span>Matched the gesture users already knew</span></div>
+      </div>
+      <div class="results-col3">
+        <div class="sus-score">
+          <span class="sus-n">70.0</span>
+          <span class="sus-l">System Usability Scale</span>
+          <p class="sus-bench">Near the 68-point average-usability benchmark, from a 4-participant SUS survey.</p>
+        </div>
+        <div class="q q-dark">
+          <p>&ldquo;I didn't want to truly explore.&rdquo;, flagged as a note on map engagement.</p>
+          <cite>Round-two testing participant</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <!-- 06 ENGINEERING HANDOFF -->
+  <div class="sec-dark" style="background:#0d0d0d">
+  <div class="wrap">
     <div class="rev">
-      <span class="lbl">09 &middot; Motion &amp; Gamification</span>
-      <h2 class="h2">Animations <em>and the worm mascot.</em></h2>
-      <p class="body">Micro-animations make progress feel rewarding, and a worm mascot keeps the app personable rather than transactional.</p>
-        </div>
-    <div class="anim-grid rev">
-      <div class="anim-tile">
-        <video src="mascotbadges.mp4" aria-label="Animation: the mascot guiding badge rewards" autoplay muted loop playsinline></video>
-        <div class="anim-pulse"></div>
-        <div class="anim-label">Mascot guides badge rewards</div>
-      </div>
-      <div class="anim-tile">
-        <video src="onboarding.mp4" aria-label="Animation: onboarding with the mascot" autoplay muted loop playsinline></video>
-        <div class="anim-pulse"></div>
-        <div class="anim-label">Onboarding with mascot</div>
-      </div>
-      <div class="anim-tile">
-        <video src="navbar.mp4" aria-label="Animation: navigation bar spotlight" autoplay muted loop playsinline></video>
-        <div class="anim-pulse"></div>
-        <div class="anim-label">Navigation bar spotlight</div>
-      </div>
-      <div class="anim-tile">
-        <video src="swiperight.mp4" aria-label="Animation: swiping right to complete an RSVP" autoplay muted loop playsinline></video>
-        <div class="anim-pulse"></div>
-        <div class="anim-label">Complete RSVP</div>
+      <span class="lbl lbl-dark">06 &middot; Engineering Handoff</span>
+      <h2 class="h2 h2-w">I built the MVP, <em>and YBG's IT team is taking it to launch.</em></h2>
+      <p class="body body-w">Lovable and Cursor got this from Figma to a working, testable app fast. But a prototype isn&rsquo;t a production system. YBGC&rsquo;s IT team, who already run the live website, is taking it from here to make it secure for real users. The beta includes the fixes from both rounds of testing. The round-two changes haven't been re-tested with users yet.</p>
+    </div>
+  
+    <div class="insight-callout rev">
+      <span class="insight-mark">&ldquo;</span>
+      <div class="insight-callout-body">
+        <span class="lbl lbl-dark" style="margin-bottom:.5rem">Why This Matters</span>
+        <p>Figma prototypes fake state. Code has to remember it. Building in Lovable and Cursor meant the app had to work like real software, and small bugs that survived two rounds of testing showed up as soon as I could actually use it.</p>
       </div>
     </div>
-  </div>
-  </section>
 
-<!-- 10 ITERATIONS -->
-<section class="sec">
-<div class="wrap">
-  <div class="sec-header-row rev">
-    <div>
-      <span class="lbl">10 &middot; Iterations</span>
-      <h2 class="h2">What round-one testing<br><em>forced me to fix.</em></h2>
-      <p class="body">Moderated usability testing with 5 participants on the first prototype surfaced four issues before the design reached a high-fidelity build.</p>    </div>
-    <div>
-    </div>
-  </div>
-
-  <div class="iter rev">
-    <div class="iter-half">
-      <span class="iter-tag tag-b">Finding 01</span>
-      <p>The badge flow lacked hierarchy with no label. Users couldn't tell which badge to go for, how to actually earn one, or how badges connected to the map.</p>
-      <div class="phone-frame"><img src="midfiprofilesolutions.webp" alt="Before: mid-fidelity profile with a grid of identical black badge shapes and a plain rewards list" loading="lazy" decoding="async"></div>
-    </div>
-    <div class="iter-half">
-      <span class="iter-tag tag-a">Solution</span>
-      <p>Added color and micro-animations to make progress and next steps legible, and tied badge-earning to the map so the two flows connected.</p>
-      <div class="phone-pair">
-        <div class="phone-frame"><img src="hifiprofilesolutions.webp" alt="After: profile with colorful earned badges, the next badge highlighted, and the mascot prompting 'Earn some badges and unlock new rewards'" loading="lazy" decoding="async"></div>
-        <div class="phone-frame"><img src="hifimapviewbadgessolutions.webp" alt="After: map of the gardens with a badge location highlighted, connecting badge-earning to the map" loading="lazy" decoding="async"></div>
-      </div>    </div>
-  </div>
-
-  <div class="iter rev">
-    <div class="iter-half">
-      <span class="iter-tag tag-b">Finding 02</span>
-      <p>The option to post a video to the creator feed wasn't clear. Users didn't realize they could contribute content, only consume it.</p>      <div class="phone-frame"><img src="EXPLORESCROLLEDsolutions.webp" alt="Before: mid-fidelity video feed with only a small plus button for posting" loading="lazy" decoding="async"></div> 
-       </div>
-    <div class="iter-half">
-      <span class="iter-tag tag-a">Solution</span>
-      <p>Added a fixed feature CTA to the feed and added an occasional get featured ad while scrolling, the ad frequency changes.</p>
-      <div class="phone-pair">
-        <div class="phone-frame"><img src="EXPLOREscrollsolutions.webp" alt="After: video feed with a prominent pink Feature button for posting your own video" loading="lazy" decoding="async"></div>
-        <div class="phone-frame"><img src="EXPLOREGETFeatured.webp" alt="After: Get Featured card shown while scrolling, explaining how to create, upload and get featured, with a Create Your Video button" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="iter rev">
-    <div class="iter-half">
-      <span class="iter-tag tag-b">Finding 03</span>
-      <p>An accessibility list-view was added for the map, but in testing it felt confusing due to many buttons and it competed with the main map view instead of supporting it.</p>
-      <div class="phone-pair">
-        <div class="phone-frame"><img src="midfimapviewsolutions.webp" alt="Before: mid-fidelity map with separate, competing Map View and List View buttons" loading="lazy" decoding="async"></div>
-        <div class="phone-frame"><img src="midfilistviewsolutions.webp" alt="Before: mid-fidelity amenities list with the same competing Map View and List View buttons" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-    <div class="iter-half">
-      <span class="iter-tag tag-a">Solution</span>
-      <p>Simplified to an accessible list content accessed via a toggle, rather than a separate mode, accessibility additions still need their own usability pass.</p>
-      <div class="phone-pair">
-        <div class="phone-frame"><img src="hifimapviewsolutions.webp" alt="After: a single map view with a simple Map/List toggle in the corner" loading="lazy" decoding="async"></div>
-        <div class="phone-frame"><img src="hifilistviewsolutions.webp" alt="After: amenities list reached through the same toggle, with a photo, address and directions for each place" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-  </div>
-
-  <p class="body mt3 rev">Also fixed: the events icon and calendar view looked too alike, so I differentiated the icon set.</p>
-
-  <p class="body mt3 rev" style="color:var(--dim);font-style:italic">These fixes went into the high-fidelity build tested in round two. The badge flow was still the weakest task there, so I redesigned it again afterward (see Results).</p></section>
-
-<!-- 11 RESULTS -->
-<div class="sec-dark">
-<div class="wrap">
-  <div class="sec-header-row rev">
-    <div>
-      <span class="lbl lbl-dark">11 &middot; Results &amp; Validation</span>
-      <h2 class="h2 h2-w">Round two: task-based<br>testing on the hi-fi build.</h2>
-      <p class="body body-w">Six participants completed five core tasks on the high-fidelity prototype, measured on success rate, time on task, and error count, plus an A/B test on the RSVP confirm gesture and a System Usability Scale survey.</p>
-    </div>
-  </div>
-
-  <div class="data-row rev">
-    <div class="data-card"><span class="data-n">84.8%</span><span class="data-l">Average task success (0 - 1 scale)</span></div>
-    <div class="data-card"><span class="data-n">5.45</span><span class="data-l">Average ease rating (of 7)</span></div>
-    <div class="data-card"><span class="data-n">0.70</span><span class="data-l">Average errors per task</span></div>
-  </div>
-
-  <div tabindex="0" role="region" aria-label="Scrollable table" style="overflow-x:auto;margin-top:2.5rem" class="rev">
-    <table class="metrics">
-      <thead><tr><th>Task</th><th>Success (0 - 1)</th><th>Avg. Time</th><th>Avg. Errors</th><th>Ease (1&ndash;7)</th></tr></thead>
-      <tbody>
-        <tr><td>Onboarding / download</td><td>83.3%</td><td>32.5s</td><td>0.67</td><td>5.58</td></tr>
-        <tr><td>RSVP to an event</td><td>91.7%</td><td>31.7s</td><td>0.17</td><td>5.83</td></tr>
-        <tr class="strong"><td>Discover via explore feed</td><td>100%</td><td>35s</td><td>0</td><td>6.0</td></tr>
-        <tr class="flag"><td>Earn a badge</td><td>53.3%</td><td>76.7s</td><td>1.83</td><td>4.67</td></tr>
-        <tr><td>Explore the map</td><td>95.8%</td><td>100s</td><td>0.83</td><td>5.17</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="body body-w mt2 rev">After round two I redesigned the badge flow again and showed it to 3 coworkers, not the original testers. They found it easier to follow, but this was an informal check with no metrics.</p>  <div class="rev mt4">
-    <span class="lbl lbl-dark">What Brings Them Back</span>
-    <h3 class="h3" style="color:#fff;font-weight:300">Events pulled harder than rewards.</h3>
-    <p class="body body-w" style="margin-top:.5rem">Asked what would make them reopen the app, half of participants pointed to upcoming events first.</p>  </div>
-  <div class="data-row rev">
-    <div class="data-card"><span class="data-n">3/6</span><span class="data-l">Cited events as the reason to reopen the app</span></div>
-    <div class="data-card"><span class="data-n">2/6</span><span class="data-l">Cited badges &amp; rewards, including as a pull for younger users specifically</span></div>
-    <div class="data-card"><span class="data-n">2/6</span><span class="data-l">Cited the map or explore page, one specifically for how accessible it felt to a first-time visitor</span></div>
-  </div>
-
-  <div class="rev mt4">
-    <span class="lbl lbl-dark">A/B Test, RSVP Confirm Gesture</span>
-    <h3 class="h3" style="color:#fff;font-weight:300">Swipe right beat swipe up, 5 to 1.</h3>
-  </div>
-  <div class="results-grid rev">
-    <div class="ab-card">
-      <span class="ab-tag">Option A, Swipe Up</span>
-      <div class="ph-dark"><img src="EventsSelectedSwipup.webp" alt="Swipe-up RSVP confirm" loading="lazy" decoding="async"></div>
-      <div class="ab-cap"><strong>1 / 6 preferred</strong><span>Felt less natural against one-handed phone use</span></div>
-    </div>
-    <div class="ab-card winner">
-      <span class="ab-tag">Option B, Swipe Right &middot; Chosen</span>
-      <div class="ph-dark"><img src="Fifaeventselected.webp" alt="Swipe-right RSVP confirm" loading="lazy" decoding="async"></div>
-            <div class="ab-cap"><strong>5 / 6 preferred</strong><span>Matched the gesture users already knew</span></div>
-    </div>
-    <div class="results-col3">
-      <div class="sus-score">
-        <span class="sus-n">70.0</span>
-        <span class="sus-l">System Usability Scale</span>
-        <p class="sus-bench">Near the 68-point average-usability benchmark, from a 4-participant SUS survey.</p>
-      </div>
-      <div class="q q-dark">
-        <p>&ldquo;I didn't want to truly explore.&rdquo;, flagged as a note on map engagement.</p>
-        <cite>Round-two testing participant</cite>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- 12 ENGINEERING HANDOFF -->
-<div class="sec-dark" style="background:#0d0d0d">
-<div class="wrap">
-  <div class="rev">
-    <span class="lbl lbl-dark">12 &middot; Engineering Handoff</span>
-    <h2 class="h2 h2-w">I built the MVP, <em>and YBG's IT team is taking it to launch.</em></h2>
-    <p class="body body-w">Lovable and Cursor got this from Figma to a working, testable app fast. But a prototype isn&rsquo;t a production system. YBGC&rsquo;s IT team, who already run the live website, is taking it from here to make it secure for real users. The beta built in the round-one fixes before the second study.</p>
-  </div>
-
-  <div class="insight-callout rev">
-    <span class="insight-mark">&ldquo;</span>
-    <div class="insight-callout-body">
-      <span class="lbl lbl-dark" style="margin-bottom:.5rem">Why This Matters</span>
-      <p>Figma prototypes fake state. Code has to remember it. Building in Lovable and Cursor meant the app had to work like real software, and small bugs that survived two rounds of testing showed up as soon as I could actually use it.</p>
-    </div>
-  </div>
-
-  <div class="pe-intro rev">
-    <span class="lbl lbl-dark">Working With AI, Not Around It</span>
-    <p class="body body-w">AI helped me build faster, but the design decisions were still mine. Working within tight token limits in Cursor and Lovable made that clear.</p>
-  </div>
-  <div class="pe-strip rev">
-    <div class="pe-card"><span class="pe-eyebrow">Challenge</span><p>Strict token limits while building the MVP in Cursor and Lovable.</p></div>
-    <div class="pe-card"><span class="pe-eyebrow">Action</span><p>Used Claude to engineer high-density, precise prompts that cut token usage.</p></div>
-    <div class="pe-card"><span class="pe-eyebrow">Result</span><p>Shipped the full functional MVP inside the resource constraints.</p></div>
-  </div>
-
-  <div class="roadmap-now rev">
-    <span class="roadmap-phase">Now</span>
-    <h3 class="roadmap-title">What I handed off</h3>
-
-    <div class="repo-proof">
-    
+    <div class="rigor-row pe-figma">
       <div>
-        <div class="ph">
-          <img src="githubfolders.webp" alt="GitHub repository for the Yerba Buena app showing its project folders and 677 commits" loading="lazy" decoding="async">
+        <div class="frame ph">
+          <img src="figmaarrangement.webp" alt="Figma file organized with local styles and auto layout" loading="lazy" decoding="async">
         </div>
-        <p class="repo-proof-cap">Repo, file structure</p>
+        <p class="cap">Figma file, local styles &amp; auto layout</p>
       </div>
-    
       <div>
-        <div class="ph">
-          <img src="readmefile.webp" alt="README file documenting the app's overview, my role, design process, key features and tools" loading="lazy" decoding="async">
-        </div>
-        <p class="repo-proof-cap">Repo, README</p>
+        <p class="body body-w">Handing a file to Lovable and Cursor is unforgiving: nothing carries over automatically. So I built proper text and color styles and auto layout across every screen, so engineering could build from it as a system.</p>
       </div>
+    </div>
+  
+    <div class="pe-intro rev">
+      <span class="lbl lbl-dark">Working With AI, Not Around It</span>
+      <p class="body body-w">AI helped me build faster, but the design decisions were still mine. Working within tight token limits in Cursor and Lovable made that clear.</p>
+    </div>
+
+  
     
+    <div class="pe-strip rev">
+      <div class="pe-card"><span class="pe-eyebrow">Challenge</span><p>Lovable's credits ran out, even after 100 more were added. One Stripe prompt used up Cursor's.</p></div>
+      <div class="pe-card"><span class="pe-eyebrow">Action</span><p>Split each feature into small prompts, tightened with Claude to name the function, the check, and the test case.</p></div>
+      <div class="pe-card"><span class="pe-eyebrow">Result</span><p>All four features built, plus the badge redo after round two. Working MVP handed off.</p></div>
     </div>
     
+    <div class="pe-example rev">
+      <span class="pe-eyebrow">Example: making paid-event RSVPs check the card</span>
+      <div class="pe-compare">
+        <div class="pe-card pe-bad">
+          <span class="pe-eyebrow">My first draft</span>
+          <p>The Stripe payment form currently lets any card number go through (even declined test cards like 4000 0000 0000 0002). The submit button is skipping the payment validation. Please update the RSVP button's submit handler to actually await the Stripe payment confirmation (stripe.confirmPayment or stripe.createPaymentMethod). It must throw a visible error on the screen if the card fails or is declined, and only complete the RSVP if Stripe returns a success status.</p>
+        </div>
+        <div class="pe-card pe-good">
+          <span class="pe-eyebrow">Tightened with Claude · 1.9 credits</span>
+          <p>The Stripe payment form lets any card through, including declined test cards (4000 0000 0000 0002). The RSVP submit handler is likely calling <code>recordRsvp()</code> without properly awaiting and checking the result of <code>stripe.confirmPayment()</code>. Please fix the submit handler so it:<br>
+          1. Calls <code>stripe.confirmPayment()</code> with <code>redirect: 'if_required'</code><br>
+          2. Awaits the result and checks for an <code>error</code> object. If present, display the error message (e.g. <code>error.message</code>) visibly on screen and stop<br>
+          3. Only proceeds to call <code>recordRsvp()</code> if <code>paymentIntent.status === 'succeeded'</code><br>
+          4. Does not silently swallow or ignore any Stripe error response<br>
+          Test with decline code 4000 0000 0000 0002 to confirm it now blocks the RSVP and shows a visible error.</p>
+        </div>
+      </div>
+      <p class="body body-w pe-note">Most of my Lovable prompts cost 3 to 5 credits. This one cost 1.9.</p>
+      <p class="body body-w pe-note">By hand: I caught the bug by testing with Stripe's test cards, wrote the fix prompt from it, and re-tested. The approved card now completes the RSVP; others decline with an error.</p>
+    </div>
+  
+    <div class="roadmap-now rev">
+      <span class="roadmap-phase">Now</span>
+      <h3 class="roadmap-title">What I handed off</h3>
+  
+      <div class="repo-proof">
+      
+        <div>
+          <div class="ph">
+            <img src="githubfolders.webp" alt="GitHub repository for the Yerba Buena app showing its project folders and 677 commits" loading="lazy" decoding="async">
+          </div>
+          <p class="repo-proof-cap">Repo, file structure</p>
+        </div>
+      
+        <div>
+          <div class="ph">
+            <img src="readmefile.webp" alt="README file documenting the app's overview, my role, design process, key features and tools" loading="lazy" decoding="async">
+          </div>
+          <p class="repo-proof-cap">Repo, README</p>
+        </div>
+      
+      </div>
+      
+    </div>
+  
+    <div class="roadmap-split rev">
+      <div class="roadmap-col next">
+        <span class="roadmap-phase">Next</span>
+        <h3 class="roadmap-title">In progress, IT</h3>
+        <span class="roadmap-owner owner-it">Engineering</span>
+        <ul class="roadmap-list">
+          <li>Security review &amp; authentication layer</li>
+          <li>Backend architecture, hosting, and admin tooling</li>
+          <li>Content moderation for the creator feed</li>
+          <li>Code review and hardening</li>
+        </ul>
+      </div>
+      <div class="roadmap-col later">
+        <span class="roadmap-phase">Later</span>
+        <h3 class="roadmap-title">Public launch</h3>
+        <span class="roadmap-owner owner-it">IT-led</span>
+        <ul class="roadmap-list">
+          <li>Beta test with real visitors and staff</li>
+          <li>QR, website, and TikTok discovery flows go live</li>
+          <li>Public launch</li>
+          <li>CS intern onboarded to support long-term (pending confirmation)</li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- BETA LINK -->
+    <a href="https://yerba-buena-canvas.lovable.app" class="beta-tile rev" target="_blank" rel="noopener">
+      <div class="ph-wide ph-dark">
+        <img src="screens.webp" alt="YBGC app, first screen" loading="lazy" decoding="async">
+      </div>
+      <div class="beta-play">
+        <div class="beta-circle">▶</div>
+        <span class="beta-text">Click to try the beta<span>Opens the live app</span></span>
+      </div>
+    </a>
+  </div>
   </div>
 
-  <div class="roadmap-split rev">
-    <div class="roadmap-col next">
-      <span class="roadmap-phase">Next</span>
-      <h3 class="roadmap-title">In progress, IT</h3>
-      <span class="roadmap-owner owner-it">Engineering</span>
-      <ul class="roadmap-list">
-        <li>Security review &amp; authentication layer</li>
-        <li>Backend architecture, hosting, and admin tooling</li>
-        <li>Content moderation for the creator feed</li>
-        <li>Code review and hardening</li>
-      </ul>
-    </div>
-    <div class="roadmap-col later">
-      <span class="roadmap-phase">Later</span>
-      <h3 class="roadmap-title">Public launch</h3>
-      <span class="roadmap-owner owner-it">IT-led</span>
-      <ul class="roadmap-list">
-        <li>Beta test with real visitors and staff</li>
-        <li>QR, website, and TikTok discovery flows go live</li>
-        <li>Public launch</li>
-        <li>CS intern onboarded to support long-term (pending confirmation)</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- BETA LINK -->
-  <a href="https://yerba-buena-canvas.lovable.app" class="beta-tile rev" target="_blank" rel="noopener">
-    <div class="ph-wide ph-dark">
-      <img src="screens.webp" alt="YBGC app, first screen" loading="lazy" decoding="async">
-    </div>
-    <div class="beta-play">
-      <div class="beta-circle">▶</div>
-      <span class="beta-text">Click to try the beta<span>Opens the live app</span></span>
-    </div>
-  </a>
-</div>
-</div>
-
-
-
-<!-- 13 REFLECTION -->
+<!-- 07 REFLECTION -->
 <div class="sec-tinted">
 <div class="wrap">
   <div class="rev">
-    <span class="lbl">13 &middot; Reflection</span>
+    <span class="lbl">07 &middot; Reflection</span>
     <h2 class="h2">What this taught me.</h2>
   </div>
 
@@ -1218,7 +1220,7 @@ img,video{max-width:100%}
   </div>
 
   <ul class="nexts mt4 rev">
-    <li><span>Next &rarr;</span> Re-test the redesigned badge flow with the round-two participants</li>
+    <li><span>Next &rarr;</span> Re-test the round-two changes with users</li>
     <li><span>Next &rarr;</span> Add a proper security and data-privacy layer before any public beta</li>
     <li><span>Next &rarr;</span> Beta test with real visitors and staff before a public launch</li>
     <li><span>Next &rarr;</span> Launch the QR and website discovery flows alongside the first TikTok creator collabs</li>
