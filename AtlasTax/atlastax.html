@@ -156,7 +156,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .decisions{display:grid;grid-template-columns:1fr 1fr;gap:3rem 2.5rem;margin-top:3rem}
 .decisions h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:400;line-height:1.25;margin:1.1rem 0 .4rem}
 .decisions p{font-size:.9375rem;color:var(--mid);line-height:1.7;max-width:30em}
-#decisions .wrap{width:1800px}
 .decisions{gap:3rem 1.5rem}
 .decisions .shot{aspect-ratio:auto;background:none;border:none;box-shadow:none}
 .decisions .shot::before{display:none}
@@ -274,6 +273,19 @@ footer{background:var(--ink);padding:3rem;display:flex;justify-content:space-bet
 @media(max-width:520px){.pitch-images{grid-template-columns:1fr}}
 .hv{position:relative;border-radius:16px;overflow:hidden;line-height:0}
 .hv video{display:block;width: 1200px;height:auto}
+
+/* phone layout: must stay at the very bottom */
+@media(max-width:900px){
+  .fx,.fx-split{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem;align-items:start}
+  .fx-split figure{padding:.5rem}
+}
+
+@media(max-width:900px){
+  .decisions{display:block!important}
+  .decisions>div{display:block!important;width:100%!important;max-width:100%!important;margin:0 0 2.5rem!important;overflow:hidden}
+  .decisions .shot{width:100%!important;max-width:100%!important;aspect-ratio:auto!important}
+  .decisions img{position:static!important;display:block!important;width:100%!important;max-width:100%!important;height:auto!important}
+}
 </style>
 </head>
 <body>
