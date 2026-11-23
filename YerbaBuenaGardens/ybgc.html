@@ -543,6 +543,86 @@ img,video{max-width:100%}
   .pr-split{grid-template-columns:1fr}
   .pr-split .body{max-width:none}
 }
+
+/* ===== v2 case-study layout ===== */
+.n-h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.2vw,3.4rem);font-weight:300;color:#fff;line-height:1.12;letter-spacing:-.025em;margin-bottom:2rem;max-width:20em}
+.n-h1 em{font-style:italic;color:rgba(255,255,255,.82)}
+.hero-meta-item a{color:#fff;text-decoration:underline;text-underline-offset:4px;font-weight:600}
+.n-scope{--pw:min(230px,calc((100vw - 9rem)/2))}
+.n-shot{position:relative;width:var(--pw);max-width:100%;aspect-ratio:var(--ar);border-radius:calc(var(--pw)*.082);overflow:hidden;background:#1d1f24;margin:0 auto}
+.n-shot video,.n-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.n-img{display:block;width:100%;height:auto;border-radius:12px}
+.tag-pick{background:#E6ECFB;color:#1F4FD8}
+.n-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem;align-items:center;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:2rem 2.4rem;margin-top:1.5rem}
+.n-split h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;line-height:1.2;margin-bottom:.6rem;color:var(--ink)}
+.n-split p{font-size:.9375rem;color:var(--mid);line-height:1.75;max-width:30em}
+.n-split figure{margin:0;background:rgba(228,224,216,.7);padding:1rem;border-radius:12px}
+.n-split .cap{text-align:center}
+.n-fails{list-style:none;margin-top:1rem}
+.n-fails li{font-size:.9375rem;color:#9B2335;padding:.3rem 0;display:flex;gap:.55rem}
+.n-fails li::before{content:"\2715";font-size:.75rem;line-height:1.9}
+.n-two{display:flex;justify-content:center;gap:1.25rem}
+.n-two>div{flex:0 1 var(--pw);min-width:0}
+.n-pick{box-shadow:0 0 0 3px rgba(31,79,216,.75),0 18px 40px -22px rgba(31,79,216,.45)}
+.n-split.n-pick figure,.n-dcard.n-pick .n-panel{background:rgba(31,79,216,.10)}
+.n-split.n-pick .cap{color:#1F4FD8;font-weight:600}
+.n-ba{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.n-ba.stack{grid-template-columns:1fr}
+.n-ba figure{margin:0}
+.n-ba figure.n-pick{box-shadow:none}
+.n-ba figure.n-pick .n-img{box-shadow:0 0 0 3px rgba(31,79,216,.75)}
+.n-ba figure.n-pick .cap{color:#1F4FD8;font-weight:600}
+.n-dec{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.n-dec.c3{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:1.5rem}
+.n-dcard{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:1.5rem 1.5rem 2rem}
+.n-dcard.n-pick{border-color:transparent}
+.n-dcard h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:400;line-height:1.25;margin:1.4rem 0 .5rem;color:var(--ink)}
+.n-dcard p{font-size:.9375rem;color:var(--mid);line-height:1.7}
+.n-panel{display:flex;justify-content:center;align-items:center;gap:1.25rem;padding:.9rem;background:rgba(228,224,216,.7);border-radius:12px}
+.n-panel .n-shot{margin:0;flex:0 1 var(--pw)}
+.n-dec.c3 .n-panel{min-height:calc(var(--pw)*1712/876 + 1.8rem)}
+.n-k{display:block;font-style:normal;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem}
+.k-cut{color:#9B2335}.k-borrow{color:var(--olive)}.k-later{color:#B9770E}
+.n-tear{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3.5rem;align-items:center;justify-content:center}
+.n-tear .n-shot{margin:0}
+.n-app{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4rem;align-items:center;margin-top:2.5rem}
+.n-tabs{display:flex;flex-direction:column;gap:.25rem}
+.n-tab{all:unset;box-sizing:border-box;cursor:pointer;display:block;padding:1.1rem 1.4rem;border-radius:14px;border:1px solid transparent;transition:background .25s,border-color .25s}
+.n-tab b{display:block;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;line-height:1.25;color:rgba(20,20,20,.42);transition:color .25s}
+.n-tab span{display:block;max-height:0;overflow:hidden;opacity:0;font-size:.9375rem;line-height:1.7;color:var(--mid);max-width:28em;transition:max-height .35s,opacity .3s,margin .3s}
+.n-tab:hover b{color:rgba(20,20,20,.75)}
+.n-tab.on{background:var(--card);border-color:var(--rule)}
+.n-tab.on b{color:var(--ink)}
+.n-tab.on span{max-height:9em;opacity:1;margin-top:.5rem}
+.n-tab:focus-visible{outline:2px solid var(--olive);outline-offset:2px}
+.n-phone{padding:1rem;background:rgba(228,224,216,.7);border-radius:14px}
+.n-screen{position:relative;width:min(270px,calc(100vw - 8rem));aspect-ratio:876/1712;border-radius:calc(min(270px,100vw - 8rem)*.082);overflow:hidden;background:#1d1f24}
+.n-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
+.n-screen video.on{opacity:1}
+.n-pr{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:1.25rem;align-items:start}
+.n-pr figure{margin:0!important;padding:0!important;background:none!important}
+.n-pr-prompt img{display:block;width:100%;height:auto;border-radius:calc(var(--pw)*.082)}
+.n-pr-result .n-shot{width:100%;margin:0}
+.n-prompt{grid-template-columns:minmax(0,44rem) minmax(0,1fr)}
+.n-split.dark{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
+.n-split.dark h3{color:#fff}
+.n-split.dark p{color:rgba(255,255,255,.75)}
+.n-split.dark figure{background:rgba(255,255,255,.05)}
+.n-split.dark.n-prompt>.n-pr{background:rgba(255,255,255,.05);padding:1rem;border-radius:12px}
+.n-split.dark .n-img{border-radius:10px}
+.n-figma{margin-top:2.5rem}
+.n-split.n-prompt>.n-pr{background:rgba(228,224,216,.7);padding:1rem;border-radius:12px}
+@media(max-width:900px){
+  .n-split,.n-prompt,.n-app,.n-tear{grid-template-columns:1fr;gap:1.5rem}
+  .n-app{justify-items:center}.n-phone{order:-1}.n-tabs{width:100%}
+  .n-dec,.n-dec.c3,.n-ba{grid-template-columns:1fr}
+  .n-split{padding:1.5rem}
+  .n-tear{justify-items:center}
+}
+@media(min-width:901px){
+  .n-figma{grid-template-columns:300px minmax(0,1fr)}
+  .n-prompt{grid-template-columns:minmax(0,1fr) 300px}
+}
 </style>
 </head>
 <body>
@@ -562,671 +642,216 @@ img,video{max-width:100%}
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img" src="heroimage.webp" alt="Yerba Buena Gardens App">
+  <img class="hero-img" src="ybg-heroimg.png" alt="Yerba Buena Gardens App">
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <div class="logo-hero">
       <img src="logo.png" alt="YBGC logomark">
     </div>
-    <h1>Gen Z isn't allergic<br>to <em>touching grass.</em><br>They just don't know it's there.</h1>
-    <p class="hero-hmw">How might we make Yerba Buena Gardens a place 18-25 year olds actively seek out, not just stumble upon?</p>
+    <h1 class="n-h1">First in-house product designer at Yerba Buena Gardens, <em> I built an app to get Gen Z to touch grass.</em></h1>
     <div class="hero-meta">
-      <div class="hero-meta-item"><label>Role</label><span>Product Design Intern</span></div>
-      <div class="hero-meta-item"><label>Tools</label><span>Figma &middot; Claude &middot; Lovable &middot; Cursor &middot; Procreate</span></div>
-      <div class="hero-meta-item"><label>Team</label><span>Solo design &middot; handoff to internal IT engineering</span></div>
+      <div class="hero-meta-item"><label>Role</label><span>End-to-end product designer</span></div>
+      <div class="hero-meta-item"><label>Tools</label><span>Figma &middot; Lovable &middot; Claude Code &middot; Cursor</span></div>
+      <div class="hero-meta-item"><label>Status</label><span>MVP built and handed off &middot; v2 rebuilt</span></div>
+      <div class="hero-meta-item"><label>Live</label><span><a href="https://yerba-buena-canvas-4qk8d3j95-tamanna-designs.vercel.app" target="_blank" rel="noopener">Try the live app</a></span></div>
     </div>
   </div>
 </section>
 
 <!-- STAT BAR -->
 <div class="stat-bar">
-  <div class="stat-cell"><span class="stat-n">11</span><span class="stat-l">Staff &amp; visitor interviews</span></div>
-  <div class="stat-cell"><span class="stat-n">4</span><span class="stat-l">Core features shipped to MVP</span></div>
-  <div class="stat-cell"><span class="stat-n">84.8%</span><span class="stat-l">Task success rate</span></div>
+  <div class="stat-cell"><span class="stat-n">4</span><span class="stat-l">Core features shipped in MVP</span></div>
+  <div class="stat-cell"><span class="stat-n">11</span><span class="stat-l">Interviews</span></div>
   <div class="stat-cell"><span class="stat-n">2</span><span class="stat-l">Rounds of usability testing</span></div>
+  <div class="stat-cell"><span class="stat-n">84.8%</span><span class="stat-l">Task success, v1 testing</span></div>
 </div>
 
-<!-- 01 OVERVIEW -->
+<!-- PROBLEM -->
 <section class="sec">
-<div class="wrap">
-  <div class="g2 rev">
-    <div>
-      <span class="lbl">01 &middot; Overview</span>
-      <h2 class="h2">The Gardens sit next to the Metreon, <em>and most Gen Z visitors don't know they exist.</em></h2>
-      <p class="body">Yerba Buena Gardens sits in the middle of SoMa, next to Metreon and a cluster of museums, and the age group it needs most has no reason to know it exists. There's no social proof and poor presence on TikTok, the channel Gen Z actually uses to find things to do in SF.</p>
-      <p class="body" style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--ink);margin:1.5rem 0">
-        So I designed a companion app that makes the Gardens discoverable and worth coming back to.
-      </p>
-      <p class="body">I interviewed the staff and the visitors they want to reach, built a <strong style="color:var(--ink);font-weight:600"> working MVP in Lovable and Cursor, </strong>tested it twice, and fixed what each round found. YBG's IT team is taking it to launch.</p>
+  <div class="wrap n-scope">
+    <span class="lbl">The problem</span>
+    <h2 class="h2">The Gardens aren&rsquo;t boring. <em>They&rsquo;re invisible to Gen Z.</em></h2>
+    <p class="body">They have no digital footprint in the one place this age group actually looks. I interviewed 5 staff and leaders, then 6 people aged 18&ndash;25: 4 who had never visited and 2 who had.</p>
+    <div class="g2 top mt3">
+      <div class="q" style="margin:0"><p>&ldquo;That&rsquo;s the one group we&rsquo;ve never figured out the magic pill for, at seven different parks and recreation departments, seven different cities.&rdquo;</p><cite>Executive Director, YBG</cite></div>
+      <div class="q" style="margin:0"><p>&ldquo;I don&rsquo;t think people are going on our website to look things up. People go on social media to look things up.&rdquo;</p><cite>Special Projects Manager, YBG</cite></div>
     </div>
-    <div>
-      <div class="product-shot" style="margin-top:0"><img src="HandMockup.webp" alt="App overview mockup" loading="lazy" decoding="async"></div>      <p class="cap">Main concept, at a glance</p>
+    <div class="g2 mt3">
+      <div class="card"><h4>An awareness gap</h4><p>People don&rsquo;t know the Gardens exist, or what they offer.</p></div>
+      <div class="card"><h4>The wrong channels</h4><p>Gen Z finds events on social media which the Gardens don't use.</p></div>
     </div>
-  </div>
-</div>
-</section>
-
-
-<!-- 02 PROBLEM & RESEARCH (one continuous section) -->
-<div class="sec-tinted">
-  <div class="wrap">
-
-    <!-- Problem -->
-    <div class="g2 rev">
-      <div>
-        <span class="lbl">02 &middot; Problem &amp; Research</span>
-        <h2 class="h2">A 33-year veteran of<br>Parks &amp; Rec told me<br><em>this is unsolved.</em></h2>
-        <div class="q" style="margin:1.5rem 0">
-          <p>&ldquo;That's the one group we've never figured out the magic pill for, at seven different parks and recreation departments, seven different cities.&rdquo;</p>
-          <cite>Executive Director, YBG</cite>
-        </div>
-        <p class="body">The Gardens aren't invisible because they're boring. They have no digital footprint in the one place this age group actually looks. I interviewed the people who run the Gardens and the people they want to reach to find the gap.</p>
-      </div>
-      <div>
-        <div class="frame ph ph-hero"><img src="Thegardens.webp" alt="Yerba Buena Gardens" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
-
-    <div class="method-bar rev mt3">
-      <div class="method-item"><span class="method-n">5</span><span class="method-l">YBG staff &amp; leadership</span></div>
-      <div class="method-item"><span class="method-n">4</span><span class="method-l">Non-visitors, 18&ndash;25</span></div>
-      <div class="method-item"><span class="method-n">2</span><span class="method-l">Current visitors, 18&ndash;25</span></div>
-    </div>
-
-    <div class="g2 top mt3 rev">
-      <div>
-        <div class="q" style="margin-top:0">
-          <p>&ldquo;I don't think people are going on our website to look things up. People go on social media to look things up.&rdquo;</p>
-          <cite>Special Projects Manager, YBG</cite>
-        </div>
-        <div class="q">
-          <p>&ldquo;There's a reason to come here. They just don't know.&rdquo;</p>
-          <cite>Special Projects Manager, YBG</cite>
-        </div>
-      </div>
-      <div>
-        <div class="frame">
-          <img src="Affinity.webp" alt="Affinity map synthesized from interviews" loading="lazy" decoding="async">
-        </div>
-        <p class="cap">Affinity map, synthesized from interviews</p>
-      </div>
-    </div>
-
-    <div class="g3 mt3 rev">
-      <div class="card">
-        <h4>No Digital Layer</h4>
-        <p>Marketing is still print-first: flyers passed through neighborhood organizations, which skews older.</p>
-      </div>
-      <div class="card">
-        <h4>No Social Proof</h4>
-        <p>Non-visitors never went because none of their friends do, so there's no reason to be first.</p>
-      </div>
-      <div class="card">
-        <h4>Discovery Happens on TikTok</h4>
-        <p>Every non-visitor named TikTok as their default source for "free things to do," not YBG's website or Google.</p>
-      </div>
-    </div>
-
-     <!-- Personas -->
-     <div class="pr-sub rev">
-      <div class="g2 top pr-split">
-        <div>
-          <span class="lbl">Who I'm designing for</span>
-          <h3 class="h3">Two proto-personas <em>built from the 11 interviews</em></h3>
-          <p class="body">One has never set foot in the Gardens. The other visits but doesn't know its name.</p>
-        </div>
-        <div class="persona-row persona-row--light">
-          <div class="persona-card">
-            <div class="persona-img"><img src="Maya.webp" alt="Persona spread, Maya Hernandez" loading="lazy" decoding="async"></div>
-            <div class="persona-body">
-              <p class="persona-name">Maya Hernandez &middot; 20</p>
-              <span class="key-insight">Key insight</span>
-              <p>Has never visited. With no social proof from her friends, YBG doesn't register as a place worth going.</p>
-            </div>
-          </div>
-          <div class="persona-card">
-            <div class="persona-img"><img src="Josh.webp" alt="Persona spread, Josh Richardson" loading="lazy" decoding="async"></div>
-            <div class="persona-body">
-              <p class="persona-name">Josh Richardson &middot; 20s</p>
-              <span class="key-insight">Key insight</span>
-              <p>Visits regularly and likes it, but never knew its name because of the poor digital footprint.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Comparison -->
-    <div class="pr-sub rev">
-      <span class="lbl">How YBG compares</span>
-      <h3 class="h3">Other places and apps <em>miss the mark.</em></h3>
-      <p class="body">Physical spaces are seasonal, have no digital layer, or price Gen Z out. Event apps have the social layer but aren't tied to a place.</p>
-
-      <div tabindex="0" role="region" aria-label="Scrollable table" style="overflow-x:auto;margin-top:2rem;">
-        <table class="comp">
-          <thead>
-            <tr><th>Space / App</th><th>Free to Access</th><th>Digital Discovery Layer</th><th>Year-Round</th><th>Built-in Incentive</th></tr>
-          </thead>
-          <tbody>
-            <tr class="at"><td>YBGC App (Planned)</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Creator feed + QR + web</span></td><td><span class="badge by">Yes</span></td><td><span class="badge by">Badges &rarr; real rewards</span></td></tr>
-            <tr><td>SFMOMA</td><td><span class="badge bn">$30&ndash;40</span></td><td><span class="badge bm">Owned channels only</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td></tr>
-            <tr><td>Dolores Park</td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">None</span></td></tr>
-            <tr><td>Stern Grove</td><td><span class="badge by">Yes&ndash;Lottery</span></td><td><span class="badge bn">None</span></td><td><span class="badge bn">Seasonal</span></td><td><span class="badge bn">None</span></td></tr>
-            <tr><td>Partiful / Posh</td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Not destination-tied</span></td></tr>
-            <tr><td>Luma</td><td><span class="badge by">Yes</span></td><td><span class="badge bm">Tech-event skewed</span></td><td><span class="badge by">Yes</span></td><td><span class="badge bn">Not destination-tied</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- 03 CORE FEATURES + DISCOVERY -->
-<div class="sec-tinted">
-  <div class="wrap">
-    <div class="rev">
-      <span class="lbl">03 &middot; Core Features</span>
-      <h2 class="h2">Four features, <em>each tied to an interview finding.</em></h2>
-    </div>
-  
-    <div class="how-steps rev">
-      <div class="how-step">
-        <span class="step-num">01</span>
-        <p class="step-title">Creator Feed</p>
-        <p class="step-desc">A TikTok-style feed of visitor and creator content, so discovery happens in a format Gen Z already trusts.</p>
-        <p class="retain-note">Vertical endless scroll: the lowest-friction way to keep watching.</p>
-      </div>
-      <div class="how-step">
-        <span class="step-num">02</span>
-        <p class="step-title">RSVP</p>
-        <p class="step-desc">Event RSVPs that show who's going, lowering the social risk of showing up alone, which came up repeatedly in interviews.</p>
-      </div>
-      <div class="how-step">
-        <span class="step-num">03</span>
-        <p class="step-title">Map + Badges</p>
-        <p class="step-desc">A consolidated map of hidden gems and amenities, with badges earned by exploring and redeemable for real rewards like free bowling.</p>
-        <p class="retain-note">Badges unlock as you explore, not through a fixed points system, so there&rsquo;s a reason to come back.</p>
-      </div>
-      <div class="how-step">
-        <span class="step-num">04</span>
-        <p class="step-title">Nudges</p>
-        <p class="step-desc">SMS and push notifications in a Gen-Z voice, turning a one-time visit into a repeat habit.</p>
-        <p class="retain-note">In testing, event notifications were one of the top reasons participants said they&rsquo;d reopen the app.</p>
-      </div>
-    </div>
-  
-    <p class="flow-hint rev" style="margin-top:3rem;margin-bottom:.5rem">HOVER (OR TAP) OVER THE SCREENS TO SEE THE FLOW IN MOTION</p>
-  
-    <div class="phones rev mt4">
-      <div class="phone">
-        <div class="phone-shell">
-          <img src="explore.webp" alt="Creator feed" class="phone-poster" loading="lazy" decoding="async">
-          <video src="explore.mp4" aria-label="Screen recording: scrolling the creator video feed" class="phone-video" muted loop playsinline></video>
-        </div>
-        <p>Creator feed</p>
-      </div>
-      <div class="phone">
-        <div class="phone-shell">
-          <img src="event.webp" alt="Event RSVP" class="phone-poster" loading="lazy" decoding="async">
-          <video src="rsvp.mp4" aria-label="Screen recording: RSVPing to an event" class="phone-video" muted loop playsinline></video>
-        </div>
-        <p>Event RSVP</p>
-      </div>
-      <div class="phone">
-        <div class="phone-shell">
-          <img src="mapview.webp" alt="Consolidated Map" class="phone-poster" loading="lazy" decoding="async">
-          <video src="map.mp4" aria-label="Screen recording: exploring the consolidated map" class="phone-video" muted loop playsinline></video>
-        </div>
-        <p>Consolidated Map</p>
-      </div>
-      <div class="phone">
-        <div class="phone-shell">
-          <img src="badges.webp" alt="Badge & reward" class="phone-poster" loading="lazy" decoding="async">
-          <video src="badges.mp4" aria-label="Screen recording: earning a badge and reward" class="phone-video" muted loop playsinline></video>
-        </div>
-        <p>Badge &amp; reward</p>
-      </div>
-      <div class="phone">
-        <div class="phone-shell">
-          <img src="notificationnudge.webp" alt="SMS nudge" class="phone-poster" loading="lazy" decoding="async">
-          <video src="notification.mp4" aria-label="Screen recording: an SMS nudge notification" class="phone-video" muted loop playsinline></video>
-        </div>
-        <p>SMS nudge</p>
-      </div>
-    </div>
-  
-    <!-- Discovery -->
-    <div class="rev disc-intro">
-      <span class="lbl">Three ways people find the app</span>
-      <p class="body">Based on where research said 18&ndash;25 year olds already look.</p>
-        </div>
-  
-    <div class="channel-grid channel-grid--compact rev">
-      <div class="channel-card">
-        <div class="channel-head"><span class="channel-n">01  Hover (or tap)</span></div>
-        <div class="ph">
-          <img src="scanversion.webp" alt="Webpage QR Code Scanned" class="channel-poster" loading="lazy" decoding="async">
-          <video src="qrscan.mp4" aria-label="Screen recording: scanning a QR code that opens the app download flow" class="channel-video" muted loop playsinline></video>
-        </div>
-        <div class="channel-body">
-          <h4>QR Scan</h4>
-          <p>A QR code on an art piece or flyer opens the app, so someone curious in the Gardens can install it on the spot.</p>
-                </div>
-      </div>
-      <div class="channel-card">
-        <div class="channel-head"><span class="channel-n">02</span></div>
-        <div class="ph">
-          <img src="websiteintegration.webp" alt="Website Integration" loading="lazy" decoding="async">
-        </div>
-        <div class="channel-body">
-          <h4>Website</h4>
-          <p>People already visit YBG's website, so a Gen-Z-voiced accent-colored button and banner that prompts them to download the app.</p>        </div>
-      </div>
-      <div class="channel-card">
-        <div class="channel-head"><span class="channel-n">03  Hover (or tap)</span></div>
-        <div class="ph">
-          <img src="tiktokad.webp" alt="Example creator ad video" class="channel-poster" loading="lazy" decoding="async">
-          <video src="tiktokad.mp4" aria-label="Example TikTok creator ad for Yerba Buena Gardens, edited" class="channel-video" muted loop playsinline></video>
-        </div>
-        <div class="channel-body">
-          <h4>TikTok Creator Ads</h4>
-          <p>Creators who already post about YBG, plus TikTok ads, on the channel every non-visitor named. Video shown is an edited example.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <!-- PROCESS DETAIL (collapsed) -->
-<section class="sec">
-  <div class="wrap">
-    <details class="pe-detail">
-      <summary>
-        <span class="pe-detail-title h3">See the full process</span>
-        <span class="pe-detail-sub body">How the findings became a working prototype</span>
-      </summary>
-
-      <!-- Synthesis / HMW -->
-      <div class="pe-detail-block">
-        <span class="lbl">Synthesis</span>
-        <h2 class="h2">From findings to <em>how might we.</em></h2>
-        <p class="body">Interview data clustered into four HMW statements, each tested against sticky-note feature brainstorming before any screen was drawn.</p>
-
-        <ul class="nexts mt3">
-          <li><span>HMW 01</span>Help 18&ndash;25 year olds discover Yerba Buena Gardens through the social channels they already trust.</li>
-          <li><span>HMW 02</span>Give 18&ndash;25 year olds a compelling enough reason to travel to SoMa specifically for the Gardens.</li>
-          <li><span>HMW 03</span>Turn a first visit into a habit that brings 18&ndash;25 year olds back repeatedly.</li>
-          <li><span>HMW 04</span>Make Gardens events feel socially alive enough that 18&ndash;25 year olds feel confident showing up.</li>
-        </ul>
-
-        <div class="frame mt3"><img src="Solutionmapping.webp" alt="Sticky-note feature brainstorming, mapped against each HMW" loading="lazy" decoding="async"></div>
-      </div>
-
-      <!-- Competitor teardown -->
-      <div class="pe-detail-block">
-        <span class="lbl">Competitor teardown</span>
-        <p class="body">I printed each competitor app and annotated every screen by hand.</p>
-        <div class="snap-grid">
-          <div class="snap-frame"><img src="Partiful.webp" alt="Sticky-note teardown, Partiful" loading="lazy" decoding="async"></div>
-          <div class="snap-frame"><img src="Luma.webp" alt="Sticky-note teardown, Luma" loading="lazy" decoding="async"></div>
-          <div class="snap-frame snap-large"><img src="Posh.webp" alt="Sticky-note teardown, Posh" loading="lazy" decoding="async"></div>
-        </div>
-      </div>
-
-  <!-- Design process -->
-<div class="pe-detail-block">
-  <span class="lbl">Design process</span>
-  <h2 class="h2">Wireframes to a<br>working prototype.</h2>
-  <p class="body">Early sketches moved into mid-fidelity wireframes, then into a visual system built inside a real constraint: YBG's own brand guidelines.</p>
-
-  <div class="sketches">
-    <div>
-      <div class="frame"><img src="Wireframe1.webp" alt="Hand-drawn wireframes for the download flows from QR codes and flyers, and the social video feed, with annotations" loading="lazy" decoding="async"></div>
-      <p class="cap">Wireframe sketches - Discovery + Short-form videos</p>
-    </div>
-    <div>
-      <div class="frame"><img src="Wireframe2.webp" alt="Hand-drawn wireframes for the events and badges flows, annotated with design notes" loading="lazy" decoding="async"></div>
-      <p class="cap">Wireframe sketches - Events + Badge-earning</p>
-    </div>
-  </div>
-
-  <div class="ds-row">
-    <div class="ds-notes">
-      <p class="body" style="margin-bottom:1rem">The visual system had to work within YBG's existing brand, so it leans on their approved system, pushed just far enough to feel native to a feed.</p>
-      <div class="ds-note">
-        <strong>Typography</strong>
-        <span>Two clear voices: a calmer one for wayfinding and everyday content, and a punchier one for elements that need attention.</span>
-      </div>
-      <div class="ds-note">
-        <strong>Color</strong>
-        <span>The primary color keeps the app calm and grounded, like the space itself. The accent is used for CTAs, so a flash of it always signals "something just happened."</span>
-      </div>
-    </div>
-    <div>
-      <div class="frame ph" style="aspect-ratio:16/11">
-        <img src="designsystem.webp" alt="Design System" loading="lazy" decoding="async">
-      </div>
-      <p class="cap">Design system, color &amp; type, within YBG's brand</p>
-    </div>
-  </div>
-</div>
-<!-- Motion & gamification -->
-<div class="pe-detail-block">
-  <span class="lbl">Motion &amp; gamification</span>
-  <h2 class="h2">Animations <em>and the worm mascot.</em></h2>
-  <p class="body">Micro-animations make progress feel rewarding, and a worm mascot keeps the app personable rather than transactional.</p>
-
-  <div class="anim-grid">
-    <div class="anim-tile">
-      <video src="mascotbadges.mp4" aria-label="Animation: the mascot guiding badge rewards" autoplay muted loop playsinline></video>
-      <div class="anim-pulse"></div>
-      <div class="anim-label">Mascot guides badge rewards</div>
-    </div>
-    <div class="anim-tile">
-      <video src="onboarding.mp4" aria-label="Animation: onboarding with the mascot" autoplay muted loop playsinline></video>
-      <div class="anim-pulse"></div>
-      <div class="anim-label">Onboarding with mascot</div>
-    </div>
-    <div class="anim-tile">
-      <video src="navbar.mp4" aria-label="Animation: navigation bar spotlight" autoplay muted loop playsinline></video>
-      <div class="anim-pulse"></div>
-      <div class="anim-label">Navigation bar spotlight</div>
-    </div>
-    <div class="anim-tile">
-      <video src="swiperight.mp4" aria-label="Animation: swiping right to complete an RSVP" autoplay muted loop playsinline></video>
-      <div class="anim-pulse"></div>
-      <div class="anim-label">Complete RSVP</div>
-    </div>
-  </div>
-</div>
-    </details>
   </div>
 </section>
 
-  <!-- 04 ITERATIONS -->
+<!-- THE APP -->
 <section class="sec">
   <div class="wrap">
-    <div class="sec-header-row rev">
-      <div>
-        <span class="lbl">04 &middot; Iterations</span>
-        <h2 class="h2">What round-one testing<br><em>forced me to fix.</em></h2>
-        <p class="body">Moderated usability testing with 5 participants on the first prototype surfaced four issues before the design reached a high-fidelity build.</p>    </div>
-      <div>
-      </div>
-    </div>
-  
-    <div class="iter rev">
-      <div class="iter-half">
-        <span class="iter-tag tag-b">Finding 01</span>
-        <p>The badge flow had poor hierarchy or labels. Users couldn't tell which badge to collect, how to earn one, or how badges connected to the map.</p>
-        <div class="phone-frame"><img src="midfiprofilesolutions.webp" alt="Before: mid-fidelity profile with a grid of identical black badge shapes and a plain rewards list" loading="lazy" decoding="async"></div>
-      </div>
-      <div class="iter-half">
-        <span class="iter-tag tag-a">Solution</span>
-        <p>Added color and micro-animations to make progress and next steps legible, and tied badge-earning to the map so the two flows connected.</p>
-        <div class="phone-pair">
-          <div class="phone-frame"><img src="hifiprofilesolutions.webp" alt="After: profile with colorful earned badges, the next badge highlighted, and the mascot prompting 'Earn some badges and unlock new rewards'" loading="lazy" decoding="async"></div>
-          <div class="phone-frame"><img src="hifimapviewbadgessolutions.webp" alt="After: map of the gardens with a badge location highlighted, connecting badge-earning to the map" loading="lazy" decoding="async"></div>
-        </div>    </div>
-    </div>
-  
-    <div class="iter rev">
-      <div class="iter-half">
-        <span class="iter-tag tag-b">Finding 02</span>
-        <p>The option to post a video to the creator feed wasn't clear. Users didn't realize they could contribute content, only consume it.</p>      <div class="phone-frame"><img src="EXPLORESCROLLEDsolutions.webp" alt="Before: mid-fidelity video feed with only a small plus button for posting" loading="lazy" decoding="async"></div> 
-         </div>
-      <div class="iter-half">
-        <span class="iter-tag tag-a">Solution</span>
-        <p>Added a fixed feature CTA to the feed and added an occasional get featured ad while scrolling, the ad frequency changes.</p>
-        <div class="phone-pair">
-          <div class="phone-frame"><img src="EXPLOREscrollsolutions.webp" alt="After: video feed with a prominent pink Feature button for posting your own video" loading="lazy" decoding="async"></div>
-          <div class="phone-frame"><img src="EXPLOREGETFeatured.webp" alt="After: Get Featured card shown while scrolling, explaining how to create, upload and get featured, with a Create Your Video button" loading="lazy" decoding="async"></div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="iter rev">
-      <div class="iter-half">
-        <span class="iter-tag tag-b">Finding 03</span>
-        <p>An accessibility list-view was added for the map, but in testing it felt confusing due to many buttons and it competed with the main map view instead of supporting it.</p>
-        <div class="phone-pair">
-          <div class="phone-frame"><img src="midfimapviewsolutions.webp" alt="Before: mid-fidelity map with separate, competing Map View and List View buttons" loading="lazy" decoding="async"></div>
-          <div class="phone-frame"><img src="midfilistviewsolutions.webp" alt="Before: mid-fidelity amenities list with the same competing Map View and List View buttons" loading="lazy" decoding="async"></div>
-        </div>
-      </div>
-      <div class="iter-half">
-        <span class="iter-tag tag-a">Solution</span>
-        <p>Replaced the two competing buttons with a single Map/List toggle, so the accessible list supports the map instead of competing with it. The list view still needs its own usability pass.</p>
-        <div class="phone-pair">
-          <div class="phone-frame"><img src="hifimapviewsolutions.webp" alt="After: a single map view with a simple Map/List toggle in the corner" loading="lazy" decoding="async"></div>
-          <div class="phone-frame"><img src="hifilistviewsolutions.webp" alt="After: amenities list reached through the same toggle, with a photo, address and directions for each place" loading="lazy" decoding="async"></div>
-        </div>
-      </div>
-    </div>
-  
-    <p class="body mt3 rev">Also fixed: the events icon and calendar view looked too alike, so I differentiated the icon set.</p>
-  
-    <p class="body mt3 rev" style="color:var(--dim);font-style:italic">These fixes went into the high-fidelity build tested in round two. The badge flow was still the weakest task there, so I redesigned it again afterward (see Results).</p>
+    <span class="lbl">The flow</span>
+    <h2 class="h2">Everything in the app <em>leads back to the Gardens.</em></h2>
+    <div class="n-app"><div class="n-tabs" role="tablist"><button type="button" role="tab" class="n-tab on" aria-selected="true"><b>Opening</b><span>An illustrated entrance to the Gardens plays every time the app opens.</span></button><button type="button" role="tab" class="n-tab" aria-selected="false"><b>What&rsquo;s on</b><span>Explore what&rsquo;s happening at the Gardens, then RSVP to an event right from there.</span></button><button type="button" role="tab" class="n-tab" aria-selected="false"><b>Explore</b><span>A feed of the Gardens&rsquo; own videos. Next, creators add theirs and TikTok ads drive downloads.</span></button><button type="button" role="tab" class="n-tab" aria-selected="false"><b>Badges</b><span>Earned by engaging with the Gardens: going to events, exploring and visiting.</span></button><button type="button" role="tab" class="n-tab" aria-selected="false"><b>Profile</b><span>Track your progress and redeem rewards at the Gardens.</span></button></div><div class="n-phone"><div class="n-screen"><video src="app-intro.mp4" aria-label="The illustrated intro animation that plays when the app opens" muted loop playsinline preload="auto"></video><video src="app-events.mp4" aria-label="Screen recording of browsing events and the filters" muted loop playsinline preload="metadata"></video><video src="app-explore.mp4" aria-label="Screen recording of the Explore video feed" muted loop playsinline preload="metadata"></video><video src="app-badges.mp4" aria-label="Screen recording of the Badges screen" muted loop playsinline preload="metadata"></video><video src="app-profile.mp4" aria-label="Screen recording of the Profile and redeeming a reward" muted loop playsinline preload="metadata"></video></div></div></div>
   </div>
-</section>  
-  <!-- 05 RESULTS -->
-  <div class="sec-dark">
-  <div class="wrap">
-    <div class="sec-header-row rev">
+</section>
+
+<!-- V1 TO V2 -->
+<div class="sec-tinted">
+  <div class="wrap n-scope">
+    <span class="lbl">v1 to v2</span>
+    <h2 class="h2">The first version worked<em> but it didn&rsquo;t look like the Gardens.</em></h2>
+    <p class="body">The existing system wasn&rsquo;t expressing the place, so I replaced it with something calmer, closer to how the Gardens feel: an escape from the city&rsquo;s noise.</p>
+    <div class="n-ba stack">
+      <figure><img class="n-img" src="v1-screens.webp" alt="Version 1 screens: onboarding, events, explore, wander map and profile" loading="lazy"><figcaption class="cap">v1 screens</figcaption></figure>
+      <figure class="n-pick"><img class="n-img" src="v2-screens.webp" alt="Version 2 screens: what's on list, calendar, explore, badges and profile" loading="lazy"><figcaption class="cap">v2 screens</figcaption></figure>
+    </div>
+    <div class="n-ba">
+      <figure><img class="n-img" src="ds-v1.webp" alt="Version 1 design system: palette, typography and components" loading="lazy"><figcaption class="cap">v1 design system: Aleo and DM Sans, the Gardens&rsquo; main green plus the pink accent from secondary colors</figcaption></figure>
+      <figure class="n-pick"><img class="n-img" src="ds-v2.webp" alt="Version 2 design system: colour, type and components" loading="lazy"><figcaption class="cap">v2 design system: Bricolage Grotesque, a rounded body face, Paper, Ink, Fern and a small Marigold accent</figcaption></figure>
+    </div>
+    <div class="g3 mt3">
+      <div class="card"><h4>Cleaner typefaces</h4><p>Changed to a complimentary font pairing which feel similar.</p></div>
+      <div class="card"><h4>Hierarchy fixed</h4><p>One clear thing per screen, so the eye knows where to go first.</p></div>
+      <div class="card"><h4>Color tightened</h4><p>A calm base with one small accent for the moments that matter.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- EVENTS -->
+<section class="sec">
+  <div class="wrap n-scope">
+    <span class="lbl">Events</span>
+    <h2 class="h2">Three versions of Events. <em>One made it.</em></h2>
+    <div class="n-split">
       <div>
-        <span class="lbl lbl-dark">05 &middot; Results &amp; Validation</span>
-        <h2 class="h2 h2-w">Round two: task-based<br>testing on the hi-fi build.</h2>
-        <p class="body body-w">Six participants completed five core tasks on the high-fidelity prototype, measured on success rate, time on task, and error count, plus an A/B test on the RSVP confirm gesture and a System Usability Scale survey.</p>
+        <span class="iter-tag tag-b">Failed &middot; Version 1</span>
+        <h3>The first build</h3>
+        <p>The Events page from the original Lovable build, which I tested in two rounds. It didn&rsquo;t hold up.</p>
+        <ul class="n-fails"><li>Too small to read comfortably.</li><li>Poor craft.</li><li>The old design system.</li><li>Bad hierarchy.</li></ul>
       </div>
+      <figure><div class="n-shot" style="--ar:876/1714;--pw:240px"><video src="events-v1.mp4" aria-label="Screen recording of the version 1 Events page" muted loop playsinline preload="metadata"></video></div><figcaption class="cap">Version 1</figcaption></figure>
     </div>
-  
-    <div class="data-row rev">
-      <div class="data-card"><span class="data-n">84.8%</span><span class="data-l">Average task success (0 - 1 scale)</span></div>
-      <div class="data-card"><span class="data-n">5.45</span><span class="data-l">Average ease rating (of 7)</span></div>
-      <div class="data-card"><span class="data-n">0.70</span><span class="data-l">Average errors per task</span></div>
-    </div>
-  
-    <div tabindex="0" role="region" aria-label="Scrollable table" style="overflow-x:auto;margin-top:2.5rem" class="rev">
-      <table class="metrics">
-        <thead><tr><th>Task</th><th>Success (0 - 1)</th><th>Avg. Time</th><th>Avg. Errors</th><th>Ease (1&ndash;7)</th></tr></thead>
-        <tbody>
-          <tr><td>Onboarding / download</td><td>83.3%</td><td>32.5s</td><td>0.67</td><td>5.58</td></tr>
-          <tr><td>RSVP to an event</td><td>91.7%</td><td>31.7s</td><td>0.17</td><td>5.83</td></tr>
-          <tr class="strong"><td>Discover via explore feed</td><td>100%</td><td>35s</td><td>0</td><td>6.0</td></tr>
-          <tr class="flag"><td>Earn a badge</td><td>53.3%</td><td>76.7s</td><td>1.83</td><td>4.67</td></tr>
-          <tr><td>Explore the map</td><td>95.8%</td><td>100s</td><td>0.83</td><td>5.17</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="body body-w mt2 rev">After round two I redesigned the badge flow again and showed it to 3 coworkers, not the original testers. They found it easier to follow, but this was an informal check with no metrics.</p>  <div class="rev mt4">
-      <span class="lbl lbl-dark">What Brings Them Back</span>
-      <h3 class="h3" style="color:#fff;font-weight:300">Events pulled harder than rewards.</h3>
-      <p class="body body-w" style="margin-top:.5rem">Asked what would make them reopen the app, half of participants pointed to upcoming events first.</p>  </div>
-    <div class="data-row rev">
-      <div class="data-card"><span class="data-n">3/6</span><span class="data-l">Cited events as the reason to reopen the app</span></div>
-      <div class="data-card"><span class="data-n">2/6</span><span class="data-l">Cited badges &amp; rewards, including as a pull for younger users specifically</span></div>
-      <div class="data-card"><span class="data-n">2/6</span><span class="data-l">Cited the map or explore page, one specifically for how accessible it felt to a first-time visitor</span></div>
-    </div>
-  
-    <div class="rev mt4">
-      <span class="lbl lbl-dark">A/B Test, RSVP Confirm Gesture</span>
-      <h3 class="h3" style="color:#fff;font-weight:300">Swipe right beat swipe up, 5 to 1.</h3>
-    </div>
-    <div class="results-grid rev">
-      <div class="ab-card">
-        <span class="ab-tag">Option A, Swipe Up</span>
-        <div class="ph-dark"><img src="EventsSelectedSwipup.webp" alt="Swipe-up RSVP confirm" loading="lazy" decoding="async"></div>
-        <div class="ab-cap"><strong>1 / 6 preferred</strong><span>Felt less natural against one-handed phone use</span></div>
+    <div class="n-split">
+      <div>
+        <span class="iter-tag tag-b">Failed &middot; Version 2</span>
+        <h3>The booklet flip</h3>
+        <p>Flipping through events like pages looked charming, but it didn&rsquo;t match how people think about an events list. They wanted to scan, not turn pages.</p>
       </div>
-      <div class="ab-card winner">
-        <span class="ab-tag">Option B, Swipe Right &middot; Chosen</span>
-        <div class="ph-dark"><img src="Fifaeventselected.webp" alt="Swipe-right RSVP confirm" loading="lazy" decoding="async"></div>
-              <div class="ab-cap"><strong>5 / 6 preferred</strong><span>Matched the gesture users already knew</span></div>
+      <figure><div class="n-shot" style="--ar:876/1714;--pw:240px"><video src="events-booklet.mp4" aria-label="Screen recording of the booklet flip Events version" muted loop playsinline preload="metadata"></video></div><figcaption class="cap">Booklet flip</figcaption></figure>
+    </div>
+    <div class="n-split n-pick">
+      <div>
+        <span class="iter-tag tag-pick">Chosen &middot; Version 3</span>
+        <h3>The poster scroll</h3>
+        <p>Events as posters you scroll through, with a List and Calendar toggle for people who plan ahead. It keeps the Gardens&rsquo; own posters front and center and lets people scan fast.</p>
       </div>
-      <div class="results-col3">
-        <div class="sus-score">
-          <span class="sus-n">70.0</span>
-          <span class="sus-l">System Usability Scale</span>
-          <p class="sus-bench">Near the 68-point average-usability benchmark, from a 4-participant SUS survey.</p>
-        </div>
-        <div class="q q-dark">
-          <p>&ldquo;I didn't want to truly explore.&rdquo;, flagged as a note on map engagement.</p>
-          <cite>Round-two testing participant</cite>
-        </div>
+      <figure class="n-two">
+        <div><div class="n-shot" style="--ar:876/1714"><video src="events-list.mp4" aria-label="Screen recording of the Events list, the poster scroll" muted loop playsinline preload="metadata"></video></div><div class="cap">List: the poster scroll</div></div>
+        <div><div class="n-shot" style="--ar:876/1714"><video src="events-calendar.mp4" aria-label="Screen recording of the Events calendar view" muted loop playsinline preload="metadata"></video></div><div class="cap">Calendar</div></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="sec-dark">
+  <div class="wrap n-scope">
+    <div class="n-tear">
+      <div class="n-shot" style="--ar:876/1714;--pw:240px"><video src="events-tear.mp4" aria-label="Screen recording of the RSVP ticket tear" muted loop playsinline preload="metadata"></video></div>
+      <div><span class="lbl lbl-dark">Events &middot; RSVP</span><h3 class="h2 h2-w" style="font-size:1.9rem">The ticket tear</h3><p class="body body-w">When you RSVP, your ticket tears off the poster. A small moment that makes the commitment feel real.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- BADGES -->
+<div class="sec-tinted">
+  <div class="wrap n-scope">
+    <span class="lbl">Badges</span>
+    <h2 class="h2">Testing showed the badge flow was confusing, <em>so I rebuilt it as collectible cards.</em></h2>
+    <div class="n-split">
+      <div>
+        <span class="iter-tag tag-b">v1 &middot; What testing found</span>
+        <h3>The weakest task, at 53.3%</h3>
+        <p>In v1 testing, earning a badge had the lowest success of the five tasks, with the most errors and the longest time. People couldn&rsquo;t tell how a badge was earned or what it was for.</p>
+      </div>
+      <figure><div class="n-shot" style="--ar:984/1920;--pw:240px"><video src="badges-v1.mp4" aria-label="Screen recording of the version 1 badge flow" muted loop playsinline preload="metadata"></video></div><figcaption class="cap">Version 1</figcaption></figure>
+    </div>
+    <div class="n-dec">
+      <div class="n-dcard n-pick">
+        <div class="n-panel"><div class="n-shot" style="--ar:876/1714"><video src="badges-flow.mp4" aria-label="Screen recording of the badges screen and a badge opening into a card" muted loop playsinline preload="metadata"></video></div></div>
+        <h3>Cards you want to collect</h3>
+        <p>Each badge opens into a card with tilt and a foil sweep, collected like a set.</p>
+      </div>
+      <div class="n-dcard n-pick">
+        <div class="n-panel"><div class="n-shot" style="--ar:876/1714"><video src="badges-rare.mp4" aria-label="Screen recording of a rare and an epic badge card" muted loop playsinline preload="metadata"></video></div></div>
+        <h3>Rarity you can feel</h3>
+        <p>Rare and epic cards are metallic, with a light that catches as you move.</p>
+      </div>
+      <div class="n-dcard n-pick">
+        <div class="n-panel"><div class="n-shot" style="--ar:876/1714"><video src="badges-reward.mp4" aria-label="Screen recording of redeeming a reward from the profile" muted loop playsinline preload="metadata"></video></div></div>
+        <h3>Rewards on your profile</h3>
+        <p>Rewards now show on the profile, with the badges you need to collect to unlock each one.</p>
+      </div>
+      <div class="n-dcard n-pick">
+        <div class="n-panel"><div class="n-shot" style="--ar:876/1714"><img src="missed-list.webp" alt="Past badges list with missed badges" loading="lazy"></div><div class="n-shot" style="--ar:876/1714"><img src="missed-popup.webp" alt="Popup for a missed badge with a reminder toggle" loading="lazy"></div></div>
+        <h3>Missed badges</h3>
+        <p>A section for what you could have earned, so the system tells you what to do next.</p>
       </div>
     </div>
   </div>
+</div>
+
+<!-- DECISIONS -->
+<section class="sec">
+  <div class="wrap n-scope">
+    <span class="lbl">Decisions</span>
+    <div class="n-dec c3">
+      <div class="n-dcard"><em class="n-k k-cut">What I cut</em><div class="n-panel"><div class="n-shot" style="--ar:876/1610"><video src="decision-map.mp4" aria-label="Screen recording of the map I designed, with filters and a route being located" muted loop playsinline preload="metadata"></video></div></div><h3>Replaced with &ldquo;Open in Maps&rdquo;</h3><p>I designed a full map first. A good one takes a bigger team, so the app opens Apple Maps or Google Maps instead.</p></div>
+      <div class="n-dcard"><em class="n-k k-borrow">What I borrowed</em><div class="n-panel"><div class="n-shot" style="--ar:876/1712"><video src="decision-feed.mp4" aria-label="Screen recording of the Explore video feed and the Get featured flow" muted loop playsinline preload="metadata"></video></div></div><h3>Feed restyled only</h3><p>It&rsquo;s designed to work like the short-video feeds people already know, so there was nothing to reinvent. The effort went into Events and Badges.</p></div>
+      <div class="n-dcard"><em class="n-k k-later">What I left for later</em><div class="n-panel"><div class="n-shot" style="--ar:876/1712"><video src="decision-pay.mp4" aria-label="Screen recording of the payment flow I started building" muted loop playsinline preload="metadata"></video></div></div><h3>Payments paused</h3><p>I started building them in Cursor and hit my credit limit. The credits I had left went to Events and Badges.</p></div>
+    </div>
   </div>
-  
-  <!-- 06 ENGINEERING HANDOFF -->
-  <div class="sec-dark" style="background:#0d0d0d">
+</section>
+
+<!-- BUILT WITH AI -->
+<div class="sec-tinted">
+  <div class="wrap n-scope">
+    <span class="lbl">Built with AI</span>
+    <h2 class="h2">Designed in Figma, built in Lovable, <em>refined with Claude Code.</em></h2>
+    <p class="body">I designed the screens in Figma, generated the first build in Lovable, then iterated with Claude Code.</p>
+    <div class="n-split n-figma">
+      <div><h3>A Figma file built to be handed off.</h3><p>Handing a file to Lovable and Cursor is unforgiving, since nothing carries over automatically. So I built text and color styles and auto layout into every screen, so it could be built as a system.</p></div>
+      <figure><img class="n-img" src="figma-file.webp" alt="The Figma file: pages and layers, text styles and color styles" loading="lazy"></figure>
+    </div>
+    <div class="n-split n-prompt">
+      <div class="n-pr"><figure class="n-pr-prompt"><img src="prompt-badges.webp" alt="The prompt: fix hierarchy on the badges page, with an exact order and spacing rules" loading="lazy"></figure><figure class="n-pr-result"><div class="n-shot" style="--ar:882/1720"><img src="result-badges.webp" alt="The Events badges page the prompt produced" loading="lazy"></div></figure></div>
+      <div><h3>One prompt, one result</h3><p>A real prompt I wrote for the badges page, with the order, sizes and spacing spelled out, next to the screen it produced.</p></div>
+    </div>
+    <div class="n-dcard" style="margin-top:1.5rem">
+      <h3 style="margin-top:0">A bug Figma would never show</h3>
+      <p>A Figma prototype only plays the paths I drew. Using the real app, with real state and real taps, uncovered usability issues that two rounds of testing on the prototype never did.</p>
+    </div>
+  </div>
+</div>
+
+<!-- REFLECTION -->
+<div class="sec-tinted">
   <div class="wrap">
     <div class="rev">
-      <span class="lbl lbl-dark">06 &middot; Engineering Handoff</span>
-      <h2 class="h2 h2-w">I built the MVP, <em>and YBG's IT team is taking it to launch.</em></h2>
-      <p class="body body-w">Lovable and Cursor got this from Figma to a working, testable app fast. But a prototype isn&rsquo;t a production system. YBGC&rsquo;s IT team, who already run the live website, is taking it from here to make it secure for real users. The beta includes the fixes from both rounds of testing. The round-two changes haven't been re-tested with users yet.</p>
+      <span class="lbl">Reflection</span>
+      <h2 class="h2">What this taught me.</h2>
     </div>
   
-    <div class="insight-callout rev">
-      <span class="insight-mark">&ldquo;</span>
-      <div class="insight-callout-body">
-        <span class="lbl lbl-dark" style="margin-bottom:.5rem">Why This Matters</span>
-        <p>Figma prototypes fake state. Code has to remember it. Building in Lovable and Cursor meant the app had to work like real software, and small bugs that survived two rounds of testing showed up as soon as I could actually use it.</p>
-      </div>
-    </div>
-
-    <div class="rigor-row pe-figma">
-      <div>
-        <div class="frame ph">
-          <img src="figmaarrangement.webp" alt="Figma file organized with local styles and auto layout" loading="lazy" decoding="async">
-        </div>
-        <p class="cap">Figma file, local styles &amp; auto layout</p>
-      </div>
-      <div>
-        <p class="body body-w">Handing a file to Lovable and Cursor is unforgiving: nothing carries over automatically. So I built proper text and color styles and auto layout across every screen, so engineering could build from it as a system.</p>
-      </div>
+    <div class="reflects rev">
+      <div class="r-card"><span class="r-n">01</span><h4>Small prompts beat one big one</h4><p>Describing the whole app at once burned tokens fast. I only got usable results once I broke each feature into small prompts in a fixed sequence. It also made me define each screen's behavior before building it, which is the same discipline a handoff needs.</p></div>
+      <div class="r-card"><span class="r-n">02</span><h4>The MVP was for testing, not launch</h4><p>I built it to show the idea works and to test it with real people. Making it secure and public is the IT team&rsquo;s job, and knowing where my part ends is part of the work.</p></div>
+      <div class="r-card"><span class="r-n">03</span><h4>My biggest design decision wasn't the strongest lever</h4><p>Badges got the most design effort and were the hardest feature to use in testing. When I asked what would bring people back, events beat rewards. Next time I&rsquo;ll test the core idea earlier, not just how usable it is.</p></div>
     </div>
   
-    <div class="pe-intro rev">
-      <span class="lbl lbl-dark">Working With AI, Not Around It</span>
-      <p class="body body-w">AI helped me build faster, but the design decisions were still mine. Working within tight token limits in Cursor and Lovable made that clear.</p>
-    </div>
-
-  
-    
-    <div class="pe-strip rev">
-      <div class="pe-card"><span class="pe-eyebrow">Challenge</span><p>Lovable's credits ran out, even after 100 more were added. One Stripe prompt used up Cursor's.</p></div>
-      <div class="pe-card"><span class="pe-eyebrow">Action</span><p>Split each feature into small prompts, tightened with Claude to name the function, the check, and the test case.</p></div>
-      <div class="pe-card"><span class="pe-eyebrow">Result</span><p>All four features built, plus the badge redo after round two. Working MVP handed off.</p></div>
-    </div>
-    
-    <div class="pe-example rev">
-      <span class="pe-eyebrow">Example: making paid-event RSVPs check the card</span>
-      <div class="pe-compare">
-        <div class="pe-card pe-bad">
-          <span class="pe-eyebrow">My first draft</span>
-          <p>The Stripe payment form currently lets any card number go through (even declined test cards like 4000 0000 0000 0002). The submit button is skipping the payment validation. Please update the RSVP button's submit handler to actually await the Stripe payment confirmation (stripe.confirmPayment or stripe.createPaymentMethod). It must throw a visible error on the screen if the card fails or is declined, and only complete the RSVP if Stripe returns a success status.</p>
-        </div>
-        <div class="pe-card pe-good">
-          <span class="pe-eyebrow">Tightened with Claude · 1.9 credits</span>
-          <p>The Stripe payment form lets any card through, including declined test cards (4000 0000 0000 0002). The RSVP submit handler is likely calling <code>recordRsvp()</code> without properly awaiting and checking the result of <code>stripe.confirmPayment()</code>. Please fix the submit handler so it:<br>
-          1. Calls <code>stripe.confirmPayment()</code> with <code>redirect: 'if_required'</code><br>
-          2. Awaits the result and checks for an <code>error</code> object. If present, display the error message (e.g. <code>error.message</code>) visibly on screen and stop<br>
-          3. Only proceeds to call <code>recordRsvp()</code> if <code>paymentIntent.status === 'succeeded'</code><br>
-          4. Does not silently swallow or ignore any Stripe error response<br>
-          Test with decline code 4000 0000 0000 0002 to confirm it now blocks the RSVP and shows a visible error.</p>
-        </div>
-      </div>
-      <p class="body body-w pe-note">Most of my Lovable prompts cost 3 to 5 credits. This one cost 1.9.</p>
-      <p class="body body-w pe-note">By hand: I caught the bug by testing with Stripe's test cards, wrote the fix prompt from it, and re-tested. The approved card now completes the RSVP; others decline with an error.</p>
-    </div>
-  
-    <div class="roadmap-now rev">
-      <span class="roadmap-phase">Now</span>
-      <h3 class="roadmap-title">What I handed off</h3>
-  
-      <div class="repo-proof">
-      
-        <div>
-          <div class="ph">
-            <img src="githubfolders.webp" alt="GitHub repository for the Yerba Buena app showing its project folders and 677 commits" loading="lazy" decoding="async">
-          </div>
-          <p class="repo-proof-cap">Repo, file structure</p>
-        </div>
-      
-        <div>
-          <div class="ph">
-            <img src="readmefile.webp" alt="README file documenting the app's overview, my role, design process, key features and tools" loading="lazy" decoding="async">
-          </div>
-          <p class="repo-proof-cap">Repo, README</p>
-        </div>
-      
-      </div>
-      
-    </div>
-  
-    <div class="roadmap-split rev">
-      <div class="roadmap-col next">
-        <span class="roadmap-phase">Next</span>
-        <h3 class="roadmap-title">In progress, IT</h3>
-        <span class="roadmap-owner owner-it">Engineering</span>
-        <ul class="roadmap-list">
-          <li>Security review &amp; authentication layer</li>
-          <li>Backend architecture, hosting, and admin tooling</li>
-          <li>Content moderation for the creator feed</li>
-          <li>Code review and hardening</li>
-        </ul>
-      </div>
-      <div class="roadmap-col later">
-        <span class="roadmap-phase">Later</span>
-        <h3 class="roadmap-title">Public launch</h3>
-        <span class="roadmap-owner owner-it">IT-led</span>
-        <ul class="roadmap-list">
-          <li>Beta test with real visitors and staff</li>
-          <li>QR, website, and TikTok discovery flows go live</li>
-          <li>Public launch</li>
-          <li>CS intern onboarded to support long-term (pending confirmation)</li>
-        </ul>
-      </div>
-    </div>
-  
-    <!-- BETA LINK -->
-    <a href="https://yerba-buena-canvas.lovable.app" class="beta-tile rev" target="_blank" rel="noopener">
-      <div class="ph-wide ph-dark">
-        <img src="screens.webp" alt="YBGC app, first screen" loading="lazy" decoding="async">
-      </div>
-      <div class="beta-play">
-        <div class="beta-circle">▶</div>
-        <span class="beta-text">Click to try the beta<span>Opens the live app</span></span>
-      </div>
-    </a>
+    <ul class="nexts mt4 rev">
+      <li><span>Next &rarr;</span> Re-test the version-two changes with users</li>
+      <li><span>Next &rarr;</span> Add a proper security and data-privacy layer before any public beta</li>
+      <li><span>Next &rarr;</span> Beta test with real visitors and staff before a public launch</li>
+      <li><span>Next &rarr;</span> Launch the QR and website discovery flows alongside the first TikTok creator collabs</li>
+    </ul>
   </div>
   </div>
-
-
-<!-- 07 REFLECTION -->
-<div class="sec-tinted">
-<div class="wrap">
-  <div class="rev">
-    <span class="lbl">07 &middot; Reflection</span>
-    <h2 class="h2">What this taught me.</h2>
-  </div>
-
-  <div class="reflects rev">
-    <div class="r-card"><span class="r-n">01</span><h4>Small prompts beat one big one</h4><p>Describing the whole app at once burned tokens fast. I only got usable results once I broke each feature into small prompts in a fixed sequence. It also made me define each screen's behavior before building it, which is the same discipline a handoff needs.</p></div>
-    <div class="r-card"><span class="r-n">02</span><h4>The MVP was for testing, not launch</h4><p>I built it to show the idea works and to test it with real people. Making it secure and public is the IT team&rsquo;s job, and knowing where my part ends is part of the work.</p></div>
-    <div class="r-card"><span class="r-n">03</span><h4>My biggest design decision wasn't the strongest lever</h4><p>Badges got the most design effort and were the hardest feature to use in testing. When I asked what would bring people back, events beat rewards. Next time I&rsquo;ll test the core idea earlier, not just how usable it is.</p></div>
-  </div>
-
-  <ul class="nexts mt4 rev">
-    <li><span>Next &rarr;</span> Re-test the round-two changes with users</li>
-    <li><span>Next &rarr;</span> Add a proper security and data-privacy layer before any public beta</li>
-    <li><span>Next &rarr;</span> Beta test with real visitors and staff before a public launch</li>
-    <li><span>Next &rarr;</span> Launch the QR and website discovery flows alongside the first TikTok creator collabs</li>
-  </ul>
-</div>
-</div>
 
 <footer>
   <span class="f-name">Tamanna Shirol</span>
@@ -1306,8 +931,6 @@ if (isTouchDevice()) {
 </script>
 
 <script>
-// Video accessibility: every looping video gets a real play/pause button (keyboard + tap),
-// tap-to-play on touch screens, and autoplay respects reduced-motion settings.
 (function(){
   var ICON_PLAY='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>';
   var ICON_PAUSE='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg>';
@@ -1315,7 +938,7 @@ if (isTouchDevice()) {
   var touch=('ontouchstart' in window)||navigator.maxTouchPoints>0;
   var HOST='.phone,.channel-card,.app-screen,.anim-tile';
   document.querySelectorAll('video').forEach(function(v){
-    if(v.hasAttribute('controls')) return;            // native controls are already accessible
+    if(v.hasAttribute('controls')||v.closest('.n-app')) return;            // native controls are already accessible
     var name=v.getAttribute('aria-label')||'video';
     var wrap=v.parentElement;
     if(getComputedStyle(wrap).position==='static') wrap.style.position='relative';
@@ -1328,8 +951,6 @@ if (isTouchDevice()) {
       b.setAttribute('aria-label',(playing?'Pause: ':'Play: ')+name);
       host.classList.toggle('is-playing',playing);
     }
-    // on touch, phones fire a fake hover (which starts the video) right before the click,
-    // so remember the state at the moment the finger lands and toggle from that
     var before=null;
     function mark(){ before=!v.paused; }
     function toggle(){
@@ -1349,6 +970,25 @@ if (isTouchDevice()) {
     }
     sync();
   });
+})();
+</script>
+
+
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function go(v){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+  var root=document.querySelector('.n-app');
+  if(root){
+    var tabs=[].slice.call(root.querySelectorAll('.n-tab')),vids=[].slice.call(root.querySelectorAll('video')),vis=false,cur=0;
+    function show(n){cur=n;tabs.forEach(function(t,i){t.classList.toggle('on',i===n);t.setAttribute('aria-selected',i===n)});
+      vids.forEach(function(v,i){v.classList.toggle('on',i===n);if(i!==n){v.pause()}else{v.currentTime=0;if(vis&&!rm)go(v)}})}
+    tabs.forEach(function(t,i){t.addEventListener('click',function(){show(i)})});
+    new IntersectionObserver(function(e){vis=e[0].isIntersecting;var v=vids[cur];if(vis&&!rm)go(v);else v.pause()},{threshold:.4}).observe(root.querySelector('.n-phone'));
+    vids[0].classList.add('on');
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target.querySelector('video');if(!v)return;if(e.isIntersecting&&!rm)go(v);else v.pause()})},{threshold:.4});
+  document.querySelectorAll('.n-scope .n-shot').forEach(function(s){if(s.querySelector('video'))io.observe(s)});
 })();
 </script>
 
